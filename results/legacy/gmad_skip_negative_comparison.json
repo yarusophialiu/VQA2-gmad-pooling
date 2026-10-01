@@ -1,0 +1,214 @@
+[
+  {
+    "version": "原代码 100/125 帧",
+    "baseline_directory": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_selection_120hz_defaults",
+    "skip_negative_directory": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_selection_skip_negative_120hz_defaults",
+    "source_negative_frame_values": 18,
+    "skipped_candidate_frame_values": 648,
+    "candidate_count_with_any_score_change": 216,
+    "changed_candidate_scenes": {
+      "gallery": 144,
+      "rogue": 72
+    },
+    "rule_score_changes": {
+      "mean": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.07891078174603194
+      },
+      "median": {
+        "changed_candidates": 210,
+        "maximum_absolute_score_change": 0.041487216999998466
+      },
+      "percentile": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 1.2627262362962988
+      },
+      "kth_percentile": {
+        "changed_candidates": 210,
+        "maximum_absolute_score_change": 0.041487216999998466
+      },
+      "minkowski": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.05047249475312299
+      },
+      "exp_weighted_minkowski": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.17588501532831202
+      },
+      "last_frames_mean": {
+        "changed_candidates": 144,
+        "maximum_absolute_score_change": 0.2775149917599986
+      },
+      "worst_window": {
+        "changed_candidates": 170,
+        "maximum_absolute_score_change": 0.3468937396999987
+      },
+      "hysteresis": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.544183769947761
+      },
+      "vqpooling_temporal": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 2.0704479405978615
+      },
+      "cumulative_quality": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.07891078174603372
+      },
+      "early_dominance": {
+        "changed_candidates": 120,
+        "maximum_absolute_score_change": 0.00408503571151364
+      },
+      "late_dominance": {
+        "changed_candidates": 204,
+        "maximum_absolute_score_change": 0.22635876361691665
+      },
+      "increasing_weights": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.11317938180845744
+      },
+      "decreasing_weights": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.03819604268872823
+      }
+    },
+    "old_task_status": {
+      "equivalent_rules": 72,
+      "insufficient_attack_gap": 280,
+      "selected": 3428
+    },
+    "new_task_status": {
+      "equivalent_rules": 72,
+      "insufficient_attack_gap": 287,
+      "selected": 3421
+    },
+    "task_count_with_changed_status": 13,
+    "task_count_with_changed_pair": 375,
+    "old_unique_gmad_pairs": 1200,
+    "new_unique_gmad_pairs": 1221,
+    "unchanged_gmad_pairs": 1075,
+    "removed_gmad_pairs": 125,
+    "added_gmad_pairs": 146,
+    "gmad_pair_jaccard": 0.7986627043090639,
+    "old_pilot_pairs": 84,
+    "new_pilot_pairs": 84,
+    "unchanged_pilot_pairs": 76,
+    "removed_pilot_pairs": 8,
+    "added_pilot_pairs": 8,
+    "pilot_changes_by_scene": {
+      "gallery": 6,
+      "rogue": 2
+    },
+    "candidate_frame_count_distribution": {
+      "536": 144,
+      "539": 72,
+      "540": 1080
+    }
+  },
+  {
+    "version": "按 25 fps 时间换算",
+    "baseline_directory": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_selection",
+    "skip_negative_directory": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_selection_skip_negative_time_converted",
+    "source_negative_frame_values": 18,
+    "skipped_candidate_frame_values": 648,
+    "candidate_count_with_any_score_change": 216,
+    "changed_candidate_scenes": {
+      "gallery": 144,
+      "rogue": 72
+    },
+    "rule_score_changes": {
+      "mean": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.07891078174603194
+      },
+      "median": {
+        "changed_candidates": 210,
+        "maximum_absolute_score_change": 0.041487216999998466
+      },
+      "percentile": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 1.2627262362962988
+      },
+      "kth_percentile": {
+        "changed_candidates": 210,
+        "maximum_absolute_score_change": 0.041487216999998466
+      },
+      "minkowski": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.05047249475312299
+      },
+      "exp_weighted_minkowski": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.07711980049254663
+      },
+      "last_frames_mean": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.07891078174603194
+      },
+      "worst_window": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.09646836916666857
+      },
+      "hysteresis": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.544183769947761
+      },
+      "vqpooling_temporal": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 2.0704479405978615
+      },
+      "cumulative_quality": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.07891078174603372
+      },
+      "early_dominance": {
+        "changed_candidates": 120,
+        "maximum_absolute_score_change": 0.00408503571151364
+      },
+      "late_dominance": {
+        "changed_candidates": 204,
+        "maximum_absolute_score_change": 0.22635876361691665
+      },
+      "increasing_weights": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.11317938180845744
+      },
+      "decreasing_weights": {
+        "changed_candidates": 216,
+        "maximum_absolute_score_change": 0.03819604268872823
+      }
+    },
+    "old_task_status": {
+      "equivalent_rules": 144,
+      "insufficient_attack_gap": 250,
+      "selected": 3386
+    },
+    "new_task_status": {
+      "equivalent_rules": 144,
+      "insufficient_attack_gap": 262,
+      "selected": 3374
+    },
+    "task_count_with_changed_status": 14,
+    "task_count_with_changed_pair": 446,
+    "old_unique_gmad_pairs": 1202,
+    "new_unique_gmad_pairs": 1204,
+    "unchanged_gmad_pairs": 1049,
+    "removed_gmad_pairs": 153,
+    "added_gmad_pairs": 155,
+    "gmad_pair_jaccard": 0.7730287398673544,
+    "old_pilot_pairs": 84,
+    "new_pilot_pairs": 84,
+    "unchanged_pilot_pairs": 74,
+    "removed_pilot_pairs": 10,
+    "added_pilot_pairs": 10,
+    "pilot_changes_by_scene": {
+      "rogue": 4,
+      "gallery": 6
+    },
+    "candidate_frame_count_distribution": {
+      "536": 144,
+      "539": 72,
+      "540": 1080
+    }
+  }
+]

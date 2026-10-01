@@ -1,0 +1,5 @@
+﻿kind,value,selected_tasks,unique_pairs,pair_jaccard
+epsilon_fraction,0.025,3424,1252,0.5117967332123412
+epsilon_fraction,0.05,3445,1247,1.0
+epsilon_fraction,0.1,3457,1255,0.8437730287398674
+input_offset,1.0,3447,1247,0.8392330383480826

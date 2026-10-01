@@ -1,0 +1,13 @@
+{
+  "selected_tasks_constraints_checked": 3428,
+  "independent_exhaustive_optimum_checks": 65,
+  "pilot_pairs_unique": 84,
+  "pilot_scene_counts": {
+    "bistro": 14,
+    "gallery": 14,
+    "rogue": 14,
+    "school": 14,
+    "sibenik": 14,
+    "makeway": 14
+  }
+}

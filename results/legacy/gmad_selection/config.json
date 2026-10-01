@@ -1,0 +1,615 @@
+{
+  "status": "screening_requires_full_video_recheck",
+  "scenes": [
+    "bistro",
+    "gallery",
+    "makeway",
+    "rogue",
+    "school",
+    "sibenik"
+  ],
+  "bins": 3,
+  "epsilon_fraction": 0.05,
+  "epsilon_cap": 0.1,
+  "min_attack_fraction": 0.1,
+  "normalization": "within-scene p95-p5 span",
+  "bins_policy": "quantile bins, tied predictions never split",
+  "fps": 120,
+  "frames_per_chunk": 180,
+  "common_input_offset": 6.025888443,
+  "output_offset_removed": true,
+  "input_transform_status": "provisional_screening_assumption",
+  "time_parameters": {
+    "source_study_fps": 25,
+    "display_fps": 120,
+    "exp_tau_frames": 480,
+    "exp_tau_s": 4.0,
+    "last_frames": 600,
+    "last_seconds": 5.0,
+    "worst_window_frames": 480,
+    "worst_window_s": 4.0,
+    "hysteresis_tau_s": 2,
+    "hysteresis_fps": 120,
+    "n_segments": 3,
+    "cumulative_quality": "duration weighted; 50/60 s windows reduce to mean"
+  },
+  "rules": [
+    "mean",
+    "median",
+    "percentile",
+    "kth_percentile",
+    "minkowski",
+    "exp_weighted_minkowski",
+    "last_frames_mean",
+    "worst_window",
+    "hysteresis",
+    "vqpooling_temporal",
+    "cumulative_quality",
+    "early_dominance",
+    "late_dominance",
+    "increasing_weights",
+    "decreasing_weights"
+  ],
+  "representative": {
+    "mean": "mean",
+    "median": "median",
+    "percentile": "percentile",
+    "kth_percentile": "median",
+    "minkowski": "minkowski",
+    "exp_weighted_minkowski": "exp_weighted_minkowski",
+    "last_frames_mean": "mean",
+    "worst_window": "worst_window",
+    "hysteresis": "hysteresis",
+    "vqpooling_temporal": "vqpooling_temporal",
+    "cumulative_quality": "mean",
+    "early_dominance": "early_dominance",
+    "late_dominance": "late_dominance",
+    "increasing_weights": "increasing_weights",
+    "decreasing_weights": "decreasing_weights"
+  },
+  "seed": 20260930,
+  "source_manifest_sha256": "710e94203d53708cd9913684904417c6b6b60cd5dfb04920dfce0a98848be07f",
+  "pooling_source_sha256": "4455aef4304c48c1ccee86c377cd340e6be0469b1dac02b65deb14006a30ae00",
+  "source_files": [
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "af5cf2baf01ccb126f1fb32ff2ef54e8f853a7d6c2ee242c900a464965ed1f40",
+      "metadata_sha256": "845d2f1c8c10f069a05d13127e2598b270ace4c1647347e10008e93d994b9351"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "d67d269c8aff49ffc6398d787a2a72c5972b94266781894b4a1522b1797305cf",
+      "metadata_sha256": "b494473245a11f6852af565e33b37991b6be64230893e755ed7a7a6450261baf"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "ffc558dcee0ed847b72fe1876953ef862c2ff07023c5d6bb580968a0ff2ace85",
+      "metadata_sha256": "dd53c11471b0128553ccaf50cd18374589e3826ec16a82fd5ae45889406850ad"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "d13bc1512b1d70a81e630cae6303ec43d62fadcc8a02caf186261056a68a09e4",
+      "metadata_sha256": "a9f3c50e0846182ee07f4bae8c6033d1343f80bc194a290c764598f952d6515e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "d22d93015259afb43bd6baf8a339a9a85a5aa7975206bc84991f783a3b2acd2a",
+      "metadata_sha256": "308daf2d23a0651c0cb8bd4980b89e9175887dde31fe561950c9a77dc8d01e3d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "929ff52eaf7bcdf55a39f74cc2248551b019072310aa64fe6192cec94a17e466"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "55d290bf68daada7b2b7f202890d0dd0b88566d51d77b4f54f852866dc82b0ce",
+      "metadata_sha256": "cca81df95e1af392458be9d764a4bb16af7abd9e1a991c8628fcec1f99a7f37c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "3c85a76cb463c9ec40b3af6dd36899c4f81e7a673e74bc40f863c4413c3a6466",
+      "metadata_sha256": "c954ec692fafc295c72ef5e860c7d92aa40d7997014d0c8a7a6bef1181fbd51f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "61448eb3f5f874fa83643183b108fd85638959ee5f22884e1b138970bbf99ef7",
+      "metadata_sha256": "1ae39469ef06ae282abe80944ea7691b6f9ce1ca63c33363264c42157aaf1e61"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "0ee8e16dd1d8dbbc393ae02be52154d587b1c0b3a08cdfae00ebb4e6c20d4466",
+      "metadata_sha256": "fbd606b52db3bf23a0aefd8a90505a2f3ba70ad9db757fe1259e2439f541f923"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "88f961eac0bd3d6a57bfdf035bd7bd07db0595232cf54c86699e35acb0cdc9b9",
+      "metadata_sha256": "48854e714961fac0de4747451f20d01a3f978f3a2dd0c57f392ce7076d4ea61f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "b6771f8d7d95e164a892013ba056e4e87667200d7735ed1cee5964690e497d92"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "e5e6469e721b44d111a42ddbd00bb3c8359a8029765d27b0a531265109c8b9cc",
+      "metadata_sha256": "cbc58a2b48d7259e36d6a562367ca920c89a5062f9680cc02505fea524411206"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "af0ec1da9ffeed39a091c38b2ef1b11da2dffc6495f3ec92f0f97969a889fea0",
+      "metadata_sha256": "8bde23d062b8439d4f8c50a738073582d26059e9ace3c5f92cd83190db14797d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "cb21907f3c42621bf08c211aaef7e13d21c20254242a90839471f916ce96d1ef",
+      "metadata_sha256": "82a8c4d5c595aa15b9de89c224db8a50a72a4ca3f499dd1464239b2fddfac363"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "4f9d0bbe1c1416a1e8b299db14e2eacc9d09b176f4fb5588b78934489a9e9a53",
+      "metadata_sha256": "6a147fcbf7edb580182612a18f4f05cf72001851f199142cbde144e53b8c4c9b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "952df6d5a9b85e00ecb41c5587c7317cf34142f5d9606eb3b533c32b41fd56fc",
+      "metadata_sha256": "171a706c102204b18171e63bee5a76ece504b919fb121f0081f78adf4565c409"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/bistro/bistro_path2_seg3_1/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "72ce9318ce19b3679786bfb1d82482d1d1544f2ed6eeba62a6a4e49ee27bfaa0"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "21c08d57e9346cb0da450b61b3e3555425e27da21a7cefd926c56f9507e71a4b",
+      "metadata_sha256": "ed43ad1f92e4630246bdb2ff9d552027cd48788ebd35976539c60f8ee25afd91"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "c5d337bbf9bd36a153572dead96448deaee5abf21a00dee0d81769a6bbab333b",
+      "metadata_sha256": "f12a4fd0afc1b3d3a33996464b6c3d490a94afaef585f7e15e16ada34e6a5ee1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "4c3e44549f781c7f7e051cb67a5ab3247f626188bb07c9125d2d6968c6239460",
+      "metadata_sha256": "0a38eebb35ec018666971e92def86bd3a2fd3e17f75d740978e0f377b2524e31"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "bfc5fc7baa98a184977ee26bf04380cfc6389723c35c860541df784e63de1c3b",
+      "metadata_sha256": "49716ef641ed4f36e4dcd12ff6b72ab96610e763e602ed3d5cecbaa7b53f644d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "bae61fedf71a693ee07660f2539ada69309d45989f7970bb404db86919277fa7",
+      "metadata_sha256": "cd247bb87d348ef67800ce975a71af02a0dcdf28c14dbdabf47a39780ff27584"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "e2ef35c8cc7b5174cd29219804d85b0b42158cea72a88aaa433ed2bd2d607fff"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "90e0348c1d1f7b4f377ae57b7d2310962a4fcc23fba5b6e242d1e6a950a5ad44",
+      "metadata_sha256": "d48db85a40d2beea682b42875b7ddb1d3f6cc4464628707708703225297a63d3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "48f7c6c222a4079cf2bfc19a52f62907e09723640936841a6b3280659f5ae037",
+      "metadata_sha256": "4ae6e25515a499818be75e974c56bb53510e3ce0a92d10c445eb9cb762df8192"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "aeab2c5d41e8c9cd584a5522a066117b4e74c4f67f019e4cf9b7aeaf57e097e1",
+      "metadata_sha256": "7f795e3f0ab12f5b1b8f5bce2e67878e4087384162c49dc4aae2aaebf562d1e7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "692574026f17b0474bfd8e7efdf996140a215289710cda567e3a31832a403896",
+      "metadata_sha256": "be125d4b89f087af9fbbd6f2f81fed8599b403ae9f5bf4cd3d32a343cd4c9dc0"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "b56bd5a448d79a04581576c98c9972e9d78f2f31484c2344d6df16de8120fd7f",
+      "metadata_sha256": "6906023a33e7f73f5b15f8a06174fee8f6d3c1f5a2a245dd0b5611c90b40fd51"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "7eb4f54b60c27f98c30e083d3d34902337a3a4784fb87e699142390a45608795"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "89d7b0a5887ace9b83d8ddf88c99861db72b07ac058e704078fbd38f1f07f102",
+      "metadata_sha256": "546aaae01adc2613dcc95733854d37c5ec0c0d76cde944c66aa270856b5d5f15"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "ec5ae1d1884f96b35db94fa25e176f8e5a2e6dea78a8ef30108cf2cd715ac9e4",
+      "metadata_sha256": "c17b8c54e0d3989b97ad1e78a113c43bf2cb5580a4fa6a0568993a86f1937c38"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "b19d50c6de9c2c7efd7d0a99e6275a2d28e21f3d732ae49d07e27cf25f9e825f",
+      "metadata_sha256": "63253a788e809a36e3d868680ef1298cef417e6ec636a21f9e5fd1b154ae7406"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "9d0b9ddf13bd1cfed4f7150d1d02b8b9ebcd53c65e8e02d65f0e6c941818e627",
+      "metadata_sha256": "c6afefd8891bc92663344b329fa4c5778b3a4944a2e92bee5b271edd15a6bf71"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "290a449209d1c228953528b370df1a4bdd72ae748d40c3c8da3d50f4e11edc75",
+      "metadata_sha256": "d1198d6155c5ed29d32d4e4e23e03c62cd61bbd6ef19cfad9fc8c70fda914380"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/gallery/gallery_path2_seg2_2/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "107430611fd1549e5ec3de941de58d41c8d5495d44a39ae470756d175dcac8c3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "d84b02a557f67c14b4c0db4d4416e411aa339fe8753ff1a444762841ef502a07",
+      "metadata_sha256": "f9b2f2ba5c9f6867f830c73e822f824f8a4e6a81e9bbc732bb7b1dabeab05c96"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "d5b3f483a29286a9a090484499b5f50b44a3a55d2e29eba8a14d30d805bf4adf",
+      "metadata_sha256": "54e3399ae35c548d3437a91b07f5f46fd23c231f574908df67016df43e17fd22"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "cfd200bb1099e99e12a4b5dc18852ee91f648d15487c7bf41e27535e1eb69fdd",
+      "metadata_sha256": "06ef0eb5f579687b0fb076ffa1e2995feb9c561f381fa379e306e3dcb15a4918"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "1c25316be584d7e4b9c2b2895b14697905f70dd33ba94fd92930fc73a4cd12ec",
+      "metadata_sha256": "f6e77869a6afffdd0ae62d7de4da841ac61ece6154141f3863470d2121cc0309"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "1153214ca8ca0f7e5b2dd964c32ae81485238acc907094093042ffa1898af591",
+      "metadata_sha256": "54ffbf825ec0199237693520552edcd2e01f9fbcf535873f2f0e63f338821b40"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "dce8602d1456c94b1f4a6119d79c19e60952ec38718ba69eb433d00f4bef3bc3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "2d6bdbe49becae3872c6d8e849801adef9c4cd9dbc4a8fd743a66a3c74a17ae8",
+      "metadata_sha256": "4a48ed1d8bd72af34ba7bdf370e3392ad245625f12c09285d1861f780161919e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "7234b5f2986bc140c44642d4861a022fdfab0758905d19788c9d7735690b050b",
+      "metadata_sha256": "6b34598a2aecbe6380b97fe73e5409616928a387defe2adc96739a63ceb293d2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "e3b32d2c49bca4cf9947643f727eae8b9df047726c159639aec883066428341b",
+      "metadata_sha256": "d0129764548ef52e76cb771a88a46514c00275aa34760ba4f143c4303b4b48f4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "0ab4dac6a86007c94f58a767d546bd8c73ce4cf69d4bd3dab738191d0d991908",
+      "metadata_sha256": "3779612a64f7f382ec017154d8dcee2f85f1edc46efed800bafa97f6c0870698"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "9b4fb750c29717c0700e66a650eedaa836a03be3a8f0659bc41dd6021d80f2f6",
+      "metadata_sha256": "947d63ec014af880fd1a3ead1c6b7ccca45a04e5b65e06033b064fc1a84a08d6"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "1e0a9ae241815810490600c0823f6d0fc554d14113dfdbe80115b48988becad8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "c4c4c57dbb619c567a9706487adee3ae7dbbb2ee4cdc1b3cb710216b1a117fc5",
+      "metadata_sha256": "1e544c59f612ae51f1a78e60672bfa33ca3ab04ed945cf6862924c4bb6f36967"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "a85e4f4a5e6524c66c6d7ec0f107d37d2ba3d852fe6cdb18de38a2d9af61a385",
+      "metadata_sha256": "354a5ed45c0fdda4dba45ffcc0f1111d25b67f92ff1ab2241355d93c4b134e1f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "397e76ce717ea7eb42554b5c4ebd2a6e3c468e91984ba7db162eccafa88ffbb6",
+      "metadata_sha256": "1c9629c4c39e3c3dbafe79f78da282465a598734b05a9a22a63fd1ef6f00ef53"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "6044870a5bce4eabfc4aa5c072532c1e2691f9d2f931c9e16b31068de283d2a5",
+      "metadata_sha256": "97c6fae942409605031217805d4763595c1151c6d7788d2873db0fc01b5a1ef6"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "e04d829ac0c9b8fca7c6fcec6310e60a677a6d2d1f9fa7c8f9aea219203ff404",
+      "metadata_sha256": "52d052475b1490471405d0710f7de9a52540b029f5a4bf63b8688b77323157af"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "73bb9388472588f6ec626a3977d62c483ab96a98dd738248d44e59ae43530115"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "402b6cbb78cd65ec566bb787b8fa4ed4c54d2101b3f64d8a6858b53f4a7ad75c",
+      "metadata_sha256": "5fd4dd055049d6b09741e06c58f72116989c43fcd7065a3c273d17e4b880df5f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "0c5228734fbd3700dbc44e64aed17bf3f4a3e307b29a165a81f64a1fca4f1135",
+      "metadata_sha256": "62f4aef5ae7684b679ab513ed825a83e0a6380bf1ff84f4022f5faba38152314"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "4dc2a562d94f385dd80dd8556d51b7db449accc03c1b9332b15ee5354b7a9abb",
+      "metadata_sha256": "82b1fc205f33e939e99814b5fd88058777ff79e6b7be7936edb9cd4b7f61cb6c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "c43b06f3885c4dc65ffcd56161095a884eac51b498986a4b08dbf5e7452428e2",
+      "metadata_sha256": "e1c9f00ddf7f9165cab6141098ebc565e73e8d120cacf3d2775a5b203a4a013d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "16b97691fca823231641c69f15d0d49028b96e7894a8f1af2235d41ada9a94de",
+      "metadata_sha256": "7e19b71402396167585ca6dc0f78ec06e4ca97bdbd0d8276b7fc8a33b076e812"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "adbce7faa376a97c9832da92dfa3c479bf5bbdf2a280e723d77a573beb74ed98"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "3f00ec39799e4e020571789641e19148249efff55f5d1264262b651abdb82613",
+      "metadata_sha256": "78d7eeec8e9db4266ec883088ce17aa9ccf6407aee079117e4fa4bf99ad3c040"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "3272f6adfc4509a634ffbf492c07379ffed5f07634e24b292a02c784b2531914",
+      "metadata_sha256": "db9d365e15188589e3c337db463e7915ab776242de248f01f6e9898873593a73"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "892a75a91dc2aa6f01f4072df74be7641096190a31f0655b39323eae71f3d9c3",
+      "metadata_sha256": "b7c4038043ba37edc4bd1c8a90c2b28097018a28b6a8ce41f9d24d279103bc0e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "71d975569dee7d3b52565d1171488da0fd93f2028d62c9a1ff67f96ff75b633c",
+      "metadata_sha256": "b02734f4f68bd42bad37af1772b7c465840de1fe2338bea361d7e47ee38a6d2a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "77c08d5ea91e03b241f682b86c2aea38b74913965e91028fca464b653b92e4ef",
+      "metadata_sha256": "1b1b9a501bbee9a344733c6a4a9d1189248dbe754aa89ea9a8ff20d4fb8bf360"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "be9fdae8985dff5483bb09c5d302d71af74dc116dc7c090fc93344d8e2b2ee78"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "924d0fc7fc71b11fa1f11c7e9b08cdf5ede1c88c2fb9ae64f3147e9250e92889",
+      "metadata_sha256": "628530f2a59f2f6bb8c13bfe484eee643ece07b0ee1ee201d2287564b030596d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "42d1f1df5d95f1a201d2a9b4bb4f898286008cd8b4682918cf6101c367855ee4",
+      "metadata_sha256": "9611017d3dda2c8ee22a54d884f34256236f08f69b9aaf95f35a3c220d46b171"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "f071623a0f179ea13d8ce4440170c9289ac54c0c7c950976e62b7f84e571aaa1",
+      "metadata_sha256": "3378b2817e49d5bb5b0dfb051b49cde4da759c30195540c8167291724907ecf8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "5f0522f8e5c6e7f58da0845200531fabb4934eb3e954c9c4748ed913482a51da",
+      "metadata_sha256": "47a65f82a90931ee0075737cd274d541af57081b470b966e28505c5483276408"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "7ce800b82e0ee6d5045635004b082a4ddad6d5532749576f3b7297e477cd3e96",
+      "metadata_sha256": "86f78330f38ed00ea4b5ebc4a8eade2876de3fafe4ffda73e20918deba52a5e1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/rogue/rogue_path2_seg1_1/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "599013a01c3dba3e487da7248742adc56a8162341c4f41b67b3db6caac28d8d3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "d39ca902070473c2b083e04b33e859507fb8c94f0352d33f7fad074711270831",
+      "metadata_sha256": "161745e00624f3b6ee08d0fd72ee59fe5f0f0e3d095a05a1bf017d08e15ae4c1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "e31cd7a101441f2512fe8a83f9cbf0105d8f7572cf53b56ec9b9d20c69e00e28",
+      "metadata_sha256": "02685e0509babe1cdb0b8256e9085e0648d8ac9dcd22c2c8416623657eb6f35a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "4d0ae880c92cbcf23ef38c90265725eb0d4c01449df7d16a21e8cf02bc75c7ad",
+      "metadata_sha256": "abc7c704cae40ead8d012d8326abb41c5d691a09279a0b133b1a1040a6742872"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "8f676028c9bd06c45a72f6fd567ed80bf85c30f282a2c7c00c94eb94ac2ea72f",
+      "metadata_sha256": "6c1609b6b84f02ca19693bfacd8e80eaceda2fb32111d39cf28c52e3ca922bee"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "07b9bba3195c6a674a25119fe94a607468e648bcee58b20024bde69680d7558a",
+      "metadata_sha256": "33c72e4fc49506715fa26e78393bfd6aaecbdee81de70fb9ff9b18065686a461"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "cdb7131bd5edd8b06c50c1f6e3f23ef9d8ea37d4b47766bff49552db2ea56ace"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "092f60ae7d985de15e0891eae724e64ce6575caa1399ff23ce54c227d293a55b",
+      "metadata_sha256": "8badb651b3bccebdb96e8b0866a9110006563d89f21b7e9aa3f9793f706c1d5b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "8454c80a24a4c98b15e23d4f407205e3ebfb49790ebabcab9a0fcfadfa02ed6f",
+      "metadata_sha256": "d2a42c38995f9c5452929136323a24d3177e9078a9be9308ecab353e19733757"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "78cb65a20f9d65a1b18fd81992ea9d8508f5a95be3eebf3f8d38c439196dadea",
+      "metadata_sha256": "9e96d9c5da2a98f308648fcef79c78745d3ebd2c8ee04557879c1f31c436aeef"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "84cec664df13e7fb7c4f8808208659e477b47510f86f50cab8ca1ff61d1b19e7",
+      "metadata_sha256": "ee56e29208f14b673b2f64f218edc6d69f518d634c08a6d8e64279a50f0fb856"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "49bccedf856ff2fbaa01512337c52018b6ba0aaf106b59106ea40bf6bac13bf9",
+      "metadata_sha256": "9b0dc8e9c45e92009e28baaeea4957bb215522771325c6b1a3ff5d4b67ebced1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "b0c773bdb38da50f3fe54ec1ff0f3aa80b0e0e9c4a52dfb2df3aead87a1ab979"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "817cfc4916784d440ebbadf7882eed065e6eed6d1a33e64ad8859b0b379b294e",
+      "metadata_sha256": "96a38c44f84ce84c0fe245c4cb9083dda0854e88af3616bf11d7a90eb2be9009"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "bff0554708a2c0b373b738037c3f7b757ca4ee6e8cb0305309bc19ccfa15e79e",
+      "metadata_sha256": "a5f68aa6abc7029c69c4af5fea8bb52faf930f2f9f0440f6682863b2ac39af89"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "624fbb4a587f374b3988ee2e6731db57b2aa1d5507f6a53230779a50e88cd252",
+      "metadata_sha256": "3159b5d0b411c1d25c91bb489ca2de664eff2017f19833f5a3904df2373d735b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "14a31ad3b647c60a00b92087abb9fb2404155f93fa25c1c1463be015c1b10ab7",
+      "metadata_sha256": "42e8dd22ba131cf1719e83cbda2d1aef5108cc7f7f46b44062e1be591ef4f7d4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "52efce21b65b6fb92ff93c40d284b492dc6659db0a62d91494672e0c43945a46",
+      "metadata_sha256": "1da6d393166ae101fcdedacc70248cd5637b1b2a6fd99e125620e3a673e0f661"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/school/school_path2_seg1_1/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "af6e4689fc6b60e5330228f8a9e1d0df8462e6cc67c2c52709d1ccdd822ea1e5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "5e942b010f3735f917f6c7f32db2ab0cd5dd0c137860e89a8ef73fe0a39df852",
+      "metadata_sha256": "d9702fc96f8125d5eeef6f0372a0a99ce6f45a140c4babeec27510d9709b1624"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "e1c804b0b5a91441120e43edaeee2c77dee334025af3a77004866a5f3579cf3c",
+      "metadata_sha256": "c36089d051bceeada1575d8d3bd23fa39965d05358fc10fa517b8e6f9bf67cc2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "d481f4a10446226d0f9c208e2ec584af19c45f524546cd055fe926dc8fb11706",
+      "metadata_sha256": "bb20437bf08b6dc547473a56b982aa7a9165d1e8eb69059976028660f7d55670"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "b7dc9f669127fd49c71e206bf46ac589c61fcee2fd3eaeeabd429917b05ba2b5",
+      "metadata_sha256": "23447ce2c4580239c3a9ec85bdbe359e25d0a03b22780c67a69213b03fd08b6f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "83f9056d28641673fba3b50a8945fac22fcc89c31cb2c6fc6e54fccb35ca145b",
+      "metadata_sha256": "437766010c19e9cb48d0b471bcaa64364e1d1843547f7a14d6245e6e7eaa618a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "4d7d33b071048c07e92abd6ed97b2c34ff02c99e3396dca04c538c3af54caa62"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "eafc530c3d64004d0bb41c469912527d40112bf8d936c9be8fa67ade7987256a",
+      "metadata_sha256": "7486c9aef15f6ba97225e019ab953e27432ad7c4f985cb0b2472cc277394a83b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "f138271dd847ce716f5af4db409cc70db057404416e64a077c04a655583f1c4d",
+      "metadata_sha256": "88d1f115f029488686f66b099c37b8df5b9a78b9f0538f6090948e4f3afd6d95"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "ce15b4068935daf6a6de6afcdda43923db3ee9eb551217230640d926a510af32",
+      "metadata_sha256": "678a9ba3f2ddccb39622b96c26aef15a3f14e947c0ceabf67f41d523036a5b7d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "2a377cf56541f31747387a50fc9e00f95d17cc9b3274609b602f0d97da1ee376",
+      "metadata_sha256": "2631ef3ab10a910f22d6f87c9e227ad3a4cbcc7a5c57d0cae0e2e7e4db14161f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "3a2819374b0811af7f56cd1d8349e95ebfdc7125a94f47dcf75d16543e68a9dd",
+      "metadata_sha256": "25db0bed1cdde0e475191baf87cb710c8129f93111edcf07660cbda36c3ce923"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "09c2c16f719120c3d4bda94fd0c314876d699892ef344521ce0559c64432fe57"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "492a9b723c1e3a5acb91dfeaf6461cb0a7651a219ac3d06d75d30ee865fc46e7",
+      "metadata_sha256": "56e13d17be9947bc6c3fa5441f6ccf1b4b2604181277145efb8859f912832050"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "9cd50833b9fb24be2c3b471507d01e268c5f86cac5cf32d40828e188d2f327bc",
+      "metadata_sha256": "cf9d118eecdf059d2730ed61b7dbb1cf7ceef0f405db23f2a0fb6cfdb21bfd8d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "fba7398d8900f23956e13fcee01c9d0c3f971dec7662b7ce7832e4e77577333a",
+      "metadata_sha256": "6683207a3d2168aca63ccfa44931824150df167d35fc9eabd6888f424c0e09db"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "32b9ac6baae799645b246383ab1def5dfeec4f80706842ab54c08134bae2d777",
+      "metadata_sha256": "985b3ab677f3ec4a39c162cdb9c541f46cbc32e9961019ce34207ab18e9fe94f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "677e12c83678218c1aa8e6256fc47fc4518e756f044402bb36ff219939867e47",
+      "metadata_sha256": "c00a96cf64c5f93006c8641041e19f3d278bb98a10b46438b6955cbe128acc47"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-gmad-pooling/results/gmad_frame_scores/lossless_spatiotemporal_chunks/sibenik/sibenik_path3_seg3_2/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "a956a91cabbd08193175cb368a06c3f56faab9c9d9e5b8dac383598f5c62781b"
+    }
+  ]
+}

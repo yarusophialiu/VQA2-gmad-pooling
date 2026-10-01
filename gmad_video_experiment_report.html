@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>用 gMAD 挑选视频，比较 15 条时间池化规则</title>
+  <style>
+    :root{--ink:#183047;--muted:#53687a;--line:#d9e4eb;--paper:#fff;--bg:#f3f7f8;--accent:#087e81;--accent-dark:#075c63;--warm:#fff2df;--cool:#e8f5f3;--blue:#eaf1fa;--shadow:0 10px 35px rgba(22,54,73,.07)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.76 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent-dark);text-underline-offset:3px}a:hover{color:#063d45}button,input{font:inherit}button{cursor:pointer}
+    .shell{max-width:1180px;margin:auto;padding:32px 24px 72px}.hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#11364e 0%,#075d66 65%,#087e81 100%);border-radius:24px;padding:48px 52px;color:#fff;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:390px;height:390px;border:1px solid rgba(255,255,255,.19);border-radius:50%;right:-100px;top:-180px;box-shadow:0 0 0 54px rgba(255,255,255,.05),0 0 0 108px rgba(255,255,255,.04)}.eyebrow{font-size:.76rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase;opacity:.82}.hero h1{font-size:clamp(2rem,4vw,3.35rem);line-height:1.22;letter-spacing:-.035em;margin:13px 0 19px;max-width:760px}.hero p{font-size:1.08rem;max-width:750px;margin:0;color:#e5f5f4}.hero .meta{margin-top:27px;display:flex;gap:10px;flex-wrap:wrap}.badge{padding:5px 12px;border:1px solid rgba(255,255,255,.32);border-radius:999px;background:rgba(255,255,255,.1);font-size:.84rem}
+    .layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:24px;margin-top:26px;align-items:start}.toc{position:sticky;top:24px;border:1px solid var(--line);border-radius:18px;padding:18px;background:var(--paper);box-shadow:var(--shadow)}.toc strong{display:block;font-size:.79rem;letter-spacing:.12em;color:var(--muted);margin:1px 8px 12px}.toc a{display:block;padding:7px 9px;border-radius:8px;text-decoration:none;color:var(--ink);font-size:.9rem}.toc a:hover{background:var(--cool)}main{min-width:0}.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px 34px;margin-bottom:20px;box-shadow:var(--shadow)}h2{font-size:1.48rem;line-height:1.3;margin:0 0 15px;letter-spacing:-.018em}h3{font-size:1.08rem;margin:23px 0 9px}p{margin:0 0 13px}p:last-child{margin-bottom:0}.lead{font-size:1.07rem}.kicker{color:var(--accent);font-weight:800;font-size:.77rem;letter-spacing:.12em;margin:0 0 7px}.callout{border-left:4px solid var(--accent);background:var(--cool);border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}.callout.warn{background:var(--warm);border-color:#d58a17}.formula{overflow-x:auto;background:#f2f6f8;border:1px solid var(--line);border-radius:10px;padding:13px 17px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.94rem;white-space:nowrap;margin:14px 0}.table-wrap{overflow-x:auto;margin:15px 0}table{width:100%;border-collapse:collapse;font-size:.92rem;line-height:1.55}th,td{border-bottom:1px solid var(--line);text-align:left;padding:12px 11px;vertical-align:top}th{background:#f0f6f7;font-weight:750;color:#1e495b}tr:last-child td{border-bottom:0}ul,ol{padding-left:1.32em;margin:9px 0 16px}li{margin:5px 0}.small{font-size:.87rem;color:var(--muted)}.pill{display:inline-block;border-radius:7px;background:var(--blue);padding:2px 7px;font-size:.83rem;font-weight:700}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}.flow div{background:linear-gradient(180deg,#f3faf9,#eaf4f6);border:1px solid #cbdfe2;border-radius:13px;padding:15px;min-height:116px}.flow b{display:block;color:var(--accent-dark);font-size:.86rem;margin-bottom:5px}.flow span{font-size:.91rem;line-height:1.5;display:block}.control-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.field label{display:block;color:var(--muted);font-size:.8rem;font-weight:750;margin-bottom:5px}.field input{width:100%;border:1px solid #bfd1da;border-radius:9px;padding:8px 10px;color:var(--ink);background:#fff}.field input:focus{outline:2px solid #7ec8c3;border-color:var(--accent)}.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}.stat{background:#eff7f6;border:1px solid #c7e3df;border-radius:12px;padding:14px}.stat span{display:block;font-size:.79rem;color:var(--muted);line-height:1.4}.stat strong{font-size:1.53rem;display:block;line-height:1.2;margin-top:5px;color:var(--accent-dark);font-variant-numeric:tabular-nums}.error{color:#a74425;font-weight:700;min-height:1.3em}.source-list{font-size:.91rem}.source-list li{margin-bottom:9px}footer{text-align:center;color:var(--muted);font-size:.83rem;padding:5px 0 0}
+    @media(max-width:850px){.layout{display:block}.toc{position:static;margin-bottom:20px;display:flex;flex-wrap:wrap;gap:3px;padding:11px}.toc strong{width:100%}.toc a{padding:5px 8px}.hero{padding:38px 29px}.card{padding:25px 23px}.flow{grid-template-columns:repeat(2,1fr)}}@media(max-width:560px){.shell{padding:12px 12px 48px}.hero{border-radius:17px;padding:31px 23px}.hero h1{font-size:1.9rem}.card{border-radius:15px;padding:21px 18px}.control-grid,.results{grid-template-columns:repeat(2,minmax(0,1fr))}.flow{grid-template-columns:1fr}.flow div{min-height:auto}}@media print{body{background:#fff;font-size:11pt}.shell{max-width:none;padding:0}.hero{background:#fff!important;color:var(--ink);border:0;border-radius:0;box-shadow:none;padding:0 0 18px}.hero p{color:var(--muted)}.badge{border:1px solid var(--line);color:var(--ink)}.hero:after,.toc{display:none}.layout{display:block;margin:0}.card{box-shadow:none;border:0;border-top:1px solid #cbd4d9;border-radius:0;padding:22px 0;margin:0;break-inside:avoid}.callout,.stat,.flow div,th{print-color-adjust:exact;-webkit-print-color-adjust:exact}a{color:var(--ink)}.control-grid{display:none}h2,h3{break-after:avoid}table{break-inside:avoid}footer{padding-top:15px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="eyebrow">主观视频质量实验 · 研究设计备忘录</div>
+      <h1>用 gMAD 挑选视频<br>比较时间池化规则</h1>
+      <p>针对 5 个渲染场景、分辨率和帧率变化，以及 4.5 秒三段视频的选对方案、指标验证与主观实验预算。</p>
+      <div class="meta"><span class="badge">5 个场景</span><span class="badge">暂定 2 种分辨率 × 3 种帧率</span><span class="badge">1080 个候选</span><span class="badge">暂按代码中的 15 个 RULES 分析</span></div>
+    </header>
+    <div class="layout">
+      <nav class="toc" aria-label="目录">
+        <strong>目录</strong>
+        <a href="#conclusion">核心建议</a><a href="#candidates">候选池与渲染</a><a href="#rules">15 条规则的可比性</a><a href="#metric">逐帧指标与显示</a><a href="#selection">gMAD 选对</a><a href="#budget">预算计算器</a><a href="#subjective">主观实验与分析</a><a href="#sequence">执行顺序</a><a href="#sources">依据与范围</a>
+      </nav>
+      <main>
+        <section id="conclusion" class="card">
+          <div class="kicker">核心建议</div><h2>先验证分数，再选对，最后分配被试</h2>
+          <p class="lead">你的候选池适合 gMAD：视频数量适中，全部规则可以低成本预测，而人工评价昂贵。建议在<strong>同一场景内</strong>寻找“防守者认为相近、攻击者认为差异大”的视频对，并设置明确的防守分差上限。</p>
+          <div class="flow" aria-label="实验流程">
+            <div><b>01 · 固定规则</b><span>确认参赛函数、参数和统一的时间采样。</span></div>
+            <div><b>02 · 验证指标</b><span>先用 30 次渲染生成候选，再用实际拼接视频核对边界。</span></div>
+            <div><b>03 · 选对去重</b><span>按场景和质量档执行受约束 gMAD，保存任务映射。</span></div>
+            <div><b>04 · 人工评价</b><span>平衡分配视频对，分别报告攻击性与抵抗力。</span></div>
+          </div>
+          <div class="callout"><strong>能够回答的问题：</strong>在指定显示设备、这 5 个场景和 4.5 秒时长下，哪条池化规则更能预测整体视觉质量，哪些规则容易出现反例。gMAD 的结果需要结合少量独立随机对，才能同时了解对抗样本以外的表现。</div>
+        </section>
+
+        <section id="candidates" class="card">
+          <div class="kicker">候选池</div><h2>30 次完整渲染，组合成 1080 个候选</h2>
+          <p>设分辨率数量为 <i>R</i>、帧率数量为 <i>F</i>，每个 chunk 的设置数为 <i>L = R×F</i>。对 5 个场景和 3 个 chunk：</p>
+          <div class="formula">候选视频 = 5 × L³；固定视频 = 5 × L；变化视频 = 5 × (L³ − L)</div>
+          <p>当 <i>R=2、F=3</i> 时，得到 <strong>1080 个候选</strong>，其中 30 个固定视频、1050 个分段变化视频。若每个场景的 6 次渲染均覆盖相同的完整 4.5 秒时间线，候选 <i>(a,b,c)</i> 可用 <i>a</i> 的前 1.5 秒、<i>b</i> 的中间 1.5 秒、<i>c</i> 的最后 1.5 秒构成。这样场景内容连续，变化因素仍只有分辨率与帧率。</p>
+          <div class="callout warn"><strong>边界条件：</strong>逐帧分数直接拼接只适合初筛。真实切换可能改变时间滤波、渲染历史和播放行为；应对入选对及覆盖各类切换的抽样视频，以完整 4.5 秒序列重新计算指标。</div>
+        </section>
+
+        <section id="rules" class="card">
+          <div class="kicker">参赛规则</div><h2>先确认“15 条”指哪一组</h2>
+          <p><a href="../VQA2/temporal_pooling.py">temporal_pooling.py</a> 的 <code>RULES</code> 注册了 15 个函数；<a href="../VQA2/temporal_pooling_rules.md">temporal_pooling_rules.md</a> 的表格列的是 15 类方法。表格包括 Hammerstein–Wiener 和两个帧时间模型，而 <code>RULES</code> 把四个位置权重变体单独计数。本报告暂按代码中的 <code>RULES</code> 分析。</p>
+          <div class="table-wrap"><table><thead><tr><th>检查项</th><th>对当前实验的影响</th><th>建议</th></tr></thead><tbody>
+            <tr><td>median 与 kth percentile</td><td>后者默认取第 50 百分位，与 median 完全相同。</td><td>合并结果，或预先确定另一个百分位。</td></tr>
+            <tr><td>cumulative quality</td><td>原 50–60 秒窗口长于 4.5 秒；正确设置采样率后，各窗口统计退化为同一个整段统计量。</td><td>原参数作为退化情形报告；若改短窗口，应标作新变体。</td></tr>
+            <tr><td>cumulative quality 的尾段</td><td>代码对每秒片段均值等权平均，使最后 0.5 秒与完整 1 秒等权。</td><td>采用时长加权，避免人为增加尾段权重。</td></tr>
+            <tr><td>last frames mean</td><td>默认最后 125 帧在 25 Hz 下覆盖全片，在 120 Hz 下只覆盖约 1.04 秒。</td><td>先确定秒数，再换算为采样点数。</td></tr>
+            <tr><td>exp weighted、worst window、hysteresis</td><td>参数混用帧和秒，且部分依赖传入的 <code>fps</code>。</td><td>固定物理时间与采样率，锁定参数后再选对。</td></tr>
+            <tr><td>四种位置权重</td><td>代码默认分成 2 段，而视频设计有 3 个 chunk。</td><td>显式设为 3 段，检查末段长度。</td></tr>
+            <tr><td>Minkowski 与 VQPooling</td><td>默认正指数偏重高分；VQPooling 要求正输入。</td><td>写清所检验的假设，并处理可能低于 0 的质量值。</td></tr>
+          </tbody></table></div>
+          <p class="small">等价模型没有必要强行产生不同排名。固定参数后先对全部候选计算预测矩阵，检查完全相同的输出和几乎相同的排序。</p>
+        </section>
+
+        <section id="metric" class="card">
+          <div class="kicker">底层指标</div><h2>统一时间轴，复核切换处的质量信号</h2>
+          <p>ColorVideoVDP 有自己的时间处理及视频总分池化。其官方输出包含整体 JOD，以及按通道、帧、频带排列的中间特征；你需要明确“逐帧质量分数”是从哪个阶段构造的，并对所有候选使用同一提取方法。它的最高质量是 10 JOD，强失真时可能低于 0，因此不宜未经说明就假定输入恒在 0–10。</p>
+          <p>尽量将所有视频表示在统一的显示时间轴上。例如最终显示为 120 Hz 时，30／60／120 fps 可分别按 4／2／1 个刷新周期显示每个源帧。然后在相同的时间点上计算池化输入，或按每帧真实显示时长加权。否则，30／60／120 fps 的三个等长 chunk 分别有 45／90／180 帧，直接等权平均会让第三段获得 <strong>57% 的权重</strong>，而它只占总时长的 33%。</p>
+          <p>显示设备、刷新率、亮度、观看距离、低分辨率的放大方式、编码和播放器插帧设置，应在最终指标计算与选对之前锁定。特别要确认设备和播放链路能稳定呈现 120 fps；指标应与被试实际看到的画面一致。</p>
+          <div class="callout"><strong>复核标准：</strong>对最终选中的视频，以及最接近入选的备选视频，重新计算完整视频指标；检查防守者分差仍小、攻击者分差仍大。若这些关系频繁翻转，扩大重算范围并重做选对。</div>
+        </section>
+
+        <section id="selection" class="card">
+          <div class="kicker">gMAD 选对</div><h2>同时满足场景相同、质量同档、分差足够小</h2>
+          <p>记 <i>P<sub>m</sub>(x)</i> 为规则 <i>m</i> 对视频 <i>x</i> 的预测。让 <i>d</i> 防守、<i>a</i> 攻击，在场景 <i>s</i> 与质量档 <i>k</i> 内，寻找使攻击者预测差最大的有序视频对：</p>
+          <div class="formula">最大化 P<sub>a</sub>(x⁺) − P<sub>a</sub>(x⁻)</div>
+          <div class="formula">约束：scene(x⁺)=scene(x⁻)=s；x⁺,x⁻ ∈ B<sub>d,s,k</sub>；|P<sub>d</sub>(x⁺)−P<sub>d</sub>(x⁻)| ≤ ε<sub>d,s</sub></div>
+          <p>建议先用 <strong>K=3</strong>（低／中／高）覆盖质量范围，再用单独的防守分差阈值 <i>ε</i> 限制“防守者觉得相同”的程度。等分位分档本身不能保证同一档内的任何两段视频质量都相近。阈值应在正式实验前由先导数据或预测分布确定。</p>
+          <p>每个场景只有 216 个视频，5 个场景合计 <strong>116,100 个同场景无序视频对</strong>，可以直接枚举。若约束内没有有效的攻击分差，应记录“此任务无有效攻击”，不能把缺失当作防守胜利。</p>
+          <h3>补充有解释力的视频对</h3>
+          <div class="table-wrap"><table><thead><tr><th>结构</th><th>主要检验</th></tr></thead><tbody>
+            <tr><td>前差后好 ↔ 前好后差</td><td>首因、近因及时间顺序</td></tr>
+            <tr><td>中间低谷 ↔ 末尾低谷</td><td>最差窗口、记忆效应</td></tr>
+            <tr><td>稳定中等 ↔ 高低交替</td><td>平均质量与低质量惩罚</td></tr>
+            <tr><td>高分辨率低帧率 ↔ 低分辨率高帧率</td><td>空间清晰度与运动流畅度的权衡</td></tr>
+          </tbody></table></div>
+          <p>还应单列一小部分独立抽取的分层随机对，用来观察对抗样本之外的表现。上述诊断对必须使用真实指标确认，不能仅凭设置排列推断两个视频的分数分布相同。</p>
+        </section>
+
+        <section id="budget" class="card">
+          <div class="kicker">实验预算</div><h2>区分攻击任务和实际播放的视频对</h2>
+          <p>若有 <i>M</i> 条规则、<i>K</i> 个质量档、<i>S</i> 个场景，完整同场景设计有 <i>S×M×(M−1)×K</i> 个攻击任务。若每个方向和质量档只预先分配到一个场景，则是 <i>M×(M−1)×K</i> 个任务，但各方向不覆盖所有场景。同一个视频对可能服务多个任务，人工实验只需播放一次，同时要保留它关联的所有任务。</p>
+          <div class="callout warn">默认参数下：<strong>630 个攻击任务</strong>是每个方向和质量档只分配一个场景；<strong>3150 个攻击任务</strong>才是 5 个场景全部重复。去重后的唯一视频对数必须实际计算，不能预设一定会压缩到某个数。</div>
+          <h3>可调整的规模估算</h3>
+          <div class="control-grid" id="controls">
+            <div class="field"><label for="r">分辨率数量 R</label><input id="r" type="number" min="1" step="1" value="2"></div>
+            <div class="field"><label for="f">帧率数量 F</label><input id="f" type="number" min="1" step="1" value="3"></div>
+            <div class="field"><label for="s">场景数量 S</label><input id="s" type="number" min="1" step="1" value="5"></div>
+            <div class="field"><label for="m">参赛规则数 M</label><input id="m" type="number" min="2" step="1" value="15"></div>
+            <div class="field"><label for="k">质量档数 K</label><input id="k" type="number" min="1" step="1" value="3"></div>
+            <div class="field"><label for="u">去重后视频对 U（示例）</label><input id="u" type="number" min="1" step="1" value="360"></div>
+            <div class="field"><label for="ratings">每对有效评价 r（示例）</label><input id="ratings" type="number" min="1" step="1" value="20"></div>
+            <div class="field"><label for="per-person">每人正式对数 B（示例）</label><input id="per-person" type="number" min="1" step="1" value="300"></div>
+            <div class="field"><label for="seconds">每次播放和评分秒数（示例）</label><input id="seconds" type="number" min="1" step="1" value="18"></div>
+            <div class="field"><label for="repeat">重复检查比例 %</label><input id="repeat" type="number" min="0" max="100" step="1" value="5"></div>
+            <div class="field"><label for="overhead">训练与休息分钟数</label><input id="overhead" type="number" min="0" step="1" value="20"></div>
+          </div>
+          <p class="error" id="calc-error" role="status" aria-live="polite"></p>
+          <div class="results" aria-live="polite">
+            <div class="stat"><span>全部候选视频</span><strong id="candidate-count">1,080</strong></div>
+            <div class="stat"><span>固定条件视频</span><strong id="fixed-count">30</strong></div>
+            <div class="stat"><span>每方向一场景的攻击任务</span><strong id="rotated-count">630</strong></div>
+            <div class="stat"><span>每个场景完整重复的攻击任务</span><strong id="complete-count">3,150</strong></div>
+            <div class="stat"><span>估计至少需要的有效被试</span><strong id="subjects-count">24</strong></div>
+            <div class="stat"><span>每人估计总时长</span><strong id="duration-count">114.5 分钟</strong></div>
+          </div>
+          <p class="small">被试数 = ⌈U×r÷B⌉。每人时长 = B×(1＋重复比例)×单次秒数÷60＋训练与休息时间。这里的 U、评价次数和耗时均为演算示例；正式人数还需先导实验估计评分变异和流失率。若去重后 U 大于预期，需相应增加被试或减少覆盖任务。</p>
+        </section>
+
+        <section id="subjective" class="card">
+          <div class="kicker">主观评价与统计</div><h2>保留偏好方向、强度和被试分歧</h2>
+          <p>同场景两段视频顺序播放，随机化 A/B 顺序，询问整体视觉质量哪段更好，并允许“没有明显差别”。使用带中性点的偏好强度评分或滑条；规定重播次数，记录每次时长与重播。实验按约 20–30 分钟分段，穿插休息与少量重复对。</p>
+          <p>把每个回答按攻击者预测的高分视频方向转成 −1 到 1 的数 <i>z</i>。正值支持攻击者，负值表示方向相反。对于攻击者 <i>a</i>、防守者 <i>d</i>，分别报告有符号的平均偏好（攻击性）和 <i>1−|平均偏好|</i>（抵抗力），再按预先声明的场景与质量档权重汇总。两项应分别排名和给出不确定性区间。</p>
+          <div class="callout"><strong>解释零附近的结果：</strong>它可能意味着视频难区分，也可能是被试意见两极分化。需要同时查看评分分布与区间；“没有统计显著差异”不能自动解释为感知等价。</div>
+          <p>统计时要处理同一被试的多次评价、以及同一视频对被多个攻击任务复用的相关性。可以重采样被试和唯一视频对，并检查逐一移除五个场景后，攻击性与抵抗力排名是否稳定。独立随机对单独分析，用于补充了解非对抗样本上的表现。</p>
+        </section>
+
+        <section id="sequence" class="card">
+          <div class="kicker">执行顺序</div><h2>三项先导检查决定正式实验规模</h2>
+          <ol>
+            <li><strong>冻结参赛集合。</strong>统一输入定义、时间采样和所有参数；核对完全等价及近似等价规则。</li>
+            <li><strong>验证候选构造。</strong>抽取固定、单次切换、两次切换和不同帧率切换视频，对比拼分数近似与完整视频重算的结果，特别检查切换附近。</li>
+            <li><strong>先导主观测试。</strong>测量每对真实耗时、重播率、被试分歧和中性回答比例；据此确定阈值、评价次数和正式被试数。</li>
+          </ol>
+          <p>随后运行受约束选对、去重及视频复核，生成每对视频的场景、三段设置、两种模型分数与任务映射表。最终才锁定视频文件与被试分配。</p>
+        </section>
+
+        <section id="sources" class="card">
+          <div class="kicker">依据与范围</div><h2>资料来源</h2>
+          <ul class="source-list">
+            <li><a href="../VQA2/papers/Group_Maximum_Differentiation_Competition_Model_Comparison_with_Few_Samples.pdf">Ma 等，IEEE TPAMI 2020，gMAD 原论文（本地 PDF）</a>：选对流程、攻击性／抵抗力，以及分段视频 QoE 示例。</li>
+            <li><a href="../VQA2/temporal_pooling_rules.md">时间池化规则说明（本地）</a>与<a href="../VQA2/temporal_pooling.py">当前实现（本地）</a>：规则定义、默认参数与函数注册情况。</li>
+            <li><a href="https://github.com/gfxdisp/ColorVideoVDP#predicted-quality-scores">ColorVideoVDP 官方说明</a>和<a href="https://raw.githubusercontent.com/gfxdisp/ColorVideoVDP/main/pycvvdp/cvvdp_metric.py">指标源码</a>：JOD 含义、时间处理、逐帧中间量。</li>
+          </ul>
+          <p class="small">本报告中的阈值策略、场景轮换和预算数字是针对你的实验给出的设计建议；它们不是论文规定值，也不是已经运行主观实验得到的结论。HTML 可离线阅读；本地源码链接依赖此文件保持在当前项目目录。</p>
+        </section>
+      </main>
+    </div>
+    <footer>gMAD 主观视频质量实验设计 · 可打印为 PDF</footer>
+  </div>
+  <script>
+    (() => {
+      const ids = ['r','f','s','m','k','u','ratings','per-person','seconds','repeat','overhead'];
+      const nodes = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+      const fmt = n => new Intl.NumberFormat('zh-CN').format(n);
+      const put = (id, value) => { document.getElementById(id).textContent = value; };
+      function calculate(){
+        const v = Object.fromEntries(ids.map(id => [id, Number(nodes[id].value)]));
+        const integerPositive = ['r','f','s','m','k','u','ratings','per-person'];
+        const valid = integerPositive.every(id => Number.isInteger(v[id]) && v[id] >= (id === 'm' ? 2 : 1))
+          && Number.isFinite(v.seconds) && v.seconds > 0
+          && Number.isFinite(v.repeat) && v.repeat >= 0 && v.repeat <= 100
+          && Number.isFinite(v.overhead) && v.overhead >= 0;
+        const error = document.getElementById('calc-error');
+        if (!valid) { error.textContent = '请输入有效数值：规则至少 2 条，其余数量为正整数，重复比例为 0–100%。'; return; }
+        error.textContent = '';
+        const L = v.r * v.f;
+        const candidate = v.s * L ** 3;
+        const fixed = v.s * L;
+        const rotated = v.m * (v.m - 1) * v.k;
+        const complete = rotated * v.s;
+        const subjects = Math.ceil(v.u * v.ratings / v['per-person']);
+        const minutes = v['per-person'] * (1 + v.repeat / 100) * v.seconds / 60 + v.overhead;
+        put('candidate-count', fmt(candidate)); put('fixed-count', fmt(fixed));
+        put('rotated-count', fmt(rotated)); put('complete-count', fmt(complete));
+        put('subjects-count', fmt(subjects)); put('duration-count', `${minutes.toFixed(1)} 分钟`);
+      }
+      ids.forEach(id => nodes[id].addEventListener('input', calculate));
+      calculate();
+    })();
+  </script>
+</body>
+</html>

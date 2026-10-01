@@ -1,0 +1,17 @@
+﻿change,scene,pair_id,video_a,video_b,roles
+removed,gallery,pair_051382fcf9f1,gallery__1080p60-720p120-1080p30,gallery__720p30-1080p120-1080p120,gmad_pilot
+removed,gallery,pair_1e24556ea4de,gallery__720p30-1080p120-1080p120,gallery__720p30-1080p60-1080p60,gmad_pilot
+removed,rogue,pair_4fbff9dbc425,rogue__720p30-720p30-1080p120,rogue__720p30-720p30-1080p30,gmad_pilot
+removed,gallery,pair_a33f8044b804,gallery__720p120-720p120-1080p30,gallery__720p60-720p60-1080p120,gmad_pilot
+removed,gallery,pair_a84bd355516d,gallery__1080p120-1080p120-1080p120,gallery__720p120-720p120-1080p30,gmad_pilot
+removed,gallery,pair_b10e03dae572,gallery__1080p120-720p30-720p30,gallery__1080p30-1080p30-1080p60,gmad_pilot
+removed,rogue,pair_cb77ed74c837,rogue__1080p120-1080p120-1080p120,rogue__1080p30-1080p30-1080p120,gmad_pilot
+removed,gallery,pair_efe64b389719,gallery__1080p120-720p30-1080p30,gallery__1080p30-720p30-1080p120,diagnostic_reversal
+added,gallery,pair_078b89caa486,gallery__1080p120-1080p120-720p30,gallery__1080p30-1080p30-720p30,gmad_pilot
+added,gallery,pair_1237839cc2f8,gallery__720p120-1080p60-1080p30,gallery__720p120-720p30-1080p120,gmad_pilot
+added,rogue,pair_12911214472c,rogue__1080p120-1080p120-720p120,rogue__1080p30-1080p30-720p120,gmad_pilot
+added,gallery,pair_25043207a887,gallery__1080p120-1080p30-1080p30,gallery__1080p30-1080p30-1080p120,diagnostic_reversal
+added,gallery,pair_364e75f64f0f,gallery__1080p120-1080p120-1080p30,gallery__1080p30-1080p30-1080p30,gmad_pilot
+added,rogue,pair_6621cae6e100,rogue__1080p120-1080p120-1080p30,rogue__1080p30-1080p30-1080p30,gmad_pilot
+added,gallery,pair_68100c14bee2,gallery__1080p30-1080p30-1080p30,gallery__720p30-1080p120-1080p120,gmad_pilot
+added,gallery,pair_ca0c3409883a,gallery__1080p120-1080p120-720p60,gallery__1080p60-1080p60-1080p60,gmad_pilot

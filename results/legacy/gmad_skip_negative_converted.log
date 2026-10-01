@@ -1,0 +1,71 @@
+Computed 15 rules for 144 candidates with 536 frames
+Computed 15 rules for 72 candidates with 539 frames
+Computed 15 rules for 1080 candidates with 540 frames
+{
+  "candidates": 1296,
+  "rules": 15,
+  "effective_rules": 12,
+  "scenes": [
+    "bistro",
+    "gallery",
+    "makeway",
+    "rogue",
+    "school",
+    "sibenik"
+  ],
+  "attack_tasks": 3780,
+  "task_status": {
+    "equivalent_rules": 144,
+    "insufficient_attack_gap": 262,
+    "selected": 3374
+  },
+  "gmad_unique_pairs": 1204,
+  "compact_tasks": 630,
+  "compact_unique_pairs": 263,
+  "pilot_unique_pairs": 84,
+  "pilot_unique_videos": 136,
+  "all_selected_videos": 840,
+  "min_raw_score": 0.144821167,
+  "max_raw_score": 10.0,
+  "input_offset": 6.025888443,
+  "negative_input_samples": 18,
+  "skipped_candidate_frame_values": 648,
+  "candidates_with_skipped_frames": 216,
+  "candidate_frame_count_distribution": {
+    "536": 144,
+    "539": 72,
+    "540": 1080
+  },
+  "sensitivity": [
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.025,
+      "selected_tasks": 3350,
+      "unique_pairs": 1204,
+      "pair_jaccard": 0.472782874617737
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.05,
+      "selected_tasks": 3374,
+      "unique_pairs": 1204,
+      "pair_jaccard": 1.0
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.1,
+      "selected_tasks": 3397,
+      "unique_pairs": 1228,
+      "pair_jaccard": 0.823088455772114
+    },
+    {
+      "kind": "input_offset",
+      "value": 7.025888443,
+      "selected_tasks": 3370,
+      "unique_pairs": 1201,
+      "pair_jaccard": 0.8701399688958009
+    }
+  ],
+  "max_cqm_tail_bias": 0.3527291004727777,
+  "boundary_validation": "not yet performed; no final subjective ranking is available"
+}

@@ -1,0 +1,76 @@
+Computed mean
+Computed median
+Computed percentile
+Computed kth_percentile
+Computed minkowski
+Computed exp_weighted_minkowski
+Computed last_frames_mean
+Computed worst_window
+Computed hysteresis
+Computed vqpooling_temporal
+Computed cumulative_quality
+Computed early_dominance
+Computed late_dominance
+Computed increasing_weights
+Computed decreasing_weights
+{
+  "candidates": 1296,
+  "rules": 15,
+  "effective_rules": 13,
+  "scenes": [
+    "bistro",
+    "gallery",
+    "makeway",
+    "rogue",
+    "school",
+    "sibenik"
+  ],
+  "attack_tasks": 3780,
+  "task_status": {
+    "equivalent_rules": 72,
+    "insufficient_attack_gap": 280,
+    "selected": 3428
+  },
+  "gmad_unique_pairs": 1200,
+  "compact_tasks": 630,
+  "compact_unique_pairs": 283,
+  "pilot_unique_pairs": 84,
+  "pilot_unique_videos": 135,
+  "all_selected_videos": 827,
+  "min_raw_score": -5.025888443,
+  "max_raw_score": 10.0,
+  "input_offset": 6.025888443,
+  "negative_input_samples": 18,
+  "sensitivity": [
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.025,
+      "selected_tasks": 3418,
+      "unique_pairs": 1218,
+      "pair_jaccard": 0.527479469361971
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.05,
+      "selected_tasks": 3428,
+      "unique_pairs": 1200,
+      "pair_jaccard": 1.0
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.1,
+      "selected_tasks": 3438,
+      "unique_pairs": 1209,
+      "pair_jaccard": 0.8403361344537815
+    },
+    {
+      "kind": "input_offset",
+      "value": 7.025888443,
+      "selected_tasks": 3428,
+      "unique_pairs": 1207,
+      "pair_jaccard": 0.8997632202052092
+    }
+  ],
+  "max_cqm_tail_bias": 0.3527291004727777,
+  "boundary_validation": "not yet performed; no final subjective ranking is available"
+}

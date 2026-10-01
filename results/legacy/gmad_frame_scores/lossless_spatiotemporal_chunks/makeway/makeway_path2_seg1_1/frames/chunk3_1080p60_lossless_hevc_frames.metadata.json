@@ -1,0 +1,14 @@
+{
+  "feature_json": "/local/scratch-2/yl962/VQA2/results/gmad_frame_scores/lossless_spatiotemporal_chunks/makeway/makeway_path2_seg1_1/features/chunk3_1080p60_lossless_hevc_fmap.json",
+  "full_video_jod": 8.620057106018066,
+  "fps": 120.0,
+  "source_frames": 180,
+  "design_duration_s": 1.5,
+  "design_frames": 180,
+  "exported_frames": 180,
+  "missing_design_frames": 0,
+  "usable_for_design": true,
+  "excluded_trailing_frames": 0,
+  "score": "JOD-like per-frame proxy from video-mode Q_per_ch, before temporal pooling",
+  "display": "standard_fhd"
+}
