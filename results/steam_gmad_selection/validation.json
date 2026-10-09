@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "input_files": 342,
+  "candidates": 4104,
+  "selected_tasks_checked": 11299,
+  "maximal_attack_gaps_verified": true,
+  "pairs": 4410,
+  "pilot_pairs": 266,
+  "pilot_videos": 440,
+  "same_content_and_quality_bin": true,
+  "source_hashes_verified": true,
+  "recipe_coverage_verified": true
+}

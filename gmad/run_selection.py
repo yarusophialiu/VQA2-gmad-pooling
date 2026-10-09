@@ -43,6 +43,10 @@ def load(root):
     records = json.loads(manifest_path.read_text())
     chunks, provenance, audit = {}, [], []
     for r in records:
+        # Steam exports identify content by shot rather than a separate scene.
+        # Keep each full shot path distinct and make its candidate IDs file-safe.
+        if 'scene' not in r:
+            r = dict(r, scene=r['shot'].replace('/', '__'))
         key = (r['scene'], r['chunk'], r['height'], r['fps'])
         if key in chunks:
             raise ValueError(f'Duplicate chunk {key}')
@@ -333,6 +337,9 @@ def main():
                              hysteresis_tau_s=2,hysteresis_fps=DISPLAY_FPS,
                              n_segments=3,cumulative_quality='duration weighted; 50/60 s windows reduce to mean'),
         rules=RULES,representative=reps,seed=args.seed,
+        input_root=str(args.input.resolve()),
+        content_group_policy='manifest scene when present; otherwise full shot path with / replaced by __',
+        selection_source_sha256=digest(Path(__file__)),
         source_manifest_sha256=manifest_hash,pooling_source_sha256=digest(Path(pooling.__file__)),
         source_files=provenance)
     (out/'config.json').write_text(json.dumps(config,indent=2)+'\n')
@@ -362,25 +369,33 @@ def main():
             assert t['attacker_gap']>=t['min_attack_gap']-1e-9
             assert lookup[t['video_high']]['scene']==lookup[t['video_low']]['scene']==t['scene']
     print(json.dumps(summary,indent=2),flush=True)
-    if not args.skip_negative:
-        render_report(out,summary,config,pilot,eq)
+    render_report(out,summary,config,pilot,eq)
 
 
 def render_report(out,s,c,pilot,eq):
     esc=html.escape
     rows=''.join('<tr>'+''.join(f'<td>{esc(str(row[k]))}</td>' for k in ('scene','pair_id','settings_a','settings_b','roles','gmad_task_count'))+'</tr>' for row in pilot)
     equival='；'.join(f"{r['rule1']} = {r['rule2']}" for r in eq if r['identical'])
+    input_note=(f"删除负分帧，共 {s['negative_input_samples']} 个输入负分样本；"
+                f"{s['candidates_with_skipped_frames']} 个候选受影响。"
+                if c['negative_frame_policy']=='skip' else '保留负分帧。')
+    input_note+=(f"所有规则共用 q′=q+{c['common_input_offset']:.9f}，池化后减回相同偏移。"
+                 'Minkowski 与 VQPooling 的偏移敏感性结果见下方文件。参数尚未由主观预实验校准。')
+    time_note=(f"指数规则衰减尺度 {c['time_parameters']['exp_tau_s']:g} 秒；"
+               f"最差窗口 {c['time_parameters']['worst_window_s']:g} 秒；"
+               f"尾部窗口 {c['time_parameters']['last_seconds']:g} 秒。"
+               'hysteresis 使用 2 秒；四种位置权重按三段计算；CQM 修正尾部半秒等权问题。')
     page=f'''<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>gMAD 选对结果</title>
 <style>body{{font:16px/1.65 system-ui,sans-serif;background:#f3f6f8;color:#173447;margin:0}}main{{max-width:1250px;margin:30px auto;padding:28px;background:white;border-radius:16px}}h1{{color:#096c70}}.stats{{display:flex;gap:20px;flex-wrap:wrap}}.stat{{background:#e9f5f3;padding:18px;border-radius:10px}}strong{{font-size:24px}}table{{border-collapse:collapse;width:100%;font-size:13px}}th,td{{border-bottom:1px solid #ccdce2;padding:9px;text-align:left}}th{{background:#e9f5f3}}.note{{background:#fff0d6;padding:16px}}input{{padding:10px;width:350px;max-width:90%}}a{{color:#096c70}}</style><main>
-<h1>gMAD 视频初筛已执行</h1><p>6 个场景 × 216 种三段设置；每段 1.5 秒、统一 120 Hz。状态：<b>初筛，待完整视频边界复核</b>。</p>
+<h1>gMAD 视频初筛已执行</h1><p>{len(s['scenes'])} 个内容组 × 216 种三段设置；每段 1.5 秒、统一 120 Hz。同一视频对来自同一内容组。状态：<b>初筛，待完整视频边界复核</b>。</p>
 <div class="stats"><div class="stat"><strong>{s['candidates']}</strong><br>候选视频</div><div class="stat"><strong>{s['attack_tasks']}</strong><br>攻击任务</div><div class="stat"><strong>{s['gmad_unique_pairs']}</strong><br>去重 gMAD 视频对</div><div class="stat"><strong>{s['pilot_unique_pairs']}</strong><br>预实验视频对</div></div>
 <p>参赛 15 条 RULES，{s['effective_rules']} 组不同预测。完全等价：{esc(equival)}。未加入需要拟合参数的 Hammerstein–Wiener 或使用帧时间输入的两种模型。</p>
-<p class="note">逐帧分数实际范围 {s['min_raw_score']:.3f}～{s['max_raw_score']:.3f}。所有规则共用 q′=q+{c['common_input_offset']:.9f}，使最低值为 1；池化后减回相同偏移。没有截断负分。这个选择会影响 Minkowski 与 VQPooling，敏感性结果见下方文件。参数尚未由主观预实验校准。</p>
-<p>K={c['bins']}；同场景、同防守者质量档，并满足防守分差 ≤ min(0.10, 5% × 防守者 p95−p5)。最大化攻击者分差，要求至少达到攻击者 p95−p5 的 10%。阈值是本轮初筛的分布规则，不代表人的可觉察差异。</p>
-<p>按原研究 25 fps 的物理时间换算到 120 Hz：100 帧→480 帧（4 秒），125 帧→600 帧（5 秒）。最差窗口在整段 4.5 秒中寻找最差的连续 4 秒；指数规则的衰减尺度为 4 秒；最后 5 秒规则在本实验覆盖整段，故与 mean 相同。hysteresis 使用 2 秒；四种位置权重按三段计算。CQM 的 50–60 秒窗口覆盖全部 4.5 秒，修正尾部半秒等权问题后也与 mean 相同。</p>
+<p class="note">逐帧分数实际范围 {s['min_raw_score']:.3f}～{s['max_raw_score']:.3f}。{esc(input_note)}</p>
+<p>K={c['bins']}；同内容组、同防守者质量档，并满足防守分差 ≤ min({c['epsilon_cap']:g}, {c['epsilon_fraction']*100:g}% × 防守者 p95−p5)。最大化攻击者分差，要求至少达到攻击者 p95−p5 的 {c['min_attack_fraction']*100:g}%。阈值是本轮初筛的分布规则，不代表人的可觉察差异。</p>
+<p>时间参数策略：{esc(c['time_policy'])}。{esc(time_note)}</p>
 <p>全任务状态：{esc(json.dumps(s['task_status'],ensure_ascii=False))}。无有效攻击不记为防守获胜。紧凑场景轮换设计为 {s['compact_tasks']} 个任务、{s['compact_unique_pairs']} 个唯一视频对。</p>
 <p>预实验每场景最多 10 对 gMAD、2 对独立随机对、2 对诊断对，重复对只播放一次。建议每次观看 A/B 共 9 秒，按每对 20 秒估算，本清单约 {s['pilot_unique_pairs']*20/60:.1f} 分钟纯试次；加入练习、重播与休息后再据实测时长分配被试。A/B 顺序必须随机化；目前没有人评数据，因此没有模型胜负排名。</p>
-<p class="note">拼接 chunk 分数忽略了切换处的时间滤波上下文。清单中的视频须实际拼接，并重新计算完整 4.5 秒的 CVVDP 后复核所选不等式。显示设置目前仍为 standard_fhd；rogue 使用完整的现有参考 chunks，而非不足 540 帧的整段源文件，其内容连续性也需核对。</p>
+<p class="note">拼接 chunk 分数忽略了切换处的时间滤波上下文。清单中的视频须实际拼接，并重新计算完整 4.5 秒的 CVVDP 后复核所选不等式。显示设置为 standard_fhd，视频内容连续性也需核对。</p>
 <p><a href="pilot_pairs.csv">预实验对清单</a> · <a href="gmad_pairs.csv">全部 gMAD 唯一对</a> · <a href="attack_tasks.csv">攻击任务映射</a> · <a href="compact_attack_tasks.csv">630 任务设计</a> · <a href="predictions.csv">全部候选预测</a> · <a href="sensitivity.csv">敏感性检查</a> · <a href="config.json">全部参数与文件哈希</a> · <a href="pilot_video_recipes.json">预实验视频拼接配方</a></p>
 <h2>预实验清单</h2><input id="search" placeholder="按场景、设置或 pair ID 筛选"><div style="overflow:auto"><table><thead><tr><th>场景</th><th>Pair ID</th><th>视频 A 三段设置</th><th>视频 B 三段设置</th><th>用途</th><th>关联 gMAD 任务</th></tr></thead><tbody>{rows}</tbody></table></div>
 <script>document.querySelector('#search').addEventListener('input',e=>{{const q=e.target.value.toLowerCase();document.querySelectorAll('tbody tr').forEach(r=>r.hidden=!r.textContent.toLowerCase().includes(q));}});</script></main></html>'''

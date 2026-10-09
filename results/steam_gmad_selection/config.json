@@ -1,0 +1,1803 @@
+{
+  "status": "screening_requires_full_video_recheck",
+  "scenes": [
+    "input01_clips__input01_1",
+    "input01_clips__input01_2",
+    "input01_clips__input01_3",
+    "input01_clips__input01_4",
+    "input01_clips__input01_5",
+    "input01_clips__input01_6",
+    "input01_clips__input01_7",
+    "input01_clips__input01_8",
+    "input01_clips__input01_9",
+    "input02_clips__input02_01",
+    "input02_clips__input02_02",
+    "input02_clips__input02_03",
+    "input03_clips__input03_01",
+    "input03_clips__input03_02",
+    "input03_clips__input03_03",
+    "input03_clips__input03_04",
+    "input04_clips__input04_01",
+    "input04_clips__input04_02",
+    "input04_clips__input04_03"
+  ],
+  "bins": 3,
+  "epsilon_fraction": 0.05,
+  "epsilon_cap": 0.1,
+  "min_attack_fraction": 0.1,
+  "normalization": "within-scene p95-p5 span",
+  "bins_policy": "quantile bins, tied predictions never split",
+  "fps": 120,
+  "frames_per_chunk": 180,
+  "common_input_offset": 0.0,
+  "output_offset_removed": true,
+  "input_transform_status": "provisional_screening_assumption",
+  "negative_frame_policy": "skip",
+  "time_policy": "converted",
+  "time_parameters": {
+    "source_study_fps": 25,
+    "display_fps": 120,
+    "exp_tau_frames": 480,
+    "exp_tau_s": 4.0,
+    "last_frames": 600,
+    "last_seconds": 5.0,
+    "worst_window_frames": 480,
+    "worst_window_s": 4.0,
+    "hysteresis_tau_s": 2,
+    "hysteresis_fps": 120,
+    "n_segments": 3,
+    "cumulative_quality": "duration weighted; 50/60 s windows reduce to mean"
+  },
+  "rules": [
+    "mean",
+    "median",
+    "percentile",
+    "kth_percentile",
+    "minkowski",
+    "exp_weighted_minkowski",
+    "last_frames_mean",
+    "worst_window",
+    "hysteresis",
+    "vqpooling_temporal",
+    "cumulative_quality",
+    "early_dominance",
+    "late_dominance",
+    "increasing_weights",
+    "decreasing_weights"
+  ],
+  "representative": {
+    "mean": "mean",
+    "median": "median",
+    "percentile": "percentile",
+    "kth_percentile": "median",
+    "minkowski": "minkowski",
+    "exp_weighted_minkowski": "exp_weighted_minkowski",
+    "last_frames_mean": "mean",
+    "worst_window": "worst_window",
+    "hysteresis": "hysteresis",
+    "vqpooling_temporal": "vqpooling_temporal",
+    "cumulative_quality": "mean",
+    "early_dominance": "early_dominance",
+    "late_dominance": "late_dominance",
+    "increasing_weights": "increasing_weights",
+    "decreasing_weights": "decreasing_weights"
+  },
+  "seed": 20260930,
+  "input_root": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results",
+  "content_group_policy": "manifest scene when present; otherwise full shot path with / replaced by __",
+  "selection_source_sha256": "863197692fa95b80dfb86d40de351374d16935828f29068ddfff3736ffad1137",
+  "source_manifest_sha256": "877d79cfdd4989b096264a3097096ba101181a8661b7f978b8ebacc7678ab5b8",
+  "pooling_source_sha256": "4455aef4304c48c1ccee86c377cd340e6be0469b1dac02b65deb14006a30ae00",
+  "source_files": [
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "b31b6a44931552a1cf7464112cfee491059cdbb392d0737dd638d4661522bc41",
+      "metadata_sha256": "ada8b758ca318b0212ede439be3abacb38b199cfe5562a6bd86dff183522503a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "fd78a4baffafa07906e984879cb660f6a38bf3d068efdf6fa7ffedf692fea868",
+      "metadata_sha256": "7e0b6e218e1703ea5649d7a577ac036b5d753fd2ea10b2619bcf8d52f3965e49"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "aacb28e5da6b590fbac3eeb276ea6cc2e884ee2997c71f321814bcff665da1f8",
+      "metadata_sha256": "b605069ced63f22f1f0d6cc0740392c79473f3f3cbeb96e15df5ee971861fe58"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "f304fa4b8103fbdede7f349af6bb2d5b5e977580ad3be3a8fa683a62af540ea5",
+      "metadata_sha256": "f2046e99930f93bd9e2696e309b550613c3940f189b717681840576eb7442c97"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "92ff463808e6959c7d2b63c4df8c867378ff1ee0fce5da5f6552676bb0b3aa48",
+      "metadata_sha256": "879154c91954aa0fbcb3607dbd4866ccfc4eaf97a7b99b609e135ddb9ada2321"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "a80cec94e4c38e20723ceb3a951565fe9acdb13cd12951db6f229312772d6fe1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "14c9b9b931d3b1a4fff7726036993befd744ceff1b1e5c70d8341548aa27fb79",
+      "metadata_sha256": "4e5068b1ff17841781f762000b438233c27956e7927f2114b3b566a819c89ce7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "a2e473fad3cf19db80dddf596c3287f2eeec998a3a7b9474f83fd178f9a364a4",
+      "metadata_sha256": "ba4629d57a9f5944425a96b8ec172bf0e8ab7c4b7b6059b21d3d158213df7fdd"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "33990c71b346330f1212dd3be432aa7af31c5841167f769e1e92ad9d77ae1050",
+      "metadata_sha256": "9c3413ff733d97facc56e79b4f0e6f44cfd02b81e2ef54ebf128eeb79a071e7a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "761a70ba55aa8b4263d42ea6771c9a3cf096f754db46cac19fbdd39a55feedbb",
+      "metadata_sha256": "d02daad514cfc6fc7c45d7a69cff1fd8208173183476e7b91f845e00760bd479"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "4ee899cb653ab40d58eaaa675a9cb774b65f1967bd290a92b7c7fb397439c141",
+      "metadata_sha256": "73233359e38a9eaf717290fed1314e7d7e69a187b584f819646ea9ec5cfe1237"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "a0042313874a71b4c4c8d253d49cce18821204cd838e5e5d72037a93fd63c1cb"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "1bd7e35dc752480610ea0bdb0b565b9b4ba5a44019de658147fbf8400a6838ce",
+      "metadata_sha256": "b40dc8e8e8987123ee5c1012063b579c4f45b41e630f5cf05ec0aa4cff4dbf68"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "96b4482a80986560e5cc6ad38d69711f8117b58e92991763a13b2c67ee3e0d89",
+      "metadata_sha256": "b57716dbcc7ac51fa05506855b4519120a3b7aa829ce2a8499a1e1018bb652eb"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "aa9379e287cc192bb878a49a06be7c0a42a12642e660079a28185ed436fae1d2",
+      "metadata_sha256": "68223335aa29baa18cd0c3839408d80ab35e9c604a2ec7319add8f53c8eb01ee"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "314e4a4be1a48daed86de0d24be078076a6d1f8fecdecce28dd648ea45738081",
+      "metadata_sha256": "8e7c860b4cade853761e535c71b14503ac21a7e71fdcf2f81e810209dce56ac3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "32a4c99121c227c4a6635e74270ab0345219b208cd3cf56a427f5da443127a14",
+      "metadata_sha256": "40ac9109a4689f4ee6c105ed79e21a90a2810c421024e0c85ed355638138d7f3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_1/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "e3ce5778aa506767426fad72f705c2148bc8add7fd5099f1342d0cedfdaa242a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "a5de3eb358f706cd0bba44c71056337f3ae0717085000ae589d7ca93c13278f5",
+      "metadata_sha256": "bfbbbe0579962b8687e29d368829509534f3b4455fd5dd878be24d2bf9568d75"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "d7003151c2e912d0b6330ccf36abd211b17cb533e44c4bedbd19b1e03773676f",
+      "metadata_sha256": "fe29f9dd2d3605087272ac41b4005e893a082446ff286ecf4d68b32493d003c2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "a8052414f707def7c72287c4df96f7e27f689f096e2cc909b9f11e97047a2d8e",
+      "metadata_sha256": "53b20977280b5b284128d57a34154b865d27dd0f6d95cba80f638277dce861de"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "311d6582f3a052627edbe22e75bb5359d0b1dad56898efa0b70d863bda1a1835",
+      "metadata_sha256": "1152dc89b8c2a97d623baf1f7b26e37980b6c53f0446b9a322e7cc05a7d71525"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "8ae4d687934a712c20430e57a9edd820ecef9d7eb2990943e6963f28327b5efd",
+      "metadata_sha256": "10185f4c249683850a2462ab5bf036cda4a834f4d3bda9f2d4dd6d232d8b31ae"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "8d6edc013ed35c1b282f054bd046d1fd14133d08b451eb96ab7e7cf15c3942a5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "62581e1a8d187345c4298817e7b8357b20353e843a5a484a16b7216bead3241f",
+      "metadata_sha256": "e86f745b07c8662024b4a677ed77609bb2e3be221e76e460ee17db547597159b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "41ddaed4fd51d3bd8e3427165acc2c650371721a46ddca322f69eb6052f574dd",
+      "metadata_sha256": "72384e3dc16489016471e87c84cda6a5198d047c34d7dc6780404ba13e6a9bb9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "4494e68356b9a7d9ef4c718776457d5b535ee3cbf631542cee3aa57cabfc3d38",
+      "metadata_sha256": "b27da30a09d2c60134a85aad5f162f723583cd6b1a9d50e11b6a32560b7dd6e1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "3df3225bbe9656f80af228f54b0af252888a3b6559b94744d1cbebf98633cbe2",
+      "metadata_sha256": "e1ebf7fca258193a8f0f88ca6c052cc877ca224405570a1fac1f85b9043bcd98"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "9c4d26b75d86cf617b69bed0573b21d3fc81372bfbf33f1bce0e773c5cb41002",
+      "metadata_sha256": "f33aff8b6566ec431e69614c62c673deabdcf0f38115a5408f4661f02fb3bf4b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "20ae991d496f4399996745bcbba12ab7257f82fc29b8abdf592516ba83fe723f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "8a9ebc071a0cb066b8f090db6579520769472917815a3b95e78f33deb240d310",
+      "metadata_sha256": "bc2759dfb82278c92007f51870f16d9666190bc5ce9e59fe0b2f96e3f1fb42e8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "15d86c4c508d6f2f13d80857a40b1aae1be2dd07f85754f8bc45de6af3fd747a",
+      "metadata_sha256": "f0e2f921a45031df94ebc7aefec79ba5a5ee7c21d7c7c68d88d25977406636f7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "8254d1bd03303b41e54925e9ccd0a7468d60b61df9a393cf53ef928c6df842b4",
+      "metadata_sha256": "bdabf95aa44e6d5fcbf46b96d4bdf0f2192549f1140ed6478ff65fbb84ba285d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "ef619b634dde83e64db16a2d94307aa6f8e8fc8735d2660621e7a4d2aae0ef68",
+      "metadata_sha256": "4b046b797b15fea83abeae4b2947980589723779857f1bdc14e0422041740330"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "15701924a5477606f8ae561f434b6564aa0c115b9e7a5355a9126e9f890b7fca",
+      "metadata_sha256": "3937d5b8437ea8b622dcf9702251700df35f959b3c682904942c781699dc7b8e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_2/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "c9e15b49438228524d6eaa806308103bfdfcf9bf76484595d83d96a6a34b9eb1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "8016198f859db019d8ab9845ce29249e2742eafab475378c127457b29ff2e4c8",
+      "metadata_sha256": "31d2822963b250e86c47f5a6fb645ac4799662f9420a942635c31714ea13628c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "70923303340cabc9b06ead68ae00b5494292692790cb5369257cd8c261268d36",
+      "metadata_sha256": "e9f7e8f48b2ecea9599624cb5e01df469185f461df5cd856f23875a07c8941b9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "eccd21983bb5589421dbdc5ffd91d5770b8cef5d2df1bb12eb4ba534e13e2af4",
+      "metadata_sha256": "7a1bfe1e83895f8307fa5e84163c27a56204af7ad3d6a1fb0292645489c65977"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "6bf449f8ea88981d4e3e8cdeb329114a06ba65a08cfc031ead4c8ceb4899e9db",
+      "metadata_sha256": "79a61d5575e9fbf3e5471c60ecee39ed71c4506e993ac68b4cf8329980da3d81"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "e087eb716041efdbd23ec72a57b70b5e0a6c3f99cb6091ecc8a71503e4dc83b1",
+      "metadata_sha256": "d7addfef7d067c4165ec7d34cf2e09d45b98bdde6b1fa2460a6a7a49c8039a5f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "d247ba6fcba95c447178f455449ddde0d55498e09765039341b6c6a9e9726835"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "526477b0f5cd5f92832d111822980533b4af4ffc4d4aae4b59ed4a7d32700e43",
+      "metadata_sha256": "6c7aea733008b58c2a645d4926df06c15fb0d1b487342279170d1cd987358879"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "869fe43612c5cae47ade2d54355f53b5ec39ca741255454f7f90537ca2bfa651",
+      "metadata_sha256": "4d81eb280271e4ece5c8608ceb8e66ccd2e7dabfdec64578e01ea42e2ea06c49"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "d1c548ef85be46c97bcc9cfb37ce2cfe7d82627544dcb3dacf1062482a2fff1c",
+      "metadata_sha256": "b60c63ada94ca88e22559ce5ccccccabf5034afffb2c043f6835fc0b76cea742"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "5b9b6a27cf0df6486a4f2dff855d5a68113e0d2efc51cf508c8ccabd782e8572",
+      "metadata_sha256": "97869094cd5874181c561eed6da0c0143e948cd04ac90c4e239ad7eaa5e664a9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "3c8be63a6f1727491276c41c6d44ef8a396ca6a5251f8f8985490727f74ca19d",
+      "metadata_sha256": "b4a83fa799678bc603296a5acaad8657c8f3fc0ecfb89f86b86d93c8670dd9da"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "3b7e12c414110116d87f27b79f38a58a779e4be287aaf2a10dda3d88e3352e67"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "a667b5006406579499de37ee7da29924c6637594a3e8a2231a9a63003f19869c",
+      "metadata_sha256": "9aaad879a0f60ca25b6f379422a61c5c93d0c453f2e8c1c7c226324e6437923e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "6a227c33bc7fdebca2c4fde9359cd58580802e587b0a134acb9119eb3ee47be6",
+      "metadata_sha256": "a86bd991d8d8222315690c1c4c20b1c4a313917ea4d08066a53d4e77e9d3b935"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "41692347f425eaf23352bd6fe8777c0dbf3ae8c491ceb21bfe2330736d687f85",
+      "metadata_sha256": "6aaba1471ea22fba52c5c4666851465e77742d97a0e27baa482376ee14a368a3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "f356931b0dca335304b322aa30fbfbd75fb490d0b01f48d3ba9999f6ecfc5d61",
+      "metadata_sha256": "bc834e33c96158df48ca7561b8ebc2dd0d8bde3c0a777723d47f4401e734068c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "adff3e1ae466a2c4b4b7d7b0caa3af06864519d9a9e869a826e890996aae6026",
+      "metadata_sha256": "2241d73c2f72f26254c434ab22d7bcfb9a2a8430b9b86a40c752ea53c95d662e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_3/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "8eb3e15bb34eb23e4e6d02b8e69866826c5d4d95abb89d686da9dbd6d8786057"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "408b16928b457e394166c26198118b487417c4a21c457629e023ddd18af9b833",
+      "metadata_sha256": "784582d6096d5645039ba9ba108c55e0e8504acf7d6cc91e3be4adafdb489fb2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "69a0fc3e6c0ee6d2362bed96ef6fca7c2b1ac8643bca077d369eb654746b6df1",
+      "metadata_sha256": "27a4f28220f3c8ac5c83bf567f7e6ee35af859d25785c2b3558fb740d3a5eddf"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "22e2bcb1a3b3e15de46dedf21a09f84509421d5f4faf61dbfc51ab076c5cd5ec",
+      "metadata_sha256": "8ded4ae4876fab071469433f5c300833d012ee81217c8e88a053b5de4b2ad0ac"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "ec0a19702fcadf6050a26182b986870cc683fd73894d15c454209db024abda47",
+      "metadata_sha256": "d57212a3009b261b2761a52ab8a432e15e76539f3cf11e7882d792de7a49f3e3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "42114b30c08f8d1169bb3bbd23df84ea13aa13a106be2512aa5687446c9793e5",
+      "metadata_sha256": "5b75f1e10c9cab73aa04e1cfb2e1c2c3b0426d56dc0ef092bebcbff78f749c7c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "69401d604f8b7b6345235beb170746e60b34d9bcac9f345c883f15470abe3e9f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "1fed2274a8ec5bd244d6c2fc582aebdef8af0891243f160c1a928b58727ac562",
+      "metadata_sha256": "2597f3d4533a75204eaeb01cd69223614ff8f2a88fab21abef07c5e7e5a9a831"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "4ae7c57ec772cc2ed47cf64f676290dff57d7d5cc9340dd5f9fb207753313b9c",
+      "metadata_sha256": "d9d09a18c305f1123f1bcb63225ad95876436f9580b1a24636277119935f2b95"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "1ac50030b8176d648b1a3f7a167acc82617b6d21bc3cc60fd0c0ab2186d74c26",
+      "metadata_sha256": "8d3598eeb53c027a4d291b569df8deac85b0bb3d3b036e2f573695614e7e4cb4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "d1a4b7c6eabef5699c4b7c36b8b3658052c415052704c3ff7dce265084a69e35",
+      "metadata_sha256": "676d3bcf36c4f0c70ce57f4b4002d08083fb6b59052d22efaad363862e4bee19"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "94020c4d8bc93461afa2e9519b3aa5a152161a5c8ea1a813b66372ae26acdb61",
+      "metadata_sha256": "52e7a9b3320fdd8ca4f11acc5e761c891f3e20111b1401ed472350c289ea2b0a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "3b6700213dc7f3176f2a8d3ee232928c9be86b32ba5ebe466af95db9fc0a2c63"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "d7b227a849f5b1aeb1efe8aa5b923eb94d91d4346a521d1cc05621e867fb465d",
+      "metadata_sha256": "b16ed8bc7646dbf31cce8c9b4046f4e647e662837b653eeb6b68a488f0665802"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "fbff0169880958d69319b0ea8d27e3ef11d2c44ae85f7fed331db84176f789be",
+      "metadata_sha256": "398f05c45859325af02b141393f5d78e72fa33c9b07f94f76cd7691634523ed3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "5715a73c165115ced898d63b10f75b400185e55ae288f2c335268193f8dcff23",
+      "metadata_sha256": "22fbd81865e7bf9437dd66ea36cf008c3c06e74eac576a6453986dfa4a6fea07"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "596175ba08a1933710997d1588f5cb89896899cd8abb18edd79461b86c53b66e",
+      "metadata_sha256": "0063c6405e675bbcd4617e2a25f3c550c55bc95b45c06454eb8c7446f1058acc"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "092e4f607a42f157b0695c6fae8585add070b65427e0171cb89b1d12f76aab40",
+      "metadata_sha256": "5c855392a2ef68ee283dbc4017bbd64305d20974f0ebfa5ff0387ada0efa0d41"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_4/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "21e7e7d4f4cbd8ebd53606024351cedba84771e4147847550ac8b0c2a5944310"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "95399fea68fc0d07f6868ad6afb4ceb078a4c33f3b36fa8cc1de2734f3ffc709",
+      "metadata_sha256": "fd9a49cd3558afc6241faef797dc2a39c9c30d60d6ef4a71f4a96fd9803492cb"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "d64e713149297168e6e33fc25521399b2ce89b2b622e7fe0d633aa99c62fca45",
+      "metadata_sha256": "b5436bba29c009f87598d797b06b0dd86ab067281ee5f50707c48dcce25b110c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "c8809885ad2f42a5ae7ad320271da6ba3b1ce2f45cd5cef0da085dc40731e908",
+      "metadata_sha256": "18ac5cc3b9d978e4713de7adb34f3992e0109facb82578a9a2733ac6f175f191"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "30f91e2613695e4ddcb4487158f0da5bc6579ca00045bda78589a640363655f5",
+      "metadata_sha256": "879fecad3306b2621a6d8fb9e38b4f8a64769efa9a84daf75af0bed3dbac32f4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "8e098ebdc2ffc837267a7551da0d4affdca7b53a502081b07a2f5c7a7808d32e",
+      "metadata_sha256": "39b5b4e3fc4beaa991a7883dbabeef014a4970ff81a26453e7684538e75d5f8d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "61f56d85a332b13a04e8f17986b471500d034ea45ce7d757eb949bbaf48411f9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "b6c508e7df27b48ea0ab72294febe2bec9dc216e99577507480ade9f0735c72b",
+      "metadata_sha256": "d06a1a9c72a2c3eb9f3b842767bbde7f69ce5e9c19a48bf0e9454a4570c3843a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "2d304705365c3f3d57416959012bc37ad85038265f62750654846af5384f6d2f",
+      "metadata_sha256": "44042d376aa978651b725b7472d86df59ad02f178c0bddbfd9ff87c4a436cd8e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "8fb9132f977e6d196c8b21bb57729b82a7ab4dab38614e82f4c4f5720d946e1c",
+      "metadata_sha256": "c5f385ea3b2b0c2ed126206d1e2456e242e37990fc59e26a993901d5f26566d8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "93c92fb4e619393c8edcafedbccb5f3ead04a999eba4a9ca7f5c01937835a01b",
+      "metadata_sha256": "2c3c9435ab20c344466ab0f7851dac2567465e72a4bfb53cbd4353e2f555ddef"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "0328ec8f1a7659ebc053961144bc8fe7a32db1d01b83daf5f6f2a190d9c8c067",
+      "metadata_sha256": "5ecb3099f2ead4e106bf87b58148b31aad17f5e4847a66c9292ea1ab2ef5dcb5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "2dec690c3aec5294fd44e4f38d10221f159524e684792f7012c3a08d0a84d966"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "c0bc30487facd3a7ccb364d7f5a8b94e245dd0d97de8bcfb0c104f5fea63fbbc",
+      "metadata_sha256": "7294d293d0a924351367e2efe4634094278a2584354f35eddc7f03387749d7c1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "26570430ee0ab3049eb3b5930af09c92059610656c01914810682ebd2e46a6be",
+      "metadata_sha256": "cf06e7cae83985e4c9d42649854864af182c16292a5fe536e378e6f0334a06c7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "478a8bb8b04a769c13b79c1ad3a41f19e912ddfa176388a21e92dc6f0c95c3ea",
+      "metadata_sha256": "d676b772755613f1a8642d8ded1151734431a18d39c4dc2f85e2db28591f1c4f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "02efeb1fd23ddfddaa2503ef4150c6fde08a8f49e46a4ecfae119a180990e522",
+      "metadata_sha256": "0d11c05c989d0c712fffd85135ff13160e5030924673f7d073ed911230669ebe"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "767e9971e5ad576457480dbb582964abb58714e5c459caddfe112ed6fe31dc3f",
+      "metadata_sha256": "ffdf8983cdbfb0e701139550e9af92e4ac3135b68331ea38760e31aad0563cfa"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_5/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "78be4afbfca68a530bbf925f8f6d2b7ed1e63002cc78e183e0e2049755869d89"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "2f814c9b3d7a0fdb11df63a812bd9996c536e27168c693c6f6e5e2e1c133ce20",
+      "metadata_sha256": "38ad1fa9c98bb3dc79486788991b2279c026ddacca9b0bfce6a35357e5e3bd75"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "df345ed010660f841bed0efa2842c873e49adbb4ba1314e7b4459a197e1dc032",
+      "metadata_sha256": "1c0205ea2e6d178609640fae34342eb88cb8f8272fb949b8bdf14939bc9c8398"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "90112bc743f224793d383bf634470e138bd751516967f286c6489bbcb93a7a79",
+      "metadata_sha256": "9dc1bbc848d1d3d6bdfab6fbf5c3b3b18b73457f2898ae576fc01e872a5018c3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "f6a4147756d274710e4278449fb4eb2b561d820040bfe0477ac37c876ba33d8c",
+      "metadata_sha256": "38dad05a4a47d81cf61da2de47c9671dfb1a2f12cec3250b8fc3840f52ab3eb9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "ce86f7bb2626c1ee0feed637e389609148df1e4a6fc6e36080c53747d1182dda",
+      "metadata_sha256": "70cdbfd7a60cb57fa2b0073bfcd0d95f4014569ca4356fa1fb323fcd590cd336"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "d9bd3b8a79b2726e027842ef12a3674f91b5eac9e37c783e95b42f7217e3a0ed"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "b84346d8409936049210c754aa2dafc405cb5747ba1bbfecc93c2f52011aa195",
+      "metadata_sha256": "da144f3d3f3bf3748a6e1f7e448eb99bf6804e39e987e6e79aa7a95be7cf6454"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "fc12d13e3fa33bcadf9f37e843ac96258301cb3bf17a7bf92d91284640756aa9",
+      "metadata_sha256": "5dc7f3bd6b68a2f76aefb4c7d51b9bab113afcbf37da5979aacb10c59dd3e706"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "d7b3a7a3864e0cc5e49b79f6e5c067e101ded385cf7cb0f36b2a8f1163751c03",
+      "metadata_sha256": "f8bb0d8e02145acfc0fd4fc77069ed128a2583ac975f0980f08a98302cd218be"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "ebdefcaecae6a333a3dd42efb9f8bfc0f4b814cdd628533519875af42c38c8ad",
+      "metadata_sha256": "581ebe7c11e7ceb89affb689355d255ad1b5000ff5b173badae3903ae7dba3b7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "0eb49794bb32e9c36cf8062f9b9cdb1bfda532206ee7f5d3f8015153c730dd9a",
+      "metadata_sha256": "1ae39c6357866108a5b70c07a6d4b74fb4743860323090b7a721c0126581a968"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "f81b6991d6ebb73dfbc32a44fbc00195ee5b9dba1174234c555dbed26bc817eb"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "fc0ce3b51f83f2a52620ccdf91ffc88aebd481b0e19d49521c3bbfb08bc8e173",
+      "metadata_sha256": "46b650bbcc6cf94844c8193798cac2bce77424b8d2aa67dce44a4a540e7c17e8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "8dacbe3abcd0c2737f693963a1ec76e6b4f7ce6a59f0247706b106d5a6f46d8b",
+      "metadata_sha256": "a0109629b82de111173d99c5b64e8e61e6f21613afdb94c49ec089408f9dd758"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "d608182d01cc291aaa679eca38c218d951eb3777b923e41e6b2ffe84a2114604",
+      "metadata_sha256": "c4a6428d36002d70ee8574537ae864a9baf9efe136b0ce9343a1a36ebabf1b94"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "0052e8a3f58814fa8f2184f5edbf5451dd3c2a72954907a1d8986cd7911a8f3f",
+      "metadata_sha256": "638a7bdc5eb39889d486cd68ffa410f598c1f4e9d3c871623cb22fce9218a077"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "31c1e2b07f35f3a00af5d7af46090188923f54f70eb5df8496ee31533deb2706",
+      "metadata_sha256": "46454ca8500ac76dab62c89a0bbd101eb70b0c06d0aac599356e73f521a02868"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_6/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "f408d7e93a1241d3c50a73644dc8dea82e927d185f3e0f5b8f8516b5d5d02399"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "3bed9150abcd026a8cf110620da5fec6103dc08ce844d2b3204217972470ee07",
+      "metadata_sha256": "a540589f5de1b784732d72e2d37f6ff9c6e429cc048490f7c5a0be26740e79a7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "7696fe234ed6d2d048c12b9e5dfbf89be069b695dcb17de5a056476cf88cd907",
+      "metadata_sha256": "d72e46de07e9177f00d49f215cc0001168d91ce1be12e0c2187d46f4090d261a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "ae75c11cb65c97f1c4db539fd1f1a27c97beffb1e62592fce023f4b4f81a6f3b",
+      "metadata_sha256": "769caec534d72d7d95518a3314d1d9ee0050d1b151c973ab573586faa627b468"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "a4300c41c1bc84db9e8c6bd6ec593aa32ddf5a90f324774d03c438297adef2d4",
+      "metadata_sha256": "a9ec249f6d96e99577fd70fcfc36f51afb3564ece52f440f068af4079a8411c1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "7e7c18a80a64a369de74b5a604c308bf99df1952d30a1d79a0e6269c61ba16ba",
+      "metadata_sha256": "dbdfa4905a3cff768bcf315a0e93f1a9004fd6fc11fea527bc06fee6b988aeb8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "fe8a5dff57dd0f56292aec8d25e733a45f3e10e78c65f1f2f48a278c4da770cf"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "ddee73d0565cba3e64e94590cad26c1a2c60c8145d4ff2b5db10208f4255298d",
+      "metadata_sha256": "5a57f17276195a6b373faabaa023f9de8fa1ceb5f2bb6c4c9d9fde88d92b4925"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "7d110ecb548d2ab88c2b229b41b61203a0f530d01c654b1daf3bf3a708498f36",
+      "metadata_sha256": "a2d736c698798a9d5dc42750c8b3edbe8bbe4c6fc31dbbf3ce2851ea93e29143"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "3223a52ee00a92ff174e19a99aaa3b5635f3ff2077064e68ee4260f674934833",
+      "metadata_sha256": "347f7b0a871d3aad7b0e7f22384703770271e1fd20c8558c38712606542d1410"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "0ff1f3baed5c4cdfa9fa01c5521fd562a336c3b05b505c6b0c1ac940894cdf46",
+      "metadata_sha256": "c447b69691375ed55fdba102225b3bb18531d0df6e980af94f63f8d98eafb61c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "b4a70f08bebfa1e6a871746942d28ae2239d1478691042626bbdadb96113b5a7",
+      "metadata_sha256": "b4429aaba08b557d6541b49ff14826a9974a9a70a7aa4e8eee389c4c8aa30e21"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "53670f663f59e036f3c852541ca16ad9265ea493b96de34c9d07a34ea42f42d5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "32a1bdb7beacbf98ee9e83e59b1ccfcbad2facbcb9921dd67bf9af50f6514126",
+      "metadata_sha256": "fe988106dd7ad79c6d40a7e1052c44a1fc654ee274697cbc3b270990ea4c342a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "700c185068a7b1c69de85c984a2365659d990e9326e86c61e756e8ad65492bfa",
+      "metadata_sha256": "7764be508c70da182c6459e8cba12c9d0c2bfbe0c3845556fefa77843db51322"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "ccc61530ef58f9e029fedc2ecc885310377e515183d0e49344db23ac6368bd22",
+      "metadata_sha256": "d1ca9b63fe621d9c4df8cf35416748c19d400f6acace034cca64c2a915f3ab7f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "3ba9729d9142dfea714ad4b6a5d19b22973e378673e59efa7a4f008e5b44c9e4",
+      "metadata_sha256": "06bb234d1cfcdb69ec021cd8c36657948a411c297b0bf86867d3cc9f6fee57c0"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "c0724145072873ed0ed6e4714032aadcd9f615cf2637742bae913b09e4610c1b",
+      "metadata_sha256": "1d9c2da4f4c8a539c160972686f70c9e5bca179d114ea5a5f03814d33ece00ac"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_7/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "ff40c32d6bf32d0b8ed66921909fef6cda36de621db15323ffc0857340e5abd4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "92b2902114f2595dc5e33aa5115137a044f88e69ce121e57e91ac28d84d866d4",
+      "metadata_sha256": "940427ad42664e463addada888eb63b0a1813f2e0cabf0651af64f623417958b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "312c85d5fd307394c99c7eaae4ed558b47374a80aa5a9d7c7288ff6d132f3d3e",
+      "metadata_sha256": "a59e998ac0b60dcd244249d20a4a1a9de5c92907b9e7ba9b9ed2dceeadb83aba"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "25ae829946358b19886b048d142f647ccf1b701174b76d6421dc1c4c078c7356",
+      "metadata_sha256": "aaed776589ddd74665fb4265ed6f9cc334fca114f7d20cb10a3ecc4f4730145d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "114a18477efbb1441b5d36107b8e19a3f5ea17f17cac878ad50b3370aaab4ef9",
+      "metadata_sha256": "7b2d63d3318872436bfb8af872330a8805874fee66553ecfe8e571b571004a13"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "802822d4506e75e4afdaf9d93b516b7731513b4ac273bb92faa81534678b7892",
+      "metadata_sha256": "6d51a1bc2596f465ebade5c1210601453efacec3ace47aa6076d4744fa253480"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "4edcfaf44208bf70002fd90331f582db8b96d69054414e3d9dd9e321da0eebb6"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "6e3e49b89acb6cc980f5b77e0ad7e16a4c95393a01aa90aab6506b9123593819",
+      "metadata_sha256": "28084813a485d85529bdd1f21f9efd41ae16947527b2ecf6f3f81f86f2b55c4d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "d248085379e3691fac996005695a0ef42b4e1f3f03dfefbc5433bfedb452bcaa",
+      "metadata_sha256": "410b1d4785e05cdcba3e52c1969d8577989ff9652be49e762dbd7db8792d7197"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "3bb908924a81ebc15b4afd4679c800af3ad48d08c3a2cc6fe6b53670dd01780b",
+      "metadata_sha256": "0b348aedc88d53f2f0ab8df381cedf700fca7b8079963827d1d885f0abed3a2f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "b93717f90179fbb05691fdab2eb9634253f6b07cd9f3d2fa81daf74bcd481d1d",
+      "metadata_sha256": "2ee64d9714889b557113bab4d3fdfd0dcbdcb9851ea3fbc41a8ea09cff099ca1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "254199849637e23fb033d1d243fb0c85751444391536ebfb9114ed176b6ba640",
+      "metadata_sha256": "2dcf177bfb05c0edc95138204c1a40c986bb9414a435366ee0114e07ab9ef5dc"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "9161629d728ac7ec4dcf800e476b5d73fa106c38f6e79d1e217965cc97687393"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "1570bcf92f565c5b94e225c9818ec01d0ff64fa7c4b0aef63907e7cb77a0a8dc",
+      "metadata_sha256": "753b62040d6eaded0196d7cd9fd35fda04ecef2782467725475aba67c51b0ca1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "8fa476db7844dc946c37bfda4fd62f8a51bb8fb8842870d44d8a29f543515e23",
+      "metadata_sha256": "32ad4d2f4fe4bf552f82a37f2806a7b04a198468fc2753cfc6eabc324a636112"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "041c5de47d5813cfde5986b9ae392e0e4e557b7dc44b21a0aeabd790882b907f",
+      "metadata_sha256": "482c144156ddc44aca16e134b7d6ff0fa0a853fd11e9f72615c52e33a5daafe3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "14cc32daefce1f43d8713a924d79fbbb474a0da846efb82faff146e26db5f212",
+      "metadata_sha256": "33043e93059b4e85f0ad4f7983b6894b27d9165f5deb4c7f6352e5bf7708cfeb"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "8059935a11ae6be28fec90c355fb9bcfb70b8a63f0fcbb61b14faf17cdc1906d",
+      "metadata_sha256": "4d96e2c7e5cf9f6b0b652353fccf4c744906a6cbc8b6cda490dcc67cef7c0eea"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_8/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "df266d0d76cebc8622b0fa6dd5a1a8899451e4f1a7b65b48eccbb97b0c7b8d41"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "44293072e4e47fcf341b5d2abeba013618dfb5d3dd9da7dd9d862448373558b1",
+      "metadata_sha256": "bed4e5dd51c2cb8def32ac1cbc3308dd4e2948f4cd65515944a7d02fc4217819"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "deb39f1c128212b7cf162278acccc3a3be7ae9fdacc00d0a3bb0a880e1b56cfa",
+      "metadata_sha256": "c76784aa32f9c42ddb03017d87ff32cb4b60b3dae77a3bb055e358e7032f0353"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "a9cb0c60d78b2b1c07f65ef148e3d8399adc496df3bf3c9ac90767fc0b20eff3",
+      "metadata_sha256": "084861121d2f2204540097c1f1c9c386c44ac6c1fcb65fb5a619b3cd006d334d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "aa1a735f6416697d4255c8fd2ef4e62e26aa0c645c2dfa6c16294c6e9bc684fc",
+      "metadata_sha256": "6ab303c6384bb78912aee3208d041e41c435d9fccb931e1969c2c62837f7790f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "31a7c9848133bc748ff3c6f9a3b36f52e9e9e97a3ca4bae92e9b87edb44f23f0",
+      "metadata_sha256": "25dff2ade811e4178508a74c1d2ab29fb6f574ce4e4f087913ba0790ae040297"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "c2d07e8299979045832f69d32b48ff465bdd50a3316f27d9bd13e50f3568f470"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "d726046c03a1fad23dabec672f6689a657cbc40207711bde457afb88573d7105",
+      "metadata_sha256": "3a21c0e3d09961e4687097b8702a84b2aad40f80e870e72a5b8503c85acbd746"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "102f977df78e3103cde3b86605c14ff856f047888529669bf22f23399dd37cfe",
+      "metadata_sha256": "9473c4d31d0878e99bf1da6f2bc88fa024f16a7adb8e55fa8c998da258c63de8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "2086d3fab34b778161007ea0ce324d3cc0c4f0857f0a6ef453c17e4939ad861e",
+      "metadata_sha256": "99a43a0871c1dfef10c5f1177dca5c5a2f7e0f4de5b5b0d802399bf18efa2fc0"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "7ca0f6ea0c1f89f763725745708c732734350bcc68c5c5c17c34663837fddc67",
+      "metadata_sha256": "8c6a76e2ab5d7db5eb04744bc432a6c200ea50a2c39c701c56cc9cdb5682e518"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "5c2ab18d48136234a938a9a9377f3be7228397c0ed96be63ea8a015ae7f12f54",
+      "metadata_sha256": "c612ce54d02590b1e9eab7a54e169df2b9ac33541a5871d46cc0bd495d147ff9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "2368d31091329e59349384757a53e3c34570efff45fedaf43ed04e14bc2fb5bb"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "bb0093fb6f5c78f2b65f1f1588bacd2b4995f3cdf6e96c3395437393e4ac72b1",
+      "metadata_sha256": "fdab719d24b7f2be015d7a727f47783e22457b1d3efbb251df3e267e7b6dd830"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "b813a9ff0524abbef1ca2aecd00198c3bdd42dc9dca5cb55abe350b262629154",
+      "metadata_sha256": "6ac7eaf7ef2673ce086c4d0b8f50d14da9ffee9764cc58086f3c77f6351d3dd6"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "49e1c55795eb375260e2d246267ea4dbf86d6e9a2a08e923f2f1bbca37eb1081",
+      "metadata_sha256": "955c9187a9ff466f469b703c6f5c3630a0ac2472900708e7374cdb8bd856ab9b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "97d599f3ef6d157590871caf43ceed303108336d062c6dba5b87ccba495bf667",
+      "metadata_sha256": "8fbd8580eb8488111a445a0c3496712d9241e23340d7d0359a78dd5e857843c2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "6e731d19cbc677fb1ec2f0eff17043f27ffc31cb4a99df4540ea9a29277719db",
+      "metadata_sha256": "a700ba148f24e8ec977db5f09bd607c5281ded4d2b2e42606f2d09f6fb2ec55f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input01_clips/input01_9/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "e2252fc585a04ef3dc063af8e798a93f5568a21138645523d50f3249faf29572"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "4e8c082c51f8a6db4c4823194b10dfa136f1c4670459970606841df52360ac3e",
+      "metadata_sha256": "1657963c5fd715b7ba3d83f9cd26c44fb1a944606310ed71542bbebd248a9e9c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "74f015116598f73029c34e063a527512e7a81f24ee622a87f332175d88743bca",
+      "metadata_sha256": "08753c026b78c8d1add0f48c9d819a3d4ef6577fc061d740062a9a6774f2683a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "a88462933df20a2addda8a40324f54c348be4e87f98283a2f1a161c505365121",
+      "metadata_sha256": "1781b12095c172db1064d28f4454dd2820fd35fac23bd629a3aab4e53dad7308"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "ecb871ea02f28f05eea29ee9b060ea53b3226fc4fcd09cec7aadf0cd7b46f966",
+      "metadata_sha256": "db7c7f7dc9574ed447f96f0a4833f797c90e79532bc1df2ca882a6007870eafe"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "f35f85e9e164ea94b70961ae6200f3a8ac2d1d491175161b8dc2ea490224b2d5",
+      "metadata_sha256": "893ddb40264daa084f6a81c22adac777f779193bf308ecf0d5c91f7a550f5059"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "2782ff82051986e2b58b09bf98efef797908f0d3f567e0790a9719297543b3be"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "2e5984f18c1caf761adcb1530e2da4ba146cbdcdeeb7459cf2e34edd44672db0",
+      "metadata_sha256": "23ee4f5956382e47b302960566edfd18976ef7f16ded3c906e1b712c26723703"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "9e2a637541c1c69f9a03ea972515bb80226a1759b32f9a80e56b726c80cf8f87",
+      "metadata_sha256": "27ebcd313855e5ea2a85b5e0e0823a7679154b0099166ea9acf435a1d0bb7ac5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "887db5729afecc983a0f7f68b6fd7b18ac8ef4f9d45f1c6fc6e08990fa3e262c",
+      "metadata_sha256": "ae06cefe17b6e91e364eca35cf72116fc85212dc6e736d638b1a8fd520211993"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "e7f2a380b5fa54fe00e764ab50cd7f9a95d806aaf7671abbce7e260d8ec4d82a",
+      "metadata_sha256": "4aade53476b56b988269af5c8527f1fbafc0270e75cf01946a71276375968362"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "d8f6b07f7d9efdda7289c9585f28242b34dfa9be41861189bc985cd301fe7585",
+      "metadata_sha256": "15e7516f2b026d9da4c6872ee64b317a7d6f3f0258e576e4d6beba91bd133954"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "457adc89b0173b9528d2a4c6a6970b40e2a93e5f1f9cd827a4946d9bfbf47cc7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "84ffe4860b8a88caef1adf8299a129c7392d4b06aab2a8cde98dd83fce71d6dc",
+      "metadata_sha256": "0185b0db5bd9b68d229df989abc2471227fa247d0528835b12a89ccbccff66d1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "c8b5daae04be0bf0e4ff0065fc530038d20d6567df10a14cf2183658cad897bd",
+      "metadata_sha256": "e8bf32f065f0e33f07b41540a68b373f4199a10f4d56cf73508de93282c40951"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "0e3298a73e2cbfaae6ea301e719fc0879607fafd0252036adaf810c6472c0439",
+      "metadata_sha256": "d46857607aa4088af275159ae15771744621265eef4a6adf85ea93f0edc9a955"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "e04014301d8300e033f71e953144e23733c109c48badb7bc4f967ef3863a135e",
+      "metadata_sha256": "9cf8327a0e293cc568e45ccd59e49d812169e03836ef5ddb84c108239cf5a168"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "1ec1d4bfa668b34de559452b64c9d51e13e59cd2c71c81882b46035fa0c538ba",
+      "metadata_sha256": "71c66f976136678bb7649dd0e32296089c244c6d6ad11c8556eb10eda3985394"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_01/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "b09d30fbeebe33ec5350c68bf3ec527248f5d2ed881bf8b8344d27c95f05514f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "55b26f19a7494305c5e6ba76176de49ad28d24ec8c57cd8d6862c0426d8c2a6d",
+      "metadata_sha256": "acd670185e13883a41f8ca8af5009641584a8266213ae5e1ec220ab4b2d653aa"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "4eadbc34f391babfe65c5a07548033a720ffa91ad8bf58b3309e93465db8c8de",
+      "metadata_sha256": "4357da09c32d5e087015bb2fd94738a94975537b7b17828a09c716c8e7809b79"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "8d65bb67edc7c9e06be78409feb521456d8b303ca06d86f4df61d04d1e2daafd",
+      "metadata_sha256": "c38f0d42adef1b31b5cd25d4771f4ec1ab72b6e5822394fd4e9e4248593df7c3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "8e7e733961969bf75fb9b4fc924636dca3c0d1b192838fa27d4c3b9d470cbd37",
+      "metadata_sha256": "6e3c45b88437cf48fd49d7d581446902b5ce34999742d0a111ca0a65b08e6f88"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "044b3efa834766440c0fdbe947731fdb50bfd8d80b9b65b8c0066ef1127b3095",
+      "metadata_sha256": "f76ed7d5e36e059ff27cc9cec94ce076334cbcd6d9297a8966aa746653a2b6d3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "c008bf7fcb347db4f56a22f03ca97405c191ac0397c09c9b2d14ccc0068ffcfd"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "96dc12220e977efe2a9c62dc7fd6d464c612171c21962d153403a4b2c8795734",
+      "metadata_sha256": "12734745e3e73b0ad15a2ac31fe2f026a26076244c6cb8d51a26f3281b460b0a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "d2e8ec89d8d95f136b04c4149c20b128b25a2c3311c4719682414fbfec360b3e",
+      "metadata_sha256": "0089a1f18fa7c4160f419daca30554b9505782c976c1d6f89313c3e88ef2675e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "efc281c2cde120851d448f23ef90692516a426807a8993efd493513743f59be7",
+      "metadata_sha256": "5235793c20b1433ec46a86b0fa4560e69285313136e2fb41eb95a98e0d46c474"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "f4b26420bf0071952ff0d622f0ef93fc99a3045dacfd75f4e2ec0690e907a4aa",
+      "metadata_sha256": "dcd6596ec7636320e3422fa1e330882b88a8cbf9de516257c088fb350d25111b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "9824d341b0e799d0eb914b14942529c31d76ec5d68bf0e9b560f2286dff5ac00",
+      "metadata_sha256": "a810bc641aa3eeacf2ec984d6e3c87d8509d55779a9092cb9e1f074fe622ed1e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "da7173e6e07f2d4c87ad0ee10995e22558a4c81c8385fe869e3f1becc512fe8e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "b2cd73b6df97ce3e086dcf5d8111d9b4f59d9593a1dcdb4200a65c698654aeee",
+      "metadata_sha256": "5363e4896afaafe6fb115a42d560d0945e8eb407a378d9e390a359c6b002aa0d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "158b5fa7e57353d7f4f3ab30151356cf5eecb85f8a491875aa417eae2a2bc111",
+      "metadata_sha256": "3e3c3ae9d9eda0b97817fcd0340bd4ba90d10b87e94a49cebd0473e0875517be"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "b6f242bf7a021ed3b889e7b5fd316c19966fc4b4e28658095861d5fd7a5fedc0",
+      "metadata_sha256": "60d2fe47550e82674cde078ddd0a5b30a350fac3f3525de0939210c8dc6fbd8c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "2b6eddf9700b2bbca3a91e9d0b0b728ec27066b7cce47dc200d6e0cf22080360",
+      "metadata_sha256": "2f0973f1775d4b57ac3cf42fc75d907e8d703a62240fdf8e0fb5fb248df97eff"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "66218bb7f5ed5aae1434251608c1ebe3f9beaa823b9a4b635403cbc550a1b23d",
+      "metadata_sha256": "6323489805677995cdeb7a357fc20592688e21e8d418d76a49a02f7228a2efab"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_02/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "d104acc2d66bbc41c5a10686362c52a9203af8b7b23bc4720f0e360b55783e25"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "712006c6d85220fbb6ac827ecee0b20e53c3453877095aef48b12c33a1cdf1f1",
+      "metadata_sha256": "02b24061a51823ca5ec5d03951c13fff191711b5bdfa4b542af1033586561650"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "de92b2bd5fc93f6c91ff9823207815f26ed6d0bded54dc0bb1847037b06856bd",
+      "metadata_sha256": "17bae0be21af9fab268480d39a5496cdbb4246b5ec3dc70e4604c1ad4a558609"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "6cce252d5d322d48fc4d13a6ab42e96636cd3bb07986c918cf90d1d1bd7246a2",
+      "metadata_sha256": "5d8bd89a4aac258b7738b5ba0bf823f3a29452d94d24c5a91457ed11b036f2b8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "8701c8d4092827e66d207c0b8a5174814e6d0aef2da35e4c723543656128ec56",
+      "metadata_sha256": "4ed124d613782d925194a167f6920bdeee58f36cc9759db27774cc38e7ff2496"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "88fbd39d8a9e286839a9ca9d49872ce1ecaa77fc7dbe67548a53b7fca59ef499",
+      "metadata_sha256": "78304b3c0d9486ae04c6a04a4f2a02f72e5b50189baeceb11f3d08dd00f79332"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "01ef735b48a09640c96dad32c16edbd79a925cc7573f717233e41c1608874cc5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "6d8328df8ccd7c43938f61c8f9812653352d6c67f6520c6fa1056bfd99dccf4e",
+      "metadata_sha256": "a17d692c797af85f3de0df11d68e18b4d0cb867c9726e104cdb284061bdb617d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "cd8100af41830dc722572afee358cac7d88cbfaf4a13d3839d3281626417215b",
+      "metadata_sha256": "1b3980875b729971c23e9fe48e7775b7cb55d86be41d486db9dff41fe999df6f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "e16d6e3139b2206693047be5a7eb5410db816d4dfa9985a13e71a729ab91e679",
+      "metadata_sha256": "95409ec285d225a7ccb48fdd989e955d2e01bb346396bafa512d23f69b4a8daa"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "01efe2e8956743f12972032dbab3c9f3eaa91eb668d1dc66bbd04d5f18e3c0f8",
+      "metadata_sha256": "e7978bcb3c1ca85cd778573eb0d5cdca604dfc09d9a8bc51fa51fe8db0ac9d73"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "5190e4e20542a04c95e15878d00e4bc50995f90bd1394feaee808cee4b2a3932",
+      "metadata_sha256": "fda0fa03ba1befa63d1697f8f181680352d4fc46ed315b7a7ba7858b70876531"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "065f3ba93a667cf4335e75a63b095320124a34f794fbb0ff938ba8cc5da2c1c6"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "9c72d9fe5fc80a86aa12ee961189a4e39f75f3e302f6613bc78c60bf71745b85",
+      "metadata_sha256": "f3bd9202ed33dad6e352f071330c47ba518b0b14a46aefc21fdf7b6560d96078"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "581a3a94bec1a678bc46da60cb36b3d11671decbb19a0dcfae466893976797b3",
+      "metadata_sha256": "df67727f00d30af34b3c629d269e08610157159b23951b80f4a47881ecd9a72a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "979ba0ca5a37df669505561155eb9f3325f68b71113ff022e71c5481fbe35eed",
+      "metadata_sha256": "0a1582f86dd18d278ad18631b448fc2f5a08acae242aff789099291a0b198fc0"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "4d47ee66084083b4b4da7557ee57e78f388cb0e4f00813bda2023b75c6609e61",
+      "metadata_sha256": "88e753ea2704ee4f25546121fa3c713872eca90bfd7bb4c9e714847dcc36627e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "bf0434bb81198fa2887bb785993ec97bcb4731ee5359807781ce6fc191847fa4",
+      "metadata_sha256": "ec088ff236e2775ef1af17212abb36f59013bbd06d0ab50a72721293ed813355"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input02_clips/input02_03/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "ae87dfbbb6439f6c573293ef501facea8395ad9ae57a58b34da9bff0e9ee4eca"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "acf5e8504d7dad25089ec198a62aa418c2f5c64640d20dc1a4ba7771f3740bf5",
+      "metadata_sha256": "52b8b40845d7c393c816ee5ff59cf27c0e5e3c20208d105669c330ed240d26ed"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "be854e066cb74bc57bab2432205c9382dd8b05b363ab3c8db2fb6d7c1ca0f487",
+      "metadata_sha256": "b2bcc488c0716ef394ab3439b14e29b2548f1e6d6a2546a799987a7e0b84d6c9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "1a94784b1742fd4829927fea796aea011b435891a1c39dd840f95938a99802ed",
+      "metadata_sha256": "6dc9e2253555e8d2109d576f060122e68dc8c017419c23096f1d50df2acf5b81"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "eafdb9e93a477be36321bcef2a76192d12bc985068be67ace3c186cdeca93420",
+      "metadata_sha256": "519a74afe821c16e7df9e5530e0d7500bfab892d084c04021f6b5c9b9341a34c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "29f39e4426d2c56b570d40f69a9dbeecfcc30e1038c46a30bf221966af5c6a54",
+      "metadata_sha256": "c67453ae27a9e96c8a168fcb018a7ede67449a3456ad068af6e09cd4ba549ba1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "9ea8457f4e7365ad804e15cbb253b2495a5607a68575e66251de07784724cce7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "eefceddf4060bb942a2349d712115a6965f256e4312854fff729d964f58a4781",
+      "metadata_sha256": "3ebb6eb6187e6068476588af5d5cb7f810f96bb40f478c174b98e93d491e6b1a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "0030cf72925a9b1ed4cf6ae99e5153dc0687be9a8b04b49d4593b492b285cf0d",
+      "metadata_sha256": "4617894447ed43ac9527ad35982cf9e01c81d5056fe973614f5520c3bfbc1fb2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "e1e6a293c656b3bcd2ec33a3c07dd682f0b3ba72c0f0f085ed261d518fe07971",
+      "metadata_sha256": "20b2f693b9c1bd922752f5be18769274d4b43f4d2964c8c0b65cbe2eb1e9a8f7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "8ea990da71365aa725cb12b529faa567e33d28a9f9b412a1f87940b62aced09f",
+      "metadata_sha256": "9f29e5255b8afb4fb044b4d5fa640fccfa904e9115a9f540bbfab6ca44df482e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "2f8f49f321e36d1796f3a3e4860090d449c03006b93a5d74dac722f1b31202ae",
+      "metadata_sha256": "30ef34d9beb8d18d22643a222a57459ba74476f1c7fbf0e177893af1a8a645f7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "edbdbb5d73cedaf937c4e2727de55c74b361ecaf5c176439b7f454df88e38337"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "86c9013e4d1eb62903111b9b2ef7f50148c85ac6d0b4e37a16073059db8b9e2f",
+      "metadata_sha256": "3aae9560156b2600c6076f7cec232765a406c9e17cf2f6f58b2ea17cae69f833"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "d1f500fcce83307e370ea1c60987f891fa96fbf40481d140330934e114ac4b3b",
+      "metadata_sha256": "31722763bd69315d416397928399d2cb046084b7b1827abb32999c73081b079c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "abf735d9b890bb98046a4f42e216cd37785cfc40223cf68c70759e88376fc881",
+      "metadata_sha256": "0b450289d0d1357d62180e840998a814bdbb496e81e61157a3400216a0957c76"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "1565c3a7119c8e1970b53fcd54f426b67e9b9eed9aa17916408a947e8b3072fa",
+      "metadata_sha256": "9aa66961f7ed8f59d9499435618cfbeef8f58c66b30735892b3cc7fb43fa0154"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "141e0de963666fa990f675b46f2bd9fa3da3cfa90b6e2ae39a94001fbae044d3",
+      "metadata_sha256": "af9ed8eeb39da34a50aa031da13a14a897aa683104d2c6654192bc41214ad9ac"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_01/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "a33ac41ddd99cc278c1608dd0c2491436126dd5db08b23a80787a50007ee6527"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "b478b3c9efcd96866017835d02e46591461d0ece8e83e26237e718c7a8f922d2",
+      "metadata_sha256": "d5a29834eb374acc98d4ebd84c17ec2bd86c035fe646705cc36ea298c0d35df1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "f1b7ebb38b0131673c8ba0eba77373bb09f1c06258f44635e9fcde6cffe0f3c5",
+      "metadata_sha256": "ad606c011a5e7ef6a5b37d484fc10ce3f4b6c4e25413d990a1adedd9c5aa6759"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "d08451801aa568745883108482d7958d76bacff89e15c937fa50d3a30d38b9d1",
+      "metadata_sha256": "7b46640b4bc5a867ac0bd481bd388d6994013305fac2b8bfb85839ec6b0b6f99"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "fc66297c9c4de1cc1802d0f6a526131f98564a49fda37447262555b0d51b032d",
+      "metadata_sha256": "afd2876b3bd5d9fcc2b57a7a3ed3ed51b2de44a2b25328909541bf2b7d31210d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "d053acaf64c484d37ecccaac28d599c73bc4c5f6b78a16cf21ee466e18176cdf",
+      "metadata_sha256": "5b6de91993cc1057716eb79ca1db4f4c4be2c5f4487bdf392d38cf79f9c7655c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "fd84f39b0171cabe824c03a2fb2284f55eaa1d899c2fe388e00ceb971116e067"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "2f9cc3cca3370fcd419d91d5eb04868c4eb045cd01e6d3efc3b1d5d8a0c15608",
+      "metadata_sha256": "c1d26d7ff10bffc07eefd171bdaab18412d96810bcb5bf0176caa8ff5eb3ea73"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "280f7e66b787d76283f23d21f0975664b404783ea0f17dbe5086bb77fcce5ae6",
+      "metadata_sha256": "8870f597e3d4392d7c5a9dd9c26ebac322982c229e4ba2ecaa89ed066cbd0ddb"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "706cdb40c7dff3fc58634f83cc6f1752c7b121967ace6ceae2767b8e1d642451",
+      "metadata_sha256": "cd56ee633a254439cb711ea19e428793478a98837ccd5b2c7afcb23b070208e5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "519682c59c7510ce92a5d53e522fd219c1832eac13f536791a71a1defdfca579",
+      "metadata_sha256": "3b1f76dc0247448add0df47b672e1f097e77ca1584f69317c5e6b1121b0a28f8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "947d10661715efbd0c4a2750eeaf86915be9ba0077dee3b03cb2fcd6dfdc982c",
+      "metadata_sha256": "3574a0bc92a0fdc903050349df91a8be1aee9f80f087cefc22a7b4662b8db256"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "017bf9215658660795ffa63f64027d0f6a0cf18ebb6c88471d3378dc31cce2de"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "910a4e39e80114145eb38f6845fe166050e8674b915733e8d2e16ca3623fb118",
+      "metadata_sha256": "fd9e201351af5ef0610bfa5cffce990feb87e557f6ecc6b7992a2ed23150a7e6"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "8fafbda711a783be9cbd65f2c42ad942ad84cbcc00e32e1f070fca062468a007",
+      "metadata_sha256": "498cc1c82ca19ddee3c84e564d70211419ed64e4f4c3aa4e051c78ee718bc284"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "c6bc5b517e42f6956534097f55ad1ab4d9950a0633faa3bac8707a1e2088f133",
+      "metadata_sha256": "32eda4350c17650bbc352d759cc3a285dc43b49c99e46941a8cdecbb6efebf39"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "7a470f03b2b2b1efa41f7ae3f0d31e01dfab1ab23f38d82ac54d2c0e00c217ef",
+      "metadata_sha256": "d8fb854634d1578721d2597c0dc0b01fa2b7abc4f4d3c6d6fa4bd0bfd4bdf1a2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "1fb6de7266d7a8b550b41b2a8a6aef7ec154a34666545beb0b8acc6d8152c476",
+      "metadata_sha256": "c845d617b41906bc6506cd0e1f325300e19f6283c51df4f4540b83522fd6a725"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_02/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "39f93b70e865b2b7ff124aa8cd3c0561c68a7b803e303c1ab3d8088a1271530a"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "780ebf2994aba9a10a053dfb3b208df4afab45c8d0a4e79cc40c0fb20a45fadc",
+      "metadata_sha256": "209d5d72fb03d9007ad6a1e81519235436c67e7573937516837cabe40fa3dc87"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "4222bd967cc67417a2fa2eb0229fb630091d8bc1acc10b1eac271f8ca3227fa3",
+      "metadata_sha256": "dfe2641eea3e9e195b791a0c028ee9dd5261d5dacdd8bc4f4518eb5ff6a375c4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "baf8c40c791c0cd7ce27d627297aba0e4520cca5b0e24930c0509319479f4b55",
+      "metadata_sha256": "e84dff66d8b98a4da1bf752f61237653a004e10c9441d674a01bc3656688ccf1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "1ceff93fa7b093f044dc1bad662c513665d09bdbc212488a7fb313044c42c62a",
+      "metadata_sha256": "aebf9552c909a8784070fd07fa735044c37930d95ad4f1cabf04789e335a21f7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "546c0a8ebe7a9c692cb7b64b603fded43f5229505f364957933a6a31448ea11a",
+      "metadata_sha256": "d0344f27e73270b861358b758cf462231f9721cffa6551723e46f11d118356d8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "e0026e62024410b2cd36174c31c6a0ed272832f409a8cd68984433b26aaaeb17"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "2052887055e71e63284eadac02e095c43725a48561cefee550fc48694ad9ee3f",
+      "metadata_sha256": "37c05caa557d11dd178c245c0668f5bb1c5a4a51c796c5ca5d609b7b3516706f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "163b134be581ae589374af0ad848709185470361dea0761e486ac37adf964681",
+      "metadata_sha256": "3969a7576054f8d2000795b168f5b8c71ed2774ccec9a52b334d0a59fa4d1722"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "a21b633655a0d0cb84b318428476e98483fd5ea258241453a8f9e3b99414883c",
+      "metadata_sha256": "8290cb105b5cf7338e325e643ff74facf62bc57ee27fdc8399d3880caec47486"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "5d1b2ced69e5fe20ac9329cfc608be17cb789fae9eb9378d239bcec55829686d",
+      "metadata_sha256": "0ee2c7776f2427a1b5486da7342401c50806de075c4edd68e037055f39d74edc"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "c6e8c70cb25b7eb0ceec22d2d73005fa0c46faae9eca9b8725ef0fad66d21287",
+      "metadata_sha256": "333e13445fd26390fc977025bbc1e5ebbbce13f7bcd65f5f01ab69de2238fd83"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "2bf78d6ba7d764a817d3a52fbefd142e3cda9af2718fd3235b5188491c78f124"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "cb4089e62c6aeb2edc64fbd6151f34552002d21eda30c52b64d8c48a1f5acfd0",
+      "metadata_sha256": "13969bce3e08d3705fe88ed753e8d3e9de120c33d671d8d8f1141f33d9f8cbbc"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "d1b2f6875cf27325ed54e3f0b14c20f7704ee6ab616caf271695d45856735bf0",
+      "metadata_sha256": "ee8445ae3196930e369f67198b8ec22253f1a231bd11dd856dc978995c698be5"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "2d9b2fd335bb59c3fc8ce767286184fb615e24ef643923b76c2c5b7489b2a141",
+      "metadata_sha256": "bf4354144ea1904cfb806d9c3602aca53b266c12408d4aa6ad0b495ee3f0ceda"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "b9e38854d67403585271c1e0ed38f0ffcd4badc50c5fdbee38c7c9929b5392c0",
+      "metadata_sha256": "6a6be9d36cf6fbaf14d6500bed0148b12ea46f83da137f30c5c894efb881390e"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "dde3fc59eca91c6f8332e8d88f07802473e2a2a5422d8d979f6bd59ce8f42d19",
+      "metadata_sha256": "fe2158f0ff65acb124d4a4dc33de41d0f76e300cac1cb9944977e3f540cfae09"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_03/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "4e77e8cb385b5a2cbe06e972335f70db695adc39c127bf6d49fa0d14d3ce51a0"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "68d11c07f2f16f3150ced952dedb5e30605679649dad6d38796c12dcc10aa490",
+      "metadata_sha256": "0d77fab01832dbf1dad7cdcc6b9638bd4d8404e7e58bf1e6f99c7208a529f215"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "41d9b37a9442a4c52a51a246b75c55a3f3173fb9b52a0925d20b6862deb3073c",
+      "metadata_sha256": "479863f9db9addfbed49e2493d5057ef98a211e9ac4f0ae35f0d4d1f6c0acdb2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "920d2610f5b31e02df633b4b833fb9db704da3a87b6e3cc3a7b63b40a6a6207d",
+      "metadata_sha256": "1fa1e95ede4cd38889e0695183000af5afaa18979f6dddee7bffbf96dad4dc0c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "8b6768ea7f4303fee2d59563ce16a2abed53c8bce33e6442dd61ea95a4550465",
+      "metadata_sha256": "2c83eb79afc00f8122248c0dd90850849931657193d161adb0deec969f2cc5b9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "a4eb83bc24f5549b9cfd2d34825678097ad023070d16771cad4da00c697355f3",
+      "metadata_sha256": "55fd3788f20512cc2400537da8bea5e58c2b89fa4a1a73478aaea90524234f15"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "1f591eae661987a4264a1e18913998bf61d927995c2b03b27c8493ba5efbe247"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "fb39a968b32e615fcf9a6309c5f5c1fb3c245cf430589b9c5a9d90d958413f22",
+      "metadata_sha256": "7fcc2534ae176ec6627dc6bb37ad3b779f5523d617372e64eed5fa86ffbab92f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "b5d71b09b80e3103db31fc07cc8ae0f210a848d3ade77fc211b6c91d5ede3394",
+      "metadata_sha256": "958b02f0e8788a4dbcda69df2789f0060110fd92f7b66c217d698e618fdd6f26"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "8f435948f9d81a23120f38f8249a77c286bde5c8fab0e6e35f7b62bad8b840c8",
+      "metadata_sha256": "9ee9992d83be54692eaf8067d627ebe045e2fce92b056898474b7b8adb707d3f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "5a521c747377da5fd03f781e02d2569b97348d6f2bee1c41e3f9b5c542010f9d",
+      "metadata_sha256": "dca1e64b158146563833548c400f0b34ce667ed01b10a1c207d33fe2ee77e252"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "ef682d5ce2eb65e3c9ee7a2b2fd633ff65018074d8dd6b89a263454841a43096",
+      "metadata_sha256": "c04a69ceefd47a29ed0bf4b274cd7550f03956c9b10e74bd5c51323275f6a025"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "d6975cb41931cf7319d4ce01628c104a6da516cebd2e1e053d6baf1b3bab3c35"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "fa69c11fc265e115d53b164ef6a780d60127e8f77fd72ffd56d16554a721dd2e",
+      "metadata_sha256": "5caa95719fdf4730aad8fe0314d10669b923d0c472cd1367669ee6fac0b2b6c3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "74e4cf3bd57f1233bed9c98bca6d831a43e791ad96dad773d01953ab6582d8b2",
+      "metadata_sha256": "5143afbba511bcb2aaa1154df8352c42b4948126dd70eb1e3718ecc7eb7f65e2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "d7ab2bd3f139d89e97965f6d8bd6d46d244708c66e99bbd3120f5e8146f73f44",
+      "metadata_sha256": "b2cd1eb169cd721c5c9642505a6032b7a201a3c63e9f06d7e1a77b66f5b7634f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "228176e9eadf3f7cb85beba9c164ad0d8b25fe1b47627d161ded2a257ade1ac2",
+      "metadata_sha256": "9ffef85d5f320016c771f0a078c3152ff3972c9752dfbeb6ad3d749d84eceac0"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "429b78b5de19258413f5b4889ab53fee3540da5ea3aaab98f4d2cc77ab62e0d8",
+      "metadata_sha256": "66b286dedf1cfbc5da145ad984077ea8a2f854b2765527d958301d4c0820b699"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input03_clips/input03_04/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "592f8d98bd8b44528f0d0abb0721f29b58b172f58df444c2fd500f692d2baebc"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "0716b862a48233e77f69e917b66500e7cf16ae2d0c63c5b5dba7bb7ae61b7833",
+      "metadata_sha256": "12ca4c1accf47d290f1159f4595077f1fe58ab5fcd4377f34a773112d551ac14"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "d20bd69cd1762ab634c8f2b274f8cd1ebd208415315cd5b58b09179a78cbe00f",
+      "metadata_sha256": "80fee4e8d39f8d632618fbb7c67d31fdc04ddcc3d8b4e67f0b76fc6bcf779ded"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "8009210885229ce4d0aba4ae233cb5530e546b69065b805368bd50f4a6b32bea",
+      "metadata_sha256": "0b0c9bce72a458f0753e8c2059201a53460c5fbfb21470205bce0325d7207740"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "d28f9903e2d7e87b9f8437660b5e0626b3a0c967f1b2d70e97daf3250a5c4531",
+      "metadata_sha256": "50234071adb3b9ba471b5d564804186b3ee2bfb4221a0ab75feee500efc31a90"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "65907a2246729548efa49273a5c98fc89ec6cea04bad21554a8f39c2bc79a142",
+      "metadata_sha256": "f704bfecbca804bfeb7a72976e97aa5f208a5d2cc0e52cbc9955dc7b3d71be82"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "93f4d921877b59bd1743cd183ebae017183756246d7f72d3e0599e0f20be8059"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "145610f3a8fab94a63e7bea97efe546be78c7ff8189ed4a61866395a12c47951",
+      "metadata_sha256": "aec9130284a8911e04a2e7b3d3e57956af18d36fdb454c16105cfae2ac136bce"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "39980044e6f7e84fdd48075c2a4d04e2944891cf94828f49fdc71ed513e890fd",
+      "metadata_sha256": "ffa250f9bbcaeb621f72d247b0064a7402de7dc20d6f31656c4ed0995a277289"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "9f81182f2eab2676420cc2eef8cc070890d03c9cab134f84568a5cca337225bd",
+      "metadata_sha256": "de449663a0a6ca2e4d1ceca22ddee96bf544b07ceda6ebe94308edf5d618e4e4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "356fd5c2b01384a68cc70d75dfb99592290f95abb3f80c15cf4be91805d7a805",
+      "metadata_sha256": "44b620b54744d30e1a95c17064e90cc451269ab980381fceb8c4a0df4bc83e2b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "7af5e328a5cbc8b4dfddd087de6250b4f9eeedfc7f57fcaa4298858ff16b3929",
+      "metadata_sha256": "d42759ee3d52e1e46110911c97d4eae6dd06013296c18963ac7932708b71ac3b"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "8717831ba86860404d13b52b2da798f52cc6ef2a27c1ffb5d0461d5563be543c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "c17e8878349651ffe73a83c6feca0aea1c317f03cd513bcddc65e2d303eeb9ec",
+      "metadata_sha256": "67233f22217314e460e864c07f649b2d1edc94815e86148ec9127ffbbd9818e1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "aa29fa32e2feb7a1ba23661585135beb753df7b4dca090eda611614b575d3b60",
+      "metadata_sha256": "f3f25860c3148255bf73fd044a49a3ab141d41684bfb02f3b04cbce5c6b3399f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "6b90522bb9518a4a7a3df3fd382ae6d4449aa2d781ce601546ac0a1b587d0abf",
+      "metadata_sha256": "d0310bf3b9e1bea06d64c6ad03ef17793b285be68d00b408cb822486d5460bf2"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "92929cdced99f98bd98403ef99b31d6dcf7eadc54306de03717844090ee4bd73",
+      "metadata_sha256": "861d33152ee1b3dd9e3f3fe02d525c18d9635ecd8b08d31aaf5515248ef1b65c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "39091193c211d5405a88a3b177d0e940d9f0af0fa4ca33cbd6ac7024c6a9272d",
+      "metadata_sha256": "2a37557e8de25e894f5066ecaa398eb41b861f7ef04af02a663bac37b9dd0b67"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_01/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "5aca4b52233c5af466fa1bcaa1a483c84dc2219b7e5043559b9fa11921edb1e9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "ddd4d8f719160a973d7fee7be9267c3ef213225a74cb36cab01d7e20f59241d1",
+      "metadata_sha256": "b5fd951ebc24424fa62c227d8bc1ea8969c2613114b891f764520607c0c04d86"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "72818c37791e4112bcf08db3e3c865e17486b9166e50027ead72b0d3ba6a999f",
+      "metadata_sha256": "0a315710ba3c0527aa7f564bc368feafb9b58f5ade5da0696c932a71591a1a9f"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "8095785aef4b5d4b98db2d59c55c436cc26b7dab4f3e5021be43847fcf1b7d82",
+      "metadata_sha256": "beaa55e5a6c785dccdd1284a9fcbfc9f222f11b2b007475819b75d336b141704"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "b727d09edf83abac5d06df4b43387a679a298f080c5c3f700e3ae2600c1dabbf",
+      "metadata_sha256": "6612f5254f60d6546373bbfe7ead07e39cba3cfff3c5c4961ac50f885b9e344d"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "9ed9f7aef6970ecac4a65b3484e05e6b1968bf25d94184593a4e7deabc7d24c3",
+      "metadata_sha256": "d483513e37772b27840b95725cebe14f8735fbec12836a1efdeba4dd2c8d4246"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "5b5bf1f22361874f9bac9abac6dc2f884634d990a3465efb1d8625aaf4f3f3cd"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "401f48f1fe3e61935546ef3a92875c6ad7cd185c71be3867cd95a65e8810c1f7",
+      "metadata_sha256": "0b1c3eda58c83bff1658e893c9f337ae2dfbd9946f0b94b81c2323a672857bf9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "9e3758e17012fa5941828060b7e299fa1962b364694984442c22756931518e4e",
+      "metadata_sha256": "753e7094c92a2a1e4fd3f6c999d0a566f4bf21a1e5b6792d5a124b2f20759313"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "b7823a2db7d8e44c032351f9f804af5053b367ce2b5f79ee3607b91ec4edcb39",
+      "metadata_sha256": "9025fe23de02b6eff4f4685ed28882a1d87febd129965282d0f2b9f10d1a13a9"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "4de3519b3e588fb2d75c80bfcdf17b8d6b9196154e5e5976eaaf7aabdf40f78b",
+      "metadata_sha256": "86928896402398ac6b9c6668d2688642283d96216096edb00310bf28f5f51ddf"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "8550365a6bc6fb3602f2026f47d6d5ede45e3d4f07b360faf3982786b7b27b44",
+      "metadata_sha256": "91529c141bc71cb0d890894e56681940251cddaaaac2943ecd0a5b21b9caa9e8"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "f78805c2c11c8ed57ad88686bf8543eb367a65014ed4aa2b867eb3b0274854fa"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "14ad82ed7f282e9d794417b7dd5f563139651d978d8d2fd1847ff41e9a9df70c",
+      "metadata_sha256": "2390d34cf5b64b0cf6b3b3d8b8524de15cbb9122b1f8810d9bc9ed8b9cd3fa07"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "837533f9c2626cad2686833b83477f3d2c1d41ef3fff99d5be1f490245756c26",
+      "metadata_sha256": "560f6ec5facf0fab13420c573a57ffd69c4bb465ffc9fd950bf9f14748dd5a53"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "25ad0acc9dc5aaccb1f91a4bc510969116deaa891bf33d636712344fbc3dcf99",
+      "metadata_sha256": "081981bf7a8d20281def9052c71842b6d7d34030a4a7bfc229faf6fc01ca5fed"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "dbebb251328591b8fff4832f50e716b9b0dddf4c716434e5b71c5f0a999d0bbc",
+      "metadata_sha256": "dd59497d6c3899f635f7891ee3d7c555055495e3ebea67996beb55bec65e7dbe"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "c5bdc7ef687b203c3101f9a23df3393b0415d27811301179f0dc119c1e2f6e7e",
+      "metadata_sha256": "df5f55c7609d38f411f5f44acdc35142427f4b4895c7ffddbfb86ed680710c68"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_02/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "dfa4713aa752a3ce35a51883e55369817d02ee97b8e8619cd9b4fdb75178fe18"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "000d56bcb38ae2dc21372dc6e7dc61728cccc056275fc48c44ee936525186eb8",
+      "metadata_sha256": "fad81de2ac2bc34dfe4a766aa17b342e0b90f1c052e205830d150fba72cc6065"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "25f1178c0a8d8a85b227d0b8910e27bf197d0225c3b79929b3a829833f201fc6",
+      "metadata_sha256": "b6ef0cac4f3d8e078adfe4ebeb0c6f2cf653414c2b05168413c71c6920643567"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "6480c4eb5d2158f566592e74991a9a78ed65a54edbfdf2e2c538459f839fe0bd",
+      "metadata_sha256": "d3a790d4e7d07fc2683a5d7393922106ddaa07e889edab3accb27d0afd30e413"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "e97241e98727143b664488d0976ea8b3e4f4b049163aec0e6905a34a16ff1a73",
+      "metadata_sha256": "a136d5683ef4f8d4a4071ee83944f4557f1cf8b0fe74e0776818095e049779ef"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "d939ef6cbfafec9cea8e0182a8c7810010ba49def2d384d6007aaa01623bfc00",
+      "metadata_sha256": "9ee815c9fdd698d9a3375c66b0234914a38477583d93292ae26fadb50ba99fdd"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "d20529c4814f9dce446509a71d746928e2a937cc8c3c5264179ef001dd8a0021"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "0d3194be82716c2274b81350cfaf6f56be5747b59d51f80f50f89b0ddc2ffb5e",
+      "metadata_sha256": "55157d5b2057602401a3d346195cb3274c860fda25af752faae34214f2141fd4"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "a1f6525afea3994030d1c75dbc1ec1733816f168ba0b34ce6d5728ee8497ba1f",
+      "metadata_sha256": "6d2a1627919707e6db324b361f1ca19aa8d49de395cfd64877cd5d7b2307a1fd"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "3afd7e245c981018802dab1fff8121ab84755070ed5bc45670b28b3ec7063a27",
+      "metadata_sha256": "fc19a0f21e821eb39567459031989110c750ce5d76951bb6da2dedf59042cdac"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "66d26a25383cc0d8c107e45c5d80ac82657f2646bf78b27f5b099b9efed2911e",
+      "metadata_sha256": "f053bbc951e2a3d849a7aff3632cdb2e9d7e561e51ab292626954a36447866e7"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "83ff3429734e7efa20e9a5d93cdbf4eac9e8e4676ebcf00cbb0e0bcefd991686",
+      "metadata_sha256": "ca426781dcf8d9abaa19b3a30a82665be60a67037da8baa3d68c890609013b12"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "e30067ffb3c3be56ceb01f49cb97faad49046219dfbb40b649326956bf2b3cc1"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "53c7b0dc2a33dd01a5ec46569761d156527af1962491060f9e2d10a421f91dd9",
+      "metadata_sha256": "7c3914352fb06de94057e42107b1db265805706ce2a699284e88b9189a94eef3"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "f04944d0207262c88d0418bdbe3605aa0933123d6ef47f2f14019a1c1622c023",
+      "metadata_sha256": "e26b925e845b29a684f174a64330c028a0a0b0ac0e36c14b423577154ba509ec"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "1f28611553e6ce99e89fcf117cc6a98c013296de82e671dc732ac50e5ec4b36f",
+      "metadata_sha256": "b8568418e8ee7dfbb901568d2d5e1af83e4edc58f3fb575d7b950239b81f9a0c"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "27bed7f942225a219191de4dc73934addb3c4bb1eae75eded253be5fb515649e",
+      "metadata_sha256": "ce273b076230f5fa41f04e0106a6a112cac612cbe89f28e5aa928c6f6b5739c6"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "b745405108b5dfbf5ca83fdf9e0213e101a5ed2913d7e3ad97dac80fd57836a6",
+      "metadata_sha256": "603bab52665914c2b7b4938290c924e403cc818e909871ba5aa50145595f20fe"
+    },
+    {
+      "path": "/Users/ruifeiliu/Projects/VQA2-dataset/steam-cvvdp-results/input04_clips/input04_03/frames/chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "b8e65923906a4979d6aa98347a9fa078957f9851603589afeb6f3f2e6aad54b5"
+    }
+  ]
+}

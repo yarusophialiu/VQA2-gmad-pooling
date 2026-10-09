@@ -60,4 +60,22 @@ python gmad/build_english_result_report.py
 
 入选视频的拼接清单在 [`pilot_video_recipes.json`](results/gmad_selection_skip_negative_no_offset_time_converted/pilot_video_recipes.json)；它记录了 Iridium 上的源视频路径。实际拼接时可用 `gmad/render_selected_videos.py --recipes ... --dataset-root ... --output ...` 将路径指向本地或远程可访问的无损视频。**逐段分数拼接仅用于初筛**：正式主观实验前，还需检查视频内容连续性，并对拼好的完整视频复核 ColorVideoVDP 分数，尤其是 chunk 切换处；被试实验中的 A/B 播放顺序也应随机化。
 
+## 拼接预实验视频
+
+预实验 84 对对应 133 段不同视频，每段由三个连续 chunk 组成。拼接脚本先用 **bicubic** 将各 chunk 统一到 1920×1080，再通过**重复帧**统一到 120 fps：30 fps 每帧重复 4 次，60 fps 每帧重复 2 次，120 fps 每帧保留一次。每个 chunk 精确为 180 帧，完整视频为 **540 帧、4.5 秒**，以 HEVC 无损模式编码。
+
+```bash
+python gmad/render_selected_videos.py \
+  --recipes results/gmad_selection_skip_negative_no_offset_time_converted/pilot_video_recipes.json \
+  --pair-list results/gmad_selection_skip_negative_no_offset_time_converted/pilot_pairs.csv \
+  --dataset-root /path/to/lossless_spatiotemporal_chunks \
+  --output results/gmad_selection_skip_negative_no_offset_time_converted/pilot_videos_bicubic_120fps
+```
+
+`--dataset-root` 必须包含真正的源 MP4；`results/legacy/gmad_frame_scores/` 只有下载的评分文件，不能替代视频输入。脚本缓存处理好的 chunk，再直接拼接码流，并记录参数和输入文件状态，方便中断后继续。
+
+输出目录中的 `render_manifest.json` 对应每段视频及三个源 chunk；`pair_video_paths.csv` 给出 84 对视频的 A/B 文件路径；`normalized_chunks/` 存放缓存。生成的视频目录已加入 `.gitignore`。原选片用的 CVVDP 分数采用 bilinear 显示放大，而这次实际拼接采用 bicubic，因此完整视频复核应采用实际输出和最终显示设置。
+
+处理参数参考 FFmpeg 官方的 [bicubic 缩放文档](https://ffmpeg.org/ffmpeg-scaler.html)和 [fps 重复帧文档](https://ffmpeg.org/ffmpeg-filters.html#fps)。
+
 方法参考：K. Ma *et al.*, “Group maximum differentiation competition: Model comparison with few samples,” *IEEE Transactions on Pattern Analysis and Machine Intelligence*, vol. 42, no. 4, pp. 851–864, 2020. [doi:10.1109/TPAMI.2018.2889948](https://doi.org/10.1109/TPAMI.2018.2889948).

@@ -2,3 +2,4 @@
 __pycache__/
 *.py[cod]
 .venv/
+results/gmad_selection_skip_negative_no_offset_time_converted/pilot_videos_bicubic_120fps/

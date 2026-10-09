@@ -1,0 +1,80 @@
+Computed 15 rules for 4104 candidates with 540 frames
+{
+  "candidates": 4104,
+  "rules": 15,
+  "effective_rules": 12,
+  "scenes": [
+    "input01_clips__input01_1",
+    "input01_clips__input01_2",
+    "input01_clips__input01_3",
+    "input01_clips__input01_4",
+    "input01_clips__input01_5",
+    "input01_clips__input01_6",
+    "input01_clips__input01_7",
+    "input01_clips__input01_8",
+    "input01_clips__input01_9",
+    "input02_clips__input02_01",
+    "input02_clips__input02_02",
+    "input02_clips__input02_03",
+    "input03_clips__input03_01",
+    "input03_clips__input03_02",
+    "input03_clips__input03_03",
+    "input03_clips__input03_04",
+    "input04_clips__input04_01",
+    "input04_clips__input04_02",
+    "input04_clips__input04_03"
+  ],
+  "attack_tasks": 11970,
+  "task_status": {
+    "equivalent_rules": 456,
+    "insufficient_attack_gap": 215,
+    "selected": 11299
+  },
+  "gmad_unique_pairs": 4410,
+  "compact_tasks": 630,
+  "compact_unique_pairs": 571,
+  "pilot_unique_pairs": 266,
+  "pilot_unique_videos": 440,
+  "all_selected_videos": 2802,
+  "min_raw_score": 3.204478264,
+  "max_raw_score": 10.0,
+  "input_offset": 0.0,
+  "negative_input_samples": 0,
+  "skipped_candidate_frame_values": 0,
+  "candidates_with_skipped_frames": 0,
+  "candidate_frame_count_distribution": {
+    "540": 4104
+  },
+  "sensitivity": [
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.025,
+      "selected_tasks": 11176,
+      "unique_pairs": 4347,
+      "pair_jaccard": 0.47151739203495213
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.05,
+      "selected_tasks": 11299,
+      "unique_pairs": 4410,
+      "pair_jaccard": 1.0
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.1,
+      "selected_tasks": 11327,
+      "unique_pairs": 4406,
+      "pair_jaccard": 0.8214876033057851
+    },
+    {
+      "kind": "input_offset",
+      "value": 1.0,
+      "selected_tasks": 11249,
+      "unique_pairs": 4403,
+      "pair_jaccard": 0.7718134298351428
+    }
+  ],
+  "max_cqm_tail_bias": 0.3978849673266671,
+  "boundary_validation": "not yet performed; no final subjective ranking is available"
+}
