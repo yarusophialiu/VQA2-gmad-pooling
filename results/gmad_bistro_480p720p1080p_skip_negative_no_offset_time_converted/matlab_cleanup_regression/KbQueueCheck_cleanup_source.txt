@@ -1,0 +1,12 @@
+function [pressed, firstPress, firstRelease, lastPress, lastRelease] = KbQueueCheck(varargin)
+persistent onset
+if isempty(onset), onset = GetSecs; end
+pressed=false; firstPress=zeros(1,256); firstRelease=firstPress;
+lastPress=firstPress; lastRelease=firstPress;
+if GetSecs-onset < 0.4, return; end
+Screen('CloseAll');
+assert(isempty(Screen('Windows')));
+pressed=true; code=KbName('ESCAPE');
+lastPress(code)=GetSecs; firstPress(code)=lastPress(code);
+fprintf('SIMULATED SCREEN CLOSEALL\n');
+end

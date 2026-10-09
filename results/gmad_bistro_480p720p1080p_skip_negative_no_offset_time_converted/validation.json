@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "scored_chunks": 27,
+  "frame_proxies": 4860,
+  "resolutions": [
+    480,
+    720,
+    1080
+  ],
+  "fps": [
+    30,
+    60,
+    120
+  ],
+  "settings_per_chunk": 9,
+  "candidates": 729,
+  "attack_tasks": 630,
+  "selected_tasks": 585,
+  "gmad_pairs": 255,
+  "pilot_pairs": 14,
+  "pilot_videos": 25,
+  "negative_frame_proxies": 0,
+  "unchanged_predictions_from_all_resolution_run": 729,
+  "checks": [
+    "complete 9^3 candidate grid with no 360p",
+    "81 appearances per setting per chunk",
+    "unchanged predictions for all 729 retained candidates",
+    "selected defender and attacker inequalities recomputed",
+    "same defender quality bin for both candidates",
+    "pilot task counts, settings and recipes",
+    "existing HEVC source paths",
+    "positive finite frame proxies",
+    "result report links"
+  ],
+  "full_video_boundary_recheck": "not performed"
+}

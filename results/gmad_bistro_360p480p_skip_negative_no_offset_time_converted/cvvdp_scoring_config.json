@@ -1,0 +1,16 @@
+{
+  "display": "standard_fhd",
+  "full_screen_resize": "bilinear",
+  "temporal_resample_fps": 120,
+  "temporal_padding": "replicate",
+  "metric_version": "0.5.6",
+  "cvvdp_root": "C:\\Users\\15142\\Projects\\ColorVideoVDP\\ColorVideoVDP\\pycvvdp",
+  "metric_sha256": "270e29ddde199e6f19440f622eaeb1af748fd60f9e0233f838e6e03e892d43fa",
+  "parameters_sha256": "b421d8388b49d2c44d62ac52283efe51b2a46ac8f0ed0f45b5cde432638e199b",
+  "display_models_sha256": "575b384c7647ad012d304945f342e8502d16ba10e39eb99993f294800ae0429b",
+  "video_source_sha256": "c5d0553846ffdb41933a594f0df4904207cf6119793ac31adc8f5ccf12283bd6",
+  "exporter_sha256": "f0021fcc2bc7001887f5377d0c368f0104e9d0280387e6e6b5afb1fcd4895744",
+  "gpu_mem": 4,
+  "device": "cuda:0",
+  "torch_version": "2.6.0+cu124"
+}

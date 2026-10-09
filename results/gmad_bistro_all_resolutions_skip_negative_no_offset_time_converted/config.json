@@ -1,0 +1,261 @@
+{
+  "status": "screening_requires_full_video_recheck",
+  "scenes": [
+    "bistro"
+  ],
+  "bins": 3,
+  "settings_per_chunk": {
+    "bistro": 12
+  },
+  "candidates_per_scene": {
+    "bistro": 1728
+  },
+  "epsilon_fraction": 0.05,
+  "epsilon_cap": 0.1,
+  "min_attack_fraction": 0.1,
+  "normalization": "within-scene p95-p5 span",
+  "bins_policy": "quantile bins, tied predictions never split",
+  "fps": 120,
+  "frames_per_chunk": 180,
+  "common_input_offset": 0.0,
+  "output_offset_removed": true,
+  "input_transform_status": "provisional_screening_assumption",
+  "negative_frame_policy": "skip",
+  "time_policy": "converted",
+  "time_parameters": {
+    "source_study_fps": 25,
+    "display_fps": 120,
+    "exp_tau_frames": 480,
+    "exp_tau_s": 4.0,
+    "last_frames": 600,
+    "last_seconds": 5.0,
+    "worst_window_frames": 480,
+    "worst_window_s": 4.0,
+    "hysteresis_tau_s": 2,
+    "hysteresis_fps": 120,
+    "n_segments": 3,
+    "cumulative_quality": "duration weighted; 50/60 s windows reduce to mean"
+  },
+  "rules": [
+    "mean",
+    "median",
+    "percentile",
+    "kth_percentile",
+    "minkowski",
+    "exp_weighted_minkowski",
+    "last_frames_mean",
+    "worst_window",
+    "hysteresis",
+    "vqpooling_temporal",
+    "cumulative_quality",
+    "early_dominance",
+    "late_dominance",
+    "increasing_weights",
+    "decreasing_weights"
+  ],
+  "representative": {
+    "mean": "mean",
+    "median": "median",
+    "percentile": "percentile",
+    "kth_percentile": "median",
+    "minkowski": "minkowski",
+    "exp_weighted_minkowski": "exp_weighted_minkowski",
+    "last_frames_mean": "mean",
+    "worst_window": "worst_window",
+    "hysteresis": "hysteresis",
+    "vqpooling_temporal": "vqpooling_temporal",
+    "cumulative_quality": "mean",
+    "early_dominance": "early_dominance",
+    "late_dominance": "late_dominance",
+    "increasing_weights": "increasing_weights",
+    "decreasing_weights": "decreasing_weights"
+  },
+  "seed": 20260930,
+  "input_root": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p",
+  "content_group_policy": "manifest scene when present; otherwise full shot path with / replaced by __",
+  "selection_source_sha256": "fa2a63a0c2fca362bdd3792f5be13adf93da40293f39230302d1d3d44bd1068a",
+  "source_manifest_sha256": "b42ddf3f607bcd67fae82dc7ac56661bce8bd6b4114ef7a0419f0bd44adcebb3",
+  "pooling_source_sha256": "4455aef4304c48c1ccee86c377cd340e6be0469b1dac02b65deb14006a30ae00",
+  "source_files": [
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_360p30_lossless_hevc_frames.csv",
+      "sha256": "eded64b1025ab063a6f78e75ad9df2f4828748043d5e77b1b552016d3c051377",
+      "metadata_sha256": "780ed5f165b3536ac2925b713f39e56adbe9535abfb940010ba371373994ccdc"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_360p60_lossless_hevc_frames.csv",
+      "sha256": "185f318c489c2e9a8c9585464c833096afa1efd975cf5ca49d821619eb933573",
+      "metadata_sha256": "6542dd21dc08d94d24c68cce00f8cb6c093176858d0951d92c4109e66464ed6d"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_360p120_lossless_hevc_frames.csv",
+      "sha256": "43faf30a39b23e924d08b63ee190d5be3ae89ec384c07ad3440639c4731164c6",
+      "metadata_sha256": "e12740af8f9513126d0bc9f7c88639ca5422663c22a22fe0c8f177c829783aac"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_480p30_lossless_hevc_frames.csv",
+      "sha256": "0bcc94e32c4023dd4016e0ee9f7df49e723873d8387fead22f4d90687498886e",
+      "metadata_sha256": "ba61e4fd688190fc25eb3d7e73c1d5069b1108b4db255b98697fc82fa56f1249"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_480p60_lossless_hevc_frames.csv",
+      "sha256": "ba306ffdd0c904f94bb2a113cdafae174ec890eee56a2fb8ba68e01fd30e42e2",
+      "metadata_sha256": "b7170b0b4cdc9d9fb61f55b44aeb7450842a78e35e8b12c6377106a2e3799352"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_480p120_lossless_hevc_frames.csv",
+      "sha256": "ebe87974b1262aaf5e6c2f600bab4edafd00f63086ee47487bd5464a6ebcd547",
+      "metadata_sha256": "5e9af3c8f8200af6011a14864bf6254bd1de59c1937475f360d2625feca2fe61"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_720p30_lossless_hevc_frames.csv",
+      "sha256": "a5a29e49912bcaab67c178489a2e8c17e48476e55ccefbb349ebf234f17da1f9",
+      "metadata_sha256": "880aa27566efa709d2e2fde33a4145cc1aa8f5556332ccb3183a3dabb4c20d09"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_720p60_lossless_hevc_frames.csv",
+      "sha256": "425a91dcb0336e62bcf51c1e2347f64d37972bc1bc9622f531bc0ddefb4bb5b0",
+      "metadata_sha256": "551249bc44f9b57cca3068332a6f96e2c167067cacfcee99649fde079d9c9724"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_720p120_lossless_hevc_frames.csv",
+      "sha256": "22930dda2ae44b7439fe6a5d864b08ad48d05be321ad4971f17efd04b404cd52",
+      "metadata_sha256": "7c438cac80b58080f5011c93a5209627d11d792c0a58270c4c341aa4d48b1351"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_1080p30_lossless_hevc_frames.csv",
+      "sha256": "ef7e840d3494214d8f9b802d07bbe5c7544915bad34af6250670b09069e36d3f",
+      "metadata_sha256": "33cadaadbbd670fe725e5287aa3e9322e811c52040b3e7ca9b48ea6898cae66c"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_1080p60_lossless_hevc_frames.csv",
+      "sha256": "f0c947a36b700ea39b14b5f7951bc558e7db51a52398f388d00eeab7e7ba3fd6",
+      "metadata_sha256": "90fd3b0eebce7fbf861a867671154574b05c745488ae580b79d19d244bdf9275"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk1_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "cd65758ac65fab791c8e06c5e3621b27dcd6a2d4d23f828289a01ec58e9ad31d"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_360p30_lossless_hevc_frames.csv",
+      "sha256": "1dd9f710be6f500292388271e20d733eefd6818e0c716f38134f83cc984b0696",
+      "metadata_sha256": "dbb43ac3b08ecc04804ddd49792959ec8e1a1569bbbddf7978ee7107c6997c9d"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_360p60_lossless_hevc_frames.csv",
+      "sha256": "f361c15d0ef3c98011771911995e78b3d0efd9478aa10097a03bfc5462359c02",
+      "metadata_sha256": "79c8f96f58671b992c44612ec6890139463062896874167bcbe68bfee3a8a386"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_360p120_lossless_hevc_frames.csv",
+      "sha256": "7256b27f46dcd1efa96fe71db7a30c03bc4a7ea5a5c597939635ba16060a9f70",
+      "metadata_sha256": "ad45e0123d39fd38019d904ef2db50dab1475495de9ae3384e685009763ca160"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_480p30_lossless_hevc_frames.csv",
+      "sha256": "742f91b1ba710e4ef3f3064dbd2e9879ff1b4a8ce7fef1208ab27f307375621c",
+      "metadata_sha256": "db7eb67025f90ee387101cac73406b863e5abe65e8b61c97cd2dfbe5e518f1b1"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_480p60_lossless_hevc_frames.csv",
+      "sha256": "61f8cd4ee73903d922e83d9561f07b2e276ccacd1523af07b7e8847cfc7d5c90",
+      "metadata_sha256": "559dad1dd821789166aee46b0fb521e2f7b1dbe2367ffe2cc3b92e3f66553396"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_480p120_lossless_hevc_frames.csv",
+      "sha256": "544c3422384fa9e03143975001c9f5d9645f14c0b03fc489fb63c105a562c577",
+      "metadata_sha256": "eff2b68f89d2b14ae192ab9069ca92600fc8f22eb4e51f1b2e6bdc0f1279574e"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_720p30_lossless_hevc_frames.csv",
+      "sha256": "05a889e1bc4326d676debf56a29b4148ddb4b0534c2c7de47375dae49e3d44bc",
+      "metadata_sha256": "8141540944714c77f24e4637900dbd9ddbb8a7bdce229fc1b5ec2c3352f9c7fe"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_720p60_lossless_hevc_frames.csv",
+      "sha256": "ac35b74e5bef9f45c0fa4cc0ee986328407b3884031063b0df78cf680cf17065",
+      "metadata_sha256": "3ed543e35d77fabaa5281f7ce572b6b9c0f6fcba1024c5448a5c49565c171daa"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_720p120_lossless_hevc_frames.csv",
+      "sha256": "895ff9d20c1e491264fd76aa79e8a784fb2a1c25939b5824b4b0d830f1e63826",
+      "metadata_sha256": "ee357829e91ec16b17ace7fa1d004feccfe62a6d67935b8e3aa15464e79d5a64"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_1080p30_lossless_hevc_frames.csv",
+      "sha256": "4d8c86986ac65b20ffa1c99b5479482835f06c7e6a791553b16242ce58353c2c",
+      "metadata_sha256": "80a27a325efe8fd9fffee04514f516871a8c5aced46917d24ba1d9bd61e9c5d1"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_1080p60_lossless_hevc_frames.csv",
+      "sha256": "3a680db6de44b04e470a2b57c47976847d6832df018476ae5f05a28d107ac4c5",
+      "metadata_sha256": "ba456c17f7352c95ee80a04331d0c7016c2d31ae96432d12b39d333241180c04"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk2_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "a34f1ff0ba344a75496ef7a43811cf62e3318118e937d501cfc61ccb80e9e50f"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_360p30_lossless_hevc_frames.csv",
+      "sha256": "df5c3009139fca28ea94cbbd055383113e038554e289a32286d1facf4a128227",
+      "metadata_sha256": "4fb92a369cf179e53cdf50e2df3b684ef737ec968fd99cdf729697c851cdc880"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_360p60_lossless_hevc_frames.csv",
+      "sha256": "975dc4187a72ccecbd9a887b921acf3e58e8262b9eb6edf1b8e711adcae991f2",
+      "metadata_sha256": "5a3382205ab3976daff3b568c04835537fa35c29240186576ef0ac035120fd43"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_360p120_lossless_hevc_frames.csv",
+      "sha256": "3eaaf1b94c2c2979971c361fd6e46c5da534acba19a49045d90bd3324465ad3a",
+      "metadata_sha256": "b8b330bcac7e1f20701b2dc63b5b047bb63ca964782b064c64930708ae61c59d"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_480p30_lossless_hevc_frames.csv",
+      "sha256": "83e4adbe004cf3ae7c5344138ec7babd3d4b8ea4bc142540fc4eee4a589c116c",
+      "metadata_sha256": "40f5f2c958049e3519f8b71a90ad3c4fe7d5aa96036f3ff81c9640e93ffcd7dc"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_480p60_lossless_hevc_frames.csv",
+      "sha256": "f95670742d2137b1546e0722167505fb57638e6f64ad14db2df07dab2d3e4a15",
+      "metadata_sha256": "1446204b2d8448aaa932f953b361c3785e298a5254affdd8e89422786c5d8e66"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_480p120_lossless_hevc_frames.csv",
+      "sha256": "23d6c0a878ad8576c3f8f6f95b19f53470a51d64d9a419bf38c4973970ac31a8",
+      "metadata_sha256": "7065acf3cf228316292d45c0978c915f4fa78c8aa404fd880f4387b000ead18e"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_720p30_lossless_hevc_frames.csv",
+      "sha256": "eb7690cc4d95367cbd2c5ed046aabf0c5d42f29a73307b1378561c2c9a95a2f2",
+      "metadata_sha256": "836749cc5791f87dffd69dc13e3f266425917b1dc62a47abbf3a4e8ccc6f8b39"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_720p60_lossless_hevc_frames.csv",
+      "sha256": "8bd4faa7c01fe3e38d808f1e78594f6c0705bdf4ac794730fc593439a286c025",
+      "metadata_sha256": "0ef88f9463e65b87d393249e83f5faa91edae28dd043babd05c56a6ba517a81c"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_720p120_lossless_hevc_frames.csv",
+      "sha256": "971710366cf9c2f70f398bf050d5d8e1d866b546e8f4e8ef0977294558a08b9d",
+      "metadata_sha256": "973ff84b2f894f29fb4c606d7d324a2f4c9d44390aa859b852f29d8b317b1633"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_1080p30_lossless_hevc_frames.csv",
+      "sha256": "8ca65dede1e15966db097b72749cf782b8541e505efc0c610c1f16fae2138e51",
+      "metadata_sha256": "c2fe726c8abbc4612bbbe45379efe5fa696b6e331fa40f90b354805b1207d0de"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_1080p60_lossless_hevc_frames.csv",
+      "sha256": "6972e879cf0e23f250f095c82be52bd23336f8b5364ee99f1e5b3b7a526ddaf9",
+      "metadata_sha256": "da218e8032b2163d04d6f3f85573f4a9ac5ce75e649c0f0c8e806f7dc96d1312"
+    },
+    {
+      "path": "C:\\Users\\15142\\Projects\\vqa_workspace\\VQA2-dataset\\gmad_frame_scores\\bistro_360p480p720p1080p\\bistro\\bistro_path2_seg3_1\\frames\\chunk3_1080p120_lossless_hevc_frames.csv",
+      "sha256": "360d5037d580300c3973dd645dcc8c376cc0ca408f7a99359c7ad2d05f4bb005",
+      "metadata_sha256": "ca8000a9ee5523ee5978c15f3f137758df6c049f5b915ed47421c38b8fe34809"
+    }
+  ]
+}

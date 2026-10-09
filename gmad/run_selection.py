@@ -71,7 +71,10 @@ def load(root):
     scenes = sorted({k[0] for k in chunks})
     for scene in scenes:
         settings = sorted({(k[2], k[3]) for k in chunks if k[0] == scene})
-        assert len(settings) == 6, (scene, settings)
+        assert len(settings) >= 2, (scene, settings)
+        for chunk in (1, 2, 3):
+            present = {(key[2], key[3]) for key in chunks if key[0] == scene and key[1] == chunk}
+            assert present == set(settings), (scene, chunk, 'Incomplete condition grid', present, settings)
         for triple in itertools.product(settings, repeat=3):
             parts = [chunks[(scene, i+1, *setting)] for i, setting in enumerate(triple)]
             labels = [f'{h}p{f}' for h, f in triple]
@@ -313,7 +316,7 @@ def main():
         for row in arr[arr['jod_frame_proxy']<0]:
             negative.append(dict(source_csv=str(path),frame_index=int(row['frame_index']),
                                  chunk_time_s=float(row['time_s']),score=float(row['jod_frame_proxy'])))
-    if negative:write_csv(out/'negative_frames.csv',negative)
+    write_csv(out/'negative_frames.csv',negative,fields=['source_csv','frame_index','chunk_time_s','score'])
     write_csv(out/'candidates.csv', [{k:v for k,v in c.items() if not k.startswith('source_')} for c in candidates])
     write_csv(out/'predictions.csv',[dict(candidate_id=c['candidate_id'],**dict(zip(RULES,map(float,row)))) for c,row in zip(candidates,pred)])
     write_csv(out/'rule_equivalence.csv',eq)
@@ -324,6 +327,8 @@ def main():
     write_csv(out/'supplementary_pairs.csv',supplements)
     write_csv(out/'sensitivity.csv',sensitivity)
     config=dict(status='screening_requires_full_video_recheck',scenes=scenes,bins=args.bins,
+        settings_per_chunk={scene:len({c['chunk1'] for c in candidates if c['scene']==scene}) for scene in scenes},
+        candidates_per_scene={scene:sum(c['scene']==scene for c in candidates) for scene in scenes},
         epsilon_fraction=args.epsilon_fraction,epsilon_cap=args.epsilon_cap,
         min_attack_fraction=args.min_attack_fraction,normalization='within-scene p95-p5 span',
         bins_policy='quantile bins, tied predictions never split',fps=120,frames_per_chunk=180,
@@ -387,7 +392,7 @@ def render_report(out,s,c,pilot,eq):
                'hysteresis 使用 2 秒；四种位置权重按三段计算；CQM 修正尾部半秒等权问题。')
     page=f'''<!doctype html><html lang="zh"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>gMAD 选对结果</title>
 <style>body{{font:16px/1.65 system-ui,sans-serif;background:#f3f6f8;color:#173447;margin:0}}main{{max-width:1250px;margin:30px auto;padding:28px;background:white;border-radius:16px}}h1{{color:#096c70}}.stats{{display:flex;gap:20px;flex-wrap:wrap}}.stat{{background:#e9f5f3;padding:18px;border-radius:10px}}strong{{font-size:24px}}table{{border-collapse:collapse;width:100%;font-size:13px}}th,td{{border-bottom:1px solid #ccdce2;padding:9px;text-align:left}}th{{background:#e9f5f3}}.note{{background:#fff0d6;padding:16px}}input{{padding:10px;width:350px;max-width:90%}}a{{color:#096c70}}</style><main>
-<h1>gMAD 视频初筛已执行</h1><p>{len(s['scenes'])} 个内容组 × 216 种三段设置；每段 1.5 秒、统一 120 Hz。同一视频对来自同一内容组。状态：<b>初筛，待完整视频边界复核</b>。</p>
+<h1>gMAD 视频初筛已执行</h1><p>{len(s['scenes'])} 个内容组，共 {s['candidates']:,} 个三段设置候选；每段 1.5 秒、统一 120 Hz。同一视频对来自同一内容组。状态：<b>初筛，待完整视频边界复核</b>。</p>
 <div class="stats"><div class="stat"><strong>{s['candidates']}</strong><br>候选视频</div><div class="stat"><strong>{s['attack_tasks']}</strong><br>攻击任务</div><div class="stat"><strong>{s['gmad_unique_pairs']}</strong><br>去重 gMAD 视频对</div><div class="stat"><strong>{s['pilot_unique_pairs']}</strong><br>预实验视频对</div></div>
 <p>参赛 15 条 RULES，{s['effective_rules']} 组不同预测。完全等价：{esc(equival)}。未加入需要拟合参数的 Hammerstein–Wiener 或使用帧时间输入的两种模型。</p>
 <p class="note">逐帧分数实际范围 {s['min_raw_score']:.3f}～{s['max_raw_score']:.3f}。{esc(input_note)}</p>

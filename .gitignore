@@ -3,3 +3,20 @@ __pycache__/
 *.py[cod]
 .venv/
 results/gmad_selection_skip_negative_no_offset_time_converted/pilot_videos_bicubic_120fps/
+
+# Generated videos and raw video streams stay local.
+*.mp4
+*.mkv
+*.mov
+*.avi
+*.webm
+*.m4v
+*.hevc
+*.h264
+*.yuv
+
+# Local MATLAB session logs, screenshots, and temporary player snapshots.
+results/**/matlab*_session.log
+results/**/matlab_*/*.log
+results/**/matlab_*/*.png
+results/**/player_before_memory_fix.m.txt

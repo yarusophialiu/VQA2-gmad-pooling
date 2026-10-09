@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "pair_list_rows": 14,
+  "unique_candidates": 26,
+  "unique_source_paths": 28,
+  "actual_playback_pairs_tested": [
+    1,
+    2
+  ],
+  "controls_tested": [
+    "RightArrow: B",
+    "LeftArrow: A",
+    "Return: next pair",
+    "ESCAPE: exit"
+  ],
+  "pure_black_screenshot_assertion": true,
+  "blank_duration_seconds": 0.501,
+  "native_chunk_frame_counts_checked": [
+    45,
+    90,
+    180
+  ],
+  "mode": "windowed preview; precise presentation timing requires successful fullscreen synchronization checks"
+}

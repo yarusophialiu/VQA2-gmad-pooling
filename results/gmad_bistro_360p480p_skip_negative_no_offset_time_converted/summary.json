@@ -1,0 +1,61 @@
+{
+  "candidates": 216,
+  "rules": 15,
+  "effective_rules": 12,
+  "scenes": [
+    "bistro"
+  ],
+  "attack_tasks": 630,
+  "task_status": {
+    "equivalent_rules": 24,
+    "insufficient_attack_gap": 31,
+    "selected": 575
+  },
+  "gmad_unique_pairs": 228,
+  "compact_tasks": 630,
+  "compact_unique_pairs": 228,
+  "pilot_unique_pairs": 14,
+  "pilot_unique_videos": 22,
+  "all_selected_videos": 152,
+  "min_raw_score": 5.657326221,
+  "max_raw_score": 9.584467888,
+  "input_offset": 0.0,
+  "negative_input_samples": 0,
+  "skipped_candidate_frame_values": 0,
+  "candidates_with_skipped_frames": 0,
+  "candidate_frame_count_distribution": {
+    "540": 216
+  },
+  "sensitivity": [
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.025,
+      "selected_tasks": 571,
+      "unique_pairs": 222,
+      "pair_jaccard": 0.2857142857142857
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.05,
+      "selected_tasks": 575,
+      "unique_pairs": 228,
+      "pair_jaccard": 1.0
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.1,
+      "selected_tasks": 588,
+      "unique_pairs": 222,
+      "pair_jaccard": 0.38461538461538464
+    },
+    {
+      "kind": "input_offset",
+      "value": 1.0,
+      "selected_tasks": 573,
+      "unique_pairs": 226,
+      "pair_jaccard": 0.8530612244897959
+    }
+  ],
+  "max_cqm_tail_bias": 0.18914203996277834,
+  "boundary_validation": "not yet performed; no final subjective ranking is available"
+}

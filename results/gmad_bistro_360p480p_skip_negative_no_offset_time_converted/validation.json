@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scored_chunks": 18,
+  "frame_proxies": 3240,
+  "candidates": 216,
+  "attack_tasks": 630,
+  "selected_tasks": 575,
+  "gmad_pairs": 228,
+  "pilot_pairs": 14,
+  "pilot_videos": 22,
+  "input_negative_samples": 0,
+  "checks": [
+    "CVVDP native-JOD reconstruction for each chunk",
+    "180 finite frame proxies per chunk on a 120 Hz axis",
+    "gMAD attack and defender inequalities",
+    "pilot recipe coverage and existing video paths",
+    "result report links"
+  ],
+  "full_video_boundary_recheck": "not performed"
+}

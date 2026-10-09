@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "scored_chunks": 36,
+  "frame_proxies": 6480,
+  "resolutions": [
+    360,
+    480,
+    720,
+    1080
+  ],
+  "fps": [
+    30,
+    60,
+    120
+  ],
+  "settings_per_chunk": 12,
+  "candidates": 1728,
+  "attack_tasks": 630,
+  "selected_tasks": 600,
+  "gmad_pairs": 285,
+  "pilot_pairs": 14,
+  "pilot_videos": 26,
+  "negative_frame_proxies": 0,
+  "unchanged_low_resolution_predictions": 216,
+  "checks": [
+    "complete 12^3 candidate grid",
+    "144 appearances per setting per chunk",
+    "unchanged predictions for prior 216 candidates",
+    "defender and attacker inequalities recomputed from predictions",
+    "same defender quality bin for both candidates",
+    "pilot recipes match pair list and existing source paths",
+    "result report links"
+  ],
+  "full_video_boundary_recheck": "not performed"
+}

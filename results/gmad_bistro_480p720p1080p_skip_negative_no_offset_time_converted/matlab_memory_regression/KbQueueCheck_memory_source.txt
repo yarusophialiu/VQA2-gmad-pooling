@@ -1,0 +1,42 @@
+function [pressed, firstPress, firstRelease, lastPress, lastRelease] = KbQueueCheck(varargin)
+% Smoke-test input only: do not add this directory to the permanent path.
+persistent onset index
+if isempty(onset)
+    onset = GetSecs;
+    index = 1;
+end
+pressed = false;
+firstPress = zeros(1, 256);
+firstRelease = zeros(1, 256);
+lastPress = zeros(1, 256);
+lastRelease = zeros(1, 256);
+times = [2 2 4.7 0.2 0.6 4.7 0.2 4.7 4.7 0.2 1];
+events = {'RightArrow', 'LeftArrow', 'Return', 'blank', 'RightArrow', 'Return', 'blank', 'RightArrow', 'Return', 'blank', 'ESCAPE'};
+elapsed = GetSecs - onset;
+if index > numel(times) || elapsed < times(index)
+    return;
+end
+root = fileparts(mfilename('fullpath'));
+windows = Screen('Windows');
+assert(numel(windows)<=8, 'SmokeTest:TextureLeak', 'More than seven retained textures.');
+fprintf('LIVE_SCREEN_HANDLES %d\n', numel(windows));
+for window = windows
+    if Screen('WindowKind', window) == 1
+        image = Screen('GetImage', window, [], 'frontBuffer');
+        if strcmp(events{index}, 'blank')
+            assert(all(image(:) == 0), 'SmokeTest:NotBlack', 'Transition must be pure black.');
+        end
+        imwrite(image, fullfile(root, sprintf('frame_%d_%s.png', index, events{index})));
+        break;
+    end
+end
+fprintf('SMOKE_INPUT %.3f s: %s\n', elapsed, events{index});
+if ~strcmp(events{index}, 'blank')
+    pressed = true;
+    code = KbName(events{index});
+    lastPress(code) = GetSecs;
+    firstPress(code) = lastPress(code);
+end
+index = index + 1;
+onset = GetSecs;
+end

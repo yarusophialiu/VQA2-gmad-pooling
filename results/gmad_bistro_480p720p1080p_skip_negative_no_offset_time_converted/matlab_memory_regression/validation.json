@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "original_cause": "Texture creation exhausted memory while preloading pair 2; Screen closed handles internally",
+  "fix": "Sequential HEVC decoding on demand with bounded texture retention; cleanup skips resources already closed by Screen",
+  "actual_pairs_entered": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "peak_observed_retained_textures": 6,
+  "texture_limit_including_temporary_replacement": 7,
+  "controls_checked": [
+    "A/B switching and replay",
+    "Enter and pure black transition",
+    "Escape"
+  ],
+  "black_durations_seconds": [
+    0.501,
+    0.502,
+    0.502
+  ],
+  "cleanup_after_external_closeall": "passed",
+  "player_sha256": "fe1ead62b101574ab5d3fb43f447a53881340900a867b9e9240a933bfe31cb27",
+  "mode": "windowed preview; fullscreen synchronization must pass for accurate presentation timing"
+}

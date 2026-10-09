@@ -1,0 +1,5 @@
+﻿pair_id,role,scene,video_a,video_b
+pair_3acf07db9015,random_fixed,bistro,bistro__480p120-480p120-480p120,bistro__480p60-480p60-480p60
+pair_3bda722a82e5,random_varying,bistro,bistro__1080p120-360p30-720p30,bistro__360p120-1080p60-360p30
+pair_798386c139b3,diagnostic_reversal,bistro,bistro__1080p120-360p30-360p30,bistro__360p30-360p30-1080p120
+pair_76d77357918c,diagnostic_stable_vs_varying,bistro,bistro__1080p120-480p120-1080p30,bistro__360p120-360p120-360p120

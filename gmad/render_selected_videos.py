@@ -4,7 +4,7 @@ Example:
   python render_selected_videos.py --recipes pilot_video_recipes.json --output /path/to/pilot_videos
 
 Use --dataset-root to relocate the lossless_spatiotemporal_chunks source directory.
-This uses bicubic scaling and frame duplication to create 1920x1080/120 fps
+This uses bicubic scaling by default and frame duplication to create 1920x1080/120 fps
 lossless videos. Normalized chunks are cached, then concatenated without
 re-encoding. Full-video CVVDP
 validation remains a separate step; frame-score concatenation is only screening.
@@ -14,6 +14,7 @@ import csv
 import hashlib
 import json
 import subprocess
+from collections import Counter
 from pathlib import Path
 
 
@@ -63,6 +64,12 @@ def main():
     p.add_argument('--pair-list',type=Path,help='Filter recipes to the videos named in a pair CSV')
     p.add_argument('--role',help='With --pair-list, keep only pairs having this role, e.g. gmad_pilot')
     p.add_argument('--threads',type=int,default=4,help='x265 worker threads for chunk normalization')
+    p.add_argument('--spatial-filter',choices=('bicubic','bilinear'),default='bicubic',
+                   help='Use bilinear to match CVVDP full-screen-resize bilinear')
+    p.add_argument('--preset',choices=('ultrafast','superfast','veryfast','faster','fast','medium'),default='ultrafast',
+                   help='HEVC lossless compression preset; slower settings can reduce disk usage')
+    p.add_argument('--discard-cache',action='store_true',
+                   help='Delete normalized chunks after their last selected use to save disk space')
     p.add_argument('--limit',type=int)
     p.add_argument('--dry-run',action='store_true')
     args=p.parse_args()
@@ -92,11 +99,14 @@ def main():
             sources.append(path.resolve())
         if len(sources)!=3:raise ValueError('Each video requires exactly three chunks')
         resolved[recipe['candidate_id']]=sources
-    pipeline=dict(spatial_filter='bicubic',temporal_filter='reset native frame timestamps; '
+    pipeline=dict(spatial_filter=args.spatial_filter,temporal_filter='reset native frame timestamps; '
                   'tpad one native frame; fps=120:start_time=0:round=near; trim 180 frames',
                   width=1920,height=1080,fps=120,chunk_frames=180,video_frames=540,
                   encoder='libx265',lossless=True,pixel_format='yuv420p',version=2)
+    if args.preset != 'ultrafast':
+        pipeline['preset'] = args.preset
     cache=args.output/'normalized_chunks'
+    remaining=Counter(path for sources in resolved.values() for path in sources)
     normalized={}
     signatures={}
     records=[]
@@ -109,7 +119,7 @@ def main():
             if source not in normalized:
                 info=probe(source)
                 fps=info['r_frame_rate']
-                if (fps not in ('30/1','60/1','120/1') or info['height'] not in (720,1080)
+                if (fps not in ('30/1','60/1','120/1') or info['height'] not in (360,480,720,1080)
                         or abs(float(info['duration'])-1.5)>1/int(fps.split('/')[0])+1e-6
                         or int(info['nb_frames'])!=int(fps.split('/')[0])*1.5):
                     raise ValueError(f'Unexpected source chunk: {source}: {info}')
@@ -123,9 +133,9 @@ def main():
                 if not reusable(chunk,signature,180):
                     cmd=['ffmpeg','-hide_banner','-loglevel','error','-y','-threads','2','-i',str(source),
                          '-vf',f'setpts=N/({source_fps}*TB),tpad=stop_mode=clone:stop=1,'
-                         'scale=1920:1080:flags=bicubic,'
+                         f'scale=1920:1080:flags={args.spatial_filter},'
                          'fps=120:start_time=0:round=near,trim=end_frame=180,setpts=N/(120*TB),setsar=1',
-                         '-an','-fps_mode','passthrough','-c:v','libx265','-preset','ultrafast',
+                         '-an','-fps_mode','passthrough','-c:v','libx265','-preset',args.preset,
                          '-x265-params',f'lossless=1:pools={args.threads}:frame-threads=2:log-level=error',
                          '-pix_fmt','yuv420p','-tag:v','hvc1',str(temporary)]
                     print(f'Normalize {source}',flush=True)
@@ -155,10 +165,18 @@ def main():
                     listing.unlink(missing_ok=True)
         records.append(dict(candidate_id=r['candidate_id'],output=str(target.resolve()),
                             sources=[str(path) for path in sources],normalized_chunks=[str(path.resolve()) for path in chunks]))
+        if args.discard_cache and not args.dry_run:
+            for source in sources:
+                remaining[source]-=1
+                if remaining[source]==0:
+                    cached=normalized.pop(source)
+                    cached.unlink()
+                    cached.with_suffix('.render.json').unlink()
     if not args.dry_run:
         manifest=dict(pipeline=pipeline,recipe_file=str(args.recipes.resolve()),
                       pair_list=str(args.pair_list.resolve()) if args.pair_list else None,
                       role=args.role,video_count=len(records),videos=records)
+        manifest['normalized_cache_retained']=not args.discard_cache
         (args.output/'render_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
         if pairs:
             by_id={r['candidate_id']:r['output'] for r in records}
