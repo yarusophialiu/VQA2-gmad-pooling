@@ -1,15 +1,24 @@
-function results = run_dsis_gmad_480p1080p(subjectId, validateOnly, previewOnly)
-% RUN_DSIS_GMAD_480P1080P DSIS rating of gMAD-selected bistro videos (480p-1080p).
-%   run_dsis_gmad_480p1080p('S01')
-%   plan = run_dsis_gmad_480p1080p('S01', true); % Validate without opening a window.
-%   run_dsis_gmad_480p1080p('S01', false, true); % Windowed preview if fullscreen sync fails
+function results = run_dsis_gmad_480p1080p(subjectId, validateOnly, previewOnly, recipeFile, outDir, scene)
+% RUN_DSIS_GMAD_480P1080P DSIS rating of gMAD-selected videos (480p-1080p).
+%   run_dsis_gmad_480p1080p           % Asks for the scene, then the subject ID.
+%   run_dsis_gmad_480p1080p('S01')    % Asks for the scene.
+%   run_dsis_gmad_480p1080p('S01', false, false, [], [], 'bistro') % No questions.
+%   plan = run_dsis_gmad_480p1080p('S01', true, false, [], [], 'bistro'); % Validate only.
+%   run_dsis_gmad_480p1080p('S01', false, true, [], [], 'bistro'); % Windowed preview
+%   run_dsis_gmad_480p1080p('S01', false, false, recipeFile, outDir) % Any video list
+% Without a recipe file, plays one scene's videos from Version A of the
+% multi-scene gMAD selection and writes to results/dsis_version_a_<scene>.
+% run_dsis_version_a.m plays all of Version A. The earlier 209-video bistro
+% list is gmad_bistro_480p720p1080p_.../selected_video_recipes.json.
+% Each video is compared with its own shot's reference.
 % Each trial: grey "Reference" card -> reference (1080p120 x 3 chunks, 4.5 s)
 % -> grey "Test" card -> test video (4.5 s) -> five-level DSIS impairment
 % scale (ITU-R BT.500). Frames are streamed from the HEVC chunks at their
 % native 30/60/120 fps, as in play_gmad_all_resolutions.m.
 % Keys: 1-5 = choose score; Enter = confirm and next; R = replay trial; Esc = quit.
 % Each rating is appended to <subject>_ratings.csv as soon as it is
-% confirmed. Rerunning with the same subject ID resumes in the saved order.
+% confirmed. Rerunning with the same subject ID resumes in the saved order;
+% a session ends after SESSION_TRIALS ratings.
 
 %% User settings
 FULL_SCREEN = true;                 % true: fullscreen; false: windowed preview
@@ -19,22 +28,18 @@ TITLE_SECONDS = 1.0;                % grey "Reference" card before the reference
 GAP_SECONDS = 1.5;                  % grey "Test" card between reference and test
 GREY = 128;
 BREAK_EVERY = 40;                   % rest screen every N trials (0: never)
+SESSION_TRIALS = 120;               % end the session after N ratings (Inf: no limit)
 TEXT_SIZE = 30;
-TEXT_FONT = 'Microsoft YaHei';      % needs CJK glyphs for the Chinese labels
+TEXT_FONT = 'Arial';
 SKIP_SYNC_TESTS = ~FULL_SCREEN;
 GSTREAMER_BIN = 'C:\gstreamer\1.0\msvc_x86_64\bin';
-SCALE = {5, 'Excellent - Imperceptible',            '无法察觉'
-         4, 'Good - Perceptible, but not annoying', '可察觉，但不恼人'
-         3, 'Fair - Slightly annoying',             '轻微恼人'
-         2, 'Poor - Annoying',                      '恼人'
-         1, 'Bad - Very annoying',                  '非常恼人'};
+SCALE = {5, 'Excellent - Imperceptible'
+         4, 'Good - Perceptible, but not annoying'
+         3, 'Fair - Slightly annoying'
+         2, 'Poor - Annoying'
+         1, 'Bad - Very annoying'};
 
-if nargin < 1 || isempty(subjectId)
-    error('gmad:Subject', 'Usage: run_dsis_gmad_480p1080p(''S01'')');
-end
-subjectId = char(subjectId);
-assert(~isempty(regexp(subjectId, '^[A-Za-z0-9_-]+$', 'once')), 'gmad:Subject', ...
-    'Subject ID may contain only letters, digits, _ and -.');
+if nargin < 1, subjectId = []; end
 if nargin < 2, validateOnly = false; end
 % Explicit preview override leaves the user's fullscreen configuration intact.
 if nargin >= 3 && previewOnly
@@ -44,22 +49,60 @@ end
 
 workspace = fileparts(fileparts(fileparts(mfilename('fullpath'))));
 resultsRoot = fullfile(workspace, 'VQA2-gmad-pooling', 'results');
-recipeFile = fullfile(resultsRoot, 'gmad_bistro_480p720p1080p_skip_negative_no_offset_time_converted', ...
-    'selected_video_recipes.json');
-outDir = fullfile(resultsRoot, 'dsis_bistro_480p720p1080p');
+pickScene = nargin < 4 || isempty(recipeFile);
+if pickScene
+    recipeFile = fullfile(resultsRoot, 'gmad_all_shots_480p720p1080p_skip_negative_no_offset_time_converted', ...
+        'selection_all_scenes', 'video_recipes.json');
+end
 assert(isfile(recipeFile), 'gmad:MissingRecipes', 'Missing recipes: %s', recipeFile);
 recipes = jsondecode(fileread(recipeFile));
+if pickScene
+    % Recipe "scene" is the shot group, e.g. forza__forza_1; the scene is its prefix.
+    sceneOf = extractBefore(string({recipes.scene}) + "__", "__");
+    names = unique(sceneOf);
+    if nargin < 6 || isempty(scene)
+        fprintf('Scenes in Version A:\n');
+        for s = 1:numel(names)
+            members = recipes(sceneOf == names(s));
+            fprintf('  %2d  %-10s %2d videos, %d shot(s)\n', s, names(s), numel(members), ...
+                numel(unique(string({members.scene}))));
+        end
+        scene = strtrim(input('Scene (number or name): ', 's'));
+        if ~isnan(str2double(scene)) && any(str2double(scene) == 1:numel(names))
+            scene = names(str2double(scene));
+        end
+    end
+    scene = string(scene);
+    assert(any(names == scene), 'gmad:Scene', 'Unknown scene "%s". Choose one of: %s.', scene, strjoin(names, ', '));
+    recipes = recipes(sceneOf == scene);
+    fprintf('Scene: %s (%d videos)\n', scene, numel(recipes));
+    if nargin < 5 || isempty(outDir)
+        outDir = fullfile(resultsRoot, "dsis_version_a_" + scene);
+    end
+end
+assert(nargin >= 5 && ~isempty(outDir) || pickScene, 'gmad:OutDir', 'Pass outDir together with recipeFile.');
+outDir = char(outDir);
+if isempty(subjectId)
+    % Clicking Run in the editor passes no arguments; ask in the Command Window,
+    % offering the next unused number so that new subjects never reuse an ID.
+    suggested = nextSubjectId(outDir);
+    subjectId = strtrim(input(sprintf('Subject ID [Enter = %s, or the same ID to resume]: ', suggested), 's'));
+    if isempty(subjectId), subjectId = suggested; end
+end
+subjectId = char(subjectId);
+assert(~isempty(regexp(subjectId, '^[A-Za-z0-9_-]+$', 'once')), 'gmad:Subject', ...
+    'Subject ID may contain only letters, digits, _ and -.');
 n = numel(recipes);
 assert(n > 0, 'gmad:InvalidRecipes', 'No selected videos in %s.', recipeFile);
-refPaths = string(recipes(1).source_references(:))';
 ids = strings(n, 1); labels = strings(n, 3); testPaths = strings(n, 3);
+shots = strings(n, 1); refPaths = strings(n, 3);
 specs = zeros(n, 3, 3);
 heights = [480 720 1080]; widths = [854 1280 1920];
 for v = 1:n
     r = recipes(v);
     ids(v) = r.candidate_id;
-    assert(string(r.scene) == "bistro" && isequal(string(r.source_references(:))', refPaths), ...
-        'gmad:InvalidRecipes', 'Expected bistro videos sharing one reference: %s', ids(v));
+    shots(v) = r.scene;
+    refPaths(v,:) = string(r.source_references(:))';
     for c = 1:3
         labels(v,c) = r.(sprintf('chunk%d', c));
         token = regexp(char(labels(v,c)), '^(480|720|1080)p(30|60|120)$', 'tokens', 'once');
@@ -70,20 +113,24 @@ for v = 1:n
         testPaths(v,c) = r.source_videos{c};
         % 1080p120 is the reference itself. Use the reference file (same
         % pixels, corrected last packet duration), as the pair player does.
-        if labels(v,c) == "1080p120", testPaths(v,c) = refPaths(c); end
+        if labels(v,c) == "1080p120", testPaths(v,c) = refPaths(v,c); end
         assert(isfile(testPaths(v,c)), 'gmad:MissingChunk', 'Missing HEVC chunk: %s', testPaths(v,c));
+        assert(isfile(refPaths(v,c)), 'gmad:MissingChunk', 'Missing reference chunk: %s', refPaths(v,c));
     end
-    assert(ids(v) == "bistro__" + strjoin(labels(v,:), '-'), ...
+    assert(ids(v) == shots(v) + "__" + strjoin(labels(v,:), '-'), ...
         'gmad:SettingsMismatch', 'Candidate identifier and settings disagree: %s', ids(v));
 end
 assert(numel(unique(ids)) == n, 'gmad:InvalidRecipes', 'Expected unique candidate IDs.');
-for c = 1:3
-    assert(isfile(refPaths(c)), 'gmad:MissingChunk', 'Missing reference chunk: %s', refPaths(c));
+% One reference per shot, so the reference shown always matches the test content.
+[shotNames, ~, shotIndex] = unique(shots);
+for s = 1:numel(shotNames)
+    assert(size(unique(refPaths(shotIndex == s, :), 'rows'), 1) == 1, 'gmad:InvalidRecipes', ...
+        'Shot %s uses more than one reference.', shotNames(s));
 end
-plan = table(ids, labels(:,1), labels(:,2), labels(:,3), ...
-    'VariableNames', {'candidate_id', 'chunk1', 'chunk2', 'chunk3'});
-fprintf('Validated %d gMAD-selected videos / %d HEVC test chunks + 3 reference chunks.\n', ...
-    n, numel(unique(testPaths(:))));
+plan = table(ids, shots, labels(:,1), labels(:,2), labels(:,3), ...
+    'VariableNames', {'candidate_id', 'shot', 'chunk1', 'chunk2', 'chunk3'});
+fprintf('Validated %d gMAD-selected videos from %d shots / %d HEVC test chunks + %d reference chunks.\n', ...
+    n, numel(shotNames), numel(unique(testPaths(:))), numel(unique(refPaths(:))));
 fprintf('Recipes: %s\n', recipeFile);
 results = plan;
 if validateOnly, return; end
@@ -98,20 +145,30 @@ if isfile(orderFile)
     assert(height(saved) == n && isequal(sort(saved.candidate_id), sort(ids)), 'gmad:OrderMismatch', ...
         'Saved order %s does not match the current recipes.', orderFile);
     order = saved.candidate_id;
+    seed = double(saved.seed(1));
 else
     stream = RandStream('mt19937ar', 'Seed', 'shuffle');
     order = ids(randperm(stream, n));
-    writetable(table((1:n)', order, repmat(stream.Seed, n, 1), ...
+    seed = double(stream.Seed);
+    writetable(table((1:n)', order, repmat(seed, n, 1), ...
         'VariableNames', {'trial', 'candidate_id', 'seed'}), orderFile);
 end
 [~, videoIndex] = ismember(order, ids);
 done = strings(0, 1);
 if isfile(ratingFile)
+    % Ratings written before the seed column existed get it inserted after "subject".
+    lines = readlines(ratingFile);
+    lines = lines(strlength(lines) > 0);
+    if ~startsWith(lines(1), "subject,seed,")
+        lines(1) = replace(lines(1), "subject,", "subject,seed,");
+        lines(2:end) = extractBefore(lines(2:end), ",") + "," + sprintf('%d', seed) + "," + extractAfter(lines(2:end), ",");
+        writelines(lines, ratingFile);
+    end
     previous = readtable(ratingFile, 'TextType', 'string', 'Delimiter', ',');
     if height(previous) > 0, done = previous.candidate_id; end
 else
     fid = fopen(ratingFile, 'w');
-    fprintf(fid, ['subject,trial,candidate_id,chunk1,chunk2,chunk3,score,replays,' ...
+    fprintf(fid, ['subject,seed,trial,candidate_id,chunk1,chunk2,chunk3,score,replays,' ...
         'rating_time_s,reference_skipped_samples,test_skipped_samples,timestamp\n']);
     fclose(fid);
 end
@@ -122,6 +179,8 @@ if isempty(remaining)
     results = readtable(ratingFile, 'TextType', 'string');
     return;
 end
+sessionEnd = remaining(min(end, SESSION_TRIALS));
+remaining = remaining(1:min(end, SESSION_TRIALS));
 
 %% Psychtoolbox setup
 % A handle map makes resource cleanup safe during errors and Ctrl+C.
@@ -159,18 +218,13 @@ drawSize = [1920 1080] * min(windowSize ./ [1920 1080]);
 origin = (windowSize - drawSize) / 2;
 destination = [origin origin + drawSize];
 
-showMessage(window, GREY, {'Loading reference video...', '正在加载参考视频...'});
-for c = 1:3
-    openMovie(window, resources, c, refPaths(c), [1920 1080 120]);
-end
 refSpecs = repmat([1920 1080 120], 3, 1);
+loadedShot = "";
 
 drawScale(window, GREY, SCALE, 0, ...
     {'Each trial shows the REFERENCE video, then the TEST video (4.5 s each).', ...
-     '每组先播放参考视频，再播放测试视频（各 4.5 秒）。', ...
-     'Rate the impairment of the TEST video compared with the REFERENCE:', ...
-     '请根据测试视频相对参考视频的损伤程度打分：'}, ...
-    {'Press Enter to start   |   按 Enter 开始'});
+     'Rate the impairment of the TEST video compared with the REFERENCE:'}, ...
+    {'Press Enter to start'});
 Screen('Flip', window);
 if ~waitForEnter(keys), return; end
 
@@ -178,11 +232,18 @@ if ~waitForEnter(keys), return; end
 for k = remaining
     v = videoIndex(k);
     if BREAK_EVERY > 0 && k ~= remaining(1) && mod(k-1, BREAK_EVERY) == 0
-        showMessage(window, GREY, {sprintf('Break: %d / %d done.', k-1, n), ...
-            sprintf('休息一下：已完成 %d / %d。', k-1, n), '', 'Press Enter to continue   |   按 Enter 继续'});
+        showMessage(window, GREY, {sprintf('Break: %d / %d done.', k-1, n), '', 'Press Enter to continue'});
         if ~waitForEnter(keys), return; end
     end
-    showMessage(window, GREY, {'Loading...', '正在加载...'});
+    showMessage(window, GREY, {'Loading...'});
+    % Reference decoders stay open while consecutive trials share a shot.
+    if shots(v) ~= loadedShot
+        closeSlots(resources, 1:3);
+        for c = 1:3
+            openMovie(window, resources, c, refPaths(v,c), refSpecs(c,:));
+        end
+        loadedShot = shots(v);
+    end
     closeSlots(resources, 4:6);
     for c = 1:3
         openMovie(window, resources, 3 + c, testPaths(v,c), squeeze(specs(v,c,:))');
@@ -190,21 +251,21 @@ for k = remaining
     fprintf('TRIAL %d/%d: %s\n', k, n, ids(v));
     replays = 0;
     while true
-        [vbl, refSkipped, quit] = playClip(window, resources, 1:3, refSpecs, refPaths, ...
-            {'Reference', '参考视频'}, 0, TITLE_SECONDS, destination, ifi, keys, GREY);
+        [vbl, refSkipped, quit] = playClip(window, resources, 1:3, refSpecs, refPaths(v,:), ...
+            {'Reference'}, 0, TITLE_SECONDS, destination, ifi, keys, GREY);
         if quit, return; end
         [vbl, testSkipped, quit] = playClip(window, resources, 4:6, squeeze(specs(v,:,:)), testPaths(v,:), ...
-            {'Test', '测试视频'}, vbl + 0.5*ifi, GAP_SECONDS, destination, ifi, keys, GREY);
+            {'Test'}, vbl + 0.5*ifi, GAP_SECONDS, destination, ifi, keys, GREY);
         if quit, return; end
         [score, action, ratingTime] = rateVideo(window, GREY, SCALE, keys, vbl + 0.5*ifi, ...
             {sprintf('Trial %d / %d', k, n), ...
-             '1-5: choose   Enter: confirm   R: replay   |   1-5：选择   Enter：确认   R：重播'});
+             '1-5: choose   Enter: confirm   R: replay'});
         if strcmp(action, 'quit'), return; end
         if strcmp(action, 'next'), break; end
         replays = replays + 1;
     end
     fid = fopen(ratingFile, 'a');
-    fprintf(fid, '%s,%d,%s,%s,%s,%s,%d,%d,%.3f,%d,%d,%s\n', subjectId, k, ids(v), ...
+    fprintf(fid, '%s,%d,%d,%s,%s,%s,%s,%d,%d,%.3f,%d,%d,%s\n', subjectId, seed, k, ids(v), ...
         labels(v,1), labels(v,2), labels(v,3), ...
         score, replays, ratingTime, refSkipped, testSkipped, ...
         char(datetime('now', 'Format', 'yyyy-MM-dd''T''HH:mm:ss')));
@@ -212,10 +273,28 @@ for k = remaining
     fprintf('  score=%d, replays=%d, skipped samples ref/test=%d/%d\n', ...
         score, replays, refSkipped, testSkipped);
 end
-showMessage(window, GREY, {'Finished. Thank you!', '实验结束，谢谢！'});
-WaitSecs(2);
 results = readtable(ratingFile, 'TextType', 'string');
+if height(results) < n
+    showMessage(window, GREY, {sprintf('Session finished: %d / %d done. Thank you!', height(results), n)});
+    WaitSecs(2);
+    fprintf('Session ended after trial %d: %d/%d rated. Rerun with the same subject ID to continue.\n', ...
+        sessionEnd, height(results), n);
+    return;
+end
+showMessage(window, GREY, {'Finished. Thank you!'});
+WaitSecs(2);
 fprintf('All %d videos rated. Ratings: %s\n', n, ratingFile);
+end
+
+function id = nextSubjectId(outDir)
+% Next unused "S<NN>_<yyyymmdd>" ID, numbering past every S<NN> already in outDir.
+used = 0;
+listing = dir(fullfile(outDir, 'S*_order.csv'));
+for file = listing'
+    token = regexp(file.name, '^S(\d+)', 'tokens', 'once');
+    if ~isempty(token), used = max(used, str2double(token{1})); end
+end
+id = sprintf('S%02d_%s', used + 1, char(datetime('now', 'Format', 'yyyyMMdd')));
 end
 
 function [vbl, skipped, quit] = playClip(window, resources, slots, chunkSpecs, sources, card, when, cardSeconds, destination, ifi, keys, grey)
@@ -263,8 +342,7 @@ end
 function [score, action, ratingTime] = rateVideo(window, grey, scale, keys, when, footer)
 score = 0; action = '';
 KbQueueFlush;
-header = {'Rate the impairment of the TEST video compared with the REFERENCE', ...
-    '请评价测试视频相对参考视频的损伤程度'};
+header = {'Rate the impairment of the TEST video compared with the REFERENCE'};
 drawScale(window, grey, scale, score, header, footer);
 onset = Screen('Flip', window, when);
 while isempty(action)
@@ -286,13 +364,13 @@ ratingTime = GetSecs - onset;
 end
 
 function drawScale(window, grey, scale, score, header, footer)
-% Five DSIS levels as aligned columns: score, English label, Chinese label.
+% Five DSIS levels as aligned columns: score, label.
 Screen('FillRect', window, grey);
 [width, height] = Screen('WindowSize', window);
 rowHeight = round(Screen('TextSize', window) * 1.8);
-columnWidth = @(column) max(cellfun(@(text) textWidth(window, text), scale(:,column)));
+labelWidth = max(cellfun(@(text) textWidth(window, text), scale(:,2)));
 numberWidth = textWidth(window, '5'); gap = rowHeight;
-x = (width - (numberWidth + columnWidth(2) + columnWidth(3) + 2*gap)) / 2;
+x = (width - (numberWidth + labelWidth + gap)) / 2;
 top = (height - (numel(header) + size(scale, 1) + numel(footer) + 2) * rowHeight) / 2;
 drawLines(window, header, 255, top, rowHeight);
 for row = 1:size(scale, 1)
@@ -303,7 +381,6 @@ for row = 1:size(scale, 1)
     end
     Screen('DrawText', window, double(num2str(scale{row,1})), x, y, 255);
     Screen('DrawText', window, double(scale{row,2}), x + numberWidth + gap, y, 255);
-    Screen('DrawText', window, double(scale{row,3}), x + numberWidth + columnWidth(2) + 2*gap, y, 255);
 end
 drawLines(window, footer, 220, top + (numel(header) + size(scale, 1) + 2) * rowHeight, rowHeight);
 end
