@@ -102,7 +102,9 @@ for v = 1:n
     r = recipes(v);
     ids(v) = r.candidate_id;
     shots(v) = r.scene;
-    refPaths(v,:) = string(r.source_references(:))';
+    for c = 1:3
+        refPaths(v,c) = localPath(string(r.source_references{c}), workspace);
+    end
     for c = 1:3
         labels(v,c) = r.(sprintf('chunk%d', c));
         token = regexp(char(labels(v,c)), '^(480|720|1080)p(30|60|120)$', 'tokens', 'once');
@@ -110,7 +112,7 @@ for v = 1:n
             'This experiment expects only 480p/720p/1080p at 30/60/120 fps: %s', ids(v));
         h = str2double(token{1});
         specs(v,c,:) = [widths(heights == h), h, str2double(token{2})];
-        testPaths(v,c) = r.source_videos{c};
+        testPaths(v,c) = localPath(string(r.source_videos{c}), workspace);
         % 1080p120 is the reference itself. Use the reference file (same
         % pixels, corrected last packet duration), as the pair player does.
         if labels(v,c) == "1080p120", testPaths(v,c) = refPaths(v,c); end
@@ -284,6 +286,18 @@ end
 showMessage(window, GREY, {'Finished. Thank you!'});
 WaitSecs(2);
 fprintf('All %d videos rated. Ratings: %s\n', n, ratingFile);
+end
+
+function path = localPath(path, workspace)
+% Recipes store absolute paths from the machine that made them. When a path is
+% missing here, look for the same file under this workspace's VQA2-dataset,
+% so any <root>/VQA2-gmad-pooling + <root>/VQA2-dataset layout works.
+if isfile(path), return; end
+relative = regexp(char(path), '[\\/]VQA2-dataset[\\/](.*)$', 'tokens', 'once');
+if ~isempty(relative)
+    candidate = string(fullfile(workspace, 'VQA2-dataset', strrep(relative{1}, '/', filesep)));
+    if isfile(candidate), path = candidate; end
+end
 end
 
 function id = nextSubjectId(outDir)
