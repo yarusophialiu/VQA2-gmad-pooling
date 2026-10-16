@@ -35,6 +35,8 @@
 | `gmad/run_selection.py` | 拼接候选分数序列、计算规则预测、执行 gMAD 搜索并生成 CSV/JSON 清单。 |
 | `gmad/build_result_report.py`、`gmad/build_english_result_report.py` | 从现有结果文件生成中英文 HTML；不重新执行选片。 |
 | `gmad/render_selected_videos.py` | 按 JSON 配方实际拼接入选视频；需要源 MP4、`ffmpeg` 和 `ffprobe`。 |
+| `gmad/run_dsis_gmad_480p1080p.m`、`gmad/run_dsis_version_a.m` | DSIS 主观打分实验（单个场景／Version A 全部场景）。用法、输出和 recipes 格式见 [`gmad/DSIS_EXPERIMENT.md`](gmad/DSIS_EXPERIMENT.md)。 |
+| `gmad/package_dsis_videos.py` | 把实验要播放的视频按场景打包，拿到另一台机器上运行。 |
 | `results/gmad_selection_skip_negative_no_offset_time_converted/` | 当前采用的选片结果、报告和视频拼接配方。 |
 | `results/legacy/` | 旧参数版本、对比结果和逐帧分数输入。 |
 
