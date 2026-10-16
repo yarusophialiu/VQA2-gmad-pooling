@@ -1,0 +1,15 @@
+{
+  "description": "25 pairs per scene from sibenik, gallery, forza, spiderman, heros3; likely-imperceptible pairs excluded",
+  "pairs": 125,
+  "videos": 212,
+  "scenes": {
+    "forza": 25,
+    "gallery": 25,
+    "heros3": 25,
+    "sibenik": 25,
+    "spiderman": 25
+  },
+  "perceptibility": {
+    "likely_perceptible": 125
+  }
+}

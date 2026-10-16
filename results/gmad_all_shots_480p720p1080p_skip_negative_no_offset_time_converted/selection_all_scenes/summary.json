@@ -1,0 +1,25 @@
+{
+  "description": "10 pairs per scene from all scenes; perceptibility labelled, none excluded",
+  "pairs": 130,
+  "videos": 239,
+  "scenes": {
+    "bistro": 10,
+    "car": 10,
+    "forza": 10,
+    "fox": 10,
+    "gallery": 10,
+    "heros3": 10,
+    "lego": 10,
+    "makeway": 10,
+    "ratchet": 10,
+    "rogue": 10,
+    "school": 10,
+    "sibenik": 10,
+    "spiderman": 10
+  },
+  "perceptibility": {
+    "likely_imperceptible": 1,
+    "likely_perceptible": 127,
+    "possibly_imperceptible": 2
+  }
+}

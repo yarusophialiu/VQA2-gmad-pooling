@@ -1,0 +1,161 @@
+{
+  "scene_ranking": [
+    {
+      "scene": "sibenik",
+      "shots": 1,
+      "gmad_pairs": 271,
+      "median_max_model_gap": 4.4412,
+      "share_likely_perceptible": 1.0,
+      "share_likely_imperceptible": 0.0,
+      "rank": 1
+    },
+    {
+      "scene": "gallery",
+      "shots": 1,
+      "gmad_pairs": 239,
+      "median_max_model_gap": 3.6968,
+      "share_likely_perceptible": 0.9916,
+      "share_likely_imperceptible": 0.0,
+      "rank": 2
+    },
+    {
+      "scene": "forza",
+      "shots": 3,
+      "gmad_pairs": 828,
+      "median_max_model_gap": 3.5433,
+      "share_likely_perceptible": 0.9964,
+      "share_likely_imperceptible": 0.0,
+      "rank": 3
+    },
+    {
+      "scene": "spiderman",
+      "shots": 3,
+      "gmad_pairs": 811,
+      "median_max_model_gap": 3.4298,
+      "share_likely_perceptible": 0.9938,
+      "share_likely_imperceptible": 0.0025,
+      "rank": 4
+    },
+    {
+      "scene": "heros3",
+      "shots": 3,
+      "gmad_pairs": 764,
+      "median_max_model_gap": 3.0247,
+      "share_likely_perceptible": 0.9961,
+      "share_likely_imperceptible": 0.0,
+      "rank": 5
+    },
+    {
+      "scene": "makeway",
+      "shots": 1,
+      "gmad_pairs": 262,
+      "median_max_model_gap": 2.7912,
+      "share_likely_perceptible": 0.9427,
+      "share_likely_imperceptible": 0.0,
+      "rank": 6
+    },
+    {
+      "scene": "rogue",
+      "shots": 1,
+      "gmad_pairs": 283,
+      "median_max_model_gap": 2.7835,
+      "share_likely_perceptible": 1.0,
+      "share_likely_imperceptible": 0.0,
+      "rank": 7
+    },
+    {
+      "scene": "ratchet",
+      "shots": 3,
+      "gmad_pairs": 814,
+      "median_max_model_gap": 2.5773,
+      "share_likely_perceptible": 0.9754,
+      "share_likely_imperceptible": 0.0,
+      "rank": 8
+    },
+    {
+      "scene": "lego",
+      "shots": 3,
+      "gmad_pairs": 859,
+      "median_max_model_gap": 2.4574,
+      "share_likely_perceptible": 0.9884,
+      "share_likely_imperceptible": 0.0012,
+      "rank": 9
+    },
+    {
+      "scene": "car",
+      "shots": 3,
+      "gmad_pairs": 784,
+      "median_max_model_gap": 2.3339,
+      "share_likely_perceptible": 0.9503,
+      "share_likely_imperceptible": 0.0026,
+      "rank": 10
+    },
+    {
+      "scene": "bistro",
+      "shots": 1,
+      "gmad_pairs": 255,
+      "median_max_model_gap": 1.8474,
+      "share_likely_perceptible": 0.9686,
+      "share_likely_imperceptible": 0.0078,
+      "rank": 11
+    },
+    {
+      "scene": "school",
+      "shots": 1,
+      "gmad_pairs": 240,
+      "median_max_model_gap": 1.6878,
+      "share_likely_perceptible": 0.9208,
+      "share_likely_imperceptible": 0.0,
+      "rank": 12
+    },
+    {
+      "scene": "fox",
+      "shots": 4,
+      "gmad_pairs": 986,
+      "median_max_model_gap": 1.1213,
+      "share_likely_perceptible": 0.571,
+      "share_likely_imperceptible": 0.0933,
+      "rank": 13
+    }
+  ],
+  "all_scenes": {
+    "description": "10 pairs per scene from all scenes; perceptibility labelled, none excluded",
+    "pairs": 130,
+    "videos": 239,
+    "scenes": {
+      "bistro": 10,
+      "car": 10,
+      "forza": 10,
+      "fox": 10,
+      "gallery": 10,
+      "heros3": 10,
+      "lego": 10,
+      "makeway": 10,
+      "ratchet": 10,
+      "rogue": 10,
+      "school": 10,
+      "sibenik": 10,
+      "spiderman": 10
+    },
+    "perceptibility": {
+      "likely_imperceptible": 1,
+      "likely_perceptible": 127,
+      "possibly_imperceptible": 2
+    }
+  },
+  "subset_scenes": {
+    "description": "25 pairs per scene from sibenik, gallery, forza, spiderman, heros3; likely-imperceptible pairs excluded",
+    "pairs": 125,
+    "videos": 212,
+    "scenes": {
+      "forza": 25,
+      "gallery": 25,
+      "heros3": 25,
+      "sibenik": 25,
+      "spiderman": 25
+    },
+    "perceptibility": {
+      "likely_perceptible": 125
+    }
+  }
+}

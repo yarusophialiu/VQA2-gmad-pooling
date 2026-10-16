@@ -38,14 +38,14 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def load(root):
+def load(root, group_by='scene'):
     manifest_path = root / 'manifest.json'
     records = json.loads(manifest_path.read_text())
     chunks, provenance, audit = {}, [], []
     for r in records:
         # Steam exports identify content by shot rather than a separate scene.
         # Keep each full shot path distinct and make its candidate IDs file-safe.
-        if 'scene' not in r:
+        if group_by == 'shot' or 'scene' not in r:
             r = dict(r, scene=r['shot'].replace('/', '__'))
         key = (r['scene'], r['chunk'], r['height'], r['fps'])
         if key in chunks:
@@ -214,6 +214,8 @@ def main():
     parser.add_argument('--epsilon-cap',type=float,default=.10)
     parser.add_argument('--min-attack-fraction',type=float,default=.10)
     parser.add_argument('--seed',type=int,default=20260930)
+    parser.add_argument('--group-by',choices=('scene','shot'),default='scene',
+                        help='Content group for candidates and pairs: manifest scene, or each shot separately')
     parser.add_argument('--time-policy',choices=('original','converted'),default='converted',
                         help='Use 100/125 frames or time-equivalent 480/600 frames')
     parser.add_argument('--skip-negative',action='store_true',
@@ -224,7 +226,7 @@ def main():
     assert args.bins>=2 and args.epsilon_fraction>0 and args.epsilon_cap>0
     torch.set_num_threads(1)
     out=args.output;out.mkdir(parents=True,exist_ok=True)
-    candidates,original_q,audit,provenance,manifest_hash=load(args.input)
+    candidates,original_q,audit,provenance,manifest_hash=load(args.input,args.group_by)
     q=[row[row>=0] for row in original_q] if args.skip_negative else original_q
     assert all(len(row)>0 for row in q)
     offset=args.input_offset if args.input_offset is not None else max(0.,1.-min(float(row.min()) for row in q))
@@ -343,7 +345,8 @@ def main():
                              n_segments=3,cumulative_quality='duration weighted; 50/60 s windows reduce to mean'),
         rules=RULES,representative=reps,seed=args.seed,
         input_root=str(args.input.resolve()),
-        content_group_policy='manifest scene when present; otherwise full shot path with / replaced by __',
+        content_group_policy=('full shot path with / replaced by __' if args.group_by=='shot' else
+                              'manifest scene when present; otherwise full shot path with / replaced by __'),
         selection_source_sha256=digest(Path(__file__)),
         source_manifest_sha256=manifest_hash,pooling_source_sha256=digest(Path(pooling.__file__)),
         source_files=provenance)

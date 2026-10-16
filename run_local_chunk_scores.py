@@ -37,6 +37,7 @@ def main():
     parser.add_argument('--cvvdp-root', type=Path, help='Use this local CVVDP checkout rather than the default import')
     parser.add_argument('--scene', default='bistro')
     parser.add_argument('--shot', default='bistro_path2_seg3_1')
+    parser.add_argument('--shots', nargs='+', help='scene/shot pairs to score into one manifest; overrides --scene/--shot')
     parser.add_argument('--heights', type=int, nargs='+', default=[360, 480])
     parser.add_argument('--device', default='cuda:0')
     parser.add_argument('--gpu-mem', type=float, default=4)
@@ -51,25 +52,25 @@ def main():
     from per_frame_quality import cvvdp_per_frame_jod
     torch.set_num_threads(4)
     metric = pycvvdp.cvvdp(display_name='standard_fhd', device=torch.device(args.device), gpu_mem=args.gpu_mem, quiet=True)
-    source_dir = args.source_root / args.scene / args.shot
-    shot = f'{args.scene}/{args.shot}'
-    out_dir = args.output_root / shot
     jobs = []
-    for chunk in (1, 2, 3):
-        ref = source_dir / 'references' / f'ref_chunk{chunk}_lossless_hevc.mp4'
-        info = probe(ref)
-        assert int(info['nb_frames']) == 180 and Fraction(info['r_frame_rate']) == 120, (ref, info)
-        for height in args.heights:
-            for fps in (30, 60, 120):
-                test = source_dir / 'videos' / f'chunk{chunk}_{height}p{fps}_lossless_hevc.mp4'
-                test_info = probe(test)
-                assert test_info['height'] == height and Fraction(test_info['r_frame_rate']) == fps
-                assert int(test_info['nb_frames']) == fps * 1.5 and abs(float(test_info['duration']) - 1.5) <= 1 / fps + 1e-6
-                jobs.append((chunk, height, fps, test.resolve(), ref.resolve()))
+    for shot in args.shots or [f'{args.scene}/{args.shot}']:
+        source_dir = args.source_root / shot
+        for chunk in (1, 2, 3):
+            ref = source_dir / 'references' / f'ref_chunk{chunk}_lossless_hevc.mp4'
+            info = probe(ref)
+            assert int(info['nb_frames']) == 180 and Fraction(info['r_frame_rate']) == 120, (ref, info)
+            for height in args.heights:
+                for fps in (30, 60, 120):
+                    test = source_dir / 'videos' / f'chunk{chunk}_{height}p{fps}_lossless_hevc.mp4'
+                    test_info = probe(test)
+                    assert test_info['height'] == height and Fraction(test_info['r_frame_rate']) == fps
+                    assert int(test_info['nb_frames']) == fps * 1.5 and abs(float(test_info['duration']) - 1.5) <= 1 / fps + 1e-6
+                    jobs.append((shot, chunk, height, fps, test.resolve(), ref.resolve()))
     if args.limit is not None:
         jobs = jobs[:args.limit]
-    for folder in ('features', 'native', 'frames', 'references'):
-        (out_dir / folder).mkdir(parents=True, exist_ok=True)
+    for shot in dict.fromkeys(job[0] for job in jobs):
+        for folder in ('features', 'native', 'frames', 'references'):
+            (args.output_root / shot / folder).mkdir(parents=True, exist_ok=True)
     implementation = Path(pycvvdp.__file__).parent
     pipeline = dict(display='standard_fhd', full_screen_resize='bilinear', temporal_resample_fps=120,
                     temporal_padding='replicate', metric_version=metric.version,
@@ -81,7 +82,8 @@ def main():
                     gpu_mem=args.gpu_mem, device=args.device, torch_version=torch.__version__)
     write_json(args.output_root / 'scoring_config.json', pipeline)
     records, normalized = [], {}
-    for number, (chunk, height, fps, test, original_ref) in enumerate(jobs, 1):
+    for number, (shot, chunk, height, fps, test, original_ref) in enumerate(jobs, 1):
+        out_dir = args.output_root / shot
         if original_ref not in normalized:
             ref = original_ref
             info = probe(ref)
@@ -134,7 +136,7 @@ def main():
         reusable = (cache_metadata.is_file() and features.is_file() and native.is_file() and frames.is_file()
                     and frames.with_suffix('.metadata.json').is_file()
                     and json.loads(cache_metadata.read_text()) == signature)
-        print(f'[{number}/{len(jobs)}] {"Reuse" if reusable else "CVVDP"} {test.name}', flush=True)
+        print(f'[{number}/{len(jobs)}] {"Reuse" if reusable else "CVVDP"} {shot} {test.name}', flush=True)
         if reusable:
             with native.open(newline='') as stream:
                 jod = float(next(csv.DictReader(stream))['cvvdp'])
@@ -174,7 +176,7 @@ def main():
             gc.collect()
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
-        record = dict(scene=args.scene, shot=shot, chunk=chunk, height=height, fps=fps,
+        record = dict(scene=shot.split('/')[0], shot=shot, chunk=chunk, height=height, fps=fps,
                       test=test.as_posix(), reference=ref.as_posix(), original_reference=original_ref.as_posix(),
                       native_jod=jod, frames_csv=frames.resolve().as_posix(),
                       source_frames=metadata['source_frames'], usable_for_design=metadata['usable_for_design'])

@@ -1,0 +1,90 @@
+{
+  "candidates": 20412,
+  "rules": 15,
+  "effective_rules": 12,
+  "scenes": [
+    "bistro__bistro_01",
+    "car__car_01",
+    "car__car_02",
+    "car__car_03",
+    "forza__forza_1",
+    "forza__forza_2",
+    "forza__forza_3",
+    "fox__fox_01",
+    "fox__fox_02",
+    "fox__fox_03",
+    "fox__fox_04",
+    "gallery__gallery_01",
+    "heros3__heros3_01",
+    "heros3__heros3_02",
+    "heros3__heros3_03",
+    "lego__lego_01",
+    "lego__lego_02",
+    "lego__lego_03",
+    "makeway__makeway_01",
+    "ratchet__ratchet_01",
+    "ratchet__ratchet_02",
+    "ratchet__ratchet_03",
+    "rogue__rogue_01",
+    "school__school_01",
+    "sibenik__sibenik_01",
+    "spiderman__spiderman_01",
+    "spiderman__spiderman_02",
+    "spiderman__spiderman_03"
+  ],
+  "attack_tasks": 17640,
+  "task_status": {
+    "equivalent_rules": 672,
+    "insufficient_attack_gap": 289,
+    "selected": 16679
+  },
+  "gmad_unique_pairs": 7396,
+  "compact_tasks": 630,
+  "compact_unique_pairs": 505,
+  "pilot_unique_pairs": 391,
+  "pilot_unique_videos": 678,
+  "all_selected_videos": 6398,
+  "min_raw_score": 0.306369781,
+  "max_raw_score": 10.0,
+  "input_offset": 0.0,
+  "negative_input_samples": 24,
+  "skipped_candidate_frame_values": 1944,
+  "candidates_with_skipped_frames": 1215,
+  "candidate_frame_count_distribution": {
+    "538": 729,
+    "539": 486,
+    "540": 19197
+  },
+  "sensitivity": [
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.025,
+      "selected_tasks": 16471,
+      "unique_pairs": 7266,
+      "pair_jaccard": 0.3309731299927378
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.05,
+      "selected_tasks": 16679,
+      "unique_pairs": 7396,
+      "pair_jaccard": 1.0
+    },
+    {
+      "kind": "epsilon_fraction",
+      "value": 0.1,
+      "selected_tasks": 16801,
+      "unique_pairs": 7412,
+      "pair_jaccard": 0.6906039502226281
+    },
+    {
+      "kind": "input_offset",
+      "value": 1.0,
+      "selected_tasks": 16638,
+      "unique_pairs": 7330,
+      "pair_jaccard": 0.762748384007661
+    }
+  ],
+  "max_cqm_tail_bias": 0.3867822212624077,
+  "boundary_validation": "not yet performed; no final subjective ranking is available"
+}
