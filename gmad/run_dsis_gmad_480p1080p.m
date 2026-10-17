@@ -13,8 +13,9 @@ function results = run_dsis_gmad_480p1080p(subjectId, validateOnly, previewOnly,
 % Each video is compared with its own shot's reference.
 % Each trial: grey "Reference" card -> reference (1080p120 x 3 chunks, 4.5 s)
 % -> grey "Test" card -> test video (4.5 s) -> five-level DSIS impairment
-% scale (ITU-R BT.500). Frames are streamed from the HEVC chunks at their
-% native 30/60/120 fps, as in play_gmad_all_resolutions.m.
+% scale (ITU-R BT.500). Every frame of each HEVC chunk is decoded into a GPU
+% texture during "Loading...", then shown at its native 30/60/120 fps, so no
+% decoding runs during playback.
 % Keys: 1-5 = choose score; Enter = confirm and next; R = replay trial; Esc = quit.
 % Each rating is appended to <subject>_ratings.csv as soon as it is
 % confirmed. Rerunning with the same subject ID resumes in the saved order;
@@ -31,8 +32,11 @@ BREAK_EVERY = 40;                   % rest screen every N trials (0: never)
 SESSION_TRIALS = 120;               % end the session after N ratings (Inf: no limit)
 TEXT_SIZE = 30;
 TEXT_FONT = 'Arial';
+SHOW_CHUNK_INFO = true;            % true: overlay current chunk resolution/fps top-left (debug only)
+LOG_FLIP_TIMING = true;             % true: save per-flip timing of every clip to <outDir>/flip_timing (plot_flip_timing.m)
 SKIP_SYNC_TESTS = ~FULL_SCREEN;
-GSTREAMER_BIN = 'C:\gstreamer\1.0\msvc_x86_64\bin';
+% GSTREAMER_BIN = 'C:\gstreamer\1.0\msvc_x86_64\bin';
+GSTREAMER_BIN = '';
 SCALE = {5, 'Excellent - Imperceptible'
          4, 'Good - Perceptible, but not annoying'
          3, 'Fair - Slightly annoying'
@@ -186,10 +190,11 @@ remaining = remaining(1:min(end, SESSION_TRIALS));
 
 %% Psychtoolbox setup
 % A handle map makes resource cleanup safe during errors and Ctrl+C.
-% Movie/texture slots 1-3 hold the reference chunks, 4-6 the test chunks.
+% Slots 1-3 hold the reference chunks, 4-6 the test chunks. frames{slot} are
+% the chunk's decoded textures and pts{slot} their presentation timestamps.
 resources = containers.Map('KeyType', 'char', 'ValueType', 'any');
 resources('window') = []; resources('movies') = nan(1, 6);
-resources('textures') = zeros(1, 6); resources('queueCreated') = false;
+resources('frames') = cell(1, 6); resources('pts') = cell(1, 6); resources('queueCreated') = false;
 resources('oldSkipSync') = []; resources('oldPath') = getenv('PATH');
 cleanupGuard = onCleanup(@() cleanupResources(resources));
 if ~isempty(GSTREAMER_BIN)
@@ -197,7 +202,9 @@ if ~isempty(GSTREAMER_BIN)
     setenv('PATH', [GSTREAMER_BIN pathsep resources('oldPath')]);
 end
 KbName('UnifyKeyNames');
-keys = [KbName({'1!', '2@', '3#', '4$', '5%'}), KbName('Return'), KbName('r'), KbName('ESCAPE')];
+% On Linux KbName('Return') also returns keypad Enter; keep one code so key positions stay fixed.
+returnKey = KbName('Return');
+keys = [KbName({'1!', '2@', '3#', '4$', '5%'}), returnKey(1), KbName('r'), KbName('ESCAPE')];
 keyList = zeros(1, 256); keyList(keys) = 1;
 resources('oldSkipSync') = Screen('Preference', 'SkipSyncTests', double(SKIP_SYNC_TESTS));
 screens = Screen('Screens');
@@ -238,27 +245,39 @@ for k = remaining
         if ~waitForEnter(keys), return; end
     end
     showMessage(window, GREY, {'Loading...'});
-    % Reference decoders stay open while consecutive trials share a shot.
+    % Reference frames stay loaded while consecutive trials share a shot.
+    loadStart = GetSecs;
     if shots(v) ~= loadedShot
         closeSlots(resources, 1:3);
         for c = 1:3
-            openMovie(window, resources, c, refPaths(v,c), refSpecs(c,:));
+            loadClip(window, resources, c, refPaths(v,c), refSpecs(c,:));
         end
         loadedShot = shots(v);
     end
     closeSlots(resources, 4:6);
+    testSlots = 4:6;
     for c = 1:3
-        openMovie(window, resources, 3 + c, testPaths(v,c), squeeze(specs(v,c,:))');
+        if testPaths(v,c) == refPaths(v,c)
+            testSlots(c) = c;   % 1080p120 test chunk is the reference file: reuse its frames
+        else
+            loadClip(window, resources, 3 + c, testPaths(v,c), squeeze(specs(v,c,:))');
+        end
     end
-    fprintf('TRIAL %d/%d: %s\n', k, n, ids(v));
+    fprintf('TRIAL %d/%d: %s (loaded in %.1f s)\n', k, n, ids(v), GetSecs - loadStart);
     replays = 0;
     while true
-        [vbl, refSkipped, quit] = playClip(window, resources, 1:3, refSpecs, refPaths(v,:), ...
-            {'Reference'}, 0, TITLE_SECONDS, destination, ifi, keys, GREY);
+        [vbl, refSkipped, quit, refLog] = playClip(window, resources, 1:3, refSpecs, ...
+            {'Reference'}, 0, TITLE_SECONDS, destination, ifi, keys, GREY, SHOW_CHUNK_INFO);
         if quit, return; end
-        [vbl, testSkipped, quit] = playClip(window, resources, 4:6, squeeze(specs(v,:,:)), testPaths(v,:), ...
-            {'Test'}, vbl + 0.5*ifi, GAP_SECONDS, destination, ifi, keys, GREY);
+        [vbl, testSkipped, quit, testLog] = playClip(window, resources, testSlots, squeeze(specs(v,:,:)), ...
+            {'Test'}, vbl + 0.5*ifi, GAP_SECONDS, destination, ifi, keys, GREY, SHOW_CHUNK_INFO);
         if quit, return; end
+        if LOG_FLIP_TIMING
+            % Written after both clips, so file I/O never runs during playback.
+            stem = sprintf('%s_trial%03d_play%d', subjectId, k, replays + 1);
+            writeFlipLog(outDir, [stem '_reference'], refLog, refSpecs, ifi);
+            writeFlipLog(outDir, [stem '_test_' char(strjoin(labels(v,:), '-'))], testLog, squeeze(specs(v,:,:)), ifi);
+        end
         [score, action, ratingTime] = rateVideo(window, GREY, SCALE, keys, vbl + 0.5*ifi, ...
             {sprintf('Trial %d / %d', k, n), ...
              '1-5: choose   Enter: confirm   R: replay'});
@@ -311,19 +330,18 @@ end
 id = sprintf('S%02d_%s', used + 1, char(datetime('now', 'Format', 'yyyyMMdd')));
 end
 
-function [vbl, skipped, quit] = playClip(window, resources, slots, chunkSpecs, sources, card, when, cardSeconds, destination, ifi, keys, grey)
-% Grey title card, then three consecutive 1.5 s chunks. Decoders rewind
-% during the card, so preparation does not lengthen the inter-clip gap.
+function [vbl, skipped, quit, flipLog] = playClip(window, resources, slots, chunkSpecs, card, when, cardSeconds, destination, ifi, keys, grey, showInfo)
+% Grey title card, then three consecutive 1.5 s chunks drawn from textures
+% decoded in advance by loadClip, so each flip only draws one texture.
+% skipped counts frames passed over because a flip came late.
+% flipLog rows: [requested_when vbl stimulus_onset flip_end missed chunk frame pts].
 quit = false; skipped = 0;
+flipLog = nan(ceil(4.5/ifi) + 60, 8); flips = 0;
+frames = resources('frames'); pts = resources('pts');
 Screen('FillRect', window, grey);
 drawLines(window, card, 255);
 cardOnset = Screen('Flip', window, when);
-movies = resources('movies');
-frameIndex = ones(1, 3); lastPTS = -inf(1, 3);
-for c = 1:3
-    Screen('SetMovieTimeIndex', movies(slots(c)), 0);
-    [~, lastPTS(c)] = fetchFrame(window, movies(slots(c)), sources(c), 1, resources, slots(c));
-end
+frameIndex = ones(1, 3);
 onset = []; vbl = [];
 while true
     if isempty(onset), elapsed = 0; else, elapsed = vbl + ifi - onset; end
@@ -332,24 +350,53 @@ while true
     fps = chunkSpecs(c,3);
     f = min(round(1.5*fps), floor(max(0, elapsed - (c-1)*1.5) * fps + 1e-6) + 1);
     skipped = skipped + max(0, f-frameIndex(c)-1);
-    while frameIndex(c) < f
-        [~, pts] = fetchFrame(window, movies(slots(c)), sources(c), frameIndex(c)+1, resources, slots(c));
-        assert(pts > lastPTS(c), 'gmad:DecodeOrder', ...
-            'Non-increasing timestamps in %s at frame %d.', sources(c), frameIndex(c)+1);
-        lastPTS(c) = pts;
-        frameIndex(c) = frameIndex(c)+1;
-    end
-    textures = resources('textures');
+    frameIndex(c) = max(frameIndex(c), f);
     Screen('FillRect', window, 0);
     % Bilinear GPU scaling; frame repetition supplies native temporal
     % sampling. No optical-flow or blended-frame interpolation.
-    Screen('DrawTexture', window, textures(slots(c)), [], destination, 0, 1);
-    if isempty(onset)
-        vbl = Screen('Flip', window, cardOnset + cardSeconds - 0.5*ifi); onset = vbl;
-    else
-        vbl = Screen('Flip', window, vbl + 0.5*ifi);
+    Screen('DrawTexture', window, frames{slots(c)}(f), [], destination, 0, 1);
+    if showInfo
+        info = sprintf('Chunk %d/3  %dp%d', c, chunkSpecs(c,2), chunkSpecs(c,3));
+        bounds = Screen('TextBounds', window, info);
+        Screen('FillRect', window, 0, OffsetRect(GrowRect(bounds, 8, 4), destination(1) + 16, destination(2) + 16));
+        Screen('DrawText', window, info, destination(1) + 16, destination(2) + 16, [255 255 0]);
     end
-    if strcmp(readKey(keys), 'quit'), quit = true; return; end
+    if isempty(onset)
+        requested = cardOnset + cardSeconds - 0.5*ifi;
+        [vbl, stimulusOnset, flipEnd, missed] = Screen('Flip', window, requested); onset = vbl;
+    else
+        requested = vbl + 0.5*ifi;
+        [vbl, stimulusOnset, flipEnd, missed] = Screen('Flip', window, requested);
+    end
+    flips = flips + 1;
+    flipLog(flips,:) = [requested vbl stimulusOnset flipEnd missed c f pts{slots(c)}(f)];
+    if strcmp(readKey(keys), 'quit'), quit = true; break; end
+end
+flipLog = flipLog(1:flips,:);
+end
+
+function writeFlipLog(outDir, stem, flipLog, chunkSpecs, ifi)
+% One CSV per played clip, times relative to the first video flip, plus a
+% console summary: unique frames shown and mean on-screen duration per chunk.
+if isempty(flipLog), return; end
+folder = fullfile(outDir, 'flip_timing');
+if ~isfolder(folder), mkdir(folder); end
+t0 = flipLog(1,2);
+log = array2table([flipLog(:,1:4) - t0, flipLog(:,5:8)], 'VariableNames', ...
+    {'requested_s', 'vbl_s', 'stimulus_onset_s', 'flip_end_s', 'missed', 'chunk', 'frame', 'pts_s'});
+log.target_fps = chunkSpecs(log.chunk, 3);
+log.ifi_s = repmat(ifi, height(log), 1);
+writetable(log, fullfile(folder, [stem '.csv']));
+intervals = diff(log.vbl_s);
+fprintf('  %s: %d flips, interval %.2f +/- %.2f ms (max %.2f), %d late (> 1.5 refresh)\n', stem, ...
+    height(log), 1e3*mean(intervals), 1e3*std(intervals), 1e3*max(intervals), sum(intervals > 1.5*ifi));
+ends = [log.vbl_s(2:end); log.vbl_s(end) + ifi];   % each flip stays until the next one
+for c = unique(log.chunk)'
+    rows = find(log.chunk == c);
+    frames = numel(unique(log.frame(rows)));
+    span = ends(rows(end)) - log.vbl_s(rows(1));
+    fprintf('    chunk %d (%d fps target): %d distinct frames in %.3f s -> %.1f fps shown\n', c, ...
+        chunkSpecs(c,3), frames, span, frames / span);
 end
 end
 
@@ -430,29 +477,35 @@ while true
 end
 end
 
-function openMovie(window, resources, slot, source, spec)
+function loadClip(window, resources, slot, source, spec)
+% Decode all 1.5 s of one chunk into GPU textures, then close the decoder.
+% Each texture is registered as soon as it exists, so cleanup works after errors.
 [movie, duration, fps, w, h] = Screen('OpenMovie', window, char(source), 0, 1);
 movies = resources('movies'); movies(slot) = movie; resources('movies') = movies;
 assert(w == spec(1) && h == spec(2) && abs(fps-spec(3)) < 1 && abs(duration-1.5) < 0.02, ...
     'gmad:MovieFormat', 'Unexpected movie properties: %s', source);
+count = round(1.5 * spec(3));
+times = zeros(1, count);
+% Without PlayMovie, frames are only delivered after an explicit seek.
+Screen('SetMovieTimeIndex', movie, 0);
+for frame = 1:count
+    try
+        [texture, times(frame)] = Screen('GetMovieImage', window, movie, 1);
+    catch cause
+        failure = MException('gmad:DecodeFrame', ...
+            'HEVC decoding failed in %s at frame %d. See the preceding Psychtoolbox error.', source, frame);
+        throw(addCause(failure, cause));
+    end
+    assert(texture > 0, 'gmad:DecodeFrames', 'Missing frame %d in %s.', frame, source);
+    frames = resources('frames'); frames{slot}(frame) = texture; resources('frames') = frames;
+    assert(frame == 1 || times(frame) > times(frame-1), 'gmad:DecodeOrder', ...
+        'Non-increasing timestamps in %s at frame %d.', source, frame);
 end
-
-function [texture, pts] = fetchFrame(window, movie, source, frame, resources, slot)
-try
-    [texture, pts] = Screen('GetMovieImage', window, movie, 1);
-catch cause
-    failure = MException('gmad:DecodeFrame', ...
-        'HEVC decoding failed in %s at frame %d. See the preceding Psychtoolbox error.', source, frame);
-    throw(addCause(failure, cause));
-end
-assert(texture > 0, 'gmad:DecodeFrames', 'Missing frame %d in %s.', frame, source);
-previous = resources('textures');
-oldTexture = previous(slot);
-% Register the newly acquired texture before any subsequent operation fails.
-resources('textures') = [previous texture];
-if oldTexture > 0, Screen('Close', oldTexture); end
-previous(slot) = texture;
-resources('textures') = previous;
+Screen('CloseMovie', movie);
+movies = resources('movies'); movies(slot) = nan; resources('movies') = movies;
+pts = resources('pts'); pts{slot} = times; resources('pts') = pts;
+% Upload now rather than on first draw, so playback never waits for VRAM transfers.
+Screen('PreloadTextures', window, frames{slot});
 end
 
 function key = readKey(keys)
@@ -470,7 +523,7 @@ end
 
 function cleanupResources(resources)
 if resources('queueCreated'), try KbQueueRelease; catch, end, end
-closeSlots(resources, 1:numel(resources('textures')));
+closeSlots(resources, 1:numel(resources('frames')));
 window = resources('window');
 if ~isempty(window) && ismember(window, liveWindows())
     try Screen('Close', window); catch, end
@@ -487,17 +540,17 @@ function closeSlots(resources, slots)
 % handle before onCleanup runs. Avoid closing those handles a second time.
 live = liveWindows();
 window = resources('window');
-movies = resources('movies'); textures = resources('textures');
-movieSlots = slots(slots <= numel(movies));
+movies = resources('movies'); frames = resources('frames'); pts = resources('pts');
 if ~isempty(window) && ismember(window, live)
-    for movie = movies(movieSlots(isfinite(movies(movieSlots))))
+    for movie = movies(slots(isfinite(movies(slots))))
         try Screen('CloseMovie', movie); catch, end
     end
-    open = textures(slots(textures(slots) > 0 & ismember(textures(slots), live)));
+    open = [frames{slots}];
+    open = open(open > 0 & ismember(open, live));
     if ~isempty(open), try Screen('Close', open); catch, end, end
 end
-movies(movieSlots) = nan; textures(slots) = 0;
-resources('movies') = movies; resources('textures') = textures;
+movies(slots) = nan; frames(slots) = {[]}; pts(slots) = {[]};
+resources('movies') = movies; resources('frames') = frames; resources('pts') = pts;
 end
 
 function live = liveWindows()
