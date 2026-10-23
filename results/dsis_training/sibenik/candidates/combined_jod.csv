@@ -1,0 +1,8 @@
+candidate_id,scene,shot,chunk1,chunk2,chunk3,combined_jod,mean_chunk_jod,frames,seconds
+sibenik__sibenik_01__480p30-480p30-480p30,sibenik,sibenik__sibenik_01,480p30,480p30,480p30,5.226499,,540,28.8
+sibenik__sibenik_01__480p60-480p60-480p60,sibenik,sibenik__sibenik_01,480p60,480p60,480p60,7.275912,,540,28.9
+sibenik__sibenik_01__480p120-480p120-480p120,sibenik,sibenik__sibenik_01,480p120,480p120,480p120,9.645146,,540,29.5
+sibenik__sibenik_01__720p30-720p30-720p30,sibenik,sibenik__sibenik_01,720p30,720p30,720p30,5.112244,,540,28.2
+sibenik__sibenik_01__720p60-720p60-720p60,sibenik,sibenik__sibenik_01,720p60,720p60,720p60,7.203880,,540,28.6
+sibenik__sibenik_01__720p120-720p120-720p120,sibenik,sibenik__sibenik_01,720p120,720p120,720p120,9.919193,,540,29.4
+sibenik__sibenik_01__1080p30-1080p30-1080p30,sibenik,sibenik__sibenik_01,1080p30,1080p30,1080p30,5.008545,,540,28.9

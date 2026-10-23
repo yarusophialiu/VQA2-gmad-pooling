@@ -1,0 +1,2 @@
+subject,seed,trial,candidate_id,chunk1,chunk2,chunk3,score,replays,rating_time_s,reference_skipped_samples,test_skipped_samples,timestamp
+s01test,0,1,school__school_01__1080p30-480p30-1080p30,1080p30,480p30,1080p30,2,0,13.646,0,0,2026-10-20T17:01:56

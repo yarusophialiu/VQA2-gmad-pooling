@@ -1,0 +1,102 @@
+[
+ {
+  "candidate_id": "sibenik__sibenik_01__480p30-480p30-480p30",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "480p30",
+  "chunk2": "480p30",
+  "chunk3": "480p30",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_480p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_480p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "expected_jod": 5.2265,
+  "expected_level": 1,
+  "also_in_experiment": false
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-1080p30-1080p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p120",
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "expected_jod": 6.5992,
+  "expected_level": 2,
+  "also_in_experiment": true
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-1080p120-480p30",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p30",
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "expected_jod": 7.5593,
+  "expected_level": 3,
+  "also_in_experiment": true
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-1080p120-480p60",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p60",
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "expected_jod": 8.5744,
+  "expected_level": 4,
+  "also_in_experiment": true
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__480p120-480p120-480p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "480p120",
+  "chunk2": "480p120",
+  "chunk3": "480p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_480p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_480p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_480p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "expected_jod": 9.6451,
+  "expected_level": 5,
+  "also_in_experiment": false
+ }
+]

@@ -1,0 +1,240 @@
+[
+ {
+  "candidate_id": "sibenik__sibenik_01__480p30-480p30-480p30",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "480p30",
+  "chunk2": "480p30",
+  "chunk3": "480p30",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_480p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_480p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__480p60-480p60-480p60",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "480p60",
+  "chunk2": "480p60",
+  "chunk3": "480p60",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_480p60_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_480p60_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__480p120-480p120-480p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "480p120",
+  "chunk2": "480p120",
+  "chunk3": "480p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_480p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_480p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_480p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__720p30-720p30-720p30",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "720p30",
+  "chunk2": "720p30",
+  "chunk3": "720p30",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_720p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_720p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_720p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__720p60-720p60-720p60",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "720p60",
+  "chunk2": "720p60",
+  "chunk3": "720p60",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_720p60_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_720p60_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_720p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__720p120-720p120-720p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "720p120",
+  "chunk2": "720p120",
+  "chunk3": "720p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_720p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_720p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_720p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p30-1080p30-1080p30",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p60-1080p60-1080p60",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p60",
+  "chunk2": "1080p60",
+  "chunk3": "1080p60",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p60_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p60_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-1080p60-1080p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p60",
+  "chunk3": "1080p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p60_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-1080p120-720p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "720p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_720p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-720p120-1080p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "720p120",
+  "chunk3": "1080p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_720p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-1080p120-1080p60",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p60",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p30-1080p120-1080p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ },
+ {
+  "candidate_id": "sibenik__sibenik_01__1080p120-480p120-1080p120",
+  "scene": "sibenik__sibenik_01",
+  "chunk1": "1080p120",
+  "chunk2": "480p120",
+  "chunk3": "1080p120",
+  "source_videos": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk2_480p120_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk1_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk2_lossless_hevc.mp4",
+   "/home/yl962/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/sibenik/sibenik_path3_seg3_2/references/ref_chunk3_lossless_hevc.mp4"
+  ]
+ }
+]

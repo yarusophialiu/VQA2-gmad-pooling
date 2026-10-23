@@ -1,0 +1,6 @@
+subject,seed,trial,candidate_id,chunk1,chunk2,chunk3,score,replays,rating_time_s,reference_skipped_samples,test_skipped_samples,timestamp
+samghyun,0,1,school__school_01__1080p30-480p30-1080p30,1080p30,480p30,1080p30,3,0,21.745,0,0,2026-10-23T13:42:17
+samghyun,0,2,school__school_01__720p30-720p30-720p30,720p30,720p30,720p30,4,0,4.779,3,0,2026-10-23T13:42:50
+samghyun,0,3,school__school_01__480p60-480p60-480p60,480p60,480p60,480p60,2,0,2.124,1,0,2026-10-23T13:43:09
+samghyun,0,4,school__school_01__720p60-720p60-720p60,720p60,720p60,720p60,4,1,0.975,1,0,2026-10-23T13:43:44
+samghyun,0,5,school__school_01__1080p120-720p60-1080p120,1080p120,720p60,1080p120,3,0,0.886,1,1,2026-10-23T13:43:58

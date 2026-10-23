@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSIS Training Videos</title>
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10); --series-1: #2a78d6;
+  --level-1: #86b6ef; --level-2: #5598e7; --level-3: #2a78d6; --level-4: #1c5cab; --level-5: #104281;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --series-1: #3987e5;
+    --level-1: #184f95; --level-2: #256abf; --level-3: #3987e5; --level-4: #6da7ec; --level-5: #b7d3f6;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10); --series-1: #3987e5;
+  --level-1: #184f95; --level-2: #256abf; --level-3: #3987e5; --level-4: #6da7ec; --level-5: #b7d3f6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1000px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 26px; margin: 0 0 6px; }
+h2 { font-size: 18px; margin: 36px 0 6px; }
+p, li { color: var(--ink-2); }
+.lede { margin: 0 0 20px; max-width: 70ch; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 20px 0; }
+.tile, .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; }
+.tile { padding: 14px 16px; }
+.tile .k { color: var(--ink-2); font-size: 13px; }
+.tile .v { font-size: 26px; font-weight: 600; }
+.card { padding: 16px; overflow-x: auto; }
+svg { display: block; width: 100%; height: auto; max-width: 760px; font-size: 12px; }
+.tick { fill: var(--ink-2); font-variant-numeric: tabular-nums; }
+.value { fill: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.muted { fill: var(--muted); }
+.label { fill: var(--ink-2); font-size: 13px; }
+.grid { stroke: var(--grid); stroke-width: 1; }
+.axis { stroke: var(--axis); stroke-width: 1; }
+.ref { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.dot { fill: var(--series-1); fill-opacity: 0.75; stroke: var(--surface); stroke-width: 2; }
+.hit { fill: transparent; cursor: default; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 10px; font-size: 13px; color: var(--ink-2); }
+.chip { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--grid); text-align: left; white-space: nowrap; }
+th { color: var(--ink-2); font-weight: 600; cursor: pointer; user-select: none; position: sticky; top: 0; background: var(--surface); }
+th[aria-sort="ascending"]::after { content: " ▲"; }
+th[aria-sort="descending"]::after { content: " ▼"; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 12px; }
+select, input { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: 5px 8px; }
+.bins td:first-child { font-weight: 600; }
+#tip { position: fixed; pointer-events: none; display: none; background: var(--surface); color: var(--ink);
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 13px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15); max-width: 360px; z-index: 10; }
+#tip b { display: block; margin-bottom: 2px; }
+#tip span { display: block; color: var(--ink-2); }
+code { font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+<h1>DSIS training videos</h1>
+<p class="lede">The 5 practice videos played by <code>run_dsis_training.m</code>, in presentation
+order. Each is compared with its shot's 1080p120 reference, as in the experiment. The CVVDP level is the
+video's 4.5&nbsp;s CVVDP JOD mapped to the DSIS scale. Participants are shown a range from one level below
+it up to it (level&nbsp;1 stays 1), after rating and top-left during the test video when
+<code>SHOW_EXPECTED_LEVEL</code> is on.</p>
+
+<div class="card" style="padding:0; overflow-x:auto">
+<table>
+<thead><tr><th class="num">#</th><th>Scene</th><th>Shot</th><th>Chunk 1</th><th>Chunk 2</th><th>Chunk 3</th>
+<th class="num">CVVDP JOD</th><th>CVVDP level</th><th>Shown to participants</th><th>Source</th></tr></thead>
+<tbody><tr><td class="num">1</td><td>school</td><td>school_01</td><td>1080p30</td><td>480p30</td><td>1080p30</td><td class="num">8.342</td><td>3 Fair</td><td><span class="chip" style="background:var(--level-3)"></span>2–3 Poor to Fair</td><td>Training only</td></tr><tr><td class="num">2</td><td>school</td><td>school_01</td><td>720p30</td><td>720p30</td><td>720p30</td><td class="num">8.416</td><td>3 Fair</td><td><span class="chip" style="background:var(--level-3)"></span>2–3 Poor to Fair</td><td>Training only</td></tr><tr><td class="num">3</td><td>school</td><td>school_01</td><td>480p60</td><td>480p60</td><td>480p60</td><td class="num">8.886</td><td>4 Good</td><td><span class="chip" style="background:var(--level-4)"></span>3–4 Fair to Good</td><td>Training only</td></tr><tr><td class="num">4</td><td>school</td><td>school_01</td><td>720p60</td><td>720p60</td><td>720p60</td><td class="num">9.277</td><td>4 Good</td><td><span class="chip" style="background:var(--level-4)"></span>3–4 Fair to Good</td><td>Training only</td></tr><tr><td class="num">5</td><td>school</td><td>school_01</td><td>1080p120</td><td>720p60</td><td>1080p120</td><td class="num">9.601</td><td>5 Excellent</td><td><span class="chip" style="background:var(--level-5)"></span>4–5 Good to Excellent</td><td>Training only</td></tr></tbody>
+</table>
+</div>
+
+<h2>Notes</h2>
+<ul>
+<li>School reaches only levels 3–5: even its most impaired versions score about JOD&nbsp;8.3, so levels 1–2
+are shown with sibenik.</li>
+<li>0 of the 5 videos are also experiment videos; participants will rate them again
+in the experiment. The others are not part of the experiment.</li>
+<li>Within each scene the videos go from most to least impaired.</li>
+</ul>
+
+<h2>JOD to DSIS level</h2>
+<div class="card">
+<table class="bins">
+<thead><tr><th>Level</th><th>DSIS label</th><th>JOD</th></tr></thead>
+<tbody><tr><td><span class="chip" style="background:var(--level-5)"></span>5</td><td>Excellent – Imperceptible</td><td>JOD ≥ 9.5</td></tr><tr><td><span class="chip" style="background:var(--level-4)"></span>4</td><td>Good – Perceptible, but not annoying</td><td>8.5 – 9.5</td></tr><tr><td><span class="chip" style="background:var(--level-3)"></span>3</td><td>Fair – Slightly annoying</td><td>7.5 – 8.5</td></tr><tr><td><span class="chip" style="background:var(--level-2)"></span>2</td><td>Poor – Annoying</td><td>6.5 – 7.5</td></tr><tr><td><span class="chip" style="background:var(--level-1)"></span>1</td><td>Bad – Very annoying</td><td>< 6.5</td></tr></tbody>
+</table>
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,2018 @@
+[
+ {
+  "candidate_id": "car__car_01__1080p120-1080p120-1080p30",
+  "scene": "car__car_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__1080p120-1080p120-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "car__car_01__1080p30-1080p120-1080p120",
+  "scene": "car__car_01",
+  "chunk1": "1080p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__1080p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "car__car_01__1080p60-1080p120-1080p120",
+  "scene": "car__car_01",
+  "chunk1": "1080p60",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_1080p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__1080p60-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "car__car_01__480p120-1080p30-1080p30",
+  "scene": "car__car_01",
+  "chunk1": "480p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_480p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__480p120-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "car__car_01__480p30-720p120-1080p120",
+  "scene": "car__car_01",
+  "chunk1": "480p30",
+  "chunk2": "720p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__480p30-720p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "car__car_01__720p30-1080p30-1080p30",
+  "scene": "car__car_01",
+  "chunk1": "720p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__720p30-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "car__car_01__720p60-1080p120-1080p120",
+  "scene": "car__car_01",
+  "chunk1": "720p60",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_720p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__720p60-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "car__car_01__720p60-1080p30-1080p30",
+  "scene": "car__car_01",
+  "chunk1": "720p60",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk1_720p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/car/car_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "car__car_01__720p60-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__1080p120-480p30-480p30",
+  "scene": "forza__forza_1",
+  "chunk1": "1080p120",
+  "chunk2": "480p30",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__1080p120-480p30-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__1080p120-720p30-1080p30",
+  "scene": "forza__forza_1",
+  "chunk1": "1080p120",
+  "chunk2": "720p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__1080p120-720p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__1080p30-1080p30-1080p120",
+  "scene": "forza__forza_1",
+  "chunk1": "1080p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__1080p30-1080p30-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__1080p30-720p120-1080p120",
+  "scene": "forza__forza_1",
+  "chunk1": "1080p30",
+  "chunk2": "720p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__1080p30-720p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__480p30-1080p120-1080p120",
+  "scene": "forza__forza_1",
+  "chunk1": "480p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__480p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__480p60-1080p30-1080p30",
+  "scene": "forza__forza_1",
+  "chunk1": "480p60",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__480p60-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__720p30-1080p30-1080p30",
+  "scene": "forza__forza_1",
+  "chunk1": "720p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__720p30-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_1__720p60-1080p120-1080p120",
+  "scene": "forza__forza_1",
+  "chunk1": "720p60",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk1_720p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_1__720p60-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_2__1080p120-1080p120-720p60",
+  "scene": "forza__forza_2",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "720p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk3_720p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_2__1080p120-1080p120-720p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_2__1080p120-1080p60-1080p30",
+  "scene": "forza__forza_2",
+  "chunk1": "1080p120",
+  "chunk2": "1080p60",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk2_1080p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_2__1080p120-1080p60-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_2__1080p30-1080p30-480p60",
+  "scene": "forza__forza_2",
+  "chunk1": "1080p30",
+  "chunk2": "1080p30",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_2__1080p30-1080p30-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_2__480p120-1080p120-1080p120",
+  "scene": "forza__forza_2",
+  "chunk1": "480p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk1_480p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_2__480p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_2__480p120-1080p30-1080p30",
+  "scene": "forza__forza_2",
+  "chunk1": "480p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk1_480p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_2__480p120-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "forza__forza_2__720p60-720p120-1080p120",
+  "scene": "forza__forza_2",
+  "chunk1": "720p60",
+  "chunk2": "720p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk1_720p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk2_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/forza/forza_2/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "forza__forza_2__720p60-720p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_01__1080p120-1080p120-480p60",
+  "scene": "fox__fox_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_01__1080p120-1080p120-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_01__1080p120-1080p120-720p30",
+  "scene": "fox__fox_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "720p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk3_720p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_01__1080p120-1080p120-720p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_01__480p30-480p30-480p60",
+  "scene": "fox__fox_01",
+  "chunk1": "480p30",
+  "chunk2": "480p30",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk2_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_01__480p30-480p30-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_01__480p30-480p60-480p60",
+  "scene": "fox__fox_01",
+  "chunk1": "480p30",
+  "chunk2": "480p60",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk2_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_01__480p30-480p60-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_01__720p30-1080p120-1080p120",
+  "scene": "fox__fox_01",
+  "chunk1": "720p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk1_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_01__720p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_01__720p30-480p60-480p60",
+  "scene": "fox__fox_01",
+  "chunk1": "720p30",
+  "chunk2": "480p60",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk1_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk2_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_01__720p30-480p60-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_02__1080p120-1080p120-1080p120",
+  "scene": "fox__fox_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_02__1080p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_02__1080p60-1080p120-1080p120",
+  "scene": "fox__fox_02",
+  "chunk1": "1080p60",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk1_1080p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_02__1080p60-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_02__480p60-1080p30-1080p30",
+  "scene": "fox__fox_02",
+  "chunk1": "480p60",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk1_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_02__480p60-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_02__720p120-1080p30-1080p30",
+  "scene": "fox__fox_02",
+  "chunk1": "720p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk1_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_02__720p120-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_02__720p120-720p120-1080p30",
+  "scene": "fox__fox_02",
+  "chunk1": "720p120",
+  "chunk2": "720p120",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk1_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk2_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_02__720p120-720p120-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_03__1080p30-1080p30-1080p30",
+  "scene": "fox__fox_03",
+  "chunk1": "1080p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_03__1080p30-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_03__480p30-1080p120-1080p120",
+  "scene": "fox__fox_03",
+  "chunk1": "480p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_03__480p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "fox__fox_03__720p30-1080p120-1080p120",
+  "scene": "fox__fox_03",
+  "chunk1": "720p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk1_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/fox/fox_03/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "fox__fox_03__720p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "heros3__heros3_02__1080p120-1080p120-1080p120",
+  "scene": "heros3__heros3_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "heros3__heros3_02__1080p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "heros3__heros3_02__1080p120-1080p120-480p30",
+  "scene": "heros3__heros3_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "heros3__heros3_02__1080p120-1080p120-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "heros3__heros3_02__1080p30-1080p120-1080p120",
+  "scene": "heros3__heros3_02",
+  "chunk1": "1080p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "heros3__heros3_02__1080p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "heros3__heros3_02__480p30-1080p120-1080p60",
+  "scene": "heros3__heros3_02",
+  "chunk1": "480p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p60",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk3_1080p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "heros3__heros3_02__480p30-1080p120-1080p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "heros3__heros3_02__480p30-480p30-480p30",
+  "scene": "heros3__heros3_02",
+  "chunk1": "480p30",
+  "chunk2": "480p30",
+  "chunk3": "480p30",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk2_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/heros3/heros3_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "heros3__heros3_02__480p30-480p30-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "lego__lego_02__1080p120-1080p120-1080p120",
+  "scene": "lego__lego_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "lego__lego_02__1080p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "lego__lego_02__1080p120-1080p120-1080p30",
+  "scene": "lego__lego_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "lego__lego_02__1080p120-1080p120-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "lego__lego_02__1080p30-1080p120-1080p120",
+  "scene": "lego__lego_02",
+  "chunk1": "1080p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "lego__lego_02__1080p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "lego__lego_02__1080p30-1080p30-1080p120",
+  "scene": "lego__lego_02",
+  "chunk1": "1080p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "lego__lego_02__1080p30-1080p30-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "lego__lego_02__1080p30-1080p30-480p30",
+  "scene": "lego__lego_02",
+  "chunk1": "1080p30",
+  "chunk2": "1080p30",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "lego__lego_02__1080p30-1080p30-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "lego__lego_02__720p120-720p30-480p30",
+  "scene": "lego__lego_02",
+  "chunk1": "720p120",
+  "chunk2": "720p30",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk1_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk2_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/lego/lego_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "lego__lego_02__720p120-720p30-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p120-1080p120-1080p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p120-1080p120-1080p60",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p120-1080p120-1080p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p120-1080p120-480p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_480p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p120-1080p120-480p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p120-1080p120-480p30",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p120-1080p120-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p120-1080p30-1080p30",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p120-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p120-480p30-1080p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p120",
+  "chunk2": "480p30",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p120-480p30-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p120-480p60-480p60",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p120",
+  "chunk2": "480p60",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p120-480p60-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p30-1080p120-1080p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__1080p60-1080p120-1080p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "1080p60",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_1080p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__1080p60-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p120-1080p120-1080p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p30-1080p120-1080p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p30-1080p30-1080p30",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p30-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p30-1080p30-480p120",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p30",
+  "chunk2": "1080p30",
+  "chunk3": "480p120",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_480p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p30-1080p30-480p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p30-1080p30-480p60",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p30",
+  "chunk2": "1080p30",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p30-1080p30-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p30-1080p30-720p60",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p30",
+  "chunk2": "1080p30",
+  "chunk3": "720p60",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_720p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p30-1080p30-720p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p30-480p60-480p60",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p30",
+  "chunk2": "480p60",
+  "chunk3": "480p60",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_480p60_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p30-480p60-480p60.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__480p60-1080p30-1080p30",
+  "scene": "makeway__makeway_01",
+  "chunk1": "480p60",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__480p60-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__720p120-1080p30-1080p30",
+  "scene": "makeway__makeway_01",
+  "chunk1": "720p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__720p120-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "makeway__makeway_01__720p30-1080p30-1080p30",
+  "scene": "makeway__makeway_01",
+  "chunk1": "720p30",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk1_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/makeway/makeway_path2_seg1_1/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "makeway__makeway_01__720p30-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "ratchet__ratchet_02__1080p120-1080p120-1080p120",
+  "scene": "ratchet__ratchet_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "ratchet__ratchet_02__1080p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "ratchet__ratchet_02__1080p30-1080p120-1080p120",
+  "scene": "ratchet__ratchet_02",
+  "chunk1": "1080p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "ratchet__ratchet_02__1080p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "ratchet__ratchet_02__480p30-1080p120-1080p120",
+  "scene": "ratchet__ratchet_02",
+  "chunk1": "480p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "ratchet__ratchet_02__480p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "ratchet__ratchet_02__720p120-480p30-480p30",
+  "scene": "ratchet__ratchet_02",
+  "chunk1": "720p120",
+  "chunk2": "480p30",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk1_720p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk2_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "ratchet__ratchet_02__720p120-480p30-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "ratchet__ratchet_02__720p30-1080p30-480p30",
+  "scene": "ratchet__ratchet_02",
+  "chunk1": "720p30",
+  "chunk2": "1080p30",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk1_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/ratchet/ratchet_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "ratchet__ratchet_02__720p30-1080p30-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_01__1080p120-1080p120-480p30",
+  "scene": "spiderman__spiderman_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_01__1080p120-1080p120-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_01__1080p120-1080p30-1080p120",
+  "scene": "spiderman__spiderman_01",
+  "chunk1": "1080p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_01__1080p120-1080p30-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_01__1080p30-1080p120-1080p120",
+  "scene": "spiderman__spiderman_01",
+  "chunk1": "1080p30",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_01__1080p30-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_01__1080p60-1080p30-1080p30",
+  "scene": "spiderman__spiderman_01",
+  "chunk1": "1080p60",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk1_1080p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_01__1080p60-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_01__1080p60-480p60-480p30",
+  "scene": "spiderman__spiderman_01",
+  "chunk1": "1080p60",
+  "chunk2": "480p60",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk1_1080p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk2_480p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_01__1080p60-480p60-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_01__480p30-720p30-1080p30",
+  "scene": "spiderman__spiderman_01",
+  "chunk1": "480p30",
+  "chunk2": "720p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 2,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk1_480p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk2_720p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_01__480p30-720p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_01__720p60-1080p120-1080p120",
+  "scene": "spiderman__spiderman_01",
+  "chunk1": "720p60",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk1_720p60_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_01/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_01__720p60-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_02__1080p120-1080p120-1080p120",
+  "scene": "spiderman__spiderman_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": true,
+  "switches": 0,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_02__1080p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_02__1080p120-1080p120-480p30",
+  "scene": "spiderman__spiderman_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p120",
+  "chunk3": "480p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk3_480p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_02__1080p120-1080p120-480p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_02__1080p120-1080p30-1080p30",
+  "scene": "spiderman__spiderman_02",
+  "chunk1": "1080p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk1_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_02__1080p120-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_02__1080p30-1080p30-720p30",
+  "scene": "spiderman__spiderman_02",
+  "chunk1": "1080p30",
+  "chunk2": "1080p30",
+  "chunk3": "720p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk1_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk3_720p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_02__1080p30-1080p30-720p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_02__480p120-1080p120-1080p120",
+  "scene": "spiderman__spiderman_02",
+  "chunk1": "480p120",
+  "chunk2": "1080p120",
+  "chunk3": "1080p120",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk1_480p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk2_1080p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk3_1080p120_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_02__480p120-1080p120-1080p120.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ },
+ {
+  "candidate_id": "spiderman__spiderman_02__480p120-1080p30-1080p30",
+  "scene": "spiderman__spiderman_02",
+  "chunk1": "480p120",
+  "chunk2": "1080p30",
+  "chunk3": "1080p30",
+  "is_fixed": false,
+  "switches": 1,
+  "source_videos": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk1_480p120_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk2_1080p30_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/videos/chunk3_1080p30_lossless_hevc.mp4"
+  ],
+  "source_references": [
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk1_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk2_lossless_hevc.mp4",
+   "C:/Users/15142/Projects/vqa_workspace/VQA2-dataset/dataset-reference-chunks/spiderman/spiderman_02/references/ref_chunk3_lossless_hevc.mp4"
+  ],
+  "output_name": "spiderman__spiderman_02__480p120-1080p30-1080p30.mp4",
+  "target_width": 1920,
+  "target_height": 1080,
+  "target_fps": 120,
+  "expected_frames": 540
+ }
+]

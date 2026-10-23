@@ -1,0 +1,11 @@
+trial,candidate_id,seed
+1,school__school_01__1080p30-480p30-1080p30,0
+2,school__school_01__720p30-720p30-720p30,0
+3,school__school_01__480p60-480p60-480p60,0
+4,school__school_01__720p60-720p60-720p60,0
+5,school__school_01__1080p120-720p60-1080p120,0
+6,sibenik__sibenik_01__480p30-480p30-480p30,0
+7,sibenik__sibenik_01__1080p120-1080p30-1080p120,0
+8,sibenik__sibenik_01__1080p120-1080p120-480p30,0
+9,sibenik__sibenik_01__1080p120-1080p120-480p60,0
+10,sibenik__sibenik_01__480p120-480p120-480p120,0

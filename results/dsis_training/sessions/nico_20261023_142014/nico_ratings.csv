@@ -1,0 +1,6 @@
+subject,seed,trial,candidate_id,chunk1,chunk2,chunk3,score,replays,rating_time_s,reference_skipped_samples,test_skipped_samples,timestamp
+nico,0,1,school__school_01__1080p30-480p30-1080p30,1080p30,480p30,1080p30,3,2,28.581,1,0,2026-10-23T14:21:40
+nico,0,2,school__school_01__720p30-720p30-720p30,720p30,720p30,720p30,4,0,18.747,2,0,2026-10-23T14:22:26
+nico,0,3,school__school_01__480p60-480p60-480p60,480p60,480p60,480p60,2,0,6.565,0,0,2026-10-23T14:22:54
+nico,0,4,school__school_01__720p60-720p60-720p60,720p60,720p60,720p60,3,0,3.718,0,0,2026-10-23T14:23:16
+nico,0,5,school__school_01__1080p120-720p60-1080p120,1080p120,720p60,1080p120,4,0,11.302,1,0,2026-10-23T14:23:42

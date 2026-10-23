@@ -1,0 +1,18 @@
+[1/12] school__school_01__480p60-480p60-480p60: JOD 8.8861 (52.8 s)
+[2/12] school__school_01__720p30-720p30-720p30: JOD 8.4160 (51.1 s)
+[3/12] school__school_01__480p120-480p120-480p120: JOD 8.9819 (53.4 s)
+[4/12] school__school_01__1080p30-1080p30-1080p30: JOD 8.4168 (52.5 s)
+[5/12] school__school_01__720p60-720p60-720p60: JOD 9.2768 (51.9 s)
+[6/12] school__school_01__480p30-480p60-480p30: JOD 8.3861 (51.3 s)
+[7/12] school__school_01__720p120-720p120-720p120: JOD 9.4830 (54.6 s)
+[8/12] school__school_01__1080p60-1080p60-1080p60: JOD 9.4120 (53.2 s)
+[9/12] school__school_01__720p30-480p30-720p30: JOD 8.3480 (51.7 s)
+[10/12] school__school_01__1080p30-480p30-1080p30: JOD 8.3421 (51.1 s)
+[11/12] school__school_01__1080p120-720p60-1080p120: JOD 9.6008 (55.4 s)
+[12/12] school__school_01__1080p60-1080p120-1080p60: JOD 9.4562 (54.5 s)
+12 videos -> results/dsis_training_school/candidates/combined_jod_dsis.csv
+  5 Excellent - Imperceptible              JOD >=   9.5: 1
+  4 Good - Perceptible, but not annoying   JOD >=   8.5: 6
+  3 Fair - Slightly annoying               JOD >=   7.5: 5
+  2 Poor - Annoying                        JOD >=   6.5: 0
+  1 Bad - Very annoying                    JOD >=  -inf: 0

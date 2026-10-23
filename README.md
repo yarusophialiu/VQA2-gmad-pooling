@@ -12,6 +12,8 @@
 - [参数、时间窗口和输入文件哈希](results/gmad_selection_skip_negative_no_offset_time_converted/config.json)
 - [新增 bistro 360p／480p：CVVDP 和 gMAD 报告](results/gmad_bistro_360p480p_skip_negative_no_offset_time_converted/report_en.html)
 - [bistro 全部分辨率 360p／480p／720p／1080p：CVVDP 和 gMAD 报告](results/gmad_bistro_all_resolutions_skip_negative_no_offset_time_converted/report_en.html)
+- [逐帧分数如何计算（CVVDP 视频模式逐帧代理分数）](PER_FRAME_SCORES.md)
+- [Version A 视频整段 4.5 秒 CVVDP 分数与 DSIS 1–5 级](results/cvvdp_combined_version_a/combined_jod_report.html)
 
 当前结果目录是 `results/gmad_selection_skip_negative_no_offset_time_converted/`。其他实验版本、对比文件及本地逐帧分数输入位于 [`results/legacy/`](results/legacy/README.md)。
 
