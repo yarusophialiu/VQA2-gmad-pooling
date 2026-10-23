@@ -322,10 +322,11 @@ end
 end
 
 function destination = fitMovieRect(movieSize, windowRect)
-% Preserve aspect ratio; center in window coordinates (do not stretch).
+% Preserve aspect ratio; show at 1080p size (1920x1080 box) centred on black.
+% Never enlarged past 1080p, only shrunk to fit a smaller window.
 windowSize = windowRect(3:4) - windowRect(1:2);
-scale = min(windowSize ./ movieSize);
-drawSize = movieSize * scale;
+drawSize = movieSize * min([1920 1080] ./ movieSize);
+drawSize = drawSize * min([1, windowSize ./ drawSize]);
 origin = (windowSize - drawSize) / 2;
 destination = [origin origin + drawSize];
 end

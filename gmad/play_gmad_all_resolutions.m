@@ -115,7 +115,8 @@ fprintf('Display refresh: %.2f Hz. Native frames held at 30 / 60 / 120 fps.\n', 
 fprintf('Left=A; Right=B; Enter=next; Escape=quit.\n');
 KbQueueCreate([], keyList); resources('queueCreated') = true; KbQueueStart;
 windowSize = rect(3:4) - rect(1:2);
-drawSize = [1920 1080] * min(windowSize ./ [1920 1080]);
+% Native 1920x1080, centred on black; never enlarged, only shrunk to fit a smaller window.
+drawSize = [1920 1080] * min([1, windowSize ./ [1920 1080]]);
 origin = (windowSize - drawSize) / 2;
 destination = [origin origin + drawSize];
 

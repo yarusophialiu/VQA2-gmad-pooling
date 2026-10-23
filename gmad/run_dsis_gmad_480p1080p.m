@@ -1,4 +1,4 @@
-function results = run_dsis_gmad_480p1080p(subjectId, validateOnly, previewOnly, recipeFile, outDir, scene)
+function results = run_dsis_gmad_480p1080p(subjectId, validateOnly, previewOnly, recipeFile, outDir, scene, fixedOrder)
 % RUN_DSIS_GMAD_480P1080P DSIS rating of gMAD-selected videos (480p-1080p).
 %   run_dsis_gmad_480p1080p           % Asks for the scene, then the subject ID.
 %   run_dsis_gmad_480p1080p('S01')    % Asks for the scene.
@@ -14,12 +14,16 @@ function results = run_dsis_gmad_480p1080p(subjectId, validateOnly, previewOnly,
 % Each trial: grey "Reference" card -> reference (1080p120 x 3 chunks, 4.5 s)
 % -> grey "Test" card -> test video (4.5 s) -> five-level DSIS impairment
 % scale (ITU-R BT.500). Every frame of each HEVC chunk is decoded into a GPU
-% texture during "Loading...", then shown at its native 30/60/120 fps, so no
-% decoding runs during playback.
+% texture before its trial, then shown at its native 30/60/120 fps, so no
+% decoding runs during playback. The next trial decodes while the rating
+% screen waits for keys; any remainder finishes behind "Loading...".
 % Keys: 1-5 = choose score; Enter = confirm and next; R = replay trial; Esc = quit.
-% Each rating is appended to <subject>_ratings.csv as soon as it is
-% confirmed. Rerunning with the same subject ID resumes in the saved order;
-% a session ends after SESSION_TRIALS ratings.
+% <subject>_ratings.csv holds the whole session: one row per trial in
+% presentation order, written at the start with blank ratings, each row
+% filled in as soon as its rating is confirmed. Rerunning with the same
+% subject ID resumes at the first unrated trial; a session ends after
+% SESSION_TRIALS ratings. fixedOrder = true plays the recipes in file order
+% (training) instead of a random order per subject.
 
 %% User settings
 FULL_SCREEN = true;                 % true: fullscreen; false: windowed preview
@@ -32,8 +36,9 @@ BREAK_EVERY = 40;                   % rest screen every N trials (0: never)
 SESSION_TRIALS = 120;               % end the session after N ratings (Inf: no limit)
 TEXT_SIZE = 30;
 TEXT_FONT = 'Arial';
-SHOW_CHUNK_INFO = true;            % true: overlay current chunk resolution/fps top-left (debug only)
-LOG_FLIP_TIMING = true;             % true: save per-flip timing of every clip to <outDir>/flip_timing (plot_flip_timing.m)
+SHOW_CHUNK_INFO = false;            % true: overlay current chunk resolution/fps top-left (debug only)
+SHOW_EXPECTED_LEVEL = false;        % training recipes only: show the expected DSIS level top-left during the test video
+LOG_FLIP_TIMING = false;            % true: save per-flip timing of every clip to <outDir>/flip_timing (plot_flip_timing.m)
 SKIP_SYNC_TESTS = ~FULL_SCREEN;
 % GSTREAMER_BIN = 'C:\gstreamer\1.0\msvc_x86_64\bin';
 GSTREAMER_BIN = '';
@@ -100,12 +105,15 @@ n = numel(recipes);
 assert(n > 0, 'gmad:InvalidRecipes', 'No selected videos in %s.', recipeFile);
 ids = strings(n, 1); labels = strings(n, 3); testPaths = strings(n, 3);
 shots = strings(n, 1); refPaths = strings(n, 3);
+% Training recipes carry expected_level, shown as feedback after each rating.
+expected = nan(n, 1);
 specs = zeros(n, 3, 3);
 heights = [480 720 1080]; widths = [854 1280 1920];
 for v = 1:n
     r = recipes(v);
     ids(v) = r.candidate_id;
     shots(v) = r.scene;
+    if isfield(r, 'expected_level'), expected(v) = r.expected_level; end
     for c = 1:3
         refPaths(v,c) = localPath(string(r.source_references{c}), workspace);
     end
@@ -142,47 +150,37 @@ results = plan;
 if validateOnly, return; end
 assert(exist('Screen', 'file') ~= 0, 'gmad:MissingPsychtoolbox', 'Psychtoolbox is not on the MATLAB path.');
 
-%% Presentation order and resume state
+%% Session file: presentation order and ratings in one table
 if ~isfolder(outDir), mkdir(outDir); end
-orderFile = fullfile(outDir, [subjectId '_order.csv']);
 ratingFile = fullfile(outDir, [subjectId '_ratings.csv']);
-if isfile(orderFile)
-    saved = readtable(orderFile, 'TextType', 'string');
-    assert(height(saved) == n && isequal(sort(saved.candidate_id), sort(ids)), 'gmad:OrderMismatch', ...
-        'Saved order %s does not match the current recipes.', orderFile);
-    order = saved.candidate_id;
-    seed = double(saved.seed(1));
-else
-    stream = RandStream('mt19937ar', 'Seed', 'shuffle');
-    order = ids(randperm(stream, n));
-    seed = double(stream.Seed);
-    writetable(table((1:n)', order, repmat(seed, n, 1), ...
-        'VariableNames', {'trial', 'candidate_id', 'seed'}), orderFile);
-end
-[~, videoIndex] = ismember(order, ids);
-done = strings(0, 1);
+assert(~isfile(fullfile(outDir, [subjectId '_order.csv'])), 'gmad:OldSession', ...
+    ['%s was started with a separate _order.csv file, which this version no longer reads. ' ...
+     'Use a new subject ID, or move that subject''s files away.'], subjectId);
 if isfile(ratingFile)
-    % Ratings written before the seed column existed get it inserted after "subject".
-    lines = readlines(ratingFile);
-    lines = lines(strlength(lines) > 0);
-    if ~startsWith(lines(1), "subject,seed,")
-        lines(1) = replace(lines(1), "subject,", "subject,seed,");
-        lines(2:end) = extractBefore(lines(2:end), ",") + "," + sprintf('%d', seed) + "," + extractAfter(lines(2:end), ",");
-        writelines(lines, ratingFile);
-    end
-    previous = readtable(ratingFile, 'TextType', 'string', 'Delimiter', ',');
-    if height(previous) > 0, done = previous.candidate_id; end
+    session = sortrows(readSession(ratingFile), 'trial');
+    assert(height(session) == n && isequal(sort(session.candidate_id), sort(ids)), 'gmad:OrderMismatch', ...
+        'Saved session %s does not match the current recipes.', ratingFile);
 else
-    fid = fopen(ratingFile, 'w');
-    fprintf(fid, ['subject,seed,trial,candidate_id,chunk1,chunk2,chunk3,score,replays,' ...
-        'rating_time_s,reference_skipped_samples,test_skipped_samples,timestamp\n']);
-    fclose(fid);
+    if nargin >= 7 && fixedOrder
+        order = ids; seed = 0;
+    else
+        stream = RandStream('mt19937ar', 'Seed', 'shuffle');
+        order = ids(randperm(stream, n)); seed = double(stream.Seed);
+    end
+    [~, idx] = ismember(order, ids);
+    blank = nan(n, 1);
+    session = table(repmat(string(subjectId), n, 1), repmat(seed, n, 1), (1:n)', order, ...
+        labels(idx,1), labels(idx,2), labels(idx,3), blank, blank, blank, blank, blank, strings(n, 1), ...
+        'VariableNames', {'subject', 'seed', 'trial', 'candidate_id', 'chunk1', 'chunk2', 'chunk3', ...
+        'score', 'replays', 'rating_time_s', 'reference_skipped_samples', 'test_skipped_samples', 'timestamp'});
+    writeSession(session, ratingFile);
 end
-remaining = find(~ismember(order, done))';
-fprintf('Subject %s: %d/%d rated; %d remaining. Ratings: %s\n', ...
+[~, videoIndex] = ismember(session.candidate_id, ids);
+remaining = find(isnan(session.score))';
+fprintf('Subject %s: %d/%d rated; %d remaining. Session file: %s\n', ...
     subjectId, n - numel(remaining), n, numel(remaining), ratingFile);
 if isempty(remaining)
-    results = readtable(ratingFile, 'TextType', 'string');
+    results = session;
     return;
 end
 sessionEnd = remaining(min(end, SESSION_TRIALS));
@@ -190,11 +188,13 @@ remaining = remaining(1:min(end, SESSION_TRIALS));
 
 %% Psychtoolbox setup
 % A handle map makes resource cleanup safe during errors and Ctrl+C.
-% Slots 1-3 hold the reference chunks, 4-6 the test chunks. frames{slot} are
-% the chunk's decoded textures and pts{slot} their presentation timestamps.
+% Slots 1-3 hold the reference chunks, 4-6 the test chunks; slots 7-12 the
+% next trial's while it loads. frames{slot} are the chunk's decoded textures,
+% pts{slot} their presentation timestamps, jobs the chunks still to decode.
 resources = containers.Map('KeyType', 'char', 'ValueType', 'any');
-resources('window') = []; resources('movies') = nan(1, 6);
-resources('frames') = cell(1, 6); resources('pts') = cell(1, 6); resources('queueCreated') = false;
+resources('window') = []; resources('movies') = nan(1, 12);
+resources('frames') = cell(1, 12); resources('pts') = cell(1, 12); resources('queueCreated') = false;
+resources('jobs') = struct('slot', {}, 'source', {}, 'spec', {});
 resources('oldSkipSync') = []; resources('oldPath') = getenv('PATH');
 cleanupGuard = onCleanup(@() cleanupResources(resources));
 if ~isempty(GSTREAMER_BIN)
@@ -223,12 +223,16 @@ fprintf('Display refresh: %.2f Hz. Native frames held at 30 / 60 / 120 fps.\n', 
 fprintf('1-5=score; Enter=confirm; R=replay; Escape=quit.\n');
 KbQueueCreate([], keyList); resources('queueCreated') = true; KbQueueStart;
 windowSize = rect(3:4) - rect(1:2);
-drawSize = [1920 1080] * min(windowSize ./ [1920 1080]);
+% Native 1920x1080, centred on black; never enlarged, only shrunk to fit a smaller window.
+drawSize = [1920 1080] * min([1, windowSize ./ [1920 1080]]);
 origin = (windowSize - drawSize) / 2;
 destination = [origin origin + drawSize];
 
 refSpecs = repmat([1920 1080 120], 3, 1);
 loadedShot = "";
+queuedTrial = 0; queuedRef = false;
+% Called while screens wait for keys: decodes ~10 ms of queued frames per call.
+loadWhileIdle = @() stepLoader(window, resources, 0.01);
 
 drawScale(window, GREY, SCALE, 0, ...
     {'Each trial shows the REFERENCE video, then the TEST video (4.5 s each).', ...
@@ -242,35 +246,47 @@ for k = remaining
     v = videoIndex(k);
     if BREAK_EVERY > 0 && k ~= remaining(1) && mod(k-1, BREAK_EVERY) == 0
         showMessage(window, GREY, {sprintf('Break: %d / %d done.', k-1, n), '', 'Press Enter to continue'});
-        if ~waitForEnter(keys), return; end
+        if ~waitForEnter(keys, loadWhileIdle), return; end
     end
-    showMessage(window, GREY, {'Loading...'});
-    % Reference frames stay loaded while consecutive trials share a shot.
+    % Usually queued during the previous rating screen; whatever is left
+    % finishes here. Reference frames stay loaded while consecutive trials
+    % share a shot.
     loadStart = GetSecs;
-    if shots(v) ~= loadedShot
-        closeSlots(resources, 1:3);
-        for c = 1:3
-            loadClip(window, resources, c, refPaths(v,c), refSpecs(c,:));
-        end
-        loadedShot = shots(v);
+    if queuedTrial ~= k
+        queuedRef = shots(v) ~= loadedShot;
+        queueTrial(resources, queuedRef, refPaths(v,:), refSpecs, testPaths(v,:), squeeze(specs(v,:,:)));
     end
-    closeSlots(resources, 4:6);
+    if ~isempty(resources('jobs')), showMessage(window, GREY, {'Loading...'}); end
+    while ~stepLoader(window, resources, 0.1), end
+    if queuedRef, promoteSlots(resources, 1:3); loadedShot = shots(v); end
+    promoteSlots(resources, 4:6);
+    % 1080p120 test chunks are the reference file: reuse its frames.
     testSlots = 4:6;
-    for c = 1:3
-        if testPaths(v,c) == refPaths(v,c)
-            testSlots(c) = c;   % 1080p120 test chunk is the reference file: reuse its frames
-        else
-            loadClip(window, resources, 3 + c, testPaths(v,c), squeeze(specs(v,c,:))');
-        end
+    sameAsRef = testPaths(v,:) == refPaths(v,:);
+    testSlots(sameAsRef) = find(sameAsRef);
+    fprintf('TRIAL %d/%d: %s (waited %.1f s for loading)\n', k, n, ids(v), GetSecs - loadStart);
+    % Queue the next trial; it decodes while this trial's rating screen waits.
+    queuedTrial = 0;
+    following = remaining(find(remaining == k) + 1:end);
+    if ~isempty(following)
+        queuedTrial = following(1);
+        next = videoIndex(queuedTrial);
+        queuedRef = shots(next) ~= shots(v);
+        queueTrial(resources, queuedRef, refPaths(next,:), refSpecs, testPaths(next,:), squeeze(specs(next,:,:)));
     end
-    fprintf('TRIAL %d/%d: %s (loaded in %.1f s)\n', k, n, ids(v), GetSecs - loadStart);
     replays = 0;
+    levelText = '';
+    if SHOW_EXPECTED_LEVEL && ~isnan(expected(v))
+        levelText = ['Expected: ' expectedRange(expected(v), SCALE)];
+    end
     while true
+        % An open decoder keeps decoding ahead on its own; never let one run during playback.
+        suspendLoader(resources);
         [vbl, refSkipped, quit, refLog] = playClip(window, resources, 1:3, refSpecs, ...
-            {'Reference'}, 0, TITLE_SECONDS, destination, ifi, keys, GREY, SHOW_CHUNK_INFO);
+            {'Reference'}, 0, TITLE_SECONDS, destination, ifi, keys, GREY, SHOW_CHUNK_INFO, '');
         if quit, return; end
         [vbl, testSkipped, quit, testLog] = playClip(window, resources, testSlots, squeeze(specs(v,:,:)), ...
-            {'Test'}, vbl + 0.5*ifi, GAP_SECONDS, destination, ifi, keys, GREY, SHOW_CHUNK_INFO);
+            {'Test'}, vbl + 0.5*ifi, GAP_SECONDS, destination, ifi, keys, GREY, SHOW_CHUNK_INFO, levelText);
         if quit, return; end
         if LOG_FLIP_TIMING
             % Written after both clips, so file I/O never runs during playback.
@@ -280,31 +296,70 @@ for k = remaining
         end
         [score, action, ratingTime] = rateVideo(window, GREY, SCALE, keys, vbl + 0.5*ifi, ...
             {sprintf('Trial %d / %d', k, n), ...
-             '1-5: choose   Enter: confirm   R: replay'});
+             '1-5: choose   Enter: confirm   R: replay'}, loadWhileIdle, (k - 1) / n);
         if strcmp(action, 'quit'), return; end
         if strcmp(action, 'next'), break; end
         replays = replays + 1;
     end
-    fid = fopen(ratingFile, 'a');
-    fprintf(fid, '%s,%d,%d,%s,%s,%s,%s,%d,%d,%.3f,%d,%d,%s\n', subjectId, seed, k, ids(v), ...
-        labels(v,1), labels(v,2), labels(v,3), ...
-        score, replays, ratingTime, refSkipped, testSkipped, ...
-        char(datetime('now', 'Format', 'yyyy-MM-dd''T''HH:mm:ss')));
-    fclose(fid);
+    session{k, {'score', 'replays', 'rating_time_s', 'reference_skipped_samples', 'test_skipped_samples'}} = ...
+        [score, replays, round(ratingTime, 3), refSkipped, testSkipped];
+    session.timestamp(k) = string(datetime('now', 'Format', 'yyyy-MM-dd''T''HH:mm:ss'));
+    writeSession(session, ratingFile);
     fprintf('  score=%d, replays=%d, skipped samples ref/test=%d/%d\n', ...
         score, replays, refSkipped, testSkipped);
+    if ~isnan(expected(v))
+        showMessage(window, GREY, {sprintf('Your rating: %d', score), ...
+            ['Expected for this example: ' expectedRange(expected(v), SCALE)], '', 'Press Enter to continue'});
+        if ~waitForEnter(keys, loadWhileIdle), return; end
+    end
 end
-results = readtable(ratingFile, 'TextType', 'string');
-if height(results) < n
-    showMessage(window, GREY, {sprintf('Session finished: %d / %d done. Thank you!', height(results), n)});
+results = session;
+rated = sum(~isnan(session.score));
+if rated < n
+    showMessage(window, GREY, {sprintf('Session finished: %d / %d done. Thank you!', rated, n)});
     WaitSecs(2);
     fprintf('Session ended after trial %d: %d/%d rated. Rerun with the same subject ID to continue.\n', ...
-        sessionEnd, height(results), n);
+        sessionEnd, rated, n);
     return;
 end
 showMessage(window, GREY, {'Finished. Thank you!'});
 WaitSecs(2);
 fprintf('All %d videos rated. Ratings: %s\n', n, ratingFile);
+end
+
+function session = readSession(file)
+% Read a session file with fixed column types (subject IDs like "01" stay text).
+options = detectImportOptions(file, 'Delimiter', ',');
+text = {'subject', 'candidate_id', 'chunk1', 'chunk2', 'chunk3', 'timestamp'};
+options = setvartype(options, text, 'string');
+options = setvartype(options, setdiff(options.VariableNames, text), 'double');
+session = readtable(file, options);
+session.timestamp(ismissing(session.timestamp)) = "";
+end
+
+function writeSession(session, file)
+% Write the whole session (blank cells for unrated trials) to a temporary
+% file, then replace FILE, so a crash mid-write never leaves it truncated.
+temporary = [file '.partial'];
+fid = fopen(temporary, 'w');
+assert(fid > 0, 'gmad:SessionFile', 'Cannot write %s.', temporary);
+fprintf(fid, '%s\n', strjoin(session.Properties.VariableNames, ','));
+for row = 1:height(session)
+    cells = cell(1, width(session));
+    for col = 1:width(session)
+        value = session{row, col};
+        if isstring(value)
+            cells{col} = char(value);
+        elseif isnan(value)
+            cells{col} = '';
+        else
+            cells{col} = num2str(value, 12);
+        end
+    end
+    fprintf(fid, '%s\n', strjoin(cells, ','));
+end
+fclose(fid);
+movefile(temporary, file, 'f');
 end
 
 function path = localPath(path, workspace)
@@ -322,7 +377,7 @@ end
 function id = nextSubjectId(outDir)
 % Next unused "S<NN>_<yyyymmdd>" ID, numbering past every S<NN> already in outDir.
 used = 0;
-listing = dir(fullfile(outDir, 'S*_order.csv'));
+listing = [dir(fullfile(outDir, 'S*_ratings.csv')); dir(fullfile(outDir, 'S*_order.csv'))];
 for file = listing'
     token = regexp(file.name, '^S(\d+)', 'tokens', 'once');
     if ~isempty(token), used = max(used, str2double(token{1})); end
@@ -330,7 +385,7 @@ end
 id = sprintf('S%02d_%s', used + 1, char(datetime('now', 'Format', 'yyyyMMdd')));
 end
 
-function [vbl, skipped, quit, flipLog] = playClip(window, resources, slots, chunkSpecs, card, when, cardSeconds, destination, ifi, keys, grey, showInfo)
+function [vbl, skipped, quit, flipLog] = playClip(window, resources, slots, chunkSpecs, card, when, cardSeconds, destination, ifi, keys, grey, showInfo, levelText)
 % Grey title card, then three consecutive 1.5 s chunks drawn from textures
 % decoded in advance by loadClip, so each flip only draws one texture.
 % skipped counts frames passed over because a flip came late.
@@ -355,11 +410,16 @@ while true
     % Bilinear GPU scaling; frame repetition supplies native temporal
     % sampling. No optical-flow or blended-frame interpolation.
     Screen('DrawTexture', window, frames{slots(c)}(f), [], destination, 0, 1);
-    if showInfo
-        info = sprintf('Chunk %d/3  %dp%d', c, chunkSpecs(c,2), chunkSpecs(c,3));
-        bounds = Screen('TextBounds', window, info);
-        Screen('FillRect', window, 0, OffsetRect(GrowRect(bounds, 8, 4), destination(1) + 16, destination(2) + 16));
-        Screen('DrawText', window, info, destination(1) + 16, destination(2) + 16, [255 255 0]);
+    % Top-left labels: expected level (training), then chunk info (debug).
+    labels = {};
+    if ~isempty(levelText), labels{end+1} = levelText; end %#ok<AGROW>
+    if showInfo, labels{end+1} = sprintf('Chunk %d/3  %dp%d', c, chunkSpecs(c,2), chunkSpecs(c,3)); end %#ok<AGROW>
+    y = destination(2) + 16;
+    for label = labels
+        bounds = Screen('TextBounds', window, label{1});
+        Screen('FillRect', window, 0, OffsetRect(GrowRect(bounds, 8, 4), destination(1) + 16, y));
+        Screen('DrawText', window, label{1}, destination(1) + 16, y, [255 255 0]);
+        y = y + RectHeight(bounds) + 14;
     end
     if isempty(onset)
         requested = cardOnset + cardSeconds - 0.5*ifi;
@@ -400,39 +460,54 @@ for c = unique(log.chunk)'
 end
 end
 
-function [score, action, ratingTime] = rateVideo(window, grey, scale, keys, when, footer)
+function [score, action, ratingTime] = rateVideo(window, grey, scale, keys, when, footer, idle, progress)
+% IDLE runs between key checks (background loading) and returns true when it has nothing to do.
+% PROGRESS is the fraction of the session's trials already rated (progress bar).
 score = 0; action = '';
 KbQueueFlush;
 header = {'Rate the impairment of the TEST video compared with the REFERENCE'};
-drawScale(window, grey, scale, score, header, footer);
+drawScale(window, grey, scale, score, header, footer, progress);
 onset = Screen('Flip', window, when);
 while isempty(action)
     key = readKey(keys);
     switch key
         case {'1', '2', '3', '4', '5'}
             score = str2double(key);
-            drawScale(window, grey, scale, score, header, footer);
+            drawScale(window, grey, scale, score, header, footer, progress);
             Screen('Flip', window);
         case 'enter'
             if score > 0, action = 'next'; end
         case {'replay', 'quit'}
             action = key;
         otherwise
-            WaitSecs('YieldSecs', 0.005);
+            if idle(), WaitSecs('YieldSecs', 0.005); end
     end
 end
 ratingTime = GetSecs - onset;
 end
 
-function drawScale(window, grey, scale, score, header, footer)
-% Five DSIS levels as aligned columns: score, label.
+function text = expectedRange(level, scale)
+% Training feedback as a range reaching one level below the CVVDP level,
+% e.g. level 3 -> '2-3  (Poor to Fair)'; level 1 stays '1  (Bad)'.
+name = @(lv) extractBefore(scale{[scale{:,1}] == lv, 2}, ' - ');
+if level <= 1
+    text = sprintf('%d  (%s)', level, name(level));
+else
+    text = sprintf('%d-%d  (%s to %s)', level - 1, level, name(level - 1), name(level));
+end
+end
+
+function drawScale(window, grey, scale, score, header, footer, progress)
+% Five DSIS levels as aligned columns: score, label. PROGRESS (0-1, optional)
+% adds a session progress bar below the footer.
+showProgress = nargin >= 7 && ~isempty(progress);
 Screen('FillRect', window, grey);
 [width, height] = Screen('WindowSize', window);
 rowHeight = round(Screen('TextSize', window) * 1.8);
 labelWidth = max(cellfun(@(text) textWidth(window, text), scale(:,2)));
 numberWidth = textWidth(window, '5'); gap = rowHeight;
 x = (width - (numberWidth + labelWidth + gap)) / 2;
-top = (height - (numel(header) + size(scale, 1) + numel(footer) + 2) * rowHeight) / 2;
+top = (height - (numel(header) + size(scale, 1) + numel(footer) + 2 + showProgress) * rowHeight) / 2;
 drawLines(window, header, 255, top, rowHeight);
 for row = 1:size(scale, 1)
     y = top + (numel(header) + row) * rowHeight;
@@ -444,6 +519,17 @@ for row = 1:size(scale, 1)
     Screen('DrawText', window, double(scale{row,2}), x + numberWidth + gap, y, 255);
 end
 drawLines(window, footer, 220, top + (numel(header) + size(scale, 1) + 2) * rowHeight, rowHeight);
+if showProgress
+    % Track and fill, then "NN% completed" to the right; fill uses the selection blue.
+    barWidth = round(width * 0.35); barHeight = 12;
+    y = top + (numel(header) + size(scale, 1) + 2 + numel(footer)) * rowHeight + rowHeight * 0.3;
+    left = (width - barWidth) / 2;
+    Screen('FillRect', window, 95, [left, y, left + barWidth, y + barHeight]);
+    Screen('FillRect', window, [40 90 170], [left, y, left + barWidth * min(1, max(0, progress)), y + barHeight]);
+    label = sprintf('%d%% completed', round(100 * progress));
+    Screen('DrawText', window, double(label), left + barWidth + 16, ...
+        y + barHeight / 2 - Screen('TextSize', window) * 0.6, 220);
+end
 end
 
 function showMessage(window, grey, lines)
@@ -458,6 +544,7 @@ function drawLines(window, lines, color, top, rowHeight)
 if nargin < 5, rowHeight = round(Screen('TextSize', window) * 1.6); end
 if nargin < 4, top = (height - numel(lines) * rowHeight) / 2; end
 for line = 1:numel(lines)
+    if isempty(lines{line}), continue; end   % blank spacer line; TextBounds rejects empty text
     Screen('DrawText', window, double(lines{line}), (width - textWidth(window, lines{line})) / 2, ...
         top + (line-1) * rowHeight, color);
 end
@@ -468,44 +555,92 @@ bounds = Screen('TextBounds', window, double(text));
 w = bounds(3) - bounds(1);
 end
 
-function ok = waitForEnter(keys)
+function ok = waitForEnter(keys, idle)
 KbQueueFlush;
 while true
     key = readKey(keys);
     if any(strcmp(key, {'enter', 'quit'})), ok = strcmp(key, 'enter'); return; end
-    WaitSecs('YieldSecs', 0.005);
+    if nargin < 2 || idle(), WaitSecs('YieldSecs', 0.005); end
 end
 end
 
-function loadClip(window, resources, slot, source, spec)
-% Decode all 1.5 s of one chunk into GPU textures, then close the decoder.
-% Each texture is registered as soon as it exists, so cleanup works after errors.
-[movie, duration, fps, w, h] = Screen('OpenMovie', window, char(source), 0, 1);
-movies = resources('movies'); movies(slot) = movie; resources('movies') = movies;
-assert(w == spec(1) && h == spec(2) && abs(fps-spec(3)) < 1 && abs(duration-1.5) < 0.02, ...
-    'gmad:MovieFormat', 'Unexpected movie properties: %s', source);
-count = round(1.5 * spec(3));
-times = zeros(1, count);
-% Without PlayMovie, frames are only delivered after an explicit seek.
-Screen('SetMovieTimeIndex', movie, 0);
-for frame = 1:count
+function queueTrial(resources, withReference, refPaths, refSpecs, testPaths, testSpecs)
+% Queue a trial's chunks for decoding into the next-trial slots: reference
+% 7-9 (only when the shot changes), test 10-12. 1080p120 test chunks are the
+% reference file and need no decoding.
+jobs = resources('jobs');
+for c = 1:3
+    if withReference
+        jobs(end+1) = struct('slot', 6 + c, 'source', refPaths(c), 'spec', refSpecs(c,:)); %#ok<AGROW>
+    end
+end
+for c = 1:3
+    if testPaths(c) ~= refPaths(c)
+        jobs(end+1) = struct('slot', 9 + c, 'source', testPaths(c), 'spec', testSpecs(c,:)); %#ok<AGROW>
+    end
+end
+resources('jobs') = jobs;
+end
+
+function done = stepLoader(window, resources, budget)
+% Decode queued chunks into GPU textures for about BUDGET seconds, one frame at
+% a time; true once the queue is empty. Each texture is registered as soon as
+% it exists, so cleanup works after errors.
+start = GetSecs;
+jobs = resources('jobs');
+while ~isempty(jobs) && GetSecs - start < budget
+    job = jobs(1);
+    movies = resources('movies');
+    if isnan(movies(job.slot))
+        [movie, duration, fps, w, h] = Screen('OpenMovie', window, char(job.source), 0, 1);
+        movies(job.slot) = movie; resources('movies') = movies;
+        assert(w == job.spec(1) && h == job.spec(2) && abs(fps-job.spec(3)) < 1 && abs(duration-1.5) < 0.02, ...
+            'gmad:MovieFormat', 'Unexpected movie properties: %s', job.source);
+        % Without PlayMovie, frames are only delivered after an explicit seek.
+        Screen('SetMovieTimeIndex', movie, 0);
+    end
+    movie = movies(job.slot);
+    frames = resources('frames'); pts = resources('pts');
+    frame = numel(frames{job.slot}) + 1;
     try
-        [texture, times(frame)] = Screen('GetMovieImage', window, movie, 1);
+        [texture, time] = Screen('GetMovieImage', window, movie, 1);
     catch cause
         failure = MException('gmad:DecodeFrame', ...
-            'HEVC decoding failed in %s at frame %d. See the preceding Psychtoolbox error.', source, frame);
+            'HEVC decoding failed in %s at frame %d. See the preceding Psychtoolbox error.', job.source, frame);
         throw(addCause(failure, cause));
     end
-    assert(texture > 0, 'gmad:DecodeFrames', 'Missing frame %d in %s.', frame, source);
-    frames = resources('frames'); frames{slot}(frame) = texture; resources('frames') = frames;
-    assert(frame == 1 || times(frame) > times(frame-1), 'gmad:DecodeOrder', ...
-        'Non-increasing timestamps in %s at frame %d.', source, frame);
+    assert(texture > 0, 'gmad:DecodeFrames', 'Missing frame %d in %s.', frame, job.source);
+    frames{job.slot}(frame) = texture; resources('frames') = frames;
+    assert(frame == 1 || time > pts{job.slot}(end), 'gmad:DecodeOrder', ...
+        'Non-increasing timestamps in %s at frame %d.', job.source, frame);
+    pts{job.slot}(frame) = time; resources('pts') = pts;
+    if frame == round(1.5 * job.spec(3))
+        Screen('CloseMovie', movie);
+        movies(job.slot) = nan; resources('movies') = movies;
+        % Upload now rather than on first draw, so playback never waits for VRAM transfers.
+        Screen('PreloadTextures', window, frames{job.slot});
+        jobs(1) = [];
+        resources('jobs') = jobs;
+    end
 end
-Screen('CloseMovie', movie);
-movies = resources('movies'); movies(slot) = nan; resources('movies') = movies;
-pts = resources('pts'); pts{slot} = times; resources('pts') = pts;
-% Upload now rather than on first draw, so playback never waits for VRAM transfers.
-Screen('PreloadTextures', window, frames{slot});
+done = isempty(jobs);
+end
+
+function suspendLoader(resources)
+% Close a half-decoded chunk and drop its frames; it restarts from frame 1 on
+% the next stepLoader call. Queued but unopened chunks are left as they are.
+jobs = resources('jobs'); movies = resources('movies');
+if isempty(jobs) || isnan(movies(jobs(1).slot)), return; end
+closeSlots(resources, jobs(1).slot);
+end
+
+function promoteSlots(resources, slots)
+% Replace the current chunks in SLOTS with the fully loaded next ones (SLOTS + 6).
+closeSlots(resources, slots);
+frames = resources('frames'); pts = resources('pts');
+frames(slots) = frames(slots + 6); pts(slots) = pts(slots + 6);
+frames(slots + 6) = {[]}; pts(slots + 6) = {[]};
+resources('frames') = frames; resources('pts') = pts;
 end
 
 function key = readKey(keys)
