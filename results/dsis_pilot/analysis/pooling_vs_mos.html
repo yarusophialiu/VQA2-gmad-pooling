@@ -81,8 +81,26 @@ th:first-child, td:first-child { text-align: left; }
 <p class="lead">7 名被试，84 个视频，8 个场景，未剔除任何被试。每个场景内：把该场景全部视频（所有 shot 合在一起）按 MOS 和按规则分数各排一次名次，求 Spearman 相关（SRCC）。
 8 个场景的 SRCC 在 Fisher z 空间平均：<b>等权</b> = 每个场景一份；<b>加权</b> = 权重为视频数 − 3，视频多的场景说了算。</p>
 
+<section class="card" id="tuning">
+<h2>1. 在 makeway 上调参，在其余场景上测试</h2>
+<p>每个规则的参数在 makeway 的 19 个视频上做网格搜索，取与 MOS 的 SRCC 最高的一组（平局时取 PLCC 更高的，再平局取离默认值最近的），然后固定参数，在其余 7 个场景的 65 个视频上评估。横轴是留出场景的场景平均 SRCC，和本页其他部分一样按 n − 3 加权。各行按调参后的值排序。这里的逐帧分数来自完整的 540 帧视频，所以 CVVDP 的数值和第 2 部分（逐 chunk 拼接的分数）略有不同。</p>
+<p><b>结论：</b>调参大多把规则推向简单平均（percentile p = 100、last_frames_mean 取全部帧、τ = 1920 帧时权重几乎均匀）。VMAF 和 PSNR-Y 上没有调参后的规则明显超过 mean。CVVDP 上，exp_weighted_minkowski（p = 4，τ = 1920）的场景平均达到 0.64，mean 为 0.52；但 65 个视频合在一起算只有 0.51 对 0.49。worst_window 过拟合：makeway 上 SRCC 升高，留出场景上下降。调参只用了 19 个视频、7 名受试者（MOS 95% 置信区间约 ±1），这些结果只能作为参考，参数还不能算定论。</p>
+<div class="legend">
+  <span><i class="key" style="background:transparent;border:2px solid var(--pooled)"></i>默认参数</span>
+  <span><i class="key" style="background:var(--series-1)"></i>makeway 上调参后</span>
+  <span><i class="key tick" style="background:var(--series-2)"></i>简单平均（参照）</span>
+</div>
+<h3>CVVDP 逐帧 JOD</h3>
+<div id="tune-cvvdp"></div>
+<h3>VMAF 逐帧</h3>
+<div id="tune-vmaf"></div>
+<h3>PSNR-Y 逐帧</h3>
+<div id="tune-psnr_y"></div>
+<details><summary>显示数据表（makeway SRCC、留出 SRCC、bootstrap 置信区间）</summary><p class="muted" style="font-size:12px;margin-top:8px">留出视频合并 SRCC 的提升；95% 置信区间来自对 65 个视频的 2000 次配对 bootstrap。</p><div class="scroll" id="tune-table"></div></details>
+</section>
+
 <section class="card">
-<h2>1. 各规则的场景平均 SRCC</h2>
+<h2>2. 各规则的场景平均 SRCC</h2>
 <p>同一批规则分别作用在三种逐帧分数上：CVVDP 的逐帧 JOD、VMAF、PSNR-Y（参数相同）。每张图按加权排序，横轴范围相同。小场景（heros3、ratchet 各 5 个视频）会把等权平均抬高，建议以加权为准。</p>
 <div class="legend">
   <span><i class="key" style="background:var(--series-1)"></i>场景加权</span>
@@ -90,7 +108,7 @@ th:first-child, td:first-child { text-align: left; }
   <span><i class="key tick" style="background:var(--pooled)"></i>84 个视频混在一起（参照）</span>
 </div>
 <h3>CVVDP 逐帧 JOD</h3>
-<p class="muted">点击一行，下面第 3 部分的散点图切换到该规则。</p>
+<p class="muted">点击一行，下面第 4 部分的散点图切换到该规则。</p>
 <div id="dots"></div>
 <h3>VMAF 逐帧分数</h3>
 <div id="dots-vmaf"></div>
@@ -99,7 +117,7 @@ th:first-child, td:first-child { text-align: left; }
 </section>
 
 <section class="card">
-<h2>2. 每个场景、每个规则的 SRCC</h2>
+<h2>3. 每个场景、每个规则的 SRCC</h2>
 <p>上图：横轴是规则（按加权排序），每个点是一个场景在该规则下的 SRCC。每个场景在每列里的左右位置固定，点击图例可以单独看一个场景。</p>
 <div class="legend" id="strip-legend"></div>
 <div class="scroll"><div id="strip"></div></div>
@@ -109,7 +127,7 @@ th:first-child, td:first-child { text-align: left; }
 </section>
 
 <section class="card">
-<h2>3. 每个场景：规则分数 vs MOS</h2>
+<h2>4. 每个场景：规则分数 vs MOS</h2>
 <p>每个点是一个视频，竖线是 MOS 的 95% 置信区间，颜色区分同一场景里的不同 shot。横轴是规则给出的 JOD，各场景范围不同。</p>
 <div class="controls"><label for="pick">规则</label><select id="pick"></select></div>
 <div class="panels" id="panels"></div>
@@ -340,6 +358,47 @@ if (pick) {
 }
 for (const m in DATA.metrics) drawDots(`dots-${m}`, DATA.metrics[m], false);
 drawStrip(); drawHeat(); drawTable(); select(current);
+
+// 1. Tuning on makeway: default -> tuned held-out SRCC per rule
+const TUNE = {"cvvdp": {"mean_w": 0.5232825081141919, "mean_p": 0.4929189748558689, "rows": [{"rule": "exp_weighted_minkowski", "default": "p = 2, τ = 480", "tuned": "p = 4, τ = 1920", "train_def": 0.6075188411071668, "train_tun": 0.6587340922470151, "w_def": 0.6052459228614875, "w_tun": 0.6412324115132993, "p_def": 0.4767641563354127, "p_tun": 0.5093364733522674, "lo": -0.0166998832187274, "hi": 0.0840560426656465}, {"rule": "minkowski", "default": "p = 2", "tuned": "p = 2", "train_def": 0.6525529412473782, "train_tun": 0.6525529412473782, "w_def": 0.5447416961888314, "w_tun": 0.5447416961888314, "p_def": 0.5062499836349446, "p_tun": 0.5062499836349446, "lo": 0.0, "hi": 0.0}, {"rule": "hysteresis", "default": "τ = 2, α = 0.8", "tuned": "τ = 0.1, α = 0", "train_def": 0.5863263233941259, "train_tun": 0.6393076176767278, "w_def": 0.519122950030374, "w_tun": 0.5259137516786535, "p_def": 0.4863957554532999, "p_tun": 0.4970999644729517, "lo": -0.0571512925816644, "hi": 0.0843827518793865}, {"rule": "percentile", "default": "p = 5", "tuned": "p = 100", "train_def": 0.5225714873330447, "train_tun": 0.6393076176767278, "w_def": 0.281924723012987, "w_tun": 0.5232825081141919, "p_def": 0.3928523103372111, "p_tun": 0.4929189748558689, "lo": -0.0184205006544043, "hi": 0.239487407876294}, {"rule": "last_frames_mean", "default": "frames = 600", "tuned": "frames = 600", "train_def": 0.6393076176767278, "train_tun": 0.6393076176767278, "w_def": 0.5232825081141919, "w_tun": 0.5232825081141919, "p_def": 0.4929189748558689, "p_tun": 0.4929189748558689, "lo": 0.0, "hi": 0.0}, {"rule": "decreasing_weights", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.6084018626785435, "train_tun": 0.6225302078205706, "w_def": 0.5237664268759544, "w_tun": 0.5556897882456713, "p_def": 0.5030321539296503, "p_tun": 0.4869211154051846, "lo": -0.0576254689569121, "hi": 0.0172607177559713}, {"rule": "increasing_weights", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.6004546685361531, "train_tun": 0.6075188411071668, "w_def": 0.6226730694801067, "w_tun": 0.6069346962913349, "p_def": 0.4792596161068653, "p_tun": 0.4868773354091942, "lo": -0.0139494332491949, "hi": 0.036110009308031}, {"rule": "kth_percentile", "default": "k = 50", "tuned": "k = 90", "train_def": 0.4441065393046913, "train_tun": 0.6222050549736658, "w_def": 0.5360466843637046, "w_tun": 0.5711644903747977, "p_def": 0.3957628979568027, "p_tun": 0.484649242362613, "lo": -0.044188364449885, "hi": 0.2361186406556885}, {"rule": "late_dominance", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.4955374611386815, "train_tun": 0.5800756124037196, "w_def": 0.4293746592650274, "w_tun": 0.4794377872147853, "p_def": 0.4129726044461586, "p_tun": 0.4370819270117333, "lo": -0.0127163260865054, "hi": 0.071267128897083}, {"rule": "early_dominance", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.419759793310503, "train_tun": 0.5514490291459689, "w_def": 0.4081201671796041, "w_tun": 0.4792666249276846, "p_def": 0.3130087708089474, "p_tun": 0.4127742058919925, "lo": 0.0186965555045267, "hi": 0.1816741249630058}, {"rule": "worst_window", "default": "window = 480", "tuned": "window = 180", "train_def": 0.6031037332502832, "train_tun": 0.6703687911615592, "w_def": 0.5263466801559356, "w_tun": 0.3600518532273949, "p_def": 0.485520155533492, "p_tun": 0.408899147353767, "lo": -0.1588255227398934, "hi": 0.0031647767299284}]}, "vmaf": {"mean_w": 0.7469928508823536, "mean_p": 0.6292655529373135, "rows": [{"rule": "worst_window", "default": "window = 480", "tuned": "window = 90", "train_def": 0.6834586962455625, "train_tun": 0.8224596727606606, "w_def": 0.7396106611400212, "w_tun": 0.627598519829593, "p_def": 0.6266174420652161, "p_tun": 0.6408310098323785, "lo": -0.1393418828847286, "hi": 0.1662169492903092}, {"rule": "exp_weighted_minkowski", "default": "p = 2, τ = 480", "tuned": "p = 4, τ = 1920", "train_def": 0.70818330024411, "train_tun": 0.786772220096636, "w_def": 0.7012641542161346, "w_tun": 0.7498300782072522, "p_def": 0.6034410006309097, "p_tun": 0.639639144287513, "lo": -0.0248331967392493, "hi": 0.101348036018161}, {"rule": "minkowski", "default": "p = 2", "tuned": "p = 8", "train_def": 0.7567494866698283, "train_tun": 0.7938363926676496, "w_def": 0.7531067630213737, "w_tun": 0.7420436414943118, "p_def": 0.6392014400111333, "p_tun": 0.6322638272305147, "lo": -0.0942212619088408, "hi": 0.0798789545941644}, {"rule": "percentile", "default": "p = 5", "tuned": "p = 100", "train_def": 0.5821023507910197, "train_tun": 0.6967040198162129, "w_def": 0.549783806910784, "w_tun": 0.7469928508823536, "p_def": 0.5578115772829256, "p_tun": 0.6292655529373135, "lo": -0.115149421114081, "hi": 0.2459111270840801}, {"rule": "last_frames_mean", "default": "frames = 600", "tuned": "frames = 600", "train_def": 0.6967040198162129, "train_tun": 0.6967040198162129, "w_def": 0.7469928508823536, "w_tun": 0.7469928508823536, "p_def": 0.6292655529373135, "p_tun": 0.6292655529373135, "lo": 0.0, "hi": 0.0}, {"rule": "decreasing_weights", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.6331264666770908, "train_tun": 0.6622661785325218, "w_def": 0.6448611259743667, "w_tun": 0.7422326123668104, "p_def": 0.6112759071781068, "p_tun": 0.6232471191370922, "lo": -0.0347498940648191, "hi": 0.052563024381389}, {"rule": "increasing_weights", "default": "segments = 3", "tuned": "segments = 4", "train_def": 0.6375415745339743, "train_tun": 0.6375415745339743, "w_def": 0.6686185578504974, "w_tun": 0.6686185578504974, "p_def": 0.5744430923207527, "p_tun": 0.5753403860873312, "lo": -0.0078079360103807, "hi": 0.0113371482144474}, {"rule": "hysteresis", "default": "τ = 2, α = 0.8", "tuned": "τ = 2, α = 0", "train_def": 0.6092848842499201, "train_tun": 0.6626583402186861, "w_def": 0.6644828578799105, "w_tun": 0.581078198083328, "p_def": 0.5569130360517448, "p_tun": 0.519861369056201, "lo": -0.2107493013948605, "hi": 0.130334567665903}, {"rule": "early_dominance", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.4381703105609637, "train_tun": 0.5674847036607145, "w_def": 0.4921031161232425, "w_tun": 0.5740672314927051, "p_def": 0.3542574552846753, "p_tun": 0.5187188499890613, "lo": 0.0461326690755881, "hi": 0.2877354706651698}, {"rule": "late_dominance", "default": "segments = 3", "tuned": "segments = 3", "train_def": 0.6028466422516376, "train_tun": 0.6028466422516376, "w_def": 0.4117382617349835, "w_tun": 0.4117382617349835, "p_def": 0.4146013300488184, "p_tun": 0.4146013300488184, "lo": 0.0, "hi": 0.0}, {"rule": "kth_percentile", "default": "k = 50", "tuned": "k = 60", "train_def": 0.7603202479433413, "train_tun": 0.7603202479433413, "w_def": 0.594123399559051, "w_tun": 0.5894762458428561, "p_def": 0.45004155750728, "p_tun": 0.4123782390003216, "lo": -0.1178942201261837, "hi": 0.0326966901658352}]}, "psnr_y": {"mean_w": 0.7360183571408953, "mean_p": 0.6391222714657964, "rows": [{"rule": "minkowski", "default": "p = 2", "tuned": "p = 2", "train_def": 0.786772220096636, "train_tun": 0.786772220096636, "w_def": 0.7505212739238932, "w_tun": 0.7505212739238932, "p_def": 0.6489508805656403, "p_tun": 0.6489508805656403, "lo": 0.0, "hi": 0.0}, {"rule": "percentile", "default": "p = 5", "tuned": "p = 100", "train_def": 0.3193523956227527, "train_tun": 0.7655797023835953, "w_def": 0.331463936821735, "w_tun": 0.7360183571408953, "p_def": 0.3600444764277867, "p_tun": 0.6391222714657964, "lo": 0.0564331140746815, "hi": 0.5033332344003418}, {"rule": "last_frames_mean", "default": "frames = 600", "tuned": "frames = 600", "train_def": 0.7655797023835953, "train_tun": 0.7655797023835953, "w_def": 0.7360183571408953, "w_tun": 0.7360183571408953, "p_def": 0.6391222714657964, "p_tun": 0.6391222714657964, "lo": 0.0, "hi": 0.0}, {"rule": "exp_weighted_minkowski", "default": "p = 2, τ = 480", "tuned": "p = 2, τ = 1920", "train_def": 0.7593985513839585, "train_tun": 0.786772220096636, "w_def": 0.7269263456460475, "w_tun": 0.7248130598652773, "p_def": 0.6123070239216788, "p_tun": 0.6388377014918588, "lo": -0.0243788277384374, "hi": 0.091180038531873}, {"rule": "decreasing_weights", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.6640322216752753, "train_tun": 0.6967040198162129, "w_def": 0.7014682805567227, "w_tun": 0.685609232334176, "p_def": 0.6012525749341039, "p_tun": 0.6019092748739597, "lo": -0.0367327989007947, "hi": 0.0371067446043165}, {"rule": "worst_window", "default": "window = 480", "tuned": "window = 30", "train_def": 0.7655797023835953, "train_tun": 0.9068337260773354, "w_def": 0.7292253673509491, "w_tun": 0.6991347182146149, "p_def": 0.6248718827709225, "p_tun": 0.5967712183388802, "lo": -0.1988735162461478, "hi": 0.1487247984371022}, {"rule": "increasing_weights", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.7240776885288905, "train_tun": 0.7382060336709176, "w_def": 0.6973718879611426, "w_tun": 0.7127691106116731, "p_def": 0.5948169155235156, "p_tun": 0.5962178753952083, "lo": -0.0271057060467325, "hi": 0.0272358587264021}, {"rule": "hysteresis", "default": "τ = 2, α = 0.8", "tuned": "τ = 0.25, α = 0.6", "train_def": 0.5872093449655027, "train_tun": 0.6772775452459256, "w_def": 0.5514501101334778, "w_tun": 0.6372455569162372, "p_def": 0.5058559636710309, "p_tun": 0.5339408310988699, "lo": -0.0318718734530296, "hi": 0.0999221840330915}, {"rule": "early_dominance", "default": "segments = 3", "tuned": "segments = 2", "train_def": 0.4556603019489014, "train_tun": 0.5576851247905922, "w_def": 0.5932976040178576, "w_tun": 0.6596786765061582, "p_def": 0.4373892704900262, "p_tun": 0.5335818811731494, "lo": -0.0054689895934599, "hi": 0.1977942940218562}, {"rule": "kth_percentile", "default": "k = 50", "tuned": "k = 60", "train_def": 0.6612564244536728, "train_tun": 0.6651097536917937, "w_def": 0.5891422851291239, "w_tun": 0.5726487477870769, "p_def": 0.471447634667463, "p_tun": 0.4738445626085159, "lo": -0.0518351270974143, "hi": 0.0562189037327727}, {"rule": "late_dominance", "default": "segments = 3", "tuned": "segments = 5", "train_def": 0.6482075634142891, "train_tun": 0.6953829214234466, "w_def": 0.3938643803961406, "w_tun": 0.3938643803961406, "p_def": 0.4438577756119458, "p_tun": 0.4446794597156164, "lo": -0.0156764922763986, "hi": 0.0201285561371713}]}};
+const TT = {"metrics": {"cvvdp": "CVVDP 逐帧 JOD", "vmaf": "VMAF 逐帧", "psnr_y": "PSNR-Y 逐帧"}, "cols": ["指标", "规则", "默认", "调参后", "makeway SRCC 默认 → 调参后", "留出场景平均（加权）", "留出合并 SRCC", "提升 95% CI（合并）"], "tipdef": "默认", "tiptun": "调参后", "tipmean": "平均"};
+function drawTune(metric) {
+  const d = TUNE[metric], rules = d.rows.slice().sort((a, b) => b.w_tun - a.w_tun);
+  const row = 30, left = 300, right = 30, top = 24, width = 900;
+  const height = top + row * rules.length + 8;
+  const lo = 0.2, hi = 0.9, x = v => left + (Math.max(lo, Math.min(hi, v)) - lo) / (hi - lo) * (width - left - right);
+  const box = document.getElementById(`tune-${metric}`); box.innerHTML = '';
+  const svg = el('svg', {viewBox: `0 0 ${width} ${height}`, role: 'img', 'aria-label': TT.metrics[metric]}, box);
+  for (let t = 0.2; t <= 0.901; t += 0.1) {
+    el('line', {x1: x(t), x2: x(t), y1: top - 6, y2: height - 4, class: 'grid'}, svg);
+    el('text', {x: x(t), y: top - 10, 'text-anchor': 'middle'}, svg, t.toFixed(1));
+  }
+  el('line', {x1: x(d.mean_w), x2: x(d.mean_w), y1: top - 6, y2: height - 4, stroke: 'var(--series-2)',
+    'stroke-width': 1.5, 'stroke-dasharray': '4 3'}, svg);
+  rules.forEach((r, i) => {
+    const y = top + i * row + row / 2;
+    const band = el('rect', {x: 0, y: y - row / 2, width, height: row, rx: 6, class: 'row-hit', 'pointer-events': 'none'}, svg);
+    el('text', {x: left - 14, y: y + 4, 'text-anchor': 'end', class: 'label'}, svg, `${r.rule}  (${r.tuned})`);
+    el('line', {x1: x(r.w_def), x2: x(r.w_tun), y1: y, y2: y, stroke: 'var(--axis)', 'stroke-width': 2}, svg);
+    el('circle', {cx: x(r.w_def), cy: y, r: 5, fill: 'var(--surface-1)', stroke: 'var(--pooled)', 'stroke-width': 2}, svg);
+    el('circle', {cx: x(r.w_tun), cy: y, r: 5.5, fill: 'var(--series-1)'}, svg);
+    const hit = el('rect', {x: 0, y: y - row / 2, width, height: row, fill: 'transparent'}, svg);
+    hit.addEventListener('mouseenter', () => band.classList.add('hover'));
+    hit.addEventListener('mouseleave', () => band.classList.remove('hover'));
+    bindTip(hit, `<b>${r.rule}</b><br>${TT.tipdef}: ${r.default} → ${f2(r.w_def)}<br>${TT.tiptun}: ${r.tuned} → ${f2(r.w_tun)}`
+      + `<br>${TT.tipmean}: ${f2(d.mean_w)}<br>makeway SRCC ${f2(r.train_def)} → ${f2(r.train_tun)}`);
+  });
+}
+function drawTuneTable() {
+  const head = TT.cols.map(c => `<th>${c}</th>`).join('');
+  const body = Object.keys(TUNE).flatMap(m => TUNE[m].rows.map(r => `<tr><td>${TT.metrics[m]}</td><td>${r.rule}</td>`
+    + `<td>${r.default}</td><td>${r.tuned}</td><td>${f2(r.train_def)} → ${f2(r.train_tun)}</td>`
+    + `<td>${f2(r.w_def)} → ${f2(r.w_tun)}</td><td>${f2(r.p_def)} → ${f2(r.p_tun)}</td>`
+    + `<td>[${r.lo >= 0 ? '+' : ''}${r.lo.toFixed(3)}, ${r.hi >= 0 ? '+' : ''}${r.hi.toFixed(3)}]</td></tr>`)).join('');
+  document.getElementById('tune-table').innerHTML = `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+}
+for (const m in TUNE) drawTune(m);
+drawTuneTable();
 </script>
 </body>
 </html>
