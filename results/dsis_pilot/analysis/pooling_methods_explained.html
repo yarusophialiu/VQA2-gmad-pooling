@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pooling 方法说明</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface-0: #f6f5f2; --surface-1: #fcfcfb; --grid: #e4e3de; --axis: #b9b8b1;
+  --text-primary: #0b0b0b; --text-secondary: #52514e; --text-muted: #77766f;
+  --series-1: #2a78d6; --series-2: #eb6834; --series-3: #1baf7a; --series-4: #eda100;
+  --series-5: #e87ba4; --series-7: #6250d6; --pooled: #9a9992;
+  --highlight: #f0efec; --warn: #b85c00; --code: #efeee9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --surface-0: #121211; --surface-1: #1a1a19; --grid: #2c2c2a; --axis: #4a4a46;
+    --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #96958c;
+    --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+    --series-5: #d55181; --series-7: #9085e9; --pooled: #6f6e68;
+    --highlight: #262624; --warn: #e89a4a; --code: #242422;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #121211; --surface-1: #1a1a19; --grid: #2c2c2a; --axis: #4a4a46;
+  --text-primary: #f0efec; --text-secondary: #c3c2b7; --text-muted: #96958c;
+  --series-1: #3987e5; --series-2: #d95926; --series-3: #199e70; --series-4: #c98500;
+  --series-5: #d55181; --series-7: #9085e9; --pooled: #6f6e68;
+  --highlight: #262624; --warn: #e89a4a; --code: #242422;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--surface-0); color: var(--text-primary);
+  font: 14px/1.65 system-ui, -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; }
+main { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 24px; margin: 0 0 6px; }
+h2 { font-size: 18px; margin: 0 0 8px; }
+h3 { font-size: 15px; margin: 0 0 4px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+p, li { color: var(--text-secondary); }
+p { margin: 0 0 10px; }
+ul { margin: 0 0 10px; padding-left: 20px; }
+code { font: 12.5px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--code);
+  padding: 1px 5px; border-radius: 4px; color: var(--text-primary); }
+.card { background: var(--surface-1); border-radius: 12px; padding: 20px; margin-top: 20px; }
+.lead { max-width: 820px; }
+.tag { font-size: 11px; font-weight: 500; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--axis);
+  color: var(--text-muted); }
+.tag.eq { color: var(--warn); border-color: var(--warn); }
+.rule { border-top: 1px solid var(--grid); padding: 16px 0 6px; }
+.rule:first-of-type { border-top: 0; padding-top: 4px; }
+.formula { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--code); color: var(--text-primary);
+  padding: 8px 12px; border-radius: 8px; margin: 6px 0 10px; overflow-x: auto; white-space: pre; }
+dl.params { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0 0 8px; }
+dl.params dt { color: var(--text-primary); font-weight: 500; }
+dl.params dd { margin: 0; color: var(--text-secondary); }
+.note { border-left: 3px solid var(--warn); padding: 4px 12px; margin: 8px 0; color: var(--text-secondary); }
+.scroll { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 13px; width: 100%; }
+th, td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--text-muted); font-weight: 500; white-space: nowrap; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td code { white-space: nowrap; }
+svg { display: block; width: 100%; height: auto; }
+svg text { fill: var(--text-secondary); font-size: 12px; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--text-secondary); margin: 6px 0; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.key { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.toc { columns: 2 220px; margin: 0; padding-left: 20px; }
+a { color: var(--series-1); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Pooling 方法说明</h1>
+  <p class="lead">解释 <a href="pooling_vs_mos_en.html">pooling_vs_mos_en.html</a> 里每个 temporal pooling rule 是什么，以及这次 DSIS pilot 用的参数是怎么来的。
+    代码来源：规则在 <code>VQA2-gmad-pooling/gmad/temporal_pooling_snapshot.py</code>（与 <code>VQA2/temporal_pooling.py</code> 相同的快照），
+    调用参数在 <code>gmad/run_selection.py</code> 的 <code>predict()</code>，实际运行配置记录在
+    <code>results/gmad_all_shots_480p720p1080p_skip_negative_no_offset_time_converted/config.json</code>。
+    文献出处与原始参数见 <code>VQA2/temporal_pooling_rules.md</code>。</p>
+
+  <!-- ===================================================== -->
+  <section class="card">
+    <h2>1. 所有规则共用的输入</h2>
+    <ul>
+      <li><b>逐帧分数 q[t]</b>：CVVDP 在 video 模式下跑一次，在时间池化之前停下，把每帧的响应用 CVVDP 自己的 <code>met2jod</code> 转成 JOD（见 <code>PER_FRAME_SCORES.md</code>）。
+        越高越好，无可见差异的帧 = 10。</li>
+      <li><b>时间轴</b>：所有视频都在 120 Hz 上，每个 chunk 180 帧（1.5 s），一条视频 540 帧（4.5 s）。30 / 60 fps 的 chunk 用帧重复补到 120 Hz。</li>
+      <li><b>负分帧被丢掉</b>（<code>negative_frame_policy = skip</code>）：<code>met2jod</code> 不截断，失真很重的帧会低于 0。
+        20412 个候选视频里有 1215 个含负分帧，共去掉 1944 个帧值，所以有些视频只剩 538 或 539 帧。</li>
+      <li><b>没有加偏移</b>（<code>common_input_offset = 0</code>）：Minkowski、VQPooling 需要正值输入。去掉负分帧后最小值是 0.306，已经为正，所以不需要平移。</li>
+      <li><b>参数不是在我们的数据上拟合的</b>：全部采用原论文的默认 / 推荐值，只做了一件事——把以“帧数”给出的参数从论文的 25 fps 换算到 120 Hz，保持相同的<b>物理时长</b>
+        （<code>time_policy = converted</code>，系数 120 / 25 = 4.8）。以“秒”给出的参数（hysteresis 的 τ）直接用 fps = 120。</li>
+    </ul>
+    <div class="note">因为视频只有 4.5 s，而很多文献参数是为 8–10 s 片段甚至几分钟的 streaming session 设计的，几个规则在这种时长下会<b>退化成 mean</b>。
+      这就是结果页里 “mean = last_frames_mean = cumulative_quality” 和 “median = kth_percentile” 的原因，下面逐条说明。</div>
+  </section>
+
+  <!-- ===================================================== -->
+  <section class="card">
+    <h2>2. 一览表</h2>
+    <p>最后一列是结果页的主指标（各 scene SRCC 按 n − 3 加权在 Fisher z 空间平均），按它排序。只有 7 位被试、84 条视频，差距大多在噪声范围内，仅供参照。</p>
+    <div class="scroll">
+    <table>
+      <thead><tr><th>规则</th><th>一句话</th><th>本次参数</th><th>来源</th><th style="text-align:right">加权 SRCC</th></tr></thead>
+      <tbody>
+        <tr><td><code>increasing_weights</code></td><td>三个 chunk 权重 1 : 2 : 3（越后越重）</td><td>n_segments = 3</td><td>Duanmu 2018</td><td class="num">0.622</td></tr>
+        <tr><td><code>exp_weighted_minkowski</code></td><td>指数近因权重 + Minkowski</td><td>p = 2, τ = 480 帧 (4 s)</td><td>Rimac-Drlje 2009</td><td class="num">0.613</td></tr>
+        <tr><td><code>decreasing_weights</code></td><td>三个 chunk 权重 3 : 2 : 1（越前越重）</td><td>n_segments = 3</td><td>Duanmu 2018</td><td class="num">0.585</td></tr>
+        <tr><td><code>minkowski</code></td><td>(mean q<sup>p</sup>)<sup>1/p</sup></td><td>p = 2</td><td>Rimac-Drlje 2009</td><td class="num">0.569</td></tr>
+        <tr><td><code>hysteresis</code></td><td>记忆（过去最差）+ 当前（未来窗口偏向最差）</td><td>τ = 2 s (240 帧), α = 0.8</td><td>Seshadrinathan &amp; Bovik 2011</td><td class="num">0.568</td></tr>
+        <tr><td><code>worst_window</code></td><td>滑动平均的最小值</td><td>N = 480 帧 (4 s)</td><td>Rimac-Drlje 2009</td><td class="num">0.566</td></tr>
+        <tr><td><code>mean</code> = <code>last_frames_mean</code> = <code>cumulative_quality</code></td><td>算术平均</td><td>—</td><td>多篇</td><td class="num">0.564</td></tr>
+        <tr><td><code>vqpooling_temporal</code></td><td>2-means 分高低两组，好帧组降权</td><td>无可调参数</td><td>Park 2013</td><td class="num">0.555</td></tr>
+        <tr><td><code>combined_jod</code>（参照）</td><td>CVVDP 对整段视频自己的打分</td><td>CVVDP 默认</td><td>Mantiuk 2024</td><td class="num">0.529</td></tr>
+        <tr><td><code>median</code> = <code>kth_percentile</code></td><td>中位数</td><td>k = 50</td><td>Eswara 2020 / Rimac-Drlje 2009</td><td class="num">0.511</td></tr>
+        <tr><td><code>percentile</code></td><td>最差 5% 帧的平均</td><td>p = 5%（约 27 帧）</td><td>Park 2013; Bampis 2017</td><td class="num">0.429</td></tr>
+        <tr><td><code>early_dominance</code></td><td>只看第 1 个 chunk</td><td>n_segments = 3</td><td>Duanmu 2018</td><td class="num">0.411</td></tr>
+        <tr><td><code>late_dominance</code></td><td>只看第 3 个 chunk</td><td>n_segments = 3</td><td>Duanmu 2018</td><td class="num">0.399</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ===================================================== -->
+  <section class="card">
+    <h2>3. 时间权重对比</h2>
+    <p>纯加权平均类规则可以画成“每一时刻占多少权重”。横轴是 4.5 s 视频，竖线是 chunk 边界。
+      <code>exp_weighted_minkowski</code> 的三段权重约为 0.22 / 0.32 / 0.46，和 <code>increasing_weights</code> 的 0.17 / 0.33 / 0.50 很接近——这两个规则在结果页排前两名，说明的是同一件事：<b>后面的 chunk 权重大一些</b>更贴近 MOS。</p>
+    <div class="legend" id="wlegend"></div>
+    <svg id="weights" viewBox="0 0 720 230" role="img" aria-label="各规则在 4.5 秒内的时间权重"></svg>
+    <p style="font-size:12px;color:var(--text-muted)">纵轴是相对每帧权重（mean 每帧 = 1）。exp_weighted_minkowski 画的是 p 次方之前的权重 exp((t − T)/τ)，已归一化。</p>
+  </section>
+
+  <!-- ===================================================== -->
+  <section class="card">
+    <h2>4. 逐条说明</h2>
+    <p>记号：q[t] 是第 t 帧的 JOD，t = 1…T（T ≈ 540）。</p>
+
+    <div class="rule">
+      <h3><code>combined_jod</code> <span class="tag">参照，不是 pooling rule</span></h3>
+      <p>CVVDP 对整段 4.5 s 视频直接给出的 JOD。CVVDP 内部的时间池化是在<b>失真响应</b>上做 L2（β<sub>t</sub> = 2），然后再映射到 JOD；
+        而其它规则都是先把每帧转成 JOD 再池化。所以它和 <code>minkowski</code>、<code>mean</code> 很像但不完全相同。用来回答“直接用 CVVDP 行不行”。</p>
+    </div>
+
+    <div class="rule">
+      <h3><code>mean</code> <span class="tag eq">= last_frames_mean = cumulative_quality</span></h3>
+      <div class="formula">Q = (1/T) Σ q[t]</div>
+      <p>基线。多篇文献（Duanmu 2018、Bampis 2017、Seshadrinathan &amp; Bovik 2011）发现 mean 很难被稳定超越。无参数。</p>
+    </div>
+
+    <div class="rule">
+      <h3><code>last_frames_mean</code> <span class="tag eq">退化为 mean</span></h3>
+      <div class="formula">Q = (1/F) Σ_{t = T−F+1 … T} q[t]      （只看最后 F 帧，近因效应）</div>
+      <dl class="params">
+        <dt>F = 600 帧</dt><dd>论文（Rimac-Drlje 2009）扫了 F ∈ {50…300} 帧，在 25 fps 下 F = 125 帧（5 s）最好，结论是“最后 3–7 s 主导判断”。换算到 120 Hz：125 × 4.8 = 600 帧。</dd>
+      </dl>
+      <div class="note">600 帧 &gt; 视频总长 540 帧，所以“最后 5 s”就是整条视频，结果和 mean 完全一样。要让它有意义得改用更短的窗口（例如最后一个 chunk = <code>late_dominance</code>）。</div>
+    </div>
+
+    <div class="rule">
+      <h3><code>cumulative_quality</code> (CQM) <span class="tag eq">退化为 mean</span></h3>
+      <div class="formula">CQM = 0.280·WQ_last(50 s) + 0.426·WQ_avg(60 s) + 0.280·WQ_min(50 s) + 0.014·WQ_max(50 s)</div>
+      <p>Tran et al. 2021，为几分钟的 streaming session 设计：在 1 s 片段上滑动长度 K 的窗口，组合“最后一个窗口”（近因）、“所有窗口平均”、“最差窗口”（peak-end）和“最好窗口”。
+        权重和窗口长度是论文在 36 段 6 分钟序列上拟合的值，原样使用。</p>
+      <div class="note">50 / 60 s 窗口远长于 4.5 s，每个窗口都覆盖整条视频，四项都等于整体平均，权重和为 1，所以 CQM = mean。
+        另外原实现按 1 s 切片时最后半秒会被当成一整段（偏差最大 0.39 JOD），<code>run_selection.py</code> 直接用按帧时长加权的 mean 代替来避免这个偏差。</div>
+    </div>
+
+    <div class="rule">
+      <h3><code>median</code> <span class="tag eq">= kth_percentile</span></h3>
+      <div class="formula">Q = q 的中位数</div>
+      <p>对少数异常帧更稳健。Eswara 2020 用它来汇总连续 QoE 预测。无参数。</p>
+    </div>
+
+    <div class="rule">
+      <h3><code>kth_percentile</code> <span class="tag eq">退化为 median</span></h3>
+      <div class="formula">Q = q 分布的第 k 百分位</div>
+      <dl class="params">
+        <dt>k = 50</dt><dd>函数默认值。Rimac-Drlje 2009 扫过 k ∈ {10…97}，最优 k 取决于指标方向：质量类分数 SSIM 为 60、PSNR 为 10；失真类分数取高 k。</dd>
+      </dl>
+      <div class="note">k = 50 就是中位数，所以与 <code>median</code> 完全相同。如果想测试“偏向最差”的版本，应该用较小的 k（例如 10），这次 pilot 没有做。</div>
+    </div>
+
+    <div class="rule">
+      <h3><code>percentile</code></h3>
+      <div class="formula">Q = 最低 p% 帧的平均</div>
+      <dl class="params">
+        <dt>p = 5%</dt><dd>Bampis 2017 和 Park 2013（剩余帧权重 r = 0 时）都用 5%；Moorthy &amp; Bovik 2010 用 6%。540 × 5% → 27 帧 ≈ 0.23 s。</dd>
+      </dl>
+      <p>只看最差的一小段，代表“worst-case / peak impairment”。在我们的数据里它几乎只反映最差那个 chunk 里最差的那几帧，排名靠后。</p>
+    </div>
+
+    <div class="rule">
+      <h3><code>minkowski</code></h3>
+      <div class="formula">Q = ( (1/T) Σ q[t]^p )^(1/p)</div>
+      <dl class="params">
+        <dt>p = 2</dt><dd>函数默认值。Rimac-Drlje 2009 扫了 p = 1…12，最佳值随指标不同（SSIM 3、MSE 2、VQM 10、PSNR 12）。</dd>
+      </dl>
+      <div class="note">论文里 p &gt; 1 是作用在<b>失真</b>分数上，用来放大最差帧。我们的输入是<b>质量</b>分数（越高越好），p = 2 反而略微偏向好帧；要强调差帧需要 p &lt; 1。
+        实际上 p = 2 与 mean 的 Spearman 相关为 0.997，几乎就是 mean。</div>
+    </div>
+
+    <div class="rule">
+      <h3><code>exp_weighted_minkowski</code></h3>
+      <div class="formula">Q = ( Σ w[t]·q[t]^p / Σ w[t] )^(1/p),   w[t] = exp((t − T)/τ)</div>
+      <p>在 Minkowski 上加指数近因权重：越靠后的帧权重越大。</p>
+      <dl class="params">
+        <dt>p = 2</dt><dd>函数默认（与 <code>minkowski</code> 一致；p 的方向问题同上）。</dd>
+        <dt>τ = 480 帧</dt><dd>默认 τ = 100 帧（论文中 SSIM / MSE 的最佳值），在 25 fps 下是 4 s，换算到 120 Hz：100 × 4.8 = 480 帧。
+          这样第一帧的权重是最后一帧的 exp(−539/480) ≈ 0.33。</dd>
+        <dt>normalize = True</dt><dd>论文公式用 1/T 归一化，会让结果随 τ 变小；实现改为除以权重和，使输出保持在 JOD 尺度上。</dd>
+      </dl>
+    </div>
+
+    <div class="rule">
+      <h3><code>worst_window</code></h3>
+      <div class="formula">Q = min_i (1/N) Σ_{j=0…N−1} q[i + j]      （最差的连续 N 帧的平均）</div>
+      <dl class="params">
+        <dt>N = 480 帧</dt><dd>默认 N = 100 帧（Rimac-Drlje 扫过 1…160 帧），25 fps 下 4 s，换算为 480 帧。</dd>
+      </dl>
+      <div class="note">4 s 窗口占了 4.5 s 视频的 89%，只有约 60 个可选位置，差别只在“去掉开头 0.5 s 还是结尾 0.5 s”，所以结果非常接近 mean。</div>
+    </div>
+
+    <div class="rule">
+      <h3><code>hysteresis</code></h3>
+      <div class="formula">memory x(t)  = min q[t−n … t−1]          （过去 τ 秒的最差值；x(1) = q[1]）
+current y(t) = Σ v_k·w_k                   （v = q[t … t+n] 升序排列，w = 半高斯，最差的权重最大）
+g(t)  = α·y(t) + (1 − α)·x(t)
+Q     = mean_t g(t)</div>
+      <p>来自连续打分实验：人对质量下降反应快、恢复慢。“记忆”项让一次下降的影响延续 τ 秒。</p>
+      <dl class="params">
+        <dt>τ = 2 s</dt><dd>论文推荐值（τ 在 1–3 s 内结果稳定）。τ 以秒定义，直接用 fps = 120，所以 n = 240 帧，不需要另外换算。</dd>
+        <dt>α = 0.8</dt><dd>论文推荐值（α &gt; 0.5 时结果稳定）。</dd>
+        <dt>高斯 σ</dt><dd>(2K − 1)/12，K 为窗口中的帧数，按论文定义。</dd>
+      </dl>
+      <p style="font-size:12.5px">实现说明：论文 eq.(7) 印成 <code>x(t) = min[x(t)]</code>，字面上是常数；按文字描述取过去 τ 秒 q 的最小值。高斯权重归一化为和 = 1。</p>
+    </div>
+
+    <div class="rule">
+      <h3><code>vqpooling_temporal</code></h3>
+      <div class="formula">1. 用 1-D k-means (k = 2) 把帧分成低组 G_L、高组 G_H，均值 M_L、M_H
+2. w = (1 − M_L / M_H)²
+3. Q = (Σ_{G_L} q + w·Σ_{G_H} q) / (|G_L| + w·|G_H|)</div>
+      <p>Park et al. 2013 的时间部分。质量均匀时 M_L ≈ M_H，w ≈ 0，结果≈低组均值；高低差距越大，好帧的权重越大（回到更接近平均）。
+        没有可调参数（k = 2 是方法本身的定义）。论文中大部分提升来自<b>空间</b>部分，对逐帧向量不适用，这里只用了时间部分。</p>
+      <div class="note">依赖 M_L / M_H 的比值，所以对输入整体平移敏感。这是为什么所有规则共用同一个（这次为 0 的）偏移。</div>
+    </div>
+
+    <div class="rule">
+      <h3><code>early_dominance</code> / <code>late_dominance</code> / <code>increasing_weights</code> / <code>decreasing_weights</code></h3>
+      <div class="formula">把视频等分成 n 段，Q = Σ w_i · mean(第 i 段) / Σ w_i</div>
+      <dl class="params">
+        <dt>n_segments = 3</dt><dd>Duanmu 2018 原文是两个 4 s 片段，权重分别为 [1,0]、[0,1]、[1/3,2/3]、[2/3,1/3]。我们推广到 3 段，<b>正好对应实验的三个 chunk</b>：</dd>
+      </dl>
+      <ul>
+        <li><code>early_dominance</code>：[1, 0, 0]，只看 chunk 1（首因效应）</li>
+        <li><code>late_dominance</code>：[0, 0, 1]，只看 chunk 3（近因效应）</li>
+        <li><code>increasing_weights</code>：[1, 2, 3] / 6，越后越重</li>
+        <li><code>decreasing_weights</code>：[3, 2, 1] / 6，越前越重</li>
+      </ul>
+      <p>“只看一个 chunk”的两条都排最后，说明三个 chunk 都会影响判断；“加权但都保留”的两条都比 mean 好，其中偏后的更好。
+        注意：去掉负分帧的视频（538/539 帧）等分时边界会偏一两帧，影响可忽略。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5. 参数选择的总结与局限</h2>
+    <ul>
+      <li><b>原则</b>：不在 pilot 数据上调参，直接用文献默认 / 推荐值，只把帧数换算成 120 Hz 下相同的秒数。这样比较的是“文献里的规则原样拿来用”，避免在 84 条视频上过拟合。</li>
+      <li><b>后果 1：时长不匹配。</b>为 8–10 s 片段或几分钟 session 设计的时间窗口（5 s、50–60 s、4 s）在 4.5 s 视频上要么覆盖全片（退化为 mean），要么几乎覆盖全片。</li>
+      <li><b>后果 2：分数方向。</b>Minkowski 的 p 与 kth_percentile 的 k 在论文中多针对失真分数；直接套在 JOD（质量分数）上，p = 2 / k = 50 并没有起到“强调最差帧”的作用。</li>
+      <li><b>有效规则数</b>：15 个规则里只有 12 个结果不同（<code>rule_equivalence.csv</code>），结果页把等价的合并成一行。</li>
+      <li><b>可以考虑的改进</b>：按 chunk 时长缩放窗口（例如 last_frames = 1 个 chunk）、对质量分数用 p &lt; 1 或小 k、或把参数在训练 scene 上拟合后用跨 scene 交叉验证评估。</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+(function () {
+  const svg = document.getElementById('weights');
+  const W = 720, H = 230, L = 44, R = 12, Tp = 10, B = 34;
+  const T = 540, tau = 480;
+  const xs = t => L + (t / T) * (W - L - R);
+  const ymax = 3.2;
+  const ys = v => Tp + (1 - v / ymax) * (H - Tp - B);
+  const NS = 'http://www.w3.org/2000/svg';
+  const el = (name, attrs, text) => {
+    const e = document.createElementNS(NS, name);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    if (text != null) e.textContent = text;
+    svg.appendChild(e);
+    return e;
+  };
+  // grid and axes
+  for (let v = 0; v <= 3; v++) {
+    el('line', { x1: L, x2: W - R, y1: ys(v), y2: ys(v), stroke: 'var(--grid)' });
+    el('text', { x: L - 8, y: ys(v) + 4, 'text-anchor': 'end' }, v);
+  }
+  [180, 360].forEach(t => el('line', { x1: xs(t), x2: xs(t), y1: Tp, y2: H - B, stroke: 'var(--axis)', 'stroke-dasharray': '3 3' }));
+  ['chunk 1', 'chunk 2', 'chunk 3'].forEach((s, i) => el('text', { x: xs(90 + 180 * i), y: H - 16, 'text-anchor': 'middle' }, s));
+  ['0 s', '1.5 s', '3 s', '4.5 s'].forEach((s, i) => el('text', { x: xs(180 * i), y: H - 2, 'text-anchor': 'middle', style: 'font-size:11px;fill:var(--text-muted)' }, s));
+
+  // per-frame weights, scaled so that mean = 1
+  const step = w => t => w[Math.min(2, Math.floor(t / 180))] * 3 / w.reduce((a, b) => a + b, 0);
+  let z = 0;
+  for (let t = 1; t <= T; t++) z += Math.exp((t - T) / tau);
+  const series = [
+    { name: 'mean', color: 'var(--pooled)', f: () => 1 },
+    { name: 'increasing_weights', color: 'var(--series-1)', f: step([1, 2, 3]) },
+    { name: 'exp_weighted_minkowski', color: 'var(--series-3)', f: t => Math.exp((t + 1 - T) / tau) * T / z },
+    { name: 'decreasing_weights', color: 'var(--series-2)', f: step([3, 2, 1]) },
+    { name: 'early_dominance', color: 'var(--series-4)', f: step([1, 0, 0]) },
+    { name: 'late_dominance', color: 'var(--series-7)', f: step([0, 0, 1]) },
+  ];
+  const legend = document.getElementById('wlegend');
+  series.forEach((s, i) => {
+    let d = '';
+    for (let t = 0; t <= T; t += 2) d += (t ? 'L' : 'M') + xs(t).toFixed(1) + ' ' + ys(s.f(Math.min(t, T - 1)) + (i === 4 ? 0.03 : i === 5 ? -0.03 : 0)).toFixed(1);
+    el('path', { d, fill: 'none', stroke: s.color, 'stroke-width': 2.2, 'stroke-linejoin': 'round' });
+    legend.insertAdjacentHTML('beforeend', `<span><i class="key" style="background:${s.color}"></i>${s.name}</span>`);
+  });
+})();
+</script>
+</body>
+</html>
