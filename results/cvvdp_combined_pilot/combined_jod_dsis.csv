@@ -1,0 +1,85 @@
+candidate_id,scene,shot,chunk1,chunk2,chunk3,combined_jod,mean_chunk_jod,frames,seconds,dsis_level,dsis_label
+car__car_01__720p60-1080p120-1080p120,car,car__car_01,720p60,1080p120,1080p120,9.566932,9.7739,540,19.9,5,Excellent - Imperceptible
+car__car_01__1080p60-1080p120-1080p120,car,car__car_01,1080p60,1080p120,1080p120,9.553635,9.7718,540,20.4,5,Excellent - Imperceptible
+car__car_01__1080p120-1080p120-1080p30,car,car__car_01,1080p120,1080p120,1080p30,8.528287,9.1226,540,20.5,4,"Good - Perceptible, but not annoying"
+car__car_01__480p30-720p120-1080p120,car,car__car_01,480p30,720p120,1080p120,8.494587,9.1429,540,19.7,3,Fair - Slightly annoying
+car__car_01__1080p30-1080p120-1080p120,car,car__car_01,1080p30,1080p120,1080p120,8.453385,9.2220,540,19.9,3,Fair - Slightly annoying
+car__car_01__720p60-1080p30-1080p30,car,car__car_01,720p60,1080p30,1080p30,8.115110,8.2136,540,19.2,3,Fair - Slightly annoying
+car__car_01__480p120-1080p30-1080p30,car,car__car_01,480p120,1080p30,1080p30,8.111035,8.1934,540,19.4,3,Fair - Slightly annoying
+car__car_01__720p30-1080p30-1080p30,car,car__car_01,720p30,1080p30,1080p30,7.667471,7.6808,540,19.2,3,Fair - Slightly annoying
+forza__forza_1__720p60-1080p120-1080p120,forza,forza__forza_1,720p60,1080p120,1080p120,8.533881,9.2358,540,20.0,4,"Good - Perceptible, but not annoying"
+forza__forza_1__480p30-1080p120-1080p120,forza,forza__forza_1,480p30,1080p120,1080p120,7.360157,8.5958,540,19.8,2,Poor - Annoying
+forza__forza_1__1080p30-720p120-1080p120,forza,forza__forza_1,1080p30,720p120,1080p120,7.244890,8.4107,540,19.9,2,Poor - Annoying
+forza__forza_1__1080p120-480p30-480p30,forza,forza__forza_1,1080p120,480p30,480p30,6.289946,6.8479,540,19.5,1,Bad - Very annoying
+forza__forza_1__1080p120-720p30-1080p30,forza,forza__forza_1,1080p120,720p30,1080p30,6.180210,6.7641,540,19.7,1,Bad - Very annoying
+forza__forza_1__1080p30-1080p30-1080p120,forza,forza__forza_1,1080p30,1080p30,1080p120,6.143333,6.9228,540,20.0,1,Bad - Very annoying
+forza__forza_1__480p60-1080p30-1080p30,forza,forza__forza_1,480p60,1080p30,1080p30,5.910932,5.9450,540,19.4,1,Bad - Very annoying
+forza__forza_1__720p30-1080p30-1080p30,forza,forza__forza_1,720p30,1080p30,1080p30,5.390818,5.2971,540,19.2,1,Bad - Very annoying
+forza__forza_2__480p120-1080p120-1080p120,forza,forza__forza_2,480p120,1080p120,1080p120,9.088479,9.5346,540,20.1,4,"Good - Perceptible, but not annoying"
+forza__forza_2__1080p120-1080p120-720p60,forza,forza__forza_2,1080p120,1080p120,720p60,8.297424,9.0750,540,19.9,3,Fair - Slightly annoying
+forza__forza_2__720p60-720p120-1080p120,forza,forza__forza_2,720p60,720p120,1080p120,7.901817,8.7472,540,19.9,3,Fair - Slightly annoying
+forza__forza_2__1080p120-1080p60-1080p30,forza,forza__forza_2,1080p120,1080p60,1080p30,6.591131,7.2591,540,20.0,2,Poor - Annoying
+forza__forza_2__480p120-1080p30-1080p30,forza,forza__forza_2,480p120,1080p30,1080p30,5.706393,5.9035,540,19.4,1,Bad - Very annoying
+forza__forza_2__1080p30-1080p30-480p60,forza,forza__forza_2,1080p30,1080p30,480p60,4.936578,5.1776,540,19.7,1,Bad - Very annoying
+fox__fox_01__1080p120-1080p120-480p60,fox,fox__fox_01,1080p120,1080p120,480p60,9.827744,9.8948,540,19.9,5,Excellent - Imperceptible
+fox__fox_01__1080p120-1080p120-720p30,fox,fox__fox_01,1080p120,1080p120,720p30,9.726734,9.8453,540,19.8,5,Excellent - Imperceptible
+fox__fox_01__720p30-1080p120-1080p120,fox,fox__fox_01,720p30,1080p120,1080p120,9.669274,9.8382,540,19.8,5,Excellent - Imperceptible
+fox__fox_01__720p30-480p60-480p60,fox,fox__fox_01,720p30,480p60,480p60,9.599393,9.6300,540,19.2,5,Excellent - Imperceptible
+fox__fox_01__480p30-480p60-480p60,fox,fox__fox_01,480p30,480p60,480p60,9.581832,9.6156,540,19.2,5,Excellent - Imperceptible
+fox__fox_01__480p30-480p30-480p60,fox,fox__fox_01,480p30,480p30,480p60,9.525511,9.5404,540,19.1,5,Excellent - Imperceptible
+fox__fox_02__1080p120-1080p120-1080p120,fox,fox__fox_02,1080p120,1080p120,1080p120,10.000000,10.0000,540,20.1,5,Excellent - Imperceptible
+fox__fox_02__1080p60-1080p120-1080p120,fox,fox__fox_02,1080p60,1080p120,1080p120,9.721717,9.8675,540,19.9,5,Excellent - Imperceptible
+fox__fox_02__720p120-720p120-1080p30,fox,fox__fox_02,720p120,720p120,1080p30,9.131637,9.4400,540,19.5,4,"Good - Perceptible, but not annoying"
+fox__fox_02__720p120-1080p30-1080p30,fox,fox__fox_02,720p120,1080p30,1080p30,8.772297,8.9426,540,19.4,4,"Good - Perceptible, but not annoying"
+fox__fox_02__480p60-1080p30-1080p30,fox,fox__fox_02,480p60,1080p30,1080p30,8.747882,8.8150,540,19.2,4,"Good - Perceptible, but not annoying"
+fox__fox_03__480p30-1080p120-1080p120,fox,fox__fox_03,480p30,1080p120,1080p120,8.659031,9.3089,540,19.8,4,"Good - Perceptible, but not annoying"
+fox__fox_03__720p30-1080p120-1080p120,fox,fox__fox_03,720p30,1080p120,1080p120,8.629775,9.2925,540,19.8,4,"Good - Perceptible, but not annoying"
+fox__fox_03__1080p30-1080p30-1080p30,fox,fox__fox_03,1080p30,1080p30,1080p30,7.898692,7.9183,540,19.3,3,Fair - Slightly annoying
+heros3__heros3_02__1080p120-1080p120-1080p120,heros3,heros3__heros3_02,1080p120,1080p120,1080p120,10.000000,10.0000,540,20.3,5,Excellent - Imperceptible
+heros3__heros3_02__1080p120-1080p120-480p30,heros3,heros3__heros3_02,1080p120,1080p120,480p30,8.193404,8.9671,540,19.9,3,Fair - Slightly annoying
+heros3__heros3_02__1080p30-1080p120-1080p120,heros3,heros3__heros3_02,1080p30,1080p120,1080p120,7.806830,9.0340,540,20.1,3,Fair - Slightly annoying
+heros3__heros3_02__480p30-1080p120-1080p60,heros3,heros3__heros3_02,480p30,1080p120,1080p60,7.505986,8.6008,540,19.7,3,Fair - Slightly annoying
+heros3__heros3_02__480p30-480p30-480p30,heros3,heros3__heros3_02,480p30,480p30,480p30,6.582946,6.7134,540,19.0,2,Poor - Annoying
+lego__lego_02__1080p120-1080p120-1080p120,lego,lego__lego_02,1080p120,1080p120,1080p120,10.000000,10.0000,540,20.2,5,Excellent - Imperceptible
+lego__lego_02__1080p120-1080p120-1080p30,lego,lego__lego_02,1080p120,1080p120,1080p30,8.353305,9.1453,540,20.0,3,Fair - Slightly annoying
+lego__lego_02__1080p30-1080p120-1080p120,lego,lego__lego_02,1080p30,1080p120,1080p120,7.672832,8.8945,540,20.1,3,Fair - Slightly annoying
+lego__lego_02__720p120-720p30-480p30,lego,lego__lego_02,720p120,720p30,480p30,7.623660,7.9124,540,19.4,3,Fair - Slightly annoying
+lego__lego_02__1080p30-1080p30-1080p120,lego,lego__lego_02,1080p30,1080p30,1080p120,7.031961,7.8155,540,19.7,2,Poor - Annoying
+lego__lego_02__1080p30-1080p30-480p30,lego,lego__lego_02,1080p30,1080p30,480p30,6.700327,6.9323,540,19.2,2,Poor - Annoying
+makeway__makeway_01__1080p120-1080p120-1080p120,makeway,makeway__makeway_01,1080p120,1080p120,1080p120,10.000000,10.0000,540,20.3,5,Excellent - Imperceptible
+makeway__makeway_01__1080p60-1080p120-1080p120,makeway,makeway__makeway_01,1080p60,1080p120,1080p120,9.627642,9.9009,540,20.0,5,Excellent - Imperceptible
+makeway__makeway_01__1080p120-1080p120-480p120,makeway,makeway__makeway_01,1080p120,1080p120,480p120,9.595330,9.7502,540,20.0,5,Excellent - Imperceptible
+makeway__makeway_01__480p120-1080p120-1080p120,makeway,makeway__makeway_01,480p120,1080p120,1080p120,9.482464,9.7251,540,20.0,4,"Good - Perceptible, but not annoying"
+makeway__makeway_01__1080p120-1080p120-1080p60,makeway,makeway__makeway_01,1080p120,1080p120,1080p60,9.286863,9.6337,540,20.1,4,"Good - Perceptible, but not annoying"
+makeway__makeway_01__1080p120-480p60-480p60,makeway,makeway__makeway_01,1080p120,480p60,480p60,9.008516,9.2156,540,19.5,4,"Good - Perceptible, but not annoying"
+makeway__makeway_01__480p30-1080p120-1080p120,makeway,makeway__makeway_01,480p30,1080p120,1080p120,8.304004,9.2384,540,19.7,3,Fair - Slightly annoying
+makeway__makeway_01__1080p30-1080p120-1080p120,makeway,makeway__makeway_01,1080p30,1080p120,1080p120,8.296987,9.3444,540,19.9,3,Fair - Slightly annoying
+makeway__makeway_01__480p30-480p60-480p60,makeway,makeway__makeway_01,480p30,480p60,480p60,8.078273,8.4540,540,19.2,3,Fair - Slightly annoying
+makeway__makeway_01__1080p120-480p30-1080p120,makeway,makeway__makeway_01,1080p120,480p30,1080p120,8.073183,8.7977,540,19.9,3,Fair - Slightly annoying
+makeway__makeway_01__1080p120-1080p120-480p30,makeway,makeway__makeway_01,1080p120,1080p120,480p30,8.050454,8.7882,540,19.9,3,Fair - Slightly annoying
+makeway__makeway_01__480p30-1080p30-480p120,makeway,makeway__makeway_01,480p30,1080p30,480p120,7.416428,7.7586,540,19.3,2,Poor - Annoying
+makeway__makeway_01__480p30-1080p30-720p60,makeway,makeway__makeway_01,480p30,1080p30,720p60,7.365164,7.6323,540,19.1,2,Poor - Annoying
+makeway__makeway_01__480p30-1080p30-480p60,makeway,makeway__makeway_01,480p30,1080p30,480p60,7.354385,7.5886,540,19.2,2,Poor - Annoying
+makeway__makeway_01__1080p120-1080p30-1080p30,makeway,makeway__makeway_01,1080p120,1080p30,1080p30,7.250201,7.5326,540,19.6,2,Poor - Annoying
+makeway__makeway_01__720p120-1080p30-1080p30,makeway,makeway__makeway_01,720p120,1080p30,1080p30,7.244163,7.4123,540,19.5,2,Poor - Annoying
+makeway__makeway_01__480p60-1080p30-1080p30,makeway,makeway__makeway_01,480p60,1080p30,1080p30,7.189708,7.2283,540,19.2,2,Poor - Annoying
+makeway__makeway_01__720p30-1080p30-1080p30,makeway,makeway__makeway_01,720p30,1080p30,1080p30,6.829170,6.8442,540,19.2,2,Poor - Annoying
+makeway__makeway_01__480p30-1080p30-1080p30,makeway,makeway__makeway_01,480p30,1080p30,1080p30,6.822938,6.7710,540,19.1,2,Poor - Annoying
+ratchet__ratchet_02__1080p120-1080p120-1080p120,ratchet,ratchet__ratchet_02,1080p120,1080p120,1080p120,10.000000,10.0000,540,20.3,5,Excellent - Imperceptible
+ratchet__ratchet_02__480p30-1080p120-1080p120,ratchet,ratchet__ratchet_02,480p30,1080p120,1080p120,8.071590,8.9900,540,19.8,3,Fair - Slightly annoying
+ratchet__ratchet_02__720p120-480p30-480p30,ratchet,ratchet__ratchet_02,720p120,480p30,480p30,7.919713,8.0176,540,19.4,3,Fair - Slightly annoying
+ratchet__ratchet_02__1080p30-1080p120-1080p120,ratchet,ratchet__ratchet_02,1080p30,1080p120,1080p120,7.886594,8.8919,540,20.1,3,Fair - Slightly annoying
+ratchet__ratchet_02__720p30-1080p30-480p30,ratchet,ratchet__ratchet_02,720p30,1080p30,480p30,7.202979,7.1570,540,19.3,2,Poor - Annoying
+spiderman__spiderman_01__720p60-1080p120-1080p120,spiderman,spiderman__spiderman_01,720p60,1080p120,1080p120,8.720497,9.3522,540,19.9,4,"Good - Perceptible, but not annoying"
+spiderman__spiderman_01__1080p120-1080p120-480p30,spiderman,spiderman__spiderman_01,1080p120,1080p120,480p30,8.286662,8.9306,540,19.9,3,Fair - Slightly annoying
+spiderman__spiderman_01__1080p60-480p60-480p30,spiderman,spiderman__spiderman_01,1080p60,480p60,480p30,7.464664,7.4672,540,19.2,2,Poor - Annoying
+spiderman__spiderman_01__1080p120-1080p30-1080p120,spiderman,spiderman__spiderman_01,1080p120,1080p30,1080p120,7.109544,8.3486,540,20.0,2,Poor - Annoying
+spiderman__spiderman_01__1080p30-1080p120-1080p120,spiderman,spiderman__spiderman_01,1080p30,1080p120,1080p120,7.071166,8.4742,540,20.3,2,Poor - Annoying
+spiderman__spiderman_01__1080p60-1080p30-1080p30,spiderman,spiderman__spiderman_01,1080p60,1080p30,1080p30,6.418268,6.5267,540,19.6,1,Bad - Very annoying
+spiderman__spiderman_01__480p30-720p30-1080p30,spiderman,spiderman__spiderman_01,480p30,720p30,1080p30,5.768631,5.7873,540,19.2,1,Bad - Very annoying
+spiderman__spiderman_02__1080p120-1080p120-1080p120,spiderman,spiderman__spiderman_02,1080p120,1080p120,1080p120,10.000000,10.0000,540,20.2,5,Excellent - Imperceptible
+spiderman__spiderman_02__480p120-1080p120-1080p120,spiderman,spiderman__spiderman_02,480p120,1080p120,1080p120,9.447137,9.7304,540,20.0,4,"Good - Perceptible, but not annoying"
+spiderman__spiderman_02__1080p120-1080p120-480p30,spiderman,spiderman__spiderman_02,1080p120,1080p120,480p30,7.791964,8.6624,540,19.8,3,Fair - Slightly annoying
+spiderman__spiderman_02__1080p120-1080p30-1080p30,spiderman,spiderman__spiderman_02,1080p120,1080p30,1080p30,6.625136,7.1111,540,19.7,2,Poor - Annoying
+spiderman__spiderman_02__480p120-1080p30-1080p30,spiderman,spiderman__spiderman_02,480p120,1080p30,1080p30,6.592864,6.8415,540,19.4,2,Poor - Annoying
+spiderman__spiderman_02__1080p30-1080p30-720p30,spiderman,spiderman__spiderman_02,1080p30,1080p30,720p30,5.780392,5.7069,540,19.3,1,Bad - Very annoying

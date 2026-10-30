@@ -45,12 +45,29 @@ def dsis_category(jod):
             return level, label
 
 
-def local_path(path):
-    """Recipes store Windows paths; find the same file under this workspace's VQA2-dataset."""
-    relative = re.search(r'[\\/]VQA2-dataset[\\/](.*)$', path).group(1).replace('\\', '/')
-    local = WORKSPACE / 'VQA2-dataset' / relative
-    assert local.is_file(), f'Missing {local}'
-    return local
+def local_path(path, dataset_root=None):
+    """Recipes store Windows paths; find the same file under this workspace's VQA2-dataset,
+    or, for dataset-reference-chunks files, under dataset_root when given."""
+    path = path.replace('\\', '/')
+    if dataset_root and '/dataset-reference-chunks/' in path:
+        return dataset_root / path.split('/dataset-reference-chunks/', 1)[1]
+    return WORKSPACE / 'VQA2-dataset' / re.search(r'/VQA2-dataset/(.*)$', path).group(1)
+
+
+def recipe_sources(recipe, dataset_root=None):
+    """Chunk labels, test and reference files; 1080p120 tests use the reference file."""
+    labels = [recipe[f'chunk{c}'] for c in (1, 2, 3)]
+    refs = [local_path(p, dataset_root) for p in recipe['source_references']]
+    tests = [ref if label == '1080p120' else local_path(p, dataset_root)
+             for label, p, ref in zip(labels, recipe['source_videos'], refs)]
+    return labels, tests, refs
+
+
+def missing_files(recipes, dataset_root=None):
+    """Every listed test and reference file (including unused 1080p120 tests) that does not exist."""
+    paths = {local_path(p, dataset_root) for recipe in recipes
+             for p in recipe['source_videos'] + recipe['source_references']}
+    return sorted(p for p in paths if not p.is_file())
 
 
 def make_combined_source(pycvvdp, tests, refs, display_photometry):
@@ -108,7 +125,24 @@ def main():
     parser.add_argument('--device', default='cuda:0')
     parser.add_argument('--gpu-mem', type=float, default=4)
     parser.add_argument('--limit', type=int)
+    parser.add_argument('--dataset-root', type=Path,
+                        help='Directory holding the dataset-reference-chunks files '
+                             '(default: <workspace>/VQA2-dataset/dataset-reference-chunks)')
+    parser.add_argument('--check-files', action='store_true',
+                        help='Only check that every recipe file exists, then exit')
     args = parser.parse_args()
+
+    # Check every recipe (not just --limit) before loading the metric; stop on any gap.
+    all_recipes = json.loads(args.recipes.read_text())
+    missing = missing_files(all_recipes, args.dataset_root)
+    for path in missing:
+        print(f'Missing {path}')
+    print(f'{len(all_recipes)} recipes: {len(missing)} missing files')
+    if missing:
+        sys.exit(1)
+    if args.check_files:
+        return
+
     if args.cvvdp_root:
         sys.path.insert(0, str(args.cvvdp_root.resolve()))
     import pycvvdp
@@ -122,7 +156,7 @@ def main():
     torch.set_num_threads(4)
     metric = pycvvdp.cvvdp(display_name='standard_fhd', device=torch.device(args.device),
                            gpu_mem=args.gpu_mem, quiet=True)
-    recipes = json.loads(args.recipes.read_text())[:args.limit]
+    recipes = all_recipes[:args.limit]
     means = earlier_chunk_means()
 
     (args.output / 'frames').mkdir(parents=True, exist_ok=True)
@@ -144,10 +178,7 @@ def main():
         cid = recipe['candidate_id']
         if cid in done:
             continue
-        labels = [recipe[f'chunk{c}'] for c in (1, 2, 3)]
-        refs = [local_path(p) for p in recipe['source_references']]
-        tests = [ref if label == '1080p120' else local_path(p)
-                 for label, p, ref in zip(labels, recipe['source_videos'], refs)]
+        labels, tests, refs = recipe_sources(recipe, args.dataset_root)
         start = time.time()
         with torch.no_grad():
             source = make_combined_source(pycvvdp, tests, refs, metric.display_photometry)

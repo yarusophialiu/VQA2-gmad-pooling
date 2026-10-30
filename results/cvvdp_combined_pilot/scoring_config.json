@@ -1,0 +1,37 @@
+{
+  "display": "standard_fhd",
+  "full_screen_resize": "bilinear",
+  "resize_resolution": [
+    1920,
+    1080
+  ],
+  "temporal_resample_fps": 120,
+  "temporal_padding": "replicate",
+  "metric_version": "0.5.6",
+  "cvvdp_root": "/local/scratch-2/yl962/toolboxes/ColorVideoVDP/pycvvdp",
+  "torch_version": "2.6.0+cu124",
+  "chunks_joined_in_memory": true,
+  "frames": 540,
+  "dsis_bins": [
+    [
+      9.5,
+      5,
+      "Excellent - Imperceptible"
+    ],
+    [
+      8.5,
+      4,
+      "Good - Perceptible, but not annoying"
+    ],
+    [
+      7.5,
+      3,
+      "Fair - Slightly annoying"
+    ],
+    [
+      6.5,
+      2,
+      "Poor - Annoying"
+    ]
+  ]
+}

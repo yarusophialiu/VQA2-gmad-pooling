@@ -1,0 +1,9 @@
+84 recipes: 0 missing files
+[1/2] car__car_01__1080p120-1080p120-1080p30: JOD 8.5283 (20.5 s)
+[2/2] car__car_01__1080p30-1080p120-1080p120: JOD 8.4534 (19.9 s)
+2 videos -> results/cvvdp_combined_pilot/combined_jod_dsis.csv
+  5 Excellent - Imperceptible              JOD >=   9.5: 0
+  4 Good - Perceptible, but not annoying   JOD >=   8.5: 1
+  3 Fair - Slightly annoying               JOD >=   7.5: 1
+  2 Poor - Annoying                        JOD >=   6.5: 0
+  1 Bad - Very annoying                    JOD >=  -inf: 0
