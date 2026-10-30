@@ -8,7 +8,8 @@ with q = (MOS of the attacker's high video - MOS of its low video) / 4.
 
 Writes results/dsis_pilot/analysis/: video_mos.csv, subjects.csv, rules.csv,
 scene_srcc.csv (SRCC per predictor and scene), gmad_tasks.csv and gmad_rules.csv. (Too few tasks per rule pair for a
-Thurstone global ranking, so per-rule means are reported instead.)
+Thurstone global ranking, so per-rule means are reported instead.) When the pooled VMAF / PSNR-Y predictions
+from pool_pilot_vmaf_psnr.py exist, also rules_<metric>.csv and scene_srcc_<metric>.csv for each.
 
 Run with a Python that has numpy, scipy and pandas (e.g. ../VQA2/.venv).
 """
@@ -21,6 +22,8 @@ from scipy import stats
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = ROOT / 'results' / 'dsis_pilot'
 GMAD = ROOT / 'results' / 'gmad_all_shots_480p720p1080p_skip_negative_no_offset_time_converted'
+VMAF_PSNR = PILOT / 'vmaf_psnr'
+METRICS = ['vmaf', 'psnr_y']
 OUTPUT = PILOT / 'analysis'
 SPLITS = 2000
 rng = np.random.default_rng(0)
@@ -93,29 +96,7 @@ def main():
           f'SRCC {full[0]:.3f} / PLCC {full[1]:.3f}')
 
     # Predictors vs MOS: CVVDP on the full video, its DSIS level, and every pooling rule
-    rows = []
-    for column in ['combined_jod', 'dsis_level'] + rules:
-        srcc, plcc, krcc = corr(df[column], df['mos'])
-        boot = [stats.spearmanr(*df.iloc[i][[column, 'mos']].T.values)[0]
-                for i in rng.integers(0, len(df), (1000, len(df)))]
-        rows.append({'predictor': column, 'srcc': srcc, 'srcc_lo': np.percentile(boot, 2.5),
-                     'srcc_hi': np.percentile(boot, 97.5), 'plcc': plcc, 'krcc': krcc})
-    pred = pd.DataFrame(rows)
-
-    # Per scene: SRCC of each predictor against MOS over all of the scene's videos (every shot kept),
-    # then the Fisher-z mean over scenes, equal-weighted and weighted by n - 3 (videos per scene)
-    scenes = df.groupby('scene')
-    sizes = scenes.size()
-    per_scene = pd.DataFrame({column: {s: stats.spearmanr(g[column], g['mos'])[0] for s, g in scenes}
-                              for column in pred.predictor}).T
-    pred['scene_srcc_mean'] = pred.predictor.map(lambda c: fisher_mean(per_scene.loc[c]))
-    pred['scene_srcc_weighted'] = pred.predictor.map(lambda c: fisher_mean(per_scene.loc[c], sizes[per_scene.columns] - 3))
-    pred = pred.sort_values('srcc', ascending=False)
-    pred.to_csv(OUTPUT / 'rules.csv', index=False)
-    per_scene.columns = [f'{s} ({sizes[s]})' for s in per_scene.columns]
-    per_scene.loc[pred.predictor].to_csv(OUTPUT / 'scene_srcc.csv', index_label='predictor')
-    print('\nPredictors vs MOS (84 videos):\n' + pred.round(3).to_string(index=False))
-    print('\nSRCC per scene (videos):\n' + per_scene.loc[pred.predictor].round(2).to_string())
+    score_predictors(df, ['combined_jod', 'dsis_level'] + rules, '')
 
     # gMAD: every attack task whose pair is in the pilot
     tasks = pd.read_csv(GMAD / 'attack_tasks.csv', encoding='utf-8-sig')
@@ -144,7 +125,41 @@ def main():
     summary = summary.sort_values('aggressiveness', ascending=False)
     summary.to_csv(OUTPUT / 'gmad_rules.csv', index=False)
     print('\ngMAD per rule (q in [-1, 1]):\n' + summary.round(3).to_string(index=False))
+
+    # The same pooling rules applied to per-frame VMAF and PSNR-Y
+    for metric in METRICS:
+        path = VMAF_PSNR / f'predictions_{metric}.csv'
+        if path.exists():
+            score_predictors(videos.merge(mos, left_on='candidate_id', right_index=True)
+                             .merge(pd.read_csv(path), on='candidate_id'), rules, f'_{metric}')
     print(f'\nWrote {OUTPUT}')
+
+
+def score_predictors(df, columns, suffix):
+    """SRCC / PLCC / KRCC of each column against MOS over all videos (with a bootstrap CI), and the
+    per-scene SRCC over all of a scene's videos (every shot kept) with its Fisher-z mean over scenes,
+    equal-weighted and weighted by n - 3. Writes rules<suffix>.csv and scene_srcc<suffix>.csv."""
+    rows = []
+    for column in columns:
+        srcc, plcc, krcc = corr(df[column], df['mos'])
+        boot = [stats.spearmanr(*df.iloc[i][[column, 'mos']].T.values)[0]
+                for i in rng.integers(0, len(df), (1000, len(df)))]
+        rows.append({'predictor': column, 'srcc': srcc, 'srcc_lo': np.percentile(boot, 2.5),
+                     'srcc_hi': np.percentile(boot, 97.5), 'plcc': plcc, 'krcc': krcc})
+    pred = pd.DataFrame(rows)
+
+    scenes = df.groupby('scene')
+    sizes = scenes.size()
+    per_scene = pd.DataFrame({column: {s: stats.spearmanr(g[column], g['mos'])[0] for s, g in scenes}
+                              for column in pred.predictor}).T
+    pred['scene_srcc_mean'] = pred.predictor.map(lambda c: fisher_mean(per_scene.loc[c]))
+    pred['scene_srcc_weighted'] = pred.predictor.map(lambda c: fisher_mean(per_scene.loc[c], sizes[per_scene.columns] - 3))
+    pred = pred.sort_values('srcc', ascending=False)
+    pred.to_csv(OUTPUT / f'rules{suffix}.csv', index=False)
+    per_scene.columns = [f'{s} ({sizes[s]})' for s in per_scene.columns]
+    per_scene.loc[pred.predictor].to_csv(OUTPUT / f'scene_srcc{suffix}.csv', index_label='predictor')
+    print(f'\nPredictors{suffix} vs MOS ({len(df)} videos):\n' + pred.round(3).to_string(index=False))
+    print('\nSRCC per scene (videos):\n' + per_scene.loc[pred.predictor].round(2).to_string())
 
 
 if __name__ == '__main__':

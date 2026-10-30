@@ -13,13 +13,16 @@ are NumPy copies of temporal_pooling_snapshot.py (checked against it at start-up
 mean, median and vqpooling_temporal have no parameters; cumulative_quality's
 50/60 s windows reduce to the mean at 4.5 s, so it is left out.
 
+PSNR-Y is pooled in the MSE domain, as in pool_pilot_vmaf_psnr.py: the rules see
+-MSE shifted so every frame is >= 1, and the pooled value is converted back to dB.
+
 Inputs: results/cvvdp_combined_version_a/frames/<id>.csv (jod_proxy),
 results/dsis_pilot/vmaf_psnr/frames/<id>.csv, results/dsis_pilot/analysis/video_mos.csv.
 Writes results/dsis_pilot/analysis/tuning_<scene>/: grid.csv (every grid point's
 tuning-scene SRCC/PLCC), best_params.csv and test_results.csv.
 
 Example:
-  python gmad/tune_pooling_makeway.py [--scene makeway]
+  python gmad/tune_pooling_makeway.py [--scene makeway] [--unit ms]
 """
 import argparse
 import itertools
@@ -35,6 +38,7 @@ PILOT = ROOT / 'results' / 'dsis_pilot'
 CVVDP_FRAMES = ROOT / 'results' / 'cvvdp_combined_version_a' / 'frames'
 VMAF_FRAMES = PILOT / 'vmaf_psnr' / 'frames'
 FPS = 120
+PEAK = 255.   # 8-bit, as in libvmaf's psnr feature
 BOOT = 2000
 rng = np.random.default_rng(0)
 
@@ -131,6 +135,26 @@ RULES = {
 UNTUNED = {'mean': np.mean, 'median': np.median}
 
 
+def frames(ms):
+    """Milliseconds to a whole number of 120 Hz frames (at least one)."""
+    return max(1, round(ms * FPS / 1000.0))
+
+
+# --unit ms: the time parameters are searched on a millisecond grid and rounded to frames
+WINDOW_MS = [10, 25, 50, 100, 250, 500, 750, 1000, 1500, 2000, 3000, 4000, 4500]
+MS_RULES = {
+    'exp_weighted_minkowski': (lambda q, p, tau_ms: exp_weighted_minkowski(q, p, frames(tau_ms)),
+                               {'p': 2.0, 'tau_ms': 4000},
+                               {'p': [-4, -2, -1, 1, 2, 4], 'tau_ms': [250, 500, 1000, 2000, 4000, 8000, 16000]}),
+    'last_frames_mean': (lambda q, last_ms: last_frames_mean(q, frames(last_ms)), {'last_ms': 5000},
+                         {'last_ms': [250, 500, 750, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500]}),
+    'worst_window': (lambda q, window_ms: worst_window(q, frames(window_ms)), {'window_ms': 4000},
+                     {'window_ms': WINDOW_MS}),
+    'hysteresis': (lambda q, tau_ms, alpha: hysteresis(q, tau_ms / 1000.0, alpha), {'tau_ms': 2000, 'alpha': 0.8},
+                   {'tau_ms': [25, 50, 100, 250, 500, 1000, 2000, 3000], 'alpha': [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]}),
+}
+
+
 def check_against_torch(q):
     """The NumPy rules must reproduce temporal_pooling_snapshot.py at the defaults and a few grid points."""
     import torch
@@ -151,16 +175,21 @@ def check_against_torch(q):
 
 
 def load_series(ids):
+    """Per-frame series per metric, and the offset added to PSNR-Y's -MSE series."""
     series = {'cvvdp': {}, 'vmaf': {}, 'psnr_y': {}}
     for cid in ids:
         series['cvvdp'][cid] = pd.read_csv(CVVDP_FRAMES / f'{cid}.csv')['jod_proxy'].to_numpy(float)
         frames = pd.read_csv(VMAF_FRAMES / f'{cid}.csv')
         # Negative Minkowski exponents need q > 0; VMAF can reach 0 on a frame.
         series['vmaf'][cid] = np.maximum(frames['vmaf'].to_numpy(float), 1e-3)
-        series['psnr_y'][cid] = frames['psnr_y'].to_numpy(float)
+        # PSNR-Y is pooled as -MSE, as in pool_pilot_vmaf_psnr.py
+        series['psnr_y'][cid] = -PEAK ** 2 / 10 ** (frames['psnr_y'].to_numpy(float) / 10)
     for name, s in series.items():
         assert all(v.size == 540 for v in s.values()), name
-    return series
+    # Shift so every frame is >= 1, the same offset as pool_pilot_vmaf_psnr.py
+    offset = max(0., 1. - min(v.min() for v in series['psnr_y'].values()))
+    series['psnr_y'] = {cid: v + offset for cid, v in series['psnr_y'].items()}
+    return series, offset
 
 
 def fisher_mean(values, weights=None):
@@ -182,10 +211,13 @@ def distance(params, default, grid):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--scene', default='makeway')
+    parser.add_argument('--unit', choices=['frames', 'ms'], default='frames',
+                        help='Grid unit of the time parameters; ms writes tuning_<scene>_ms/')
     args = parser.parse_args()
+    rules = {**RULES, **MS_RULES} if args.unit == 'ms' else RULES
 
     df = pd.read_csv(PILOT / 'analysis' / 'video_mos.csv')[['candidate_id', 'scene', 'mos']]
-    series = load_series(df.candidate_id)
+    series, psnr_offset = load_series(df.candidate_id)
     check_against_torch(series['cvvdp'][df.candidate_id.iloc[0]])
     train = df[df.scene == args.scene]
     test = df[df.scene != args.scene]
@@ -193,7 +225,9 @@ def main():
           f'{test.scene.nunique()} scenes')
 
     def pooled(metric, fn, params, ids):
-        return np.array([fn(series[metric][cid], **params) for cid in ids])
+        x = np.array([fn(series[metric][cid], **params) for cid in ids])
+        # Pooled -MSE back to dB
+        return 10 * np.log10(PEAK ** 2 / (psnr_offset - x)) if metric == 'psnr_y' else x
 
     scenes = [(test.scene == s).to_numpy() for s in test.scene.unique()]
 
@@ -206,7 +240,7 @@ def main():
 
     grid_rows, best_rows, test_rows = [], [], []
     for metric in series:
-        for rule, (fn, default, grid) in RULES.items():
+        for rule, (fn, default, grid) in rules.items():
             points = [dict(zip(grid, values)) for values in itertools.product(*grid.values())]
             if default not in points:
                 points.append(dict(default))
@@ -243,11 +277,11 @@ def main():
                   f"[{row['gain_lo']:+.3f}, {row['gain_hi']:+.3f}]", flush=True)
 
         for rule, fn in UNTUNED.items():
-            x = np.array([fn(series[metric][cid]) for cid in test.candidate_id])
+            x = pooled(metric, fn, {}, test.candidate_id)
             test_rows.append({'metric': metric, 'rule': rule, 'tuned': {},
                               **{f'{k}_default': v for k, v in held_out(x, test.mos.to_numpy()).items()}})
 
-    out = PILOT / 'analysis' / f'tuning_{args.scene}'
+    out = PILOT / 'analysis' / (f'tuning_{args.scene}' + ('_ms' if args.unit == 'ms' else ''))
     out.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(grid_rows).to_csv(out / 'grid.csv', index=False)
     pd.DataFrame(best_rows).to_csv(out / 'best_params.csv', index=False)

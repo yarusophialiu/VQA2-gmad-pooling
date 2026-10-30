@@ -135,7 +135,109 @@ a { color: var(--series-1); }
 
   <!-- ===================================================== -->
   <section class="card">
-    <h2>4. 逐条说明</h2>
+    <h2>4. 参数大白话</h2>
+    <p>每个参数其实都在回答一个问题：<b>“观众更记得哪些帧？”</b>是差的帧、好的帧、最后几秒，还是某一段。下面用一个玩具例子说明：
+      一条视频三段，质量分别是 <code>10, 10, 2</code>（JOD，越高越好），普通平均 = 7.33。</p>
+
+    <div class="rule">
+      <h3>Minkowski 的 p：数值大的帧和数值小的帧谁说了算</h3>
+      <p>先把每个分数取 p 次方，平均以后再开 p 次方根。p 次方会把差距放大或缩小，所以 p 决定了往哪一边偏：</p>
+      <div class="scroll"><table>
+        <thead><tr><th>p</th><th style="text-align:right">10, 10, 2 的结果</th><th>大白话</th></tr></thead>
+        <tbody>
+          <tr><td>→ −∞</td><td class="num">2</td><td>只看最差的那一帧</td></tr>
+          <tr><td>−1</td><td class="num">4.29</td><td>明显被差帧拉低（调和平均）</td></tr>
+          <tr><td>0.5</td><td class="num">6.65</td><td>稍微偏向差帧</td></tr>
+          <tr><td>1</td><td class="num">7.33</td><td>就是普通平均</td></tr>
+          <tr><td>2（本次）</td><td class="num">8.25</td><td>稍微偏向<b>好</b>帧</td></tr>
+          <tr><td>4</td><td class="num">9.04</td><td>差帧几乎不算了</td></tr>
+          <tr><td>→ +∞</td><td class="num">10</td><td>只看最好的那一帧</td></tr>
+        </tbody>
+      </table></div>
+      <p><b>p 越大 = 分数越高的帧越占主导。</b>论文里输入是<b>失真</b>（越高越差），所以“p 大”等于“盯着最差的帧”，表达的是“一次卡顿/模糊就毁掉印象”。
+        我们的输入是 JOD（越高越好），方向反过来了：p = 2 其实是在<b>原谅</b>差帧。想表达“人记仇”，在 JOD 上要用 p &lt; 1。
+        不过我们的 JOD 大多集中在 7–10，差距不大，所以 p = 2 和平均几乎一样。</p>
+    </div>
+
+    <div class="rule">
+      <h3>exp_weighted_minkowski 的 τ：观众的“记忆有多长”</h3>
+      <p>每帧的权重是 exp((t − T)/τ)：最后一帧权重 1，往前每过 τ 帧权重变成原来的 37%。</p>
+      <ul>
+        <li><b>τ 很小</b>（比如 1 s = 120 帧）：前面的几乎全忘了，第一帧权重只有最后一帧的 1%，基本只看最后一段。</li>
+        <li><b>τ 很大</b>：所有帧差不多一样重，退回普通平均（或普通 Minkowski）。</li>
+        <li><b>本次 τ = 4 s</b>：视频只有 4.5 s，第一帧权重是最后一帧的 1/3，三段大约 22% / 32% / 46%，即“最后一段稍微更重要”。</li>
+      </ul>
+      <p>p 在这个规则里的含义和上面一样。</p>
+    </div>
+
+    <div class="rule">
+      <h3>last_frames_mean 的 F：“只看最后几秒”的那个几秒</h3>
+      <p>F 越小，越只看结尾（近因效应越强）；F ≥ 视频长度就是普通平均。论文说的是“最后 5 s 决定印象”，但我们的视频总共才 4.5 s，所以“最后 5 s”就是整条视频。
+        如果想在这里测近因效应，F 应该取 1 个 chunk（180 帧），这就等于 <code>late_dominance</code>。</p>
+    </div>
+
+    <div class="rule">
+      <h3>worst_window 的 N：多长的“最差片段”才算数</h3>
+      <p>在视频里找连续 N 帧平均最差的一段，用它代表整条视频。</p>
+      <ul>
+        <li><b>N = 1</b>：最差的单独一帧，一闪而过的瑕疵也会被抓住，最严格。</li>
+        <li><b>N 越大</b>：短暂的差帧被周围的好帧冲淡，越宽容；N = 视频长度就是平均。</li>
+        <li><b>本次 N = 4 s</b>：占了视频的 89%，只是在“去掉开头半秒”和“去掉结尾半秒”之间选差的那个，所以和平均很接近。如果 N = 1 个 chunk，它就成了“最差那个 chunk 的平均”。</li>
+      </ul>
+    </div>
+
+    <div class="rule">
+      <h3>percentile 的 p%：只看最差的百分之多少</h3>
+      <p>把帧从差到好排好，只取最差的 p% 求平均。<b>p 越小越苛刻</b>：p = 5% 只看最差的 27 帧（约 0.23 s）；p = 100% 就是平均。
+        它表达的是“观众记住的是最难看的那一下”。在我们的数据里排名靠后，说明观众并不是只记最差的那 0.2 秒。</p>
+    </div>
+
+    <div class="rule">
+      <h3>kth_percentile 的 k：排在第 k% 位置的那一帧</h3>
+      <p>和上面类似，但不是求平均，而是直接取一个位置的值。<b>k 小 = 看差帧，k = 50 = 中位数，k 大 = 看好帧。</b>本次 k = 50，所以就是中位数。</p>
+    </div>
+
+    <div class="rule">
+      <h3>hysteresis 的 τ 和 α：“记仇多久”和“多记仇”</h3>
+      <p>每一时刻的感受 = α × 当前看到的 + (1 − α) × 过去 τ 秒里最差的那一刻。</p>
+      <ul>
+        <li><b>τ（记仇多久）</b>：一次质量下降在记忆里留多久。τ 大，掉一次质量会影响后面很长一段时间；τ 小，很快就“原谅”了。本次 2 s，大约一个多 chunk。</li>
+        <li><b>α（多看眼前，还是多记过去）</b>：α = 1 完全不记仇，只看当前；α 越小，过去最差的那一刻越拖累现在。本次 α = 0.8，即 80% 看眼前，20% 记着刚才最差的。</li>
+        <li>另外“当前”那一项本身也偏向差帧：它看接下来 τ 秒的帧，最差的那几帧权重最大。所以这个规则整体是“对下降敏感、恢复慢”。</li>
+      </ul>
+    </div>
+
+    <div class="rule">
+      <h3>vqpooling 的 w：自动决定好帧算多少</h3>
+      <p>没有要手动设的参数。它把帧分成“差的一组”和“好的一组”，差组永远全算，好组乘一个权重 w = (1 − 差组均值/好组均值)²：</p>
+      <ul>
+        <li><b>两组差不多</b>（比如 9.5 和 10）：w ≈ 0，好组几乎不算，结果 ≈ 差组均值。意思是：差别不明显时，取偏差的那一边作为保守估计。</li>
+        <li><b>两组差很多</b>（比如 2 和 10）：w = 0.64，好组也算进来，结果更接近平均。</li>
+      </ul>
+      <p>因为看的是“比值”，如果给所有分数加上同一个常数，结果会变，所以所有规则必须用同一个输入（本次没有加偏移）。</p>
+    </div>
+
+    <div class="rule">
+      <h3>early / late / increasing / decreasing 的权重：三个 chunk 各占几成</h3>
+      <p>就是给三个 chunk 分配“话语权”：</p>
+      <ul>
+        <li><code>early_dominance</code> [1, 0, 0]：只看第一印象。</li>
+        <li><code>late_dominance</code> [0, 0, 1]：只看最后印象。</li>
+        <li><code>increasing_weights</code> [1, 2, 3]：17% / 33% / 50%，越后越重。</li>
+        <li><code>decreasing_weights</code> [3, 2, 1]：50% / 33% / 17%，越前越重。</li>
+      </ul>
+      <p>例子 10, 10, 2：early = 10，late = 2，increasing = 5.67，decreasing = 8.67。同样三段，只因为差的在最后，increasing 就比 decreasing 低 3 分。</p>
+    </div>
+
+    <div class="rule">
+      <h3>cumulative_quality 的四个权重：最后、平均、最差、最好各占几成</h3>
+      <p>0.28 × 最后一段 + 0.426 × 整体平均 + 0.28 × 最差一段 + 0.014 × 最好一段。大白话：<b>平均印象占四成多，结尾和最差的时刻各占约三成，最好的时刻几乎不算</b>
+        （人对好的记不住、对坏的和结尾记得住）。但这里的“一段”是 50–60 s，我们的视频只有 4.5 s，四项都是整体平均，所以就是平均。</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5. 逐条说明</h2>
     <p>记号：q[t] 是第 t 帧的 JOD，t = 1…T（T ≈ 540）。</p>
 
     <div class="rule">
@@ -266,13 +368,119 @@ Q     = mean_t g(t)</div>
   </section>
 
   <section class="card">
-    <h2>5. 参数选择的总结与局限</h2>
+    <h2>6. 怎么调参数（大白话）</h2>
+    <p>上面用的都是文献默认值。<code>gmad/tune_pooling_makeway.py</code> 试了另一种做法：用我们自己的 MOS 把参数调一遍，看能不能变好。
+      结果在 <code>tuning_makeway/</code>（<code>grid.csv</code>、<code>best_params.csv</code>、<code>test_results.csv</code>）。</p>
+
+    <div class="rule">
+      <h3>第 1 步：分“练习题”和“考试题”</h3>
+      <p>拿 <b>makeway</b> 这一个 scene（19 条视频，pilot 里最多的一个）当练习题，<b>只在它上面调参数</b>。
+        其余 7 个 scene 的 65 条视频当考试题，调参时完全不看。</p>
+      <p>为什么不在全部 84 条上调？那等于自己出题自己考：总能找到一组参数在这批视频上分数很高，但换一批视频就不灵了（过拟合）。
+        分开以后，“考试分数”才说明参数是真的好，还是只是碰巧适合 makeway。</p>
+    </div>
+
+    <div class="rule">
+      <h3>第 2 步：把每个候选值都试一遍（网格搜索）</h3>
+      <p>每个规则准备一张候选值表，逐个代入，算出 19 条 makeway 视频的预测分数，再看<b>预测的排名和 MOS 的排名有多一致</b>（SRCC）。SRCC 最高的那组就是“调好的参数”。
+        如果两组 SRCC 一样，比 PLCC（线性相关）；还一样，就选离默认值最近的那个，免得没有理由地乱改。</p>
+      <div class="scroll"><table>
+        <thead><tr><th>规则</th><th>试了哪些值</th><th>默认</th></tr></thead>
+        <tbody>
+          <tr><td><code>minkowski</code></td><td>p ∈ {−8, −4, −2, −1, −0.5, 0.5, 1, 2, 4, 8}</td><td>p = 2</td></tr>
+          <tr><td><code>exp_weighted_minkowski</code></td><td>p ∈ {−4, −2, −1, 1, 2, 4} × τ ∈ {30, 60, 120, 240, 480, 960, 1920} 帧（0.25–16 s），共 42 组</td><td>p = 2, τ = 480</td></tr>
+          <tr><td><code>percentile</code></td><td>p ∈ {1, 2, 5, 10, 20, 30, 40, 50, 75, 100}%</td><td>5%</td></tr>
+          <tr><td><code>kth_percentile</code></td><td>k ∈ {1, 5, 10, 20, …, 90}</td><td>50</td></tr>
+          <tr><td><code>last_frames_mean</code></td><td>F ∈ {30, 60, 90, 120, 180, …, 540} 帧（0.25–4.5 s）</td><td>600</td></tr>
+          <tr><td><code>worst_window</code></td><td>N ∈ {1, 12, 30, 60, 90, 120, 180, 240, 360, 480, 540} 帧</td><td>480</td></tr>
+          <tr><td><code>hysteresis</code></td><td>τ ∈ {0.05, 0.1, 0.25, 0.5, 1, 2} s × α ∈ {0, 0.2, …, 1}，共 36 组</td><td>τ = 2, α = 0.8</td></tr>
+          <tr><td>四个分段规则</td><td>n_segments ∈ {2, 3, 4, 5, 6, 9}</td><td>3</td></tr>
+        </tbody>
+      </table></div>
+      <p>候选值的范围特意比默认值宽很多，两个方向都包括（例如 Minkowski 的 p 有正有负，就是为了检查“偏向差帧”和“偏向好帧”哪个更好）。
+        <code>mean</code>、<code>median</code>、<code>vqpooling_temporal</code> 没有参数可调；<code>cumulative_quality</code> 在 4.5 s 上就是 mean，没有放进来。
+        同样的流程对 CVVDP 逐帧 JOD、逐帧 VMAF、逐帧 PSNR-Y 各做一遍。</p>
+    </div>
+
+    <div class="rule">
+      <h3>参数对比：默认 vs 调好的</h3>
+      <div class="scroll"><table>
+        <thead><tr><th>规则</th><th>参数</th><th style="text-align:right">默认</th><th style="text-align:right">CVVDP</th><th style="text-align:right">VMAF</th><th style="text-align:right">PSNR-Y</th></tr></thead>
+        <tbody>
+          <tr><td><code>minkowski</code></td><td>p</td><td class="num">2</td><td class="num">2</td><td class="num">8</td><td class="num">2</td></tr>
+          <tr><td rowspan="2"><code>exp_weighted_minkowski</code></td><td>p</td><td class="num">2</td><td class="num">4</td><td class="num">4</td><td class="num">2</td></tr>
+          <tr><td>τ（帧）</td><td class="num">480</td><td class="num">1920</td><td class="num">1920</td><td class="num">1920</td></tr>
+          <tr><td><code>percentile</code></td><td>p（%）</td><td class="num">5</td><td class="num">100</td><td class="num">100</td><td class="num">100</td></tr>
+          <tr><td><code>kth_percentile</code></td><td>k</td><td class="num">50</td><td class="num">90</td><td class="num">60</td><td class="num">60</td></tr>
+          <tr><td><code>last_frames_mean</code></td><td>F（帧）</td><td class="num">600</td><td class="num">600</td><td class="num">600</td><td class="num">600</td></tr>
+          <tr><td><code>worst_window</code></td><td>N（帧）</td><td class="num">480</td><td class="num">180</td><td class="num">90</td><td class="num">30</td></tr>
+          <tr><td rowspan="2"><code>hysteresis</code></td><td>τ（s）</td><td class="num">2</td><td class="num">0.1</td><td class="num">2</td><td class="num">0.25</td></tr>
+          <tr><td>α</td><td class="num">0.8</td><td class="num">0</td><td class="num">0</td><td class="num">0.6</td></tr>
+          <tr><td><code>early_dominance</code></td><td>n_segments</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">2</td></tr>
+          <tr><td><code>late_dominance</code></td><td>n_segments</td><td class="num">3</td><td class="num">2</td><td class="num">3</td><td class="num">5</td></tr>
+          <tr><td><code>increasing_weights</code></td><td>n_segments</td><td class="num">3</td><td class="num">2</td><td class="num">4</td><td class="num">2</td></tr>
+          <tr><td><code>decreasing_weights</code></td><td>n_segments</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">2</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div class="rule">
+      <h3>第 3 步：拿去考试，和默认值比</h3>
+      <p>把调好的参数和默认参数都用在 65 条考试视频上，各算一个 SRCC，差值就是“调参带来的提升”。</p>
+    </div>
+
+    <div class="rule">
+      <h3>第 4 步：提升是真的还是运气（bootstrap）</h3>
+      <p>65 条视频不多，换一批视频提升可能就没了。做法是：从 65 条里<b>有放回地随机抽 65 条</b>，重新算一次“调参后 − 默认”的 SRCC 差，这样重复 2000 次，
+        取中间 95% 作为区间。<b>区间整体在 0 以上 = 提升比较可信；区间跨过 0 = 说不准，可能只是运气。</b></p>
+    </div>
+
+    <div class="rule">
+      <h3>结果（CVVDP 逐帧 JOD）</h3>
+      <div class="scroll"><table>
+        <thead><tr><th>规则</th><th>默认 → 调好的</th><th style="text-align:right">练习 SRCC</th><th style="text-align:right">考试 SRCC</th><th style="text-align:right">提升 95% 区间</th></tr></thead>
+        <tbody>
+          <tr><td><code>exp_weighted_minkowski</code></td><td>p 2→4, τ 480→1920</td><td class="num">0.608 → 0.659</td><td class="num">0.477 → 0.509</td><td class="num">[−0.02, +0.08]</td></tr>
+          <tr><td><code>minkowski</code></td><td>p 2 → 2（没变）</td><td class="num">0.653</td><td class="num">0.506</td><td class="num">—</td></tr>
+          <tr><td><code>hysteresis</code></td><td>τ 2→0.1 s, α 0.8→0</td><td class="num">0.586 → 0.639</td><td class="num">0.486 → 0.497</td><td class="num">[−0.06, +0.08]</td></tr>
+          <tr><td><code>percentile</code></td><td>p 5% → 100%</td><td class="num">0.523 → 0.639</td><td class="num">0.393 → 0.493</td><td class="num">[−0.02, +0.24]</td></tr>
+          <tr><td><code>kth_percentile</code></td><td>k 50 → 90</td><td class="num">0.444 → 0.622</td><td class="num">0.396 → 0.485</td><td class="num">[−0.04, +0.24]</td></tr>
+          <tr><td><code>increasing_weights</code></td><td>3 段 → 2 段</td><td class="num">0.600 → 0.608</td><td class="num">0.479 → 0.487</td><td class="num">[−0.01, +0.04]</td></tr>
+          <tr><td><code>decreasing_weights</code></td><td>3 段 → 2 段</td><td class="num">0.608 → 0.623</td><td class="num">0.503 → 0.487</td><td class="num">[−0.06, +0.02]</td></tr>
+          <tr><td><code>early_dominance</code></td><td>3 段 → 2 段</td><td class="num">0.420 → 0.551</td><td class="num">0.313 → 0.413</td><td class="num"><b>[+0.02, +0.18]</b></td></tr>
+          <tr><td><code>late_dominance</code></td><td>3 段 → 2 段</td><td class="num">0.496 → 0.580</td><td class="num">0.413 → 0.437</td><td class="num">[−0.01, +0.07]</td></tr>
+          <tr><td><code>worst_window</code></td><td>N 480 → 180</td><td class="num">0.603 → 0.670</td><td class="num">0.486 → <b>0.409</b></td><td class="num">[−0.16, +0.00]</td></tr>
+          <tr><td><code>last_frames_mean</code></td><td>600 → 600（没变）</td><td class="num">0.639</td><td class="num">0.493</td><td class="num">—</td></tr>
+          <tr><td><code>mean</code>（对照）</td><td>—</td><td class="num">0.639</td><td class="num">0.493</td><td class="num">—</td></tr>
+        </tbody>
+      </table></div>
+      <p style="font-size:12.5px">考试 SRCC 是 65 条视频放在一起算的。这里的数字和结果页不能直接比：考试题里没有 makeway，逐帧输入是 <code>cvvdp_combined_version_a/frames</code> 里的完整 540 帧（这 84 条 pilot 视频都没有负分帧，所以去不去掉负分帧都一样）。</p>
+    </div>
+
+    <div class="rule">
+      <h3>怎么读这个结果</h3>
+      <ul>
+        <li><b>练习分涨得多，考试分涨得少，甚至变差。</b>这是过拟合的典型样子。最明显的是 <code>worst_window</code>：在 makeway 上从 0.60 涨到 0.67，到别的 scene 反而从 0.49 掉到 0.41。</li>
+        <li><b>几乎所有区间都跨过 0。</b>11 个规则里只有 <code>early_dominance</code> 的提升是可信的，而那只是因为默认的“只看第 1 个 chunk”太极端，改成 2 段后变成“只看前 2.25 s”，离 mean 更近了。</li>
+        <li><b>调参后大多“往 mean 靠”。</b>percentile p = 100% 就是 mean；k = 90 只是取一个偏好帧的值；τ = 1920 帧（16 s）让权重几乎一样平；hysteresis 的 τ = 0.1 s 几乎没有记忆。
+          可以理解为：在 makeway 上，数据并不支持“观众盯着最差的帧”或“强近因效应”，越像平均越好。</li>
+        <li><b>Minkowski 的曲线很平。</b>在 makeway 上 p 从 −8 到 8，SRCC 只在 0.57–0.65 之间变化，p = 1（平均）是 0.639，p = 2 是 0.653，这点差别在 19 条视频上就是噪声。偏向差帧的 p &lt; 0 反而稍差。</li>
+        <li><b>曲线忽高忽低就是噪声。</b>例如 <code>kth_percentile</code>：k = 5 是 0.61，k = 10 掉到 0.51，k = 30 又到 0.59。一个真实的效应不会这样跳，19 条视频太少了。</li>
+        <li><b>VMAF 和 PSNR-Y 的结论一样</b>：percentile 也被调到 p = 100%（= mean）；PSNR-Y 的 percentile 提升可信（[+0.06, +0.50]），原因同样是默认的 5% 太苛刻，并不是找到了更好的规则。</li>
+      </ul>
+      <div class="note">一句话：<b>到目前为止，调参的主要作用是把那些“不像平均”的规则拉回到平均附近，没有哪个规则的调参版本稳定地超过 mean。</b>
+        这只是 1 个 scene 调参、7 位被试的 pilot 结论。更稳妥的做法是 leave-one-scene-out（轮流留一个 scene 做考试，其余用来调参），并等正式实验数据。</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>7. 参数选择的总结与局限</h2>
     <ul>
       <li><b>原则</b>：不在 pilot 数据上调参，直接用文献默认 / 推荐值，只把帧数换算成 120 Hz 下相同的秒数。这样比较的是“文献里的规则原样拿来用”，避免在 84 条视频上过拟合。</li>
       <li><b>后果 1：时长不匹配。</b>为 8–10 s 片段或几分钟 session 设计的时间窗口（5 s、50–60 s、4 s）在 4.5 s 视频上要么覆盖全片（退化为 mean），要么几乎覆盖全片。</li>
       <li><b>后果 2：分数方向。</b>Minkowski 的 p 与 kth_percentile 的 k 在论文中多针对失真分数；直接套在 JOD（质量分数）上，p = 2 / k = 50 并没有起到“强调最差帧”的作用。</li>
       <li><b>有效规则数</b>：15 个规则里只有 12 个结果不同（<code>rule_equivalence.csv</code>），结果页把等价的合并成一行。</li>
-      <li><b>可以考虑的改进</b>：按 chunk 时长缩放窗口（例如 last_frames = 1 个 chunk）、对质量分数用 p &lt; 1 或小 k、或把参数在训练 scene 上拟合后用跨 scene 交叉验证评估。</li>
+      <li><b>可以考虑的改进</b>：按 chunk 时长缩放窗口（例如 last_frames = 1 个 chunk）、对质量分数用 p &lt; 1 或小 k、或把参数在训练 scene 上拟合后用跨 scene 交叉验证评估。第 6 节在 makeway 上的初步尝试显示，调参后大多数规则回到 mean 附近，在其它 scene 上没有可信的提升。</li>
     </ul>
   </section>
 </main>
